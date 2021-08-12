@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "module": "commonjs", // add this line
+    "target": "esnext",
+    "jsx": "react-native",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "es6"
+    ],
+    "paths": {
+      "@store": ["store"],
+      "@store/*": ["store/*"],
+      "@components": ["components"],
+      "@components/*": ["components/*"],
+      "@screens": ["screens"],
+      "@screens/*": ["screens/*"],
+      "@i18n": ["i18n"],
+      "@i18n/*": ["i18n/*"],
+      "@config": ["config"],
+      "@config/*": ["config/*"],
+      "@navigation": ["navigation"],
+      "@navigation/*": ["navigation/*"],
+      "@services": ["services"],
+      "@services/*": ["services/*"],
+      "@utilities": ["utilities"],
+      "@utilities/*": ["utilities/*"],
+      "@styles/*": ["styles/*"],
+      "@assets": ["assets"],
+      "@assets/*": ["assets/*"],
+      "@theme": ["styles/theme"],
+      "@types": ["types"]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
