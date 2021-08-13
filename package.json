@@ -12,7 +12,12 @@
     "init:template": "yarn install && react-native init $PROJECT_NAME && mv ./$PROJECT_NAME/android ./ && mv ./$PROJECT_NAME/ios ./ && rm -rf ./$PROJECT_NAME && node ./init_template_scripts/init_template_scripts && cd ios && pod install",
     "test": "jest",
     "lint": "eslint 'src/**/*' --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint 'src/**/*' --quiet --fix"
+    "lint:fix": "eslint 'src/**/*' --quiet --fix",
+    "e2e:prepare": "node e2e/e2ePrepare.js",
+    "e2e:reset": "node e2e/e2eReset.js",
+    "e2e:build:ios": "detox build -c ios:release",
+    "e2e:test:ios": "detox test -c ios:release -o e2e/config.json -u",
+    "e2e:ios": "yarn run e2e:prepare && yarn run e2e:build:ios && yarn run e2e:test:ios && yarn run e2e:reset"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
@@ -65,6 +70,7 @@
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^25.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
+    "detox": "^18.20.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-plugin-import": "^2.20.1",
@@ -73,7 +79,8 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "eslint-plugin-react-redux": "^3.0.3",
     "eslint-plugin-redux-saga": "^1.1.3",
-    "jest": "^24.9.0",
+    "jest": "^27.0.6",
+    "jest-circus": "^27.0.6",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-native-dotenv": "^0.2.0",
     "react-test-renderer": "16.13.1",

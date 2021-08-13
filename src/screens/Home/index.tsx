@@ -17,7 +17,7 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} testID="homeScrollView">
-          <Text>{i18n.t('screens.home.title')}</Text>
+          <Text testID="helloText">{i18n.t('screens.home.title')}</Text>
       </ScrollView>
     </SafeAreaView>
   );
