@@ -1,0 +1,25 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v2
+          with:
+            ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: yarn --frozen-lockfile
+
+      - run: yarn run lint
