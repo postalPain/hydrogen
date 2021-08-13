@@ -5,7 +5,7 @@ export const TYPES = {
   GET_USER_SUCCESS: 'GET_USER_SUCCESS',
   SIGN_OUT: 'SIGN_OUT',
   SIGNED_OUT: 'SIGNED_IN',
-  AUTH_ERROR: 'AUTH_ERROR'
+  AUTH_ERROR: 'AUTH_ERROR',
 };
 
 interface ISignIn {
@@ -15,12 +15,12 @@ interface ISignIn {
 
 export const signIn = ({ email, password }) => ({
   type: TYPES.SIGN_IN,
-  payload: { email, password }
+  payload: { email, password },
 });
 
 export const signedIn = (accessToken) => ({
   type: TYPES.SIGNED_IN,
-  payload: accessToken
+  payload: accessToken,
 });
 
 export const getUser = () => ({
@@ -29,14 +29,14 @@ export const getUser = () => ({
 
 export const getUserSuccess = (user) => ({
   type: TYPES.GET_USER_SUCCESS,
-  payload: user
+  payload: user,
 });
 
 export const signOut = () => ({
-  type: TYPES.SIGN_OUT
+  type: TYPES.SIGN_OUT,
 });
 
 export const setError = (errorMessage) => ({
   type: TYPES.AUTH_ERROR,
-  payload: { errorMessage }
+  payload: { errorMessage },
 });

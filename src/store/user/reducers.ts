@@ -5,7 +5,7 @@ const defaultState = {
   accessToken: getItem('AUTH_TOKEN') || '',
   user: null,
   errorMessage: '',
-  loading: false
+  loading: false,
 };
 
 export default function authentication(state = defaultState, action) {
@@ -28,20 +28,20 @@ export default function authentication(state = defaultState, action) {
       return {
         ...state,
         loading: false,
-        errorMessage: action.payload.errorMessage
+        errorMessage: action.payload.errorMessage,
       };
     }
     case TYPES.SIGN_OUT: {
       return {
         ...state,
         accessToken: '',
-        user: null
+        user: null,
       };
     }
     case TYPES.GET_USER_SUCCESS: {
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
       };
     }
     default:

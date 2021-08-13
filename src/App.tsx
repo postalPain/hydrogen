@@ -7,14 +7,14 @@ import store from 'store';
 import theme from 'styles/theme';
 import Navigation from 'navigation/Navigation';
 
-import { setupSentry } from 'services/Sentry/sentry';
+// import { setupSentry } from 'services/Sentry/sentry';
 
 export const App = () => (
   <Provider store={store}>
-      <ThemeContextProvider themes={[theme]}>
-          <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
-          <Navigation />
-      </ThemeContextProvider>
+    <ThemeContextProvider themes={[theme]}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
+      <Navigation />
+    </ThemeContextProvider>
   </Provider>
 );
 export default App;

@@ -13,12 +13,12 @@ const sagaMiddleware = createSagaMiddleware();
 /** Creating Redux store */
 const store = createStore(
   combineReducers({
-    user: userReducers
+    user: userReducers,
   }),
   INITIAL_STATE,
-    composeWithDevTools(applyMiddleware(
-    sagaMiddleware
-  ))
+  composeWithDevTools(applyMiddleware(
+    sagaMiddleware,
+  )),
 );
 
 sagaMiddleware.run(userWatcher);

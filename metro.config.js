@@ -15,7 +15,6 @@ const extraNodeModules = {
   "config": path.resolve(__dirname,  "src/config"),
   "utilities": path.resolve(__dirname,  "src/utilities"),
   "styles": path.resolve(__dirname+"/src/styles"),
-  "assets": path.resolve(__dirname,  "src/assets"),
   "icons": path.resolve(__dirname,  "src/components/Icons"),
   "theme": path.resolve(__dirname,  "src/styles/theme"),
   "types": path.resolve(__dirname,  "src/types"),

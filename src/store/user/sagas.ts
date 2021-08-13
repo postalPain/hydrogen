@@ -4,7 +4,7 @@ import { userAPI, xhr } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
 import {
-  TYPES, signedIn, setError, getUser, getUserSuccess
+  TYPES, signedIn, setError, getUser, getUserSuccess,
 } from './actions';
 
 function* getUserWorker(): SagaIterator {

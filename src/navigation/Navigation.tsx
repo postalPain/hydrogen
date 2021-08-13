@@ -21,7 +21,6 @@ import {
 const Stack = createStackNavigator();
 
 const Navigation = () => {
-
   useEffect(() => {
     // android specific functionality
     if (Platform.OS === 'android') {
@@ -52,15 +51,13 @@ const Navigation = () => {
             headerShown: false,
           }}
         >
-          {
-            <Stack.Screen
-                name={Routes.HomeScreen}
-                component={Home}
-                options={{
-                  gestureEnabled: false,
-                }}
-            />
-          }
+          <Stack.Screen
+            name={Routes.HomeScreen}
+            component={Home}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

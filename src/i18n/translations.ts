@@ -1,11 +1,9 @@
-import { merge } from 'lodash';
-// @ts-ignore en
-import en from './locales/en.json';
-import de from './locales/de.json';
+import en from './locales/en';
+import de from './locales/de';
 
 const translations = {
   en,
-  de
+  de,
 };
 
 export const locales = Object.keys(translations);
