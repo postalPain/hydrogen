@@ -34,7 +34,7 @@ export default {
   modals: {},
   screens: {
     home: {
-      title: 'Home',
+      title: 'Hey',
     },
   },
 };

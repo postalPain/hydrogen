@@ -32,5 +32,9 @@ export default {
   links: {},
   inputs: {},
   modals: {},
-  screens: {},
+  screens: {
+    home: {
+      title: 'Hey',
+    },
+  },
 };
