@@ -9,6 +9,7 @@ import SplashScreen from 'react-native-splash-screen';
 
 
 import Home from 'screens/Home';
+import Map from 'screens/Map';
 import Routes from './Routes';
 
 import {
@@ -54,6 +55,13 @@ const Navigation = () => {
           <Stack.Screen
             name={Routes.HomeScreen}
             component={Home}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.MapScreen}
+            component={Map}
             options={{
               gestureEnabled: false,
             }}
