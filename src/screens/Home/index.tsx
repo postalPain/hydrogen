@@ -8,11 +8,12 @@ import { NavigationContainerRef } from '@react-navigation/native';
 import i18n from 'i18n';
 import useStyles from './styles';
 import { LocationButton, HomeCarousel, CategoryViewer } from 'components';
+import { ProjectThemeType } from 'styles/theme';
 
 
 interface IHomeProps {
   navigation: NavigationContainerRef;
-  theme: any;
+  theme: ProjectThemeType;
 }
 
 const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {

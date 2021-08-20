@@ -36,5 +36,23 @@ export default {
     home: {
       title: 'Hey',
     },
+    signUp: {
+      title: 'Sign up',
+      fields: {
+        name: 'Full name',
+        phone: 'Mobile',
+        email: 'Email',
+        password: 'Password',
+      },
+      errors: {
+        name: 'Please enter your full name',
+        phone: 'Please enter a mobile number',
+        email: 'Please enter an email',
+        email2: 'Please check your email address and try again',
+        password: 'Please enter a password',
+        password2: 'Password should contain at least 8 symbols',
+      },
+      button: 'Continue to checkout',
+    },
   },
 };

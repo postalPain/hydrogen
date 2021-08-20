@@ -1,4 +1,5 @@
 import { Platform, StatusBar } from 'react-native';
+import { ThemeType } from '@stryberventures/stryber-react-native-ui-components';
 
 const theme = {
   components: {
@@ -35,5 +36,7 @@ const theme = {
     cross: '#95acbf',
   },
 };
+
+export type ProjectThemeType = ThemeType & typeof theme;
 
 export default theme;

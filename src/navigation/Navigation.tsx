@@ -18,6 +18,8 @@ import {
   hardwareBackPressHandler,
   onStateChangeHandler,
 } from './NavigationUtilities';
+import TemporaryNavigator from 'screens/TemporaryNavigator';
+import SignUp from 'screens/SignUp';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +54,20 @@ const Navigation = () => {
             headerShown: false,
           }}
         >
+          <Stack.Screen
+            name={Routes.TemporaryNavigator}
+            component={TemporaryNavigator}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.SignUp}
+            component={SignUp}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
           <Stack.Screen
             name={Routes.HomeScreen}
             component={Home}
