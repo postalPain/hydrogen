@@ -10,6 +10,7 @@ const TemporaryNavigator = () => {
     <SafeAreaView>
       <Button onPress={() => navigator.navigate(Routes.HomeScreen)}>{Routes.HomeScreen}</Button>
       <Button onPress={() => navigator.navigate(Routes.SignUp)}>{Routes.SignUp}</Button>
+      <Button onPress={() => navigator.navigate(Routes.MapScreen)}>{Routes.MapScreen}</Button>
     </SafeAreaView>
   );
 };
