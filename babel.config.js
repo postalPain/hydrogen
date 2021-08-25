@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset', 'module:react-native-dotenv'],
+  presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
       'module-resolver',
@@ -9,5 +9,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.es', '.es6', '.mjs']
       },
     ],
+    ["module:react-native-dotenv"],
   ],
 };

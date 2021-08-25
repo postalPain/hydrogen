@@ -20,6 +20,7 @@ import {
 } from './NavigationUtilities';
 import TemporaryNavigator from 'screens/TemporaryNavigator';
 import SignUp from 'screens/SignUp';
+import AutocompleteInput from 'screens/AtocompleteInput';
 
 const Stack = createStackNavigator();
 
@@ -78,6 +79,13 @@ const Navigation = () => {
           <Stack.Screen
             name={Routes.MapScreen}
             component={Map}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.AutocompleteInput}
+            component={AutocompleteInput}
             options={{
               gestureEnabled: false,
             }}

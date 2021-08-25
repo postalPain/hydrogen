@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react-native';
 
-import { SENTRY_DSN, ENV } from 'react-native-dotenv';
+import { SENTRY_DSN, ENV } from '@env';
 
 
 export const setupSentry = () => {
