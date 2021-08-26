@@ -5,6 +5,7 @@ import { NavigationContainerRef } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Polygon, Marker } from 'react-native-maps';
 
 import GoogleMapApi from 'services/GoogleMapApi';
+import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
 
 interface IMapProps {
@@ -15,11 +16,12 @@ interface IMapProps {
 const MapScreen: React.FC<IMapProps> = ({ theme }) => {
   const styles: any = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(false);
-
-  const deliverPoint = {
+  const [deliveryPoint, setDeliveryPoint] = useState({
     latitude: 50.44164,
     longitude: 30.57756,
-  };
+  });
+  const [deliveryAddress, setDeliveryAddress] = useState('');
+
   const areaPoints = [
     {
       latitude: 50.4462739,
@@ -56,16 +58,33 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
   ];
 
   useEffect(() => {
-    GoogleMapApi.isPointInArea(deliverPoint, areaPoints).then((inArea) => {
+    (async () => {
+      const currentPosition = await GeolocationApi.getCurrentPosition();
+      setDeliveryPoint({
+        ...currentPosition,
+      });
+
+      const inArea = await GoogleMapApi.isPointInArea(currentPosition, areaPoints);
       setPointInArea(inArea);
-    });
-  });
+
+      const currentPositionDesc = await GeolocationApi.getAddressByPoint(currentPosition);
+      if (currentPositionDesc) {
+        setDeliveryAddress(currentPositionDesc.formatted_address);
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <Text>
-          { `point (${deliverPoint.latitude}, ${deliverPoint.longitude}) is ${pointInArea ? '' : 'not'} in area` }
+          { `point (${deliveryPoint.latitude}, ${deliveryPoint.longitude}) is ${pointInArea ? '' : 'not'} in area` }
+        </Text>
+      </View>
+      <View>
+        <Text>
+          { `Delivery address is: ${deliveryAddress}`}
         </Text>
       </View>
       <View style={styles.mapContainer}>
@@ -85,7 +104,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
             fillColor="rgba(255,0,0,0.5)"
             strokeWidth={1}
           />
-          <Marker coordinate={deliverPoint} />
+          <Marker coordinate={deliveryPoint} />
         </MapView>
       </View>
     </SafeAreaView>

@@ -7,6 +7,18 @@ export default {
     services_unavailable: 'Sorry, our service is temporarily not available.',
     unauthenticated: 'Unauthenticated',
   },
+  alerts: {
+    title: 'App',
+    buttons: {
+      ok: 'Ok',
+      cancel: 'Cancel',
+      proceedToSettings: 'Proceed to settings',
+    },
+    messages: {
+      locationPermissionRequestFailed: 'Geolocation permissions are not granted, application functionality will be restricted',
+      locationPermissionsAreNotGranted: 'Geolocation permissions are not granted, pleas check the Settings',
+    },
+  },
   notifications: {
     saved_successfully: 'Saved successfully',
     saved_partially: 'Saved partially',

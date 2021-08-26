@@ -15,6 +15,8 @@
 		2680F21995DCE9A506A86FE3 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03B7DC9E98BD9FD959A2990 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a */; };
 		26E8D9A98C6346C988CB632B /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */; };
 		2E22F2F626CBD9A600B0C1EC /* GoogleMapApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */; };
+		2EFDA3E026D3B33A004704D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDA3DF26D3B33A004704D5 /* File.swift */; };
+		2EFDA3E126D3B33A004704D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDA3DF26D3B33A004704D5 /* File.swift */; };
 		2FD5FC05D8DD4D37A57797E1 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */; };
 		33F338CBA64B4ABA867DB2B2 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */; };
 		3BD9B0C08C0D412895FD722B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */; };
@@ -41,8 +43,8 @@
 		00E356EE1AD99517003FC87E /* HydrogenRnConsumerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HydrogenRnConsumerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* HydrogenRnConsumerAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HydrogenRnConsumerAppTests.m; sourceTree = "<group>"; };
-		0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		119CE23709FF8C8DE75BCC6D /* Pods-HydrogenRnConsumerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp.release.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* HydrogenRnConsumerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HydrogenRnConsumerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HydrogenRnConsumerApp/AppDelegate.h; sourceTree = "<group>"; };
@@ -50,22 +52,25 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HydrogenRnConsumerApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HydrogenRnConsumerApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HydrogenRnConsumerApp/main.m; sourceTree = "<group>"; };
-		1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapApi.m; sourceTree = "<group>"; };
-		41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		2EFDA3DD26D3B33A004704D5 /* HydrogenRnConsumerApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HydrogenRnConsumerApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EFDA3DE26D3B33A004704D5 /* HydrogenRnConsumerAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HydrogenRnConsumerAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EFDA3DF26D3B33A004704D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		46FB5F95AE2709E7A7DD5AD2 /* Pods-HydrogenRnConsumerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp.debug.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		474FBCF6DD0E7E7B99C4C87C /* libPods-HydrogenRnConsumerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HydrogenRnConsumerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HydrogenRnConsumerApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		A03B7DC9E98BD9FD959A2990 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C067A889A2EF65C71F863F1F /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EF4E1068D3A46C69694BEBC1 /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,9 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */,
+				2EFDA3DF26D3B33A004704D5 /* File.swift */,
+				2EFDA3DD26D3B33A004704D5 /* HydrogenRnConsumerApp-Bridging-Header.h */,
+				2EFDA3DE26D3B33A004704D5 /* HydrogenRnConsumerAppTests-Bridging-Header.h */,
 			);
 			name = HydrogenRnConsumerApp;
 			sourceTree = "<group>";
@@ -187,7 +195,6 @@
 				99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,10 +253,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 1240;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -455,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* HydrogenRnConsumerAppTests.m in Sources */,
+				2EFDA3E126D3B33A004704D5 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				2EFDA3E026D3B33A004704D5 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				2E22F2F626CBD9A600B0C1EC /* GoogleMapApi.m in Sources */,
 			);
@@ -483,7 +493,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C067A889A2EF65C71F863F1F /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -502,6 +514,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HydrogenRnConsumerApp.app/HydrogenRnConsumerApp";
 			};
 			name = Debug;
@@ -510,7 +525,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF4E1068D3A46C69694BEBC1 /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = HydrogenRnConsumerAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -526,6 +543,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerAppTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HydrogenRnConsumerApp.app/HydrogenRnConsumerApp";
 			};
 			name = Release;
@@ -551,6 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stryber.hydro;
 				PRODUCT_NAME = HydrogenRnConsumerApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -577,6 +597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stryber.hydro;
 				PRODUCT_NAME = HydrogenRnConsumerApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
