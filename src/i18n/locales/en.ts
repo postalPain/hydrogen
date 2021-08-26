@@ -54,5 +54,8 @@ export default {
       },
       button: 'Continue to checkout',
     },
+    map: {
+      search: 'Search',
+    },
   },
 };
