@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface HydrogenRnConsumerAppTests : XCTestCase
+@interface BlitzTests : XCTestCase
 
 @end
 
-@implementation HydrogenRnConsumerAppTests
+@implementation BlitzTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

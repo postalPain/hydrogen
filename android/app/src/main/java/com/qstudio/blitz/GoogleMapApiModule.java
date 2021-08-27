@@ -1,4 +1,4 @@
-package com.hydrogenrnconsumerapp;
+package com.qstudio.blitz;
 import android.util.Log;
 
 import com.facebook.react.bridge.NativeModule;

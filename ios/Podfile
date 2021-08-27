@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'HydrogenRnConsumerApp' do
+target 'Blitz' do
   config = use_native_modules!
 
   use_react_native!(
@@ -18,7 +18,7 @@ target 'HydrogenRnConsumerApp' do
   pod 'Google-Maps-iOS-Utils'
 
 
-  target 'HydrogenRnConsumerAppTests' do
+  target 'BlitzTests' do
     inherit! :complete
     # Pods for testing
   end

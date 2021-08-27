@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* HydrogenRnConsumerAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HydrogenRnConsumerAppTests.m */; };
+		00E356F31AD99517003FC87E /* BlitzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BlitzTests.m */; };
 		0453B524693E4904BFD79FC7 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2680F21995DCE9A506A86FE3 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03B7DC9E98BD9FD959A2990 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a */; };
 		26E8D9A98C6346C988CB632B /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */; };
 		2E22F2F626CBD9A600B0C1EC /* GoogleMapApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */; };
 		2EFDA3E026D3B33A004704D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDA3DF26D3B33A004704D5 /* File.swift */; };
@@ -21,10 +20,11 @@
 		33F338CBA64B4ABA867DB2B2 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */; };
 		3BD9B0C08C0D412895FD722B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */; };
 		4D4DD835FB2C4BE2A447CCF1 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */; };
-		4F1BF23C509F617A408B8AC0 /* libPods-HydrogenRnConsumerApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 474FBCF6DD0E7E7B99C4C87C /* libPods-HydrogenRnConsumerApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9CA31DA656BC475EBE2E9421 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */; };
+		ABAEA79B320BE7DCCE5DD55E /* libPods-Blitz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D79FB2FEFD038471C4D0793E /* libPods-Blitz.a */; };
 		BA86200C79CD4AE9B2C77D3B /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */; };
+		CDD5E30C0E6381BB542EE2E0 /* libPods-Blitz-BlitzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A702AFD3E33AE45EC46710 /* libPods-Blitz-BlitzTests.a */; };
 		D8BC9177317B4669AD3DA442 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */; };
 		F2F31934B35F48EAA96BD8A1 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */; };
 /* End PBXBuildFile section */
@@ -35,41 +35,41 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = HydrogenRnConsumerApp;
+			remoteInfo = Blitz;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* HydrogenRnConsumerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HydrogenRnConsumerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BlitzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlitzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* HydrogenRnConsumerAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HydrogenRnConsumerAppTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* BlitzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlitzTests.m; sourceTree = "<group>"; };
+		06364F96AA2A813053C56BA9 /* Pods-Blitz-BlitzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.debug.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		119CE23709FF8C8DE75BCC6D /* Pods-HydrogenRnConsumerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp.release.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* HydrogenRnConsumerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HydrogenRnConsumerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HydrogenRnConsumerApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = HydrogenRnConsumerApp/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HydrogenRnConsumerApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HydrogenRnConsumerApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HydrogenRnConsumerApp/main.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Blitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Blitz/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Blitz/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Blitz/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Blitz/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Blitz/main.m; sourceTree = "<group>"; };
 		1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapApi.m; sourceTree = "<group>"; };
-		2EFDA3DD26D3B33A004704D5 /* HydrogenRnConsumerApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HydrogenRnConsumerApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		2EFDA3DE26D3B33A004704D5 /* HydrogenRnConsumerAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HydrogenRnConsumerAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EFDA3DD26D3B33A004704D5 /* Blitz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blitz-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EFDA3DE26D3B33A004704D5 /* BlitzTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlitzTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2EFDA3DF26D3B33A004704D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		46FB5F95AE2709E7A7DD5AD2 /* Pods-HydrogenRnConsumerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp.debug.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp.debug.xcconfig"; sourceTree = "<group>"; };
-		474FBCF6DD0E7E7B99C4C87C /* libPods-HydrogenRnConsumerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HydrogenRnConsumerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HydrogenRnConsumerApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Blitz/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		99A702AFD3E33AE45EC46710 /* libPods-Blitz-BlitzTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blitz-BlitzTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		A03B7DC9E98BD9FD959A2990 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C067A889A2EF65C71F863F1F /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		CBCA253987F9D6DAB6C8400A /* Pods-Blitz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.release.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.release.xcconfig"; sourceTree = "<group>"; };
+		D79FB2FEFD038471C4D0793E /* libPods-Blitz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blitz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDC5D799F87F5AA54C12375A /* Pods-Blitz-BlitzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.release.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.release.xcconfig"; sourceTree = "<group>"; };
 		E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EF4E1068D3A46C69694BEBC1 /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig"; path = "Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		F19E50A8A2B2FBCAD2D109EA /* Pods-Blitz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.debug.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.debug.xcconfig"; sourceTree = "<group>"; };
 		FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2680F21995DCE9A506A86FE3 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a in Frameworks */,
+				CDD5E30C0E6381BB542EE2E0 /* libPods-Blitz-BlitzTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,20 +86,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1BF23C509F617A408B8AC0 /* libPods-HydrogenRnConsumerApp.a in Frameworks */,
+				ABAEA79B320BE7DCCE5DD55E /* libPods-Blitz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* HydrogenRnConsumerAppTests */ = {
+		00E356EF1AD99517003FC87E /* BlitzTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* HydrogenRnConsumerAppTests.m */,
+				00E356F21AD99517003FC87E /* BlitzTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = HydrogenRnConsumerAppTests;
+			path = BlitzTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -110,7 +110,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* HydrogenRnConsumerApp */ = {
+		13B07FAE1A68108700A75B9A /* Blitz */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -121,18 +121,18 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */,
 				2EFDA3DF26D3B33A004704D5 /* File.swift */,
-				2EFDA3DD26D3B33A004704D5 /* HydrogenRnConsumerApp-Bridging-Header.h */,
-				2EFDA3DE26D3B33A004704D5 /* HydrogenRnConsumerAppTests-Bridging-Header.h */,
+				2EFDA3DD26D3B33A004704D5 /* Blitz-Bridging-Header.h */,
+				2EFDA3DE26D3B33A004704D5 /* BlitzTests-Bridging-Header.h */,
 			);
-			name = HydrogenRnConsumerApp;
+			name = Blitz;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				474FBCF6DD0E7E7B99C4C87C /* libPods-HydrogenRnConsumerApp.a */,
-				A03B7DC9E98BD9FD959A2990 /* libPods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.a */,
+				D79FB2FEFD038471C4D0793E /* libPods-Blitz.a */,
+				99A702AFD3E33AE45EC46710 /* libPods-Blitz-BlitzTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		5901C1690B659B725FFE8343 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				46FB5F95AE2709E7A7DD5AD2 /* Pods-HydrogenRnConsumerApp.debug.xcconfig */,
-				119CE23709FF8C8DE75BCC6D /* Pods-HydrogenRnConsumerApp.release.xcconfig */,
-				C067A889A2EF65C71F863F1F /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig */,
-				EF4E1068D3A46C69694BEBC1 /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig */,
+				F19E50A8A2B2FBCAD2D109EA /* Pods-Blitz.debug.xcconfig */,
+				CBCA253987F9D6DAB6C8400A /* Pods-Blitz.release.xcconfig */,
+				06364F96AA2A813053C56BA9 /* Pods-Blitz-BlitzTests.debug.xcconfig */,
+				DDC5D799F87F5AA54C12375A /* Pods-Blitz-BlitzTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -158,9 +158,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* HydrogenRnConsumerApp */,
+				13B07FAE1A68108700A75B9A /* Blitz */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* HydrogenRnConsumerAppTests */,
+				00E356EF1AD99517003FC87E /* BlitzTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5901C1690B659B725FFE8343 /* Pods */,
@@ -174,8 +174,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* HydrogenRnConsumerApp.app */,
-				00E356EE1AD99517003FC87E /* HydrogenRnConsumerAppTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Blitz.app */,
+				00E356EE1AD99517003FC87E /* BlitzTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,47 +200,47 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* HydrogenRnConsumerAppTests */ = {
+		00E356ED1AD99517003FC87E /* BlitzTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HydrogenRnConsumerAppTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BlitzTests" */;
 			buildPhases = (
-				44F92D3C9D2F2E0D8DD4E992 /* [CP] Check Pods Manifest.lock */,
+				E0AF7D1CB87713588566D8FD /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				B834C31023F88D591EBD9161 /* [CP] Embed Pods Frameworks */,
-				2C1170DF61E2D96A212C8046 /* [CP] Copy Pods Resources */,
+				F492AAE051E241E53C81F77E /* [CP] Embed Pods Frameworks */,
+				1271CCB80E837958ED8D9CF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = HydrogenRnConsumerAppTests;
-			productName = HydrogenRnConsumerAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* HydrogenRnConsumerAppTests.xctest */;
+			name = BlitzTests;
+			productName = BlitzTests;
+			productReference = 00E356EE1AD99517003FC87E /* BlitzTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* HydrogenRnConsumerApp */ = {
+		13B07F861A680F5B00A75B9A /* Blitz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HydrogenRnConsumerApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Blitz" */;
 			buildPhases = (
-				9CB7CBADF2EFB697CB0D87FD /* [CP] Check Pods Manifest.lock */,
+				183F14AA2D22FB604062A999 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				A2D5BB83B7CEE995BA0D49F8 /* [CP] Embed Pods Frameworks */,
-				BF26953154E81425C50A59B1 /* [CP] Copy Pods Resources */,
+				D74C6E7B6A13C9DC4A07A0AB /* [CP] Embed Pods Frameworks */,
+				D87D5BDE11E3C664BBAECFF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HydrogenRnConsumerApp;
-			productName = HydrogenRnConsumerApp;
-			productReference = 13B07F961A680F5B00A75B9A /* HydrogenRnConsumerApp.app */;
+			name = Blitz;
+			productName = Blitz;
+			productReference = 13B07F961A680F5B00A75B9A /* Blitz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -261,7 +261,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HydrogenRnConsumerApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Blitz" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -274,8 +274,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* HydrogenRnConsumerApp */,
-				00E356ED1AD99517003FC87E /* HydrogenRnConsumerAppTests */,
+				13B07F861A680F5B00A75B9A /* Blitz */,
+				00E356ED1AD99517003FC87E /* BlitzTests */,
 			);
 		};
 /* End PBXProject section */
@@ -324,24 +324,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		2C1170DF61E2D96A212C8046 /* [CP] Copy Pods Resources */ = {
+		1271CCB80E837958ED8D9CF5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		44F92D3C9D2F2E0D8DD4E992 /* [CP] Check Pods Manifest.lock */ = {
+		183F14AA2D22FB604062A999 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,14 +356,48 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Blitz-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9CB7CBADF2EFB697CB0D87FD /* [CP] Check Pods Manifest.lock */ = {
+		D74C6E7B6A13C9DC4A07A0AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D87D5BDE11E3C664BBAECFF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0AF7D1CB87713588566D8FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -378,62 +412,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HydrogenRnConsumerApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Blitz-BlitzTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A2D5BB83B7CEE995BA0D49F8 /* [CP] Embed Pods Frameworks */ = {
+		F492AAE051E241E53C81F77E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B834C31023F88D591EBD9161 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests/Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BF26953154E81425C50A59B1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HydrogenRnConsumerApp/Pods-HydrogenRnConsumerApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -462,7 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* HydrogenRnConsumerAppTests.m in Sources */,
+				00E356F31AD99517003FC87E /* BlitzTests.m in Sources */,
 				2EFDA3E126D3B33A004704D5 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +483,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* HydrogenRnConsumerApp */;
+			target = 13B07F861A680F5B00A75B9A /* Blitz */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -491,7 +491,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C067A889A2EF65C71F863F1F /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.debug.xcconfig */;
+			baseConfigurationReference = 06364F96AA2A813053C56BA9 /* Pods-Blitz-BlitzTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -500,7 +500,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HydrogenRnConsumerAppTests/Info.plist;
+				INFOPLIST_FILE = BlitzTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,22 +514,22 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerAppTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlitzTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HydrogenRnConsumerApp.app/HydrogenRnConsumerApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blitz.app/Blitz";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF4E1068D3A46C69694BEBC1 /* Pods-HydrogenRnConsumerApp-HydrogenRnConsumerAppTests.release.xcconfig */;
+			baseConfigurationReference = DDC5D799F87F5AA54C12375A /* Pods-Blitz-BlitzTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = HydrogenRnConsumerAppTests/Info.plist;
+				INFOPLIST_FILE = BlitzTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,22 +543,22 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerAppTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlitzTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HydrogenRnConsumerApp.app/HydrogenRnConsumerApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blitz.app/Blitz";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46FB5F95AE2709E7A7DD5AD2 /* Pods-HydrogenRnConsumerApp.debug.xcconfig */;
+			baseConfigurationReference = F19E50A8A2B2FBCAD2D109EA /* Pods-Blitz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NSST29B577;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = HydrogenRnConsumerApp/Info.plist;
+				INFOPLIST_FILE = Blitz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,9 +568,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stryber.hydro;
-				PRODUCT_NAME = HydrogenRnConsumerApp;
-				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerApp-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qstudio.blitz;
+				PRODUCT_NAME = Blitz;
+				SWIFT_OBJC_BRIDGING_HEADER = "Blitz-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -579,13 +579,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 119CE23709FF8C8DE75BCC6D /* Pods-HydrogenRnConsumerApp.release.xcconfig */;
+			baseConfigurationReference = CBCA253987F9D6DAB6C8400A /* Pods-Blitz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NSST29B577;
-				INFOPLIST_FILE = HydrogenRnConsumerApp/Info.plist;
+				INFOPLIST_FILE = Blitz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,9 +595,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stryber.hydro;
-				PRODUCT_NAME = HydrogenRnConsumerApp;
-				SWIFT_OBJC_BRIDGING_HEADER = "HydrogenRnConsumerApp-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qstudio.blitz;
+				PRODUCT_NAME = Blitz;
+				SWIFT_OBJC_BRIDGING_HEADER = "Blitz-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -729,7 +729,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HydrogenRnConsumerAppTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BlitzTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -738,7 +738,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HydrogenRnConsumerApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Blitz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -747,7 +747,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HydrogenRnConsumerApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Blitz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
