@@ -555,6 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NSST29B577;
 				ENABLE_BITCODE = NO;
@@ -570,6 +571,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qstudio.blitz;
 				PRODUCT_NAME = Blitz;
+				PROVISIONING_PROFILE_SPECIFIER = Blitz;
 				SWIFT_OBJC_BRIDGING_HEADER = "Blitz-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -583,6 +585,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NSST29B577;
 				INFOPLIST_FILE = Blitz/Info.plist;
@@ -597,6 +600,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qstudio.blitz;
 				PRODUCT_NAME = Blitz;
+				PROVISIONING_PROFILE_SPECIFIER = Blitz;
 				SWIFT_OBJC_BRIDGING_HEADER = "Blitz-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

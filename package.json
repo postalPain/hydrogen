@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "android:clean": "cd android && ./gradlew clean",
     "android:prebuild": "rm -rf android/build && rm -rf android/app/build",
+    "build:preparation": "node build-preparation.js",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "start:clean": "watchman watch-del-all && react-native start --reset-cache",
