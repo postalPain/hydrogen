@@ -21,6 +21,7 @@ import {
 import TemporaryNavigator from 'screens/TemporaryNavigator';
 import SignUp from 'screens/SignUp';
 import AutocompleteInput from 'screens/AtocompleteInput';
+import TabNavigation from 'navigation/TabNavigation';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +59,13 @@ const Navigation = () => {
           <Stack.Screen
             name={Routes.TemporaryNavigator}
             component={TemporaryNavigator}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.TabNavigation}
+            component={TabNavigation}
             options={{
               gestureEnabled: false,
             }}

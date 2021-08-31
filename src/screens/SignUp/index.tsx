@@ -1,19 +1,25 @@
 import React from 'react';
 import useStyles from './styles';
 import { View, SafeAreaView } from 'react-native';
-import { Text, Input, Button } from '@stryberventures/stryber-react-native-ui-components';
+import {
+  Text,
+  Input,
+  Button,
+  withTheme,
+} from '@stryberventures/stryber-react-native-ui-components';
 import { Formik } from 'formik';
 import i18n from 'i18n';
 import { SignUpSchema } from 'utilities/validationSchemas';
+import { ProjectThemeType } from 'theme';
 
 interface ISignUpProps {
-
+  theme: ProjectThemeType
 }
 
-const SignUp: React.FC<ISignUpProps> = () => {
+const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
   const classes = useStyles();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={theme.components.safeArea}>
       <View style={classes.container}>
         <Text h1>{i18n.t('screens.signUp.title')}</Text>
         <Formik
@@ -71,4 +77,4 @@ const SignUp: React.FC<ISignUpProps> = () => {
   );
 };
 
-export default SignUp;
+export default withTheme(SignUp);
