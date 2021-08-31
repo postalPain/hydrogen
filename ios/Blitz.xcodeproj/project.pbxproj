@@ -56,7 +56,6 @@
 		2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapApi.m; sourceTree = "<group>"; };
 		2EFDA3DD26D3B33A004704D5 /* Blitz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blitz-Bridging-Header.h"; sourceTree = "<group>"; };
-		2EFDA3DE26D3B33A004704D5 /* BlitzTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlitzTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2EFDA3DF26D3B33A004704D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Blitz/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 				2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */,
 				2EFDA3DF26D3B33A004704D5 /* File.swift */,
 				2EFDA3DD26D3B33A004704D5 /* Blitz-Bridging-Header.h */,
-				2EFDA3DE26D3B33A004704D5 /* BlitzTests-Bridging-Header.h */,
 			);
 			name = Blitz;
 			sourceTree = "<group>";

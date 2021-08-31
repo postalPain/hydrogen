@@ -7,7 +7,7 @@ describe('Example', () => {
     await device.reloadReactNative();
   });
 
-  it('should have welcome screen', async () => {
-    await expect(element(by.id('helloText'))).toBeVisible();
+  it('should true be equal of true', async () => {
+    await expect(element(by.text("HomeScreen"))).toBeVisible();
   });
 });

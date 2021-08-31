@@ -4,8 +4,8 @@
   "configurations": {
     "ios:release": {
       "type": "ios.simulator",
-      "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/HydrogenRnConsumerApp.app",
-      "build": "xcodebuild -workspace ios/HydrogenRnConsumerApp.xcworkspace -configuration release -scheme HydrogenRnConsumerApp -sdk iphonesimulator -derivedDataPath ios/build",
+      "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/Blitz.app",
+      "build": "xcodebuild -workspace ios/Blitz.xcworkspace -configuration release -scheme Blitz -sdk iphonesimulator -derivedDataPath ios/build",
       "device": {
         "type": "iPhone 11"
       }

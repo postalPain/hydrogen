@@ -10,7 +10,6 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "start:clean": "watchman watch-del-all && react-native start --reset-cache",
-    "init:template": "yarn install && react-native init $PROJECT_NAME && mv ./$PROJECT_NAME/android ./ && mv ./$PROJECT_NAME/ios ./ && rm -rf ./$PROJECT_NAME && node ./init_template_scripts/init_template_scripts && cd ios && pod install",
     "test": "jest",
     "lint": "eslint 'src/**/*' --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint 'src/**/*' --quiet --fix",

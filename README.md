@@ -2,7 +2,7 @@
 
 ## Description ##
 
-React Native Stryber Template app
+React Native Hydrogen app
 
 ## Prerequisites ##
 
