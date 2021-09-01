@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "pngwing.com.png",
+      "filename" : "BLITZ_LOGO-10 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pngwing.com-1.png",
+      "filename" : "BLITZ_LOGO-10 1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "pngwing.com-2.png",
+      "filename" : "BLITZ_LOGO-10 1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
