@@ -3,7 +3,8 @@ enum Routes {
   MapScreen = 'MapScreen',
   TemporaryNavigator = 'TemporaryNavigator',
   SignUp = 'SignUp',
-  AutocompleteInput = 'AutocompleteInput'
+  AutocompleteInput = 'AutocompleteInput',
+  TabNavigation = 'TabNavigation',
 }
 
 export default Routes;
