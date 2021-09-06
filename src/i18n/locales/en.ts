@@ -68,6 +68,9 @@ export default {
     },
     map: {
       search: 'Search',
+      button: 'Confirm Address',
+      message1: 'Sorry, we do not deliver to this area',
+      message2: 'We are working hard to add more delivery areas very soon!',
     },
   },
 };
