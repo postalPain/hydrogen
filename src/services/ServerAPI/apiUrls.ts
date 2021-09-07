@@ -1,5 +1,5 @@
 export default {
-  getUser: 'api/user',
-  signIn: 'api/login',
-  signOut: 'api/logout',
+  getUser: 'api/v1/user',
+  signIn: 'api/v1/login',
+  signOut: 'api/v1/logout',
 };

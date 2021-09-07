@@ -1,10 +1,10 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { SagaIterator } from '@redux-saga/core';
-import { userAPI, xhr } from 'services/ServerAPI/serverAPI';
+import { userAPI, addHeader, removeHeader } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
 import {
-  TYPES, signedIn, setError, getUser, getUserSuccess,
+  TYPES, signedIn, setError, getUserSuccess,
 } from './actions';
 
 function* getUserWorker(): SagaIterator {
@@ -19,11 +19,12 @@ function* getUserWorker(): SagaIterator {
 function* signInWorker(action): SagaIterator {
   try {
     const response = yield call(userAPI.signIn, action.payload);
-    const { accessToken } = response.data;
-    xhr.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    const { data: { access_token: accessToken } } = response.data;
+    yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
     setItem('AUTH_TOKEN', accessToken);
     yield put(signedIn(accessToken));
-    yield put(getUser());
+    // TODO uncomment when api will be available
+    // yield put(getUser());
   } catch (error) {
     yield put(setError('Wrong email or password'));
   }
@@ -31,7 +32,7 @@ function* signInWorker(action): SagaIterator {
 
 function* signOutWorker(): SagaIterator {
   try {
-    xhr.defaults.headers.Authorization = '';
+    yield call(removeHeader, 'Authorization');
     yield call(userAPI.signOut);
     yield call(removeItem, 'AUTH_TOKEN');
   } catch (error) {

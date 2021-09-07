@@ -1,9 +1,10 @@
 import axios from 'axios';
 import apiUrls from './apiUrls';
 import { reportToSentry } from 'services/Sentry/sentry';
+import { API_URL } from '@env';
 
 export const xhr = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: API_URL,
 });
 
 export const addHeader = (headerName: string, headerValue: string, callback?: () => void) => {
@@ -13,7 +14,7 @@ export const addHeader = (headerName: string, headerValue: string, callback?: ()
   }
 };
 
-export const removeHeader = (headerName: string, headerValue: string, callback?: () => void) => {
+export const removeHeader = (headerName: string, callback?: () => void) => {
   delete xhr.defaults.headers[headerName];
   if (callback) {
     callback();

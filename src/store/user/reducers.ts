@@ -1,8 +1,7 @@
-import { getItem } from 'services/LocalStorage';
 import { TYPES } from './actions';
 
 const defaultState = {
-  accessToken: getItem('AUTH_TOKEN') || '',
+  accessToken: null,
   user: null,
   errorMessage: '',
   loading: false,

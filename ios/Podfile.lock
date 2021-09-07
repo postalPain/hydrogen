@@ -287,8 +287,8 @@ PODS:
     - React-Core
   - react-native-netinfo (5.9.10):
     - React-Core
-  - react-native-safe-area-context (3.3.0):
-    - React-Core
+  - react-native-safe-area-context (0.7.3):
+    - React
   - react-native-sensitive-info (5.5.8):
     - React
   - react-native-splash-screen (3.2.0):
@@ -577,7 +577,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: 7b423f9e248eae65987838148c36eec1dbfe0b53
-  FBReactNativeSpec: ea52c253c3877af4c442712d3f2e48ed88fe44ca
+  FBReactNativeSpec: 22bc66ba13eb040e4029cdf5e4786fd0177657bf
   Flipper: d3da1aa199aad94455ae725e9f3aa43f3ec17021
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
   Flipper-Folly: 755929a4f851b2fb2c347d533a23f191b008554c
@@ -606,7 +606,7 @@ SPEC CHECKSUMS:
   react-native-google-maps: 46dea4aa4acb7300beff508f64d9f8c84e9fb106
   react-native-maps: 2d405b4e8cee0282e4c02bac434d81450dfea877
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
-  react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a
+  react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   react-native-sensitive-info: 400c6e3d27945e15c8cddb5b4b92233c85ee06f8
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: 133a6a5149f963259646e710b4545c67ef35d7c9
@@ -637,4 +637,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: cefc4366c8000d4a79ef2dde8b7e80cd1f01c86d
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.10.1

@@ -1,9 +1,12 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { Button, withTheme } from '@stryberventures/stryber-react-native-ui-components';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { signIn } from 'store/user/actions';
 import { Routes } from 'navigation';
 import { ProjectThemeType } from 'theme';
-import { useNavigation } from '@react-navigation/native';
 
 interface ITemporaryNavigator {
   theme: ProjectThemeType;
@@ -11,8 +14,15 @@ interface ITemporaryNavigator {
 
 const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   const navigator = useNavigation();
+  const dispatch = useDispatch();
+  // eslint-disable-next-line
+  const token = useSelector(state => state.user.accessToken);
+  const onLoginPress = () => {
+    dispatch(signIn({ email: 'frontend@dev.com', password: 'hydrogen' }));
+  };
   return (
     <SafeAreaView style={theme.components.safeArea}>
+      { !token && <Button onPress={onLoginPress}>Login</Button>}
       <Button onPress={() => navigator.navigate(Routes.HomeScreen)}>{Routes.HomeScreen}</Button>
       <Button onPress={() => navigator.navigate(Routes.SignUp)}>{Routes.SignUp}</Button>
       <Button onPress={() => navigator.navigate(Routes.MapScreen)}>{Routes.MapScreen}</Button>
