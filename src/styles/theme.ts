@@ -31,7 +31,7 @@ const theme = {
       offline: '#ccc',
     },
     backgroundBlue: '#edf0ff',
-    primary: '#014cff',
+    primary: '#0C5268',
     sky: '#adc5fc',
     cross: '#95acbf',
   },
