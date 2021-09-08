@@ -1,7 +1,10 @@
+import { Alert } from 'react-native';
 import axios from 'axios';
 import apiUrls from './apiUrls';
 import { reportToSentry } from 'services/Sentry/sentry';
 import { API_URL } from '@env';
+
+import i18n from 'i18n';
 
 export const xhr = axios.create({
   baseURL: API_URL,
@@ -31,7 +34,8 @@ xhr.interceptors.request.use(
 xhr.interceptors.response.use(
   (response) => response,
   (error) => {
-    reportToSentry(error);
+    Alert.alert(i18n.t('alerts.title'), error.message);
+    // reportToSentry(error);
     return Promise.reject(error);
   },
 );
@@ -45,5 +49,8 @@ export const userAPI = {
   },
   getCurrentUser(): Promise<any> {
     return xhr.get(apiUrls.getUser);
+  },
+  getCategories(): Promise<any> {
+    return xhr.get(apiUrls.getCategories);
   },
 };

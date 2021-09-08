@@ -46,7 +46,9 @@ export default {
   modals: {},
   screens: {
     home: {
-      title: 'Hey',
+      helloMessage: 'Hey there!',
+      helloUserMessage: 'Hey %{name}!',
+      openHours: 'We’re open 08:00 - 23:00',
     },
     signUp: {
       title: 'Sign up',
@@ -71,6 +73,14 @@ export default {
       button: 'Confirm Address',
       message1: 'Sorry, we do not deliver to this area',
       message2: 'We are working hard to add more delivery areas very soon!',
+    },
+  },
+  components: {
+    locationButton: {
+      defaultLocation: 'Location delivery is not specified',
+    },
+    categoriesViewer: {
+      emptyList: 'Categories list is empty',
     },
   },
 };

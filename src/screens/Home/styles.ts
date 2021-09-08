@@ -7,17 +7,54 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     height: '100%',
     position: 'relative',
     flex: 1,
+    backgroundColor: '#0C5268',
   },
-  contentWrapper: {
-    paddingHorizontal: theme.spaces.m,
+  contentBox: {
+    minHeight: '100%',
+    borderRadius: 26,
+    backgroundColor: '#fff',
   },
-  openContainer: {
-    paddingVertical: theme.spaces.m,
-  },
-  topBackground: {
-    backgroundColor: '#C4C4C4',
+  header: {
+    paddingHorizontal: theme.spaces.xl,
     paddingTop: Platform.OS === 'ios' ? 60 : 20,
-    paddingBottom: 47,
+    paddingBottom: 44,
+  },
+  headerImage: {
+
+  },
+  headerProfileBlock: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  headerProfileBlockLeftCol: {
+    flex: 1,
+  },
+  headerProfileBlockRightCol: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    flex: 1,
+  },
+  helloText: {
+    fontSize: theme.fontSizes.h2,
+    lineHeight: 30,
+    fontWeight: '700',
+    color: '#eee',
+  },
+  accountButton: {
+    marginTop: 5,
+  },
+  openHours: {
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  openHoursText: {
+    fontSize: 10,
+    lineHeight: 30,
+    fontWeight: '400',
+    color: '#eee',
+  },
+  homeCarousel: {
+    marginTop: -27,
   },
 });
 export default useStyles;

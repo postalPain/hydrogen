@@ -2,46 +2,41 @@ import { StyleSheet } from 'react-native';
 
 const useStyles = () => StyleSheet.create({
   container: {
-    width: 75,
-    height: 75,
-    backgroundColor: '#EEEEEE',
-    borderWidth: 2,
-    borderColor: '#AAAAAA',
-    marginRight: 14,
+    width: '33.33%',
+    paddingRight: 14,
+    marginBottom: 28,
   },
-  categoryItemInfo: {
-    position: 'relative',
+  contentBox: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    borderRadius: 8,
+    shadowColor: 'rgb(56, 96, 165)',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowRadius: 8,
+    elevation: 8,
+    shadowOpacity: 0.15,
+    paddingHorizontal: 15,
+    paddingVertical: 7,
+    backgroundColor: '#fff',
   },
-  crossImage: {
-    width: 21,
-    height: 21,
+  labelContainer: {
+    height: 24,
+    marginBottom: 5,
   },
-  itemInfoPicture: {
-    width: 200,
-    height: 200,
-    marginBottom: 20,
+  label: {
+    fontSize: 9,
+    lineHeight: 12,
+    fontWeight: '700',
+    textAlign: 'center',
   },
-  itemInfoRow: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    marginVertical: 5,
-  },
-  itemInfoCol: {
-    width: '50%',
-  },
-  buttonBox: {
-    marginTop: 20,
-  },
-  crossButton: {
-    position: 'absolute',
-    width: 30,
-    height: 30,
-    right: 0,
-    top: 0,
+  imageWrapper: {},
+  image: {
+    width: 72,
+    height: 56,
   },
 });
 export default useStyles;

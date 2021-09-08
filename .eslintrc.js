@@ -42,5 +42,7 @@ module.exports = {
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft', 'draftElement', 'draftState', 'draftArticle', 'draftAnswer'] }],
     'no-multiple-empty-lines': ["error", { "max": 2, "maxEOF": 0 }],
     "import/no-cycle": 0,
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/camelcase": "warn",
   },
 };

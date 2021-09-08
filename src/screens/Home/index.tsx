@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  ScrollView, View,
+  ScrollView,
+  View,
+  TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
 import { NavigationContainerRef } from '@react-navigation/native';
 
 import i18n from 'i18n';
-import useStyles from './styles';
-import { LocationButton, HomeCarousel, CategoryViewer } from 'components';
+import { categoriesSelector } from 'store/categories/selectors';
+import { getCategories } from 'store/categories/actions';
+import { LocationButton, HomeCarousel, CategoriesViewer } from 'components';
+import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
+import useStyles from './styles';
 
 
 interface IHomeProps {
@@ -18,32 +25,46 @@ interface IHomeProps {
 
 const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const classes = useStyles(theme);
+  const dispatch = useDispatch();
+  const categories = useSelector(categoriesSelector);
+
+  useEffect(() => {
+    if (!categories || !categories.length) {
+      dispatch(getCategories());
+    }
+  }, [categories]);
+
   return (
     <View style={classes.container}>
       <ScrollView testID="homeScrollView">
-        <View style={classes.topBackground}>
-          <View style={classes.contentWrapper}>
-            <Text h2 semibold testID="helloText">{i18n.t('screens.home.title')}</Text>
-            <Text h2 semibold>
-              {'{'}
-              user-name
-              {'}'}
-            </Text>
-            <View style={classes.openContainer}>
-              <Text>
-                {'{'}
-                We’re open 08:00 - 23:00
-                {'}'}
-              </Text>
+        <ImageBackground
+          source={require('../../../assets/images/header.png')}
+          style={classes.header}
+          imageStyle={classes.headerImage}
+
+        >
+          <View style={classes.headerProfileBlock}>
+            <View style={classes.headerProfileBlockLeftCol}>
+              <Text style={classes.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
             </View>
-            <LocationButton />
+            <View style={classes.headerProfileBlockRightCol}>
+              <TouchableOpacity style={classes.accountButton}>
+                <AccountIcon />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={classes.contentWrapper}>
-          <HomeCarousel />
-          <CategoryViewer />
-          <CategoryViewer />
-          <CategoryViewer />
+          <View style={classes.openHours}>
+            <Text style={classes.openHoursText}>
+              {i18n.t('screens.home.openHours')}
+            </Text>
+          </View>
+          <LocationButton
+            onPress={() => {}}
+          />
+        </ImageBackground>
+        <View style={classes.contentBox}>
+          <HomeCarousel style={classes.homeCarousel} />
+          <CategoriesViewer data={categories} />
         </View>
       </ScrollView>
     </View>

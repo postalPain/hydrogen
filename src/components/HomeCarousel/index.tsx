@@ -1,38 +1,46 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { Text } from '@stryberventures/stryber-react-native-ui-components';
+import { CacheImage } from '@stryberventures/stryber-react-native-ui-components';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+
+import { CarouselDotElement } from 'components';
 import useStyles from './styles';
 
-const HomeCarousel = () => {
+
+interface IHomeCarousel {
+  style?: any;
+}
+
+const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
   const classes = useStyles();
   const [activeIndex, setActiveIndex] = useState(0);
   // mocked values(will be changed in future)
   const carouselItems = [
     {
-      title: 'Item 1',
-      text: 'Text 1',
+      imgUrl: 'https://png.pngtree.com/background/20210706/original/pngtree-business-technology-background-banner-design-picture-image_188904.jpg',
     },
     {
-      title: 'Item 2',
-      text: 'Text 2',
+      imgUrl: 'https://png.pngtree.com/background/20210709/original/pngtree-business-technology-background-material-picture-image_415908.jpg',
     },
     {
-      title: 'Item 3',
-      text: 'Text 3',
+      imgUrl: 'https://png.pngtree.com/background/20210706/original/pngtree-triangle-geometry-black-background-picture-image_141561.jpg',
     },
   ];
 
   const renderItem = ({ item }) => (
     <View style={classes.carouselItem}>
-      <Text>{item.title}</Text>
-      <Text>{item.text}</Text>
+      <View style={classes.imageBannerWrapper}>
+        <CacheImage
+          source={{ uri: item.imgUrl }}
+          style={classes.imageBanner}
+        />
+      </View>
     </View>
 
   );
 
   return (
-    <View style={classes.container}>
+    <View style={[classes.container, style]}>
       <Carousel
         layout="default"
         data={carouselItems}
@@ -44,7 +52,13 @@ const HomeCarousel = () => {
         autoplay
         autoplayInterval={5000}
       />
-      <Pagination dotsLength={carouselItems.length} activeDotIndex={activeIndex} />
+      <Pagination
+        dotsLength={carouselItems.length}
+        activeDotIndex={activeIndex}
+        dotElement={<CarouselDotElement />}
+        inactiveDotElement={<CarouselDotElement />}
+        containerStyle={classes.paginationContainer}
+      />
     </View>
   );
 };

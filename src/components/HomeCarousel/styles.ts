@@ -2,19 +2,26 @@ import { StyleSheet } from 'react-native';
 
 const useStyles = () => StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
-    marginTop: -20,
+  },
+  paginationContainer: {
+    paddingTop: 16,
   },
   carouselItem: {
-    backgroundColor: '#EEEEEE',
-    borderRadius: 5,
-    height: 118,
-    padding: 20,
+    display: 'flex',
+    alignItems: 'center',
     marginLeft: 25,
     marginRight: 25,
-    borderWidth: 2,
-    borderColor: '#AAAAAA',
+  },
+  imageBannerWrapper: {
+    width: 260,
+    height: 120,
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+  imageBanner: {
+    width: 260,
+    height: 120,
   },
 });
 export default useStyles;

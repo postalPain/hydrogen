@@ -6,7 +6,7 @@ const theme = {
     safeArea: {
       flex: 1,
       paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-      backgroundColor: '#fff',
+      backgroundColor: 'transparent',
     },
     link: {
       color: '#007aff',
