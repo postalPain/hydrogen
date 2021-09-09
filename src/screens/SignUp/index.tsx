@@ -17,10 +17,10 @@ interface ISignUpProps {
 }
 
 const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
-  const classes = useStyles();
+  const styles = useStyles();
   return (
     <SafeAreaView style={theme.components.safeArea}>
-      <View style={classes.container}>
+      <View style={styles.container}>
         <Text h1>{i18n.t('screens.signUp.title')}</Text>
         <Formik
           initialValues={{

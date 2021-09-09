@@ -7,25 +7,25 @@ import useStyles from './styles';
 
 
 const CategoryItem = ({ name, image_url }: TCategory) => {
-  const classes = useStyles();
+  const styles = useStyles();
   const onItemPress = () => {
 
   };
 
   return (
     <TouchableOpacity
-      style={classes.container}
+      style={styles.container}
       onPress={onItemPress}
       activeOpacity={0.7}
     >
-      <View style={classes.contentBox}>
-        <View style={classes.labelContainer}>
-          <Text style={classes.label}>{name}</Text>
+      <View style={styles.contentBox}>
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>{name}</Text>
         </View>
-        <View style={classes.imageWrapper}>
+        <View style={styles.imageWrapper}>
           <CacheImage
             source={{ uri: image_url }}
-            style={classes.image}
+            style={styles.image}
           />
         </View>
       </View>

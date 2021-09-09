@@ -12,17 +12,17 @@ interface ILocationButton {
 }
 
 const LocationButton: React.FC<ILocationButton> = (props) => {
-  const classes = useStyles();
+  const styles = useStyles();
   const location = props.location || i18n.t('components.locationButton.defaultLocation');
   return (
     <TouchableOpacity
-      style={classes.container}
+      style={styles.container}
       activeOpacity={0.7}
       onPress={props.onPress}
     >
       <LocationIcon />
       <Text
-        style={classes.locationText}
+        style={styles.locationText}
         numberOfLines={1}
       >
         {location}

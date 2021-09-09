@@ -24,7 +24,7 @@ interface IHomeProps {
 }
 
 const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
-  const classes = useStyles(theme);
+  const styles = useStyles(theme);
   const dispatch = useDispatch();
   const categories = useSelector(categoriesSelector);
 
@@ -35,26 +35,26 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   }, [categories]);
 
   return (
-    <View style={classes.container}>
+    <View style={styles.container}>
       <ScrollView testID="homeScrollView">
         <ImageBackground
           source={require('../../../assets/images/header.png')}
-          style={classes.header}
-          imageStyle={classes.headerImage}
+          style={styles.header}
+          imageStyle={styles.headerImage}
 
         >
-          <View style={classes.headerProfileBlock}>
-            <View style={classes.headerProfileBlockLeftCol}>
-              <Text style={classes.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
+          <View style={styles.headerProfileBlock}>
+            <View style={styles.headerProfileBlockLeftCol}>
+              <Text style={styles.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
             </View>
-            <View style={classes.headerProfileBlockRightCol}>
-              <TouchableOpacity style={classes.accountButton}>
+            <View style={styles.headerProfileBlockRightCol}>
+              <TouchableOpacity style={styles.accountButton}>
                 <AccountIcon />
               </TouchableOpacity>
             </View>
           </View>
-          <View style={classes.openHours}>
-            <Text style={classes.openHoursText}>
+          <View style={styles.openHours}>
+            <Text style={styles.openHoursText}>
               {i18n.t('screens.home.openHours')}
             </Text>
           </View>
@@ -62,8 +62,8 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
             onPress={() => {}}
           />
         </ImageBackground>
-        <View style={classes.contentBox}>
-          <HomeCarousel style={classes.homeCarousel} />
+        <View style={styles.contentBox}>
+          <HomeCarousel style={styles.homeCarousel} />
           <CategoriesViewer data={categories} />
         </View>
       </ScrollView>

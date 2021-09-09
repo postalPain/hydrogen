@@ -6,10 +6,10 @@ import { GOOGLE_PLACE_API_KEY } from '@env';
 import i18n from 'i18n';
 
 const AutocompleteInput: React.FC = () => {
-  const classes = useStyles();
+  const styles = useStyles();
 
   return (
-    <View style={classes.container}>
+    <View style={styles.container}>
       <GooglePlacesAutocomplete
         placeholder={i18n.t('screens.map.search')}
         debounce={300}

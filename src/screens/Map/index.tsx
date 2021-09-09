@@ -15,6 +15,7 @@ import GoogleMapApi from 'services/GoogleMapApi';
 import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
 import i18n from 'i18n';
+import { Routes } from 'navigation';
 
 interface IMapProps {
   navigation: NavigationContainerRef;
@@ -58,7 +59,7 @@ const areaPoints = [
   },
 ];
 
-const MapScreen: React.FC<IMapProps> = ({ theme }) => {
+const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
   const styles: any = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
   const [deliveryPoint, setDeliveryPoint] = useState({
@@ -79,6 +80,13 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
     });
   };
 
+  const getAddress = async (position) => {
+    const currentPositionDesc = await GeolocationApi.getAddressByPoint(position);
+    if (currentPositionDesc) {
+      setDeliveryAddress(currentPositionDesc.formatted_address);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const currentPosition = await GeolocationApi.getCurrentPosition();
@@ -87,11 +95,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
       if (inArea) {
         setPosition(currentPosition);
       }
-
-      const currentPositionDesc = await GeolocationApi.getAddressByPoint(currentPosition);
-      if (currentPositionDesc) {
-        setDeliveryAddress(currentPositionDesc.formatted_address);
-      }
+      await getAddress(currentPosition);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -100,6 +104,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
     setDeliveryPoint(region);
     const inArea = await GoogleMapApi.isPointInArea(region, areaPoints);
     setPointInArea(inArea);
+    await getAddress(region);
   };
 
   return (
@@ -128,7 +133,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
         </View>
         <View style={styles.footer}>
           {pointInArea
-            ? <Button style={styles.button} onPress={() => console.log('Move to address screen', deliveryPoint, deliveryAddress)}>{i18n.t('screens.map.button')}</Button>
+            ? <Button style={styles.button} onPress={() => navigation.navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint })}>{i18n.t('screens.map.button')}</Button>
             : (
               <Card card shadow style={styles.card}>
                 <Text semibold color="#666" size={14} style={styles.title}>{i18n.t('screens.map.message1')}</Text>
