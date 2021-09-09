@@ -32,7 +32,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
           <Input
             label="Delivery address"
             disabled
-            value={address}
+            placeholder={address}
             style={styles.input}
           />
           <Dropdown

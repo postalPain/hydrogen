@@ -5,3 +5,4 @@ export { default as TabBarBackground } from './TabBarBackground';
 export { default as TabBarSide } from './TabBarSide';
 export { default as AccountIcon } from './Account';
 export { default as LocationIcon } from './Location';
+export { default as GeoPoint } from './GeoPoint';

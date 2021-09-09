@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
 
+const markerWidth = 43;
+const markerHeight = 53;
+
 const getStyles = (theme: any) => StyleSheet.create({
   container: {
     ...theme.components.safeArea,
@@ -15,13 +18,13 @@ const getStyles = (theme: any) => StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   marker: {
-    height: 48,
-    width: 48,
+    width: markerWidth,
+    height: markerHeight,
   },
   markerFixed: {
     left: '50%',
-    marginLeft: -24,
-    marginTop: -48,
+    marginLeft: -markerWidth / 2,
+    marginTop: -markerHeight,
     position: 'absolute',
     top: '50%',
   },
@@ -30,6 +33,14 @@ const getStyles = (theme: any) => StyleSheet.create({
     position: 'absolute',
     width: '100%',
     alignItems: 'center',
+  },
+  header: {
+    position: 'absolute',
+    top: 10,
+    width: '100%',
+  },
+  input: {
+    marginHorizontal: 27,
   },
   region: {
     color: '#fff',

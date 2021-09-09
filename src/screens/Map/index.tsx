@@ -3,7 +3,7 @@ import {
   View, Image,
 } from 'react-native';
 import {
-  withTheme, Button, Card, Text,
+  withTheme, Button, Card, Text, Input,
 } from '@stryberventures/stryber-react-native-ui-components';
 import { NavigationContainerRef } from '@react-navigation/native';
 import MapView, {
@@ -16,6 +16,7 @@ import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
 import i18n from 'i18n';
 import { Routes } from 'navigation';
+import { GeoPoint } from 'components/Icons';
 
 interface IMapProps {
   navigation: NavigationContainerRef;
@@ -130,6 +131,15 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
         </MapView>
         <View style={styles.markerFixed}>
           <Image style={styles.marker} source={marker} />
+        </View>
+        <View style={styles.header}>
+          <Input
+            variant="simple"
+            value={deliveryAddress}
+            disabled
+            icon={() => <GeoPoint />}
+            style={styles.input}
+          />
         </View>
         <View style={styles.footer}>
           {pointInArea
