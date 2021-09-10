@@ -81,7 +81,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
     });
   };
 
-  const getAddress = async (position) => {
+  const updateAddress = async (position) => {
     const currentPositionDesc = await GeolocationApi.getAddressByPoint(position);
     if (currentPositionDesc) {
       setDeliveryAddress(currentPositionDesc.formatted_address);
@@ -96,7 +96,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
       if (inArea) {
         setPosition(currentPosition);
       }
-      await getAddress(currentPosition);
+      await updateAddress(currentPosition);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -105,7 +105,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
     setDeliveryPoint(region);
     const inArea = await GoogleMapApi.isPointInArea(region, areaPoints);
     setPointInArea(inArea);
-    await getAddress(region);
+    await updateAddress(region);
   };
 
   return (
