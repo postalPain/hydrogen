@@ -15,7 +15,7 @@ interface ISlideUp {
 }
 
 const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
-  const classes = useStyles();
+  const styles = useStyles();
   const [panY] = useState(new Animated.Value(Dimensions.get('screen').height));
   const resetPositionAnim = useRef(Animated.timing(panY, {
     toValue: 0,
@@ -61,10 +61,10 @@ const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
       transparent
       onRequestClose={() => handleDismiss()}
     >
-      <View style={classes.overlay}>
+      <View style={styles.overlay}>
         <View {...panResponders.current.panHandlers}>
-          <Animated.View style={[classes.container, { top }]}>
-            <View style={classes.contentBox}>
+          <Animated.View style={[styles.container, { top }]}>
+            <View style={styles.contentBox}>
               { children }
             </View>
           </Animated.View>

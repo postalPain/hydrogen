@@ -3,7 +3,7 @@ import {
   View, Image,
 } from 'react-native';
 import {
-  withTheme, Button, Card, Text,
+  withTheme, Button, Card, Text, Input,
 } from '@stryberventures/stryber-react-native-ui-components';
 import { NavigationContainerRef } from '@react-navigation/native';
 import MapView, {
@@ -15,6 +15,8 @@ import GoogleMapApi from 'services/GoogleMapApi';
 import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
 import i18n from 'i18n';
+import { Routes } from 'navigation';
+import { GeoPoint } from 'components/Icons';
 
 interface IMapProps {
   navigation: NavigationContainerRef;
@@ -58,7 +60,7 @@ const areaPoints = [
   },
 ];
 
-const MapScreen: React.FC<IMapProps> = ({ theme }) => {
+const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
   const styles: any = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
   const [deliveryPoint, setDeliveryPoint] = useState({
@@ -79,6 +81,13 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
     });
   };
 
+  const updateAddress = async (position) => {
+    const currentPositionDesc = await GeolocationApi.getAddressByPoint(position);
+    if (currentPositionDesc) {
+      setDeliveryAddress(currentPositionDesc.formatted_address);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const currentPosition = await GeolocationApi.getCurrentPosition();
@@ -87,11 +96,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
       if (inArea) {
         setPosition(currentPosition);
       }
-
-      const currentPositionDesc = await GeolocationApi.getAddressByPoint(currentPosition);
-      if (currentPositionDesc) {
-        setDeliveryAddress(currentPositionDesc.formatted_address);
-      }
+      await updateAddress(currentPosition);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -100,6 +105,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
     setDeliveryPoint(region);
     const inArea = await GoogleMapApi.isPointInArea(region, areaPoints);
     setPointInArea(inArea);
+    await updateAddress(region);
   };
 
   return (
@@ -126,9 +132,18 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
         <View style={styles.markerFixed}>
           <Image style={styles.marker} source={marker} />
         </View>
+        <View style={styles.header}>
+          <Input
+            variant="simple"
+            value={deliveryAddress}
+            disabled
+            icon={() => <GeoPoint />}
+            style={styles.input}
+          />
+        </View>
         <View style={styles.footer}>
           {pointInArea
-            ? <Button style={styles.button} onPress={() => console.log('Move to address screen', deliveryPoint, deliveryAddress)}>{i18n.t('screens.map.button')}</Button>
+            ? <Button style={styles.button} onPress={() => navigation.navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint })}>{i18n.t('screens.map.button')}</Button>
             : (
               <Card card shadow style={styles.card}>
                 <Text semibold color="#666" size={14} style={styles.title}>{i18n.t('screens.map.message1')}</Text>

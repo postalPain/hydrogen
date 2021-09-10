@@ -69,10 +69,21 @@ export default {
       button: 'Continue to checkout',
     },
     map: {
+      header: 'Pin your location',
       search: 'Search',
       button: 'Confirm Address',
       message1: 'Sorry, we do not deliver to this area',
       message2: 'We are working hard to add more delivery areas very soon!',
+    },
+    confirmAddress: {
+      header: 'Additional Details',
+      errors: {
+        addressType: 'Please choose an address type',
+        floor: 'Please specify your floor',
+        apartment: 'Please specify an apartment number',
+        house: 'Please specify a house number',
+      },
+      button: 'Save address',
     },
   },
   components: {

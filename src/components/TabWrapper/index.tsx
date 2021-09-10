@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import useStyles from './styles';
 
 const TabWrapper = (TabComponent: any) => {
-  const classes = useStyles();
+  const styles = useStyles();
   return () => (
-    <View style={classes.container}>
+    <View style={styles.container}>
       <TabComponent />
     </View>
   );

@@ -5,7 +5,7 @@ import { TabBarBackground, TabBarSide } from 'components/Icons';
 import useStyles from './styles';
 
 const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
-  const classes = useStyles();
+  const styles = useStyles();
 
   const onTabPress = (route, isFocused) => {
     const event = navigation.emit({
@@ -33,11 +33,11 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
   };
 
   return (
-    <View style={classes.container}>
+    <View style={styles.container}>
       <TabBarSide />
-      <TabBarBackground style={classes.tabBarLine} />
-      <TabBarSide style={classes.tabRightSide} />
-      <View style={classes.iconsWrapper}>
+      <TabBarBackground style={styles.tabBarLine} />
+      <TabBarSide style={styles.tabRightSide} />
+      <View style={styles.iconsWrapper}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const icon = options.tabBarIcon;
@@ -52,7 +52,7 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
               testID={options.tabBarTestID}
               onPress={() => onTabPress(route, isFocused)}
               onLongPress={() => onTabLongPress(route)}
-              style={classes.item}
+              style={styles.item}
             >
               {icon({
                 focused: isFocused,

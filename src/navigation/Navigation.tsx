@@ -6,7 +6,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import { enableES5 } from 'immer';
 import SplashScreen from 'react-native-splash-screen';
-
+import i18n from 'i18n';
 
 import Home from 'screens/Home';
 import Map from 'screens/Map';
@@ -22,6 +22,7 @@ import TemporaryNavigator from 'screens/TemporaryNavigator';
 import SignUp from 'screens/SignUp';
 import AutocompleteInput from 'screens/AtocompleteInput';
 import TabNavigation from 'navigation/TabNavigation';
+import ConfirmAddress from 'screens/ConfirmAddress';
 
 const Stack = createStackNavigator();
 
@@ -53,7 +54,7 @@ const Navigation = () => {
       >
         <Stack.Navigator
           screenOptions={{
-            headerShown: false,
+            headerShown: true,
           }}
         >
           <Stack.Screen
@@ -64,10 +65,19 @@ const Navigation = () => {
             }}
           />
           <Stack.Screen
+            name={Routes.ConfirmAddress}
+            component={ConfirmAddress}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.confirmAddress.header'),
+            }}
+          />
+          <Stack.Screen
             name={Routes.TabNavigation}
             component={TabNavigation}
             options={{
               gestureEnabled: false,
+              headerShown: false,
             }}
           />
           <Stack.Screen
@@ -89,6 +99,7 @@ const Navigation = () => {
             component={Map}
             options={{
               gestureEnabled: false,
+              headerTitle: i18n.t('screens.map.header'),
             }}
           />
           <Stack.Screen

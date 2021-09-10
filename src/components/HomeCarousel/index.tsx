@@ -12,7 +12,7 @@ interface IHomeCarousel {
 }
 
 const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
-  const classes = useStyles();
+  const styles = useStyles();
   const [activeIndex, setActiveIndex] = useState(0);
   // mocked values(will be changed in future)
   const carouselItems = [
@@ -28,11 +28,11 @@ const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
   ];
 
   const renderItem = ({ item }) => (
-    <View style={classes.carouselItem}>
-      <View style={classes.imageBannerWrapper}>
+    <View style={styles.carouselItem}>
+      <View style={styles.imageBannerWrapper}>
         <CacheImage
           source={{ uri: item.imgUrl }}
-          style={classes.imageBanner}
+          style={styles.imageBanner}
         />
       </View>
     </View>
@@ -40,7 +40,7 @@ const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
   );
 
   return (
-    <View style={[classes.container, style]}>
+    <View style={[styles.container, style]}>
       <Carousel
         layout="default"
         data={carouselItems}
@@ -57,7 +57,7 @@ const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
         activeDotIndex={activeIndex}
         dotElement={<CarouselDotElement />}
         inactiveDotElement={<CarouselDotElement />}
-        containerStyle={classes.paginationContainer}
+        containerStyle={styles.paginationContainer}
       />
     </View>
   );
