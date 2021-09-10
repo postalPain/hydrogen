@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
-import { TAB_BAR_HEIGHT } from '../../constants';
+import { HEADER_AND_TAB_BAR_HEIGHT } from '../../constants';
 import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
@@ -7,7 +7,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     width: '100%',
-    height: Platform.OS === 'ios' ? TAB_BAR_HEIGHT : TAB_BAR_HEIGHT - 24,
+    height: Platform.OS === 'ios' ? HEADER_AND_TAB_BAR_HEIGHT : HEADER_AND_TAB_BAR_HEIGHT - 24,
   },
   headerLine: {
     position: 'absolute',
