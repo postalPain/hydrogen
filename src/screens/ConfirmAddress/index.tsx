@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View, SafeAreaView, ScrollView } from 'react-native';
 import {
   Dropdown, Input, Button, withTheme,
 } from '@stryberventures/stryber-react-native-ui-components';
@@ -28,7 +28,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
-        <View>
+        <ScrollView>
           <Input
             label="Delivery address"
             disabled
@@ -51,7 +51,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
           />
           {addressType === 'Villa' && renderVillaForm()}
           {addressType === 'Apartment' && renderApartmentForm()}
-        </View>
+        </ScrollView>
         <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.confirmAddress.button')}</Button>
       </View>
     </SafeAreaView>

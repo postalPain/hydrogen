@@ -5,10 +5,10 @@ import { TAB_BAR_HEIGHT } from '../../constants';
 
 const { width: wWidth } = Dimensions.get('window');
 
-const TabBarBackground: React.FC<SvgProps> = (props) => (
+const NavBackground: React.FC<SvgProps> = (props) => (
   <Svg width={wWidth} height={TAB_BAR_HEIGHT} viewBox={`0 0 ${wWidth} 95`} fill="none" {...props}>
     <Rect width={wWidth} height="95" fill="#0C5268" />
   </Svg>
 );
 
-export default TabBarBackground;
+export default NavBackground;

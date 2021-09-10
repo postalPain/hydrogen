@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { TabBarBackground, TabBarSide } from 'components/Icons';
+import { NavBackground, NavSide } from 'components/Icons';
 import useStyles from './styles';
 
 const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
@@ -34,9 +34,9 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
 
   return (
     <View style={styles.container}>
-      <TabBarSide />
-      <TabBarBackground style={styles.tabBarLine} />
-      <TabBarSide style={styles.tabRightSide} />
+      <NavSide />
+      <NavBackground style={styles.tabBarLine} />
+      <NavSide style={styles.tabRightSide} />
       <View style={styles.iconsWrapper}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];

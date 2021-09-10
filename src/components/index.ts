@@ -5,3 +5,4 @@ export { default as SlideUp } from './SlideUp';
 export { default as TabBar } from './TabBar';
 export { default as TabWrapper } from './TabWrapper';
 export { default as CarouselDotElement } from './CarouselDotElement';
+export { default as Header } from './Header';
