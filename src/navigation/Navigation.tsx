@@ -23,6 +23,7 @@ import SignUp from 'screens/SignUp';
 import AutocompleteInput from 'screens/AtocompleteInput';
 import TabNavigation from 'navigation/TabNavigation';
 import ConfirmAddress from 'screens/ConfirmAddress';
+import { Header } from 'components';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +56,9 @@ const Navigation = () => {
         <Stack.Navigator
           screenOptions={{
             headerShown: true,
+            // headerTransparent: true,
+            // @ts-ignore
+            header: (props) => <Header {...props} />,
           }}
         >
           <Stack.Screen
@@ -62,6 +66,7 @@ const Navigation = () => {
             component={TemporaryNavigator}
             options={{
               gestureEnabled: false,
+              headerTitle: 'Temporary screen',
             }}
           />
           <Stack.Screen

@@ -1,8 +1,9 @@
 export { default as Home } from './Home';
 export { default as Search } from './Search';
 export { default as Checkout } from './Checkout';
-export { default as TabBarBackground } from './TabBarBackground';
-export { default as TabBarSide } from './TabBarSide';
+export { default as NavBackground } from './NavBackground';
+export { default as NavSide } from './NavSide';
 export { default as AccountIcon } from './Account';
 export { default as LocationIcon } from './Location';
 export { default as GeoPoint } from './GeoPoint';
+export { default as Back } from './Back';
