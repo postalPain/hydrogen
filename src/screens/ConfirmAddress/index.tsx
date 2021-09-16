@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, SafeAreaView, ScrollView } from 'react-native';
+import {
+  View, SafeAreaView, ScrollView, Pressable,
+} from 'react-native';
 import {
   Dropdown, Input, Button, withTheme,
 } from '@stryberventures/stryber-react-native-ui-components';
@@ -23,18 +25,21 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     renderVillaForm,
     renderApartmentForm,
     handleSubmit,
+    goBack,
   } = useConfirmAddress(theme, route);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.wrapper}>
-        <ScrollView>
-          <Input
-            label="Delivery address"
-            disabled
-            placeholder={address}
-            style={styles.input}
-          />
+      <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.wrapper}>
+        <View>
+          <Pressable onPress={goBack}>
+            <Input
+              label="Delivery address"
+              disabled
+              placeholder={address}
+              style={styles.input}
+            />
+          </Pressable>
           <Dropdown
             onChange={(val) => {
               setAddressType(val);
@@ -51,9 +56,11 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
           />
           {addressType === 'Villa' && renderVillaForm()}
           {addressType === 'Apartment' && renderApartmentForm()}
-        </ScrollView>
-        <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.confirmAddress.button')}</Button>
-      </View>
+        </View>
+        <Button style={styles.button} onPress={handleSubmit}>
+          {i18n.t('screens.confirmAddress.button')}
+        </Button>
+      </ScrollView>
     </SafeAreaView>
   );
 };

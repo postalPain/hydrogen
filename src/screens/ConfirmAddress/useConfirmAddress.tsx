@@ -5,6 +5,7 @@ import { ProjectThemeType } from 'theme';
 import { View } from 'react-native';
 import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
@@ -12,6 +13,7 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
+  const { goBack } = useNavigation();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { params: { address, geoCoords } } = route;
 
@@ -124,5 +126,6 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
     renderVillaForm,
     renderApartmentForm,
     handleSubmit,
+    goBack,
   };
 };
