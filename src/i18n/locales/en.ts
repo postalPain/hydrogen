@@ -85,6 +85,19 @@ export default {
       },
       button: 'Save address',
     },
+    checkout: {
+      addressLabel: 'Delivery address',
+      instructionsLabel: 'Delivery instructions',
+      deliveryDetails: 'Delivery Details',
+      couponPlaceholder: 'Enter promo code',
+      couponButton: 'Apply',
+      cartTotal: 'Cart totals',
+      subtotal: 'Subtotal',
+      fee: 'Delivery fees',
+      vat: 'VAT',
+      total: 'Total',
+      submit: 'Place Order',
+    },
   },
   components: {
     locationButton: {
@@ -92,6 +105,11 @@ export default {
     },
     categoriesViewer: {
       emptyList: 'Categories list is empty',
+    },
+    paymentMethod: {
+      title: 'Payment Method',
+      addCard: 'Add new card',
+      changeButton: 'Change',
     },
   },
 };

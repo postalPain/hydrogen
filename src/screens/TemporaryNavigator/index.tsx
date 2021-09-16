@@ -37,6 +37,9 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
       <Button onPress={() => navigator.navigate(Routes.ConfirmAddress, { address: 'Mocked Address' })}>
         {Routes.ConfirmAddress}
       </Button>
+      <Button onPress={() => navigator.navigate(Routes.Checkout)}>
+        {Routes.Checkout}
+      </Button>
     </SafeAreaView>
   );
 };

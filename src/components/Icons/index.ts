@@ -7,3 +7,4 @@ export { default as AccountIcon } from './Account';
 export { default as LocationIcon } from './Location';
 export { default as GeoPoint } from './GeoPoint';
 export { default as Back } from './Back';
+export { default as LeftArrow } from './LeftArrow';
