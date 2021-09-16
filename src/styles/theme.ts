@@ -34,6 +34,8 @@ const theme = {
     primary: '#0C5268',
     sky: '#adc5fc',
     cross: '#95acbf',
+    gray: '#666',
+    lightGray: '#eee',
   },
 };
 

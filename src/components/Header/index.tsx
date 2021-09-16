@@ -7,7 +7,7 @@ import { Back, NavBackground, NavSide } from 'components/Icons';
 import { ProjectThemeType } from 'theme';
 
 interface IHeaderProps {
-  theme: ProjectThemeType;
+  theme?: ProjectThemeType;
 }
 
 const Header: React.FC<StackHeaderProps & IHeaderProps> = ({

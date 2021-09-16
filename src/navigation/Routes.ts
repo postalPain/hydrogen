@@ -6,6 +6,7 @@ enum Routes {
   AutocompleteInput = 'AutocompleteInput',
   TabNavigation = 'TabNavigation',
   ConfirmAddress = 'ConfirmAddress',
+  Checkout = 'Checkout',
 }
 
 export default Routes;

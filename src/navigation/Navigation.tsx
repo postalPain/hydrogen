@@ -24,6 +24,7 @@ import AutocompleteInput from 'screens/AtocompleteInput';
 import TabNavigation from 'navigation/TabNavigation';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import { Header } from 'components';
+import Checkout from 'screens/Checkout';
 
 const Stack = createStackNavigator();
 
@@ -56,8 +57,6 @@ const Navigation = () => {
         <Stack.Navigator
           screenOptions={{
             headerShown: true,
-            // headerTransparent: true,
-            // @ts-ignore
             header: (props) => <Header {...props} />,
           }}
         >
@@ -67,6 +66,14 @@ const Navigation = () => {
             options={{
               gestureEnabled: false,
               headerTitle: 'Temporary screen',
+            }}
+          />
+          <Stack.Screen
+            name={Routes.Checkout}
+            component={Checkout}
+            options={{
+              gestureEnabled: false,
+              headerTitle: 'Checkout',
             }}
           />
           <Stack.Screen
