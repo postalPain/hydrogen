@@ -28,6 +28,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           disabled
           icon={() => <GeoPoint />}
           style={styles.input}
+          inputLabelStyle={styles.label}
         />
         <Input label={i18n.t('screens.checkout.instructionsLabel')} multiline />
         <View style={styles.couponContainer}>
@@ -57,23 +58,11 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           <Text style={styles.priceText}>{i18n.t('screens.checkout.vat')}</Text>
           <Text style={styles.priceText}>AED 54.00</Text>
         </View>
-        <View style={{
-          ...styles.priceContainer,
-          ...styles.totalContainer,
-        }}
-        >
-          <Text style={{
-            ...styles.priceText,
-            ...styles.priceTotal,
-          }}
-          >
+        <View style={[styles.priceContainer, styles.totalContainer]}>
+          <Text style={[styles.priceText, styles.priceTotal]}>
             {i18n.t('screens.checkout.total')}
           </Text>
-          <Text style={{
-            ...styles.priceText,
-            ...styles.priceTotal,
-          }}
-          >
+          <Text style={[styles.priceText, styles.priceTotal]}>
             AED 54.00
           </Text>
         </View>

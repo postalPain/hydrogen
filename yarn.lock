@@ -1417,10 +1417,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stryberventures/stryber-react-native-ui-components@^0.0.61":
-  version "0.0.61"
-  resolved "https://registry.yarnpkg.com/@stryberventures/stryber-react-native-ui-components/-/stryber-react-native-ui-components-0.0.61.tgz#a29e67d96ec88b91fa36aeb04eb419499df04f55"
-  integrity sha512-STwlDnnN0QHQpqs8EXoAZZygHJVBnN1EjEzmijrfPGxqHALkvB9MhWUJr+96LvFzO5RhXbj2nSGMesjL1zBqJA==
+"@stryberventures/stryber-react-native-ui-components@^0.0.66":
+  version "0.0.66"
+  resolved "https://registry.yarnpkg.com/@stryberventures/stryber-react-native-ui-components/-/stryber-react-native-ui-components-0.0.66.tgz#f5615cc38d38550af46aa41226d5c00fb31c9735"
+  integrity sha512-KzKAB5djdH6E6Vg1IyXeZ0dzpjnpTjGbRCVMEvQ46Gi8lHD7V7LGKeO2RfwLE+kUilBcx3kvT1sgZ/JVtg2kRw==
   dependencies:
     jest-static-stubs "0.0.1"
     lodash-es "^4.17.15"
