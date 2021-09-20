@@ -23,10 +23,7 @@ const PaymentMethod: React.FC<IPaymentMethodProps> = ({
         <Text style={styles.title}>{i18n.t('components.paymentMethod.title')}</Text>
         <Button
           type="link"
-          style={{
-            ...styles.linkButton,
-            ...styles.linkButtonMargin,
-          }}
+          style={[styles.linkButton, styles.linkButtonMargin]}
           textStyle={styles.linkButtonText}
           onPress={() => setPaymentMethod(true)}
         >

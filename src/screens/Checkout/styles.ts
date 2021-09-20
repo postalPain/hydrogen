@@ -74,6 +74,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   disabledButtonText: {
     color: theme.colors.gray,
   },
+  label: {
+    color: theme.colors.black,
+  },
 });
 
 export default useStyles;

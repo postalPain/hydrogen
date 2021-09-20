@@ -124,9 +124,9 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
         >
           <Polygon
             coordinates={areaPoints}
-            strokeColor="#000"
-            fillColor="rgba(255,0,0,0.5)"
-            strokeWidth={1}
+            strokeColor="#0C5268"
+            fillColor="rgba(12, 82, 104, 0.15)"
+            strokeWidth={2}
           />
         </MapView>
         <View style={styles.markerFixed}>

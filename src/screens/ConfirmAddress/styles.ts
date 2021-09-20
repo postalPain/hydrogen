@@ -23,6 +23,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   scrollContainer: {
     flex: 1,
   },
+  label: {
+    color: theme.colors.black,
+  },
 });
 
 export default useStyles;
