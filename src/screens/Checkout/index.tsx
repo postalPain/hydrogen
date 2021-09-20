@@ -30,7 +30,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           style={styles.input}
           inputLabelStyle={styles.label}
         />
-        <Input label={i18n.t('screens.checkout.instructionsLabel')} multiline />
+        <Input label={i18n.t('screens.checkout.instructionsLabel')} multiline maxLength={250} />
         <View style={styles.couponContainer}>
           <TextInput placeholder={i18n.t('screens.checkout.couponPlaceholder')} style={styles.couponField} />
           <Button
