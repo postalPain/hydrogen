@@ -53,4 +53,7 @@ export const userAPI = {
   getCategories(): Promise<any> {
     return xhr.get(apiUrls.getCategories);
   },
+  getProductsBySubcategory(slug): Promise<any> {
+    return xhr.get(apiUrls.getProductsBySubcategory(slug));
+  },
 };

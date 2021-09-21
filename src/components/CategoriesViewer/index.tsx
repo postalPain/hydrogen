@@ -11,18 +11,18 @@ interface ICategoriesViewer {
 }
 
 const CategoriesViewer = ({ data }: ICategoriesViewer) => {
-  const classes = useStyles();
+  const styles = useStyles();
 
   if (!data || !data.length) {
     return (
-      <View style={classes.emptyListBox}>
-        <Text style={classes.emptyListText}>{ i18n.t('components.categoriesViewer.emptyList')}</Text>
+      <View style={styles.emptyListBox}>
+        <Text style={styles.emptyListText}>{ i18n.t('components.categoriesViewer.emptyList')}</Text>
       </View>
     );
   }
 
   return (
-    <View style={classes.container}>
+    <View style={styles.container}>
       { data.map((item) => <CategoryItem {...item} />)}
     </View>
   );

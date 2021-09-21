@@ -9,12 +9,12 @@ interface ICarouselDotElement {
 }
 
 const CarouselDotElement: React.FC<ICarouselDotElement> = ({ active }) => {
-  const classes = useStyles();
+  const styles = useStyles();
 
   return (
     <View style={[
-      classes.container,
-      active ? classes.containerActive : {},
+      styles.container,
+      active ? styles.containerActive : {},
     ]}
     />
   );

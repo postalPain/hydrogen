@@ -4,6 +4,7 @@ import { ICategoriesState } from './types';
 const defaultState = {
   data: null,
   loading: false,
+  currentSubcategory: null,
 };
 
 export default function categories(state: ICategoriesState = defaultState, action) {
@@ -25,6 +26,12 @@ export default function categories(state: ICategoriesState = defaultState, actio
       return {
         ...state,
         loading: false,
+      };
+    }
+    case CategoriesActionTypes.SET_CURRENT_SUBCATEGORY: {
+      return {
+        ...state,
+        currentSubcategory: action.id,
       };
     }
     default:

@@ -7,3 +7,7 @@ export { default as TabWrapper } from './TabWrapper';
 export { default as CarouselDotElement } from './CarouselDotElement';
 export { default as Header } from './Header';
 export { default as PaymentMethod } from './PaymentMethod';
+export { default as CategoriesTabNavigation } from './CategoriesTabNavigation';
+export { default as CategoryTab } from './CategoryTab';
+export { default as SubcategoryTab } from './SubcategoryTab';
+export { default as ProductItem } from './ProductItem';

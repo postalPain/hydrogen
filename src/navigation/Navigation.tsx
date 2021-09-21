@@ -10,6 +10,7 @@ import i18n from 'i18n';
 
 import Home from 'screens/Home';
 import Map from 'screens/Map';
+import Products from 'screens/Products';
 import Routes from './Routes';
 
 import {
@@ -117,6 +118,13 @@ const Navigation = () => {
           <Stack.Screen
             name={Routes.AutocompleteInput}
             component={AutocompleteInput}
+            options={{
+              gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.ProductsScreen}
+            component={Products}
             options={{
               gestureEnabled: false,
             }}

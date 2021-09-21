@@ -23,6 +23,10 @@ const theme = {
       valueFontSize: 12,
       barWidth: 6,
     },
+    contentBox: {
+      borderRadius: 26,
+      backgroundColor: '#fff',
+    },
   },
   colors: {
     availability: {

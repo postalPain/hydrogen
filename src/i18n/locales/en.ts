@@ -106,10 +106,22 @@ export default {
     categoriesViewer: {
       emptyList: 'Categories list is empty',
     },
+    subcategoryTab: {
+      emptyList: 'Subcategory does not have any product',
+      loading: 'Subcategory products are loading',
+    },
+    productItem: {
+      more: 'More info',
+      backSoon: 'Back soon',
+    },
     paymentMethod: {
       title: 'Payment Method',
       addCard: 'Add new card',
       changeButton: 'Change',
+    },
+    categoriesTabNavigation: {
+      emptyList: 'Categories are not defined',
+      loading: 'Categories are loading',
     },
   },
 };
