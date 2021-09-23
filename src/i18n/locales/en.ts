@@ -123,5 +123,30 @@ export default {
       emptyList: 'Categories are not defined',
       loading: 'Categories are loading',
     },
+    paymentCardForm: {
+      title: 'Pay AED %{price} using',
+      fields: {
+        card: 'Card number',
+        date: 'Expiry date',
+        datePlaceholder: 'MM/YY',
+        cvc: 'CVV/CVC',
+        cvcPlaceholder: 'CVC',
+        save: 'Save card for future Blitz payments',
+      },
+      errors: {
+        card: 'Please check card number',
+        date: 'Please check expiry date',
+        cvc: 'Please check CVV/CVC',
+        cardRequired: 'Card number is required',
+        dateRequired: 'Expiry date is required',
+        cvcRequired: 'CVV/CVC is required',
+      },
+      button: 'Add Card',
+    },
+    changePaymentMethod: {
+      title: 'Payment method',
+      changeCard: 'Use an existing card',
+      addCard: 'Add a new card',
+    },
   },
 };

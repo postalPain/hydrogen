@@ -9,3 +9,7 @@ export { default as GeoPoint } from './GeoPoint';
 export { default as Back } from './Back';
 export { default as LeftArrow } from './LeftArrow';
 export { default as PlusCircleIcon } from './PlusCircle';
+export { default as Close } from './Close';
+export { default as CreditCard } from './CreditCard';
+export { default as PlusCard } from './PlusCard';
+export { default as LeftChevron } from './LeftChevron';

@@ -9,12 +9,15 @@ import i18n from 'i18n';
 interface IPaymentMethodProps {
   theme?: ProjectThemeType;
   paymentMethod: boolean;
-  setPaymentMethod: React.Dispatch<React.SetStateAction<boolean>>
+  addCard: () => void;
+  changeCard: () => void;
 }
 
 const PaymentMethod: React.FC<IPaymentMethodProps> = ({
   theme,
-  paymentMethod, setPaymentMethod,
+  paymentMethod,
+  addCard,
+  changeCard,
 }) => {
   const styles = useStyles(theme);
   return (
@@ -25,7 +28,7 @@ const PaymentMethod: React.FC<IPaymentMethodProps> = ({
           type="link"
           style={[styles.linkButton, styles.linkButtonMargin]}
           textStyle={styles.linkButtonText}
-          onPress={() => setPaymentMethod(true)}
+          onPress={addCard}
         >
           {i18n.t('components.paymentMethod.addCard')}
         </Button>
@@ -39,7 +42,7 @@ const PaymentMethod: React.FC<IPaymentMethodProps> = ({
               type="link"
               style={styles.linkButton}
               textStyle={styles.linkButtonText}
-              onPress={() => setPaymentMethod(false)}
+              onPress={changeCard}
             >
               {i18n.t('components.paymentMethod.changeButton')}
             </Button>
