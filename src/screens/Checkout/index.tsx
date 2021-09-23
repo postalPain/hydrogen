@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useStyles from './styles';
 import { View, TextInput, ScrollView } from 'react-native';
 import {
@@ -6,8 +6,11 @@ import {
 } from '@stryberventures/stryber-react-native-ui-components';
 import { GeoPoint, LeftArrow } from 'components/Icons';
 import { ProjectThemeType } from 'theme';
-import { PaymentMethod } from 'components';
+import {
+  ChangePaymentMethod, ModalOverlay, PaymentCardForm, PaymentMethod,
+} from 'components';
 import i18n from 'i18n';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 interface ICheckoutProps {
   theme: ProjectThemeType
@@ -16,6 +19,21 @@ interface ICheckoutProps {
 const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const [paymentMethod, setPaymentMethod] = useState(false);
+  const addCardModalRef = useRef<BottomSheet>(null);
+  const changeCardModalRef = useRef<BottomSheet>(null);
+  const handleOpenPaymentCardModal = () => addCardModalRef.current.expand();
+  const handleOpenChangeCard = () => changeCardModalRef.current.expand();
+  const handleClosePaymentCardModal = () => addCardModalRef.current.close();
+  const handleCloseChangeCard = () => changeCardModalRef.current.close();
+
+  // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
+  useEffect(() => {
+    setTimeout(() => {
+      handleClosePaymentCardModal();
+      handleCloseChangeCard();
+    }, 400);
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.contentWrapper}>
@@ -42,7 +60,11 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             <LeftArrow />
           </Button>
         </View>
-        <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
+        <PaymentMethod
+          paymentMethod={paymentMethod}
+          addCard={handleOpenPaymentCardModal}
+          changeCard={handleOpenChangeCard}
+        />
         <Text style={styles.title}>
           {i18n.t('screens.checkout.cartTotal')}
         </Text>
@@ -74,6 +96,12 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           {i18n.t('screens.checkout.submit')}
         </Button>
       </View>
+      <ModalOverlay height="75%" ref={addCardModalRef}>
+        <PaymentCardForm setPaymentMethod={setPaymentMethod} />
+      </ModalOverlay>
+      <ModalOverlay height="45%" ref={changeCardModalRef}>
+        <ChangePaymentMethod addCard={handleOpenPaymentCardModal} />
+      </ModalOverlay>
     </ScrollView>
   );
 };
