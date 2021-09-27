@@ -148,5 +148,9 @@ export default {
       changeCard: 'Use an existing card',
       addCard: 'Add a new card',
     },
+    cardVariant: {
+      title: 'Your Cards',
+      cardTitle: 'Card Number',
+    },
   },
 };

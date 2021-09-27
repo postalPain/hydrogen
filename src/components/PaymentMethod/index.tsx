@@ -49,7 +49,7 @@ const PaymentMethod: React.FC<IPaymentMethodProps> = ({
           </View>
           <View style={styles.cardContainer}>
             <Image source={masterCard} />
-            <Text style={styles.card}>xxxx xxxx xxxx 1659</Text>
+            <Text style={styles.card}>XXXX XXXX XXXX 1659</Text>
           </View>
         </View>
       )

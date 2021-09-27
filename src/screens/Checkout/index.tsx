@@ -11,6 +11,7 @@ import {
 } from 'components';
 import i18n from 'i18n';
 import BottomSheet from '@gorhom/bottom-sheet';
+import CardVariant from 'components/CardVariant';
 
 interface ICheckoutProps {
   theme: ProjectThemeType
@@ -21,8 +22,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const [paymentMethod, setPaymentMethod] = useState(false);
   const addCardModalRef = useRef<BottomSheet>(null);
   const changeCardModalRef = useRef<BottomSheet>(null);
+  const cardVariantModalRef = useRef<BottomSheet>(null);
   const handleOpenPaymentCardModal = () => addCardModalRef.current.expand();
   const handleOpenChangeCard = () => changeCardModalRef.current.expand();
+  const handleOpenCardVariant = () => cardVariantModalRef.current.expand();
   const handleClosePaymentCardModal = () => addCardModalRef.current.close();
   const handleCloseChangeCard = () => changeCardModalRef.current.close();
 
@@ -100,7 +103,13 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         <PaymentCardForm setPaymentMethod={setPaymentMethod} />
       </ModalOverlay>
       <ModalOverlay height="45%" ref={changeCardModalRef}>
-        <ChangePaymentMethod addCard={handleOpenPaymentCardModal} />
+        <ChangePaymentMethod
+          addCard={handleOpenPaymentCardModal}
+          changeCard={handleOpenCardVariant}
+        />
+      </ModalOverlay>
+      <ModalOverlay height="45%" ref={cardVariantModalRef}>
+        <CardVariant />
       </ModalOverlay>
     </ScrollView>
   );
