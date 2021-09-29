@@ -9,6 +9,9 @@ export const TYPES = {
   ADD_CARD: 'ADD_CARD',
   SAVE_CARD: 'SAVE_CARD',
   SET_DEFAULT_CARD: 'SET_DEFAULT_CARD',
+  SAVE_DEFAULT_CARD: 'SAVE_DEFAULT_CARD',
+  GET_CARD_LIST: 'GET_CARD_LIST',
+  SAVE_CARD_LIST: 'SAVE_CARD_LIST',
 };
 
 interface ISignIn {
@@ -54,7 +57,21 @@ export const saveCard = (cardInfo) => ({
   payload: cardInfo,
 });
 
-export const setDefaultCard = (cardInfo) => ({
-  type: TYPES.SET_DEFAULT_CARD,
+export const saveDefaultCard = (cardInfo) => ({
+  type: TYPES.SAVE_DEFAULT_CARD,
   payload: cardInfo,
+});
+
+export const setDefaultCard = (id) => ({
+  type: TYPES.SET_DEFAULT_CARD,
+  payload: id,
+});
+
+export const getCardList = () => ({
+  type: TYPES.GET_CARD_LIST,
+});
+
+export const saveCardList = (cardList) => ({
+  type: TYPES.SAVE_CARD_LIST,
+  payload: cardList,
 });

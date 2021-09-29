@@ -45,7 +45,7 @@ export default function authentication(state = defaultState, action) {
         user: action.payload,
       };
     }
-    case TYPES.SET_DEFAULT_CARD: {
+    case TYPES.SAVE_DEFAULT_CARD: {
       return {
         ...state,
         defaultCard: action.payload,
@@ -58,6 +58,12 @@ export default function authentication(state = defaultState, action) {
           ...state.cardList,
           action.payload,
         ],
+      };
+    }
+    case TYPES.SAVE_CARD_LIST: {
+      return {
+        ...state,
+        cardList: action.payload,
       };
     }
     default:

@@ -40,7 +40,7 @@ const PaymentCardForm: React.FC = () => {
           number: values.card,
           exp_month: expMonth,
           exp_year: expYear,
-          cvc,
+          cvc: values.cvc,
         }));
         close();
       }}
@@ -106,7 +106,6 @@ const PaymentCardForm: React.FC = () => {
             />
           </View>
           <Button style={styles.button} onPress={handleSubmit}>{i18n.t('components.paymentCardForm.button')}</Button>
-
         </View>
       )}
     </Formik>

@@ -27,7 +27,7 @@ const useStyles = () => StyleSheet.create({
   },
   button: {
     borderRadius: 15,
-    marginBottom: 50,
+    marginBottom: 80,
   },
   title: {
     fontSize: 18,
