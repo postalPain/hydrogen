@@ -56,4 +56,7 @@ export const userAPI = {
   getProductsBySubcategory(slug): Promise<any> {
     return xhr.get(apiUrls.getProductsBySubcategory(slug));
   },
+  addCard(token: { token: string }) : Promise<any> {
+    return xhr.post(apiUrls.addCard, token);
+  },
 };

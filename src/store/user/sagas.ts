@@ -1,11 +1,15 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import {
+  takeEvery, put, call, select,
+} from 'redux-saga/effects';
 import { SagaIterator } from '@redux-saga/core';
 import { userAPI, addHeader, removeHeader } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
 import {
-  TYPES, signedIn, setError, getUserSuccess,
+  TYPES, signedIn, setError, getUserSuccess, saveCard, setDefaultCard,
 } from './actions';
+import Stripe from 'react-native-stripe-api';
+import { STRIPE_PUBLIC_KEY } from '@env';
 
 function* getUserWorker(): SagaIterator {
   try {
@@ -40,8 +44,27 @@ function* signOutWorker(): SagaIterator {
   }
 }
 
+function* addCardWorker(action): SagaIterator {
+  try {
+    const client = new Stripe(STRIPE_PUBLIC_KEY);
+    const { id } = yield client.createToken(action.payload);
+
+    // TODO remove it when app initialization will be done
+    const accessToken = yield select(state => state.user.accessToken);
+    yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
+
+    const { data } = yield call(userAPI.addCard, { token: id });
+
+    yield put(setDefaultCard(data));
+    yield put(saveCard(data));
+  } catch (e) {
+    yield put(setError('Something went wrong'));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
   yield takeEvery(TYPES.SIGN_OUT, signOutWorker);
+  yield takeEvery(TYPES.ADD_CARD, addCardWorker);
 }

@@ -100,7 +100,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         </Button>
       </View>
       <ModalOverlay height="75%" ref={addCardModalRef}>
-        <PaymentCardForm setPaymentMethod={setPaymentMethod} />
+        <PaymentCardForm />
       </ModalOverlay>
       <ModalOverlay height="45%" ref={changeCardModalRef}>
         <ChangePaymentMethod

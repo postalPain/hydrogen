@@ -6,6 +6,9 @@ export const TYPES = {
   SIGN_OUT: 'SIGN_OUT',
   SIGNED_OUT: 'SIGNED_IN',
   AUTH_ERROR: 'AUTH_ERROR',
+  ADD_CARD: 'ADD_CARD',
+  SAVE_CARD: 'SAVE_CARD',
+  SET_DEFAULT_CARD: 'SET_DEFAULT_CARD',
 };
 
 interface ISignIn {
@@ -39,4 +42,19 @@ export const signOut = () => ({
 export const setError = (errorMessage) => ({
   type: TYPES.AUTH_ERROR,
   payload: { errorMessage },
+});
+
+export const addCard = (cardInfo) => ({
+  type: TYPES.ADD_CARD,
+  payload: cardInfo,
+});
+
+export const saveCard = (cardInfo) => ({
+  type: TYPES.SAVE_CARD,
+  payload: cardInfo,
+});
+
+export const setDefaultCard = (cardInfo) => ({
+  type: TYPES.SET_DEFAULT_CARD,
+  payload: cardInfo,
 });

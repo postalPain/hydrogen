@@ -18,8 +18,9 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   // eslint-disable-next-line
   const token = useSelector(state => state.user.accessToken);
   const onLoginPress = () => {
-    dispatch(signIn({ email: 'pavel@stryber.com', password: 'Test1234' }));
+    dispatch(signIn({ email: 'vlad@stryber.com', password: '1234567Z' }));
   };
+
   return (
     <SafeAreaView style={theme.components.safeArea}>
       { !token && <Button onPress={onLoginPress}>Login</Button>}
