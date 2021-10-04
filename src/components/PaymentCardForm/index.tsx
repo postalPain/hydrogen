@@ -11,13 +11,12 @@ import cvc from '../../../assets/images/cvc.png';
 import { Formik } from 'formik';
 import { CardSchema } from 'utilities/validationSchemas';
 import i18n from 'i18n';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'store/user/actions';
 
-interface IPaymentCardProps {
-  setPaymentMethod: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const PaymentCardForm: React.FC<IPaymentCardProps> = ({ setPaymentMethod }) => {
+const PaymentCardForm: React.FC = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
   const { close } = useBottomSheet();
 
   const checkCard = (cardNum: string) => {
@@ -35,9 +34,14 @@ const PaymentCardForm: React.FC<IPaymentCardProps> = ({ setPaymentMethod }) => {
       initialValues={{
         card: '', expDate: '', cvc: '',
       }}
-      onSubmit={values => {
-        console.log(values);
-        setPaymentMethod(true);
+      onSubmit={(values) => {
+        const [expMonth, expYear] = values.expDate.split('/');
+        dispatch(addCard({
+          number: values.card,
+          exp_month: expMonth,
+          exp_year: expYear,
+          cvc: values.cvc,
+        }));
         close();
       }}
       validationSchema={CardSchema}
@@ -102,7 +106,6 @@ const PaymentCardForm: React.FC<IPaymentCardProps> = ({ setPaymentMethod }) => {
             />
           </View>
           <Button style={styles.button} onPress={handleSubmit}>{i18n.t('components.paymentCardForm.button')}</Button>
-
         </View>
       )}
     </Formik>

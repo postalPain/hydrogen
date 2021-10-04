@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useStyles from './styles';
 import { View, TextInput, ScrollView } from 'react-native';
 import {
@@ -12,6 +12,7 @@ import {
 import i18n from 'i18n';
 import BottomSheet from '@gorhom/bottom-sheet';
 import CardVariant from 'components/CardVariant';
+import { useSelector } from 'react-redux';
 
 interface ICheckoutProps {
   theme: ProjectThemeType
@@ -19,7 +20,6 @@ interface ICheckoutProps {
 
 const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const styles = useStyles(theme);
-  const [paymentMethod, setPaymentMethod] = useState(false);
   const addCardModalRef = useRef<BottomSheet>(null);
   const changeCardModalRef = useRef<BottomSheet>(null);
   const cardVariantModalRef = useRef<BottomSheet>(null);
@@ -28,6 +28,9 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const handleOpenCardVariant = () => cardVariantModalRef.current.expand();
   const handleClosePaymentCardModal = () => addCardModalRef.current.close();
   const handleCloseChangeCard = () => changeCardModalRef.current.close();
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const defaultCard = useSelector(state => state.user.defaultCard);
+  const isDefaultCard = !!Object.keys(defaultCard).length;
 
   // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
   useEffect(() => {
@@ -64,7 +67,6 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           </Button>
         </View>
         <PaymentMethod
-          paymentMethod={paymentMethod}
           addCard={handleOpenPaymentCardModal}
           changeCard={handleOpenChangeCard}
         />
@@ -93,14 +95,14 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         </View>
         <Button
           style={styles.button}
-          textStyle={!paymentMethod && styles.disabledButtonText}
-          disabled={!paymentMethod}
+          textStyle={!isDefaultCard && styles.disabledButtonText}
+          disabled={!isDefaultCard}
         >
           {i18n.t('screens.checkout.submit')}
         </Button>
       </View>
       <ModalOverlay height="75%" ref={addCardModalRef}>
-        <PaymentCardForm setPaymentMethod={setPaymentMethod} />
+        <PaymentCardForm />
       </ModalOverlay>
       <ModalOverlay height="45%" ref={changeCardModalRef}>
         <ChangePaymentMethod
@@ -108,7 +110,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           changeCard={handleOpenCardVariant}
         />
       </ModalOverlay>
-      <ModalOverlay height="45%" ref={cardVariantModalRef}>
+      <ModalOverlay height="60%" ref={cardVariantModalRef}>
         <CardVariant />
       </ModalOverlay>
     </ScrollView>

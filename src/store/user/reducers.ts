@@ -5,6 +5,8 @@ const defaultState = {
   user: null,
   errorMessage: '',
   loading: false,
+  defaultCard: {},
+  cardList: [],
 };
 
 export default function authentication(state = defaultState, action) {
@@ -41,6 +43,27 @@ export default function authentication(state = defaultState, action) {
       return {
         ...state,
         user: action.payload,
+      };
+    }
+    case TYPES.SAVE_DEFAULT_CARD: {
+      return {
+        ...state,
+        defaultCard: action.payload,
+      };
+    }
+    case TYPES.SAVE_CARD: {
+      return {
+        ...state,
+        cardList: [
+          ...state.cardList,
+          action.payload,
+        ],
+      };
+    }
+    case TYPES.SAVE_CARD_LIST: {
+      return {
+        ...state,
+        cardList: action.payload,
       };
     }
     default:

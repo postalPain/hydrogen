@@ -1,5 +1,4 @@
 import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './rootReducer';
@@ -11,13 +10,22 @@ const INITIAL_STATE: any = {};
 
 const sagaMiddleware = createSagaMiddleware();
 
+const middlewares = [
+  sagaMiddleware,
+];
+
+if (__DEV__) {
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
+
 /** Creating Redux store */
 const store = createStore(
   rootReducer,
   INITIAL_STATE,
-  composeWithDevTools(applyMiddleware(
-    sagaMiddleware,
-  )),
+  applyMiddleware(
+    ...middlewares,
+  ),
 );
 
 sagaMiddleware.run(rootSaga);
