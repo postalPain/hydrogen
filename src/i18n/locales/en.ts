@@ -98,6 +98,11 @@ export default {
       total: 'Total',
       submit: 'Place Order',
     },
+    onboard: {
+      title: 'Welcome!',
+      button: 'Continue',
+      link: 'I already have an account',
+    },
   },
   components: {
     locationButton: {

@@ -10,4 +10,10 @@
         android:background="#0C5268"
         android:scaleType="fitCenter"
         android:src="@drawable/launch_screen" />
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/launch_bg" />
 </RelativeLayout>

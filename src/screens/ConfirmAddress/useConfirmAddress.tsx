@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { Routes } from 'navigation';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
@@ -13,9 +14,11 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { params: { address, geoCoords } } = route;
+
+  const handleFormSubmit = () => navigate(Routes.TabNavigation);
 
   const renderVillaForm = () => (
     <Formik
@@ -23,7 +26,7 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
       initialValues={{
         buildingName: '', houseNum: '',
       }}
-      onSubmit={values => console.log(values)}
+      onSubmit={handleFormSubmit}
       validationSchema={VillaSchema}
     >
       {({
@@ -60,7 +63,7 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
       initialValues={{
         buildingName: '', floor: '', apartmentNum: '',
       }}
-      onSubmit={values => console.log(values)}
+      onSubmit={handleFormSubmit}
       validationSchema={ApartmentSchema}
     >
       {({

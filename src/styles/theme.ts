@@ -40,6 +40,7 @@ const theme = {
     cross: '#95acbf',
     gray: '#666',
     lightGray: '#eee',
+    yellow: '#FDA717',
   },
 };
 

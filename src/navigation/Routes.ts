@@ -8,6 +8,7 @@ enum Routes {
   ConfirmAddress = 'ConfirmAddress',
   Checkout = 'Checkout',
   ProductsScreen = 'ProductsScreen',
+  Onboard = 'Onboard',
 }
 
 export default Routes;
