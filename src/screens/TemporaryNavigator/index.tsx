@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import { Button, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,27 +23,32 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
 
   return (
     <SafeAreaView style={theme.components.safeArea}>
-      { !token && <Button onPress={onLoginPress}>Login</Button>}
-      <Button onPress={() => navigator.navigate(Routes.HomeScreen)}>{Routes.HomeScreen}</Button>
-      <Button onPress={() => navigator.navigate(Routes.SignUp)}>{Routes.SignUp}</Button>
-      <Button onPress={() => navigator.navigate(Routes.MapScreen)}>{Routes.MapScreen}</Button>
-      <Button onPress={() => navigator.navigate(Routes.ProductsScreen)}>
-        {Routes.ProductsScreen}
-      </Button>
-      <Button
-        onPress={() => navigator.navigate(Routes.AutocompleteInput)}
-      >
-        {Routes.AutocompleteInput}
-      </Button>
-      <Button onPress={() => navigator.navigate(Routes.TabNavigation)}>
-        {Routes.TabNavigation}
-      </Button>
-      <Button onPress={() => navigator.navigate(Routes.ConfirmAddress, { address: 'Mocked Address' })}>
-        {Routes.ConfirmAddress}
-      </Button>
-      <Button onPress={() => navigator.navigate(Routes.Checkout)}>
-        {Routes.Checkout}
-      </Button>
+      <ScrollView>
+        { !token && <Button onPress={onLoginPress}>Login</Button>}
+        <Button onPress={() => navigator.navigate(Routes.HomeScreen)}>{Routes.HomeScreen}</Button>
+        <Button onPress={() => navigator.navigate(Routes.SignUp)}>{Routes.SignUp}</Button>
+        <Button onPress={() => navigator.navigate(Routes.MapScreen)}>{Routes.MapScreen}</Button>
+        <Button onPress={() => navigator.navigate(Routes.ProductsScreen)}>
+          {Routes.ProductsScreen}
+        </Button>
+        <Button
+          onPress={() => navigator.navigate(Routes.AutocompleteInput)}
+        >
+          {Routes.AutocompleteInput}
+        </Button>
+        <Button onPress={() => navigator.navigate(Routes.TabNavigation)}>
+          {Routes.TabNavigation}
+        </Button>
+        <Button onPress={() => navigator.navigate(Routes.ConfirmAddress, { address: 'Mocked Address' })}>
+          {Routes.ConfirmAddress}
+        </Button>
+        <Button onPress={() => navigator.navigate(Routes.Checkout)}>
+          {Routes.Checkout}
+        </Button>
+        <Button onPress={() => navigator.navigate(Routes.Onboard)}>
+          {Routes.Onboard}
+        </Button>
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -63,19 +63,19 @@ const Navigation = () => {
           }}
         >
           <Stack.Screen
-            name={Routes.Onboard}
-            component={Onboard}
-            options={{
-              gestureEnabled: false,
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
             name={Routes.TemporaryNavigator}
             component={TemporaryNavigator}
             options={{
               gestureEnabled: false,
               headerTitle: 'Temporary screen',
+            }}
+          />
+          <Stack.Screen
+            name={Routes.Onboard}
+            component={Onboard}
+            options={{
+              gestureEnabled: false,
+              headerShown: false,
             }}
           />
           <Stack.Screen
