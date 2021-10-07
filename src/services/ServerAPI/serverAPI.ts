@@ -65,4 +65,7 @@ export const userAPI = {
   setDefaultCard(id): Promise<any> {
     return xhr.put(apiUrls.setDefaultCard(id));
   },
+  addAddress(address): Promise<any> {
+    return xhr.post(apiUrls.deliveryAddress, address);
+  },
 };

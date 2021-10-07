@@ -84,10 +84,20 @@ function* setDefaultCardWorker(action): SagaIterator {
   }
 }
 
+function* addAddressWorker(action): SagaIterator {
+  try {
+    const { data } = yield call(userAPI.addAddress, action.payload);
+    console.log(data);
+  } catch (e) {
+    yield put(setError('Something went wrong'));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
   yield takeEvery(TYPES.SIGN_OUT, signOutWorker);
   yield takeEvery(TYPES.ADD_CARD, addCardWorker);
   yield takeEvery(TYPES.SET_DEFAULT_CARD, setDefaultCardWorker);
+  yield takeEvery(TYPES.ADD_ADDRESS, addAddressWorker);
 }

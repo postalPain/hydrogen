@@ -6,4 +6,5 @@ export default {
   getProductsBySubcategory: id => `api/v1/subcategories/${id}/products?per_page=100`,
   cards: 'api/v1/cards',
   setDefaultCard: (id) => `api/v1/cards/${id}/default`,
+  deliveryAddress: 'api/v1/user/delivery-address',
 };
