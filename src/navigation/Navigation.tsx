@@ -26,6 +26,7 @@ import TabNavigation from 'navigation/TabNavigation';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import { Header } from 'components';
 import Checkout from 'screens/Checkout';
+import Onboard from 'screens/Onboard';
 
 const Stack = createStackNavigator();
 
@@ -67,6 +68,14 @@ const Navigation = () => {
             options={{
               gestureEnabled: false,
               headerTitle: 'Temporary screen',
+            }}
+          />
+          <Stack.Screen
+            name={Routes.Onboard}
+            component={Onboard}
+            options={{
+              gestureEnabled: false,
+              headerShown: false,
             }}
           />
           <Stack.Screen
