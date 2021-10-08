@@ -12,7 +12,7 @@ import {
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
-import { formatCurrency } from 'utilities/helpers';
+import { formatCurrency, formatAmount } from 'utilities/helpers';
 import { ProjectThemeType } from 'styles/theme';
 import { PlusCircleIcon } from 'components/Icons';
 import useStyles from './styles';
@@ -78,24 +78,18 @@ const ProductItem: React.FC<IProductItemProps> = ({
                 style={styles.image}
               />
             </View>
-            <View style={styles.p}>
-              <Text style={styles.price}>
-                {formatCurrency(data.price)}
-              </Text>
-            </View>
-            <View style={styles.p}>
-              <Text
-                style={styles.description}
-                numberOfLines={3}
-              >
-                {data.description}
-              </Text>
-            </View>
-            <View style={styles.p}>
-              <Text style={styles.more}>
-                {i18n.t('components.productItem.more')}
-              </Text>
-            </View>
+            <Text style={[styles.price, styles.p]}>
+              {formatCurrency(data.price)}
+            </Text>
+            <Text style={[styles.text, styles.p]}>
+              {data.name}
+            </Text>
+            <Text style={[styles.text, styles.p]}>
+              {formatAmount(data)}
+            </Text>
+            <Text style={[styles.more, styles.p]}>
+              {i18n.t('components.productItem.more')}
+            </Text>
           </TouchableOpacity>
           {
             disabled && (

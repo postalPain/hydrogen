@@ -45,7 +45,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     width: 72,
     height: 56,
   },
-  description: {
+  text: {
     fontSize: 8,
     fontWeight: '400',
     color: '#666',

@@ -161,6 +161,7 @@ export default {
       origin: 'Origin',
       price: 'Price',
       itemAdded: 'Added to cart',
+      pieces: 'pieces',
     },
     addProductButton: {
       addItem: 'Add item',
