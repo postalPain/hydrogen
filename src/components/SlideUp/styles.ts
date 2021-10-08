@@ -16,5 +16,12 @@ const useStyles = () => StyleSheet.create({
     paddingBottom: 20,
     paddingHorizontal: 20,
   },
+  crossButton: {
+    position: 'absolute',
+    zIndex: 1,
+    top: 0,
+    right: 0,
+    padding: 22,
+  },
 });
 export default useStyles;

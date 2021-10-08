@@ -157,5 +157,13 @@ export default {
       title: 'Your Cards',
       cardTitle: 'Card Number',
     },
+    productSlideUp: {
+      origin: 'Origin',
+      price: 'Price',
+      itemAdded: 'Added to cart',
+    },
+    addProductButton: {
+      addItem: 'Add item',
+    },
   },
 };

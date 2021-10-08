@@ -1,3 +1,5 @@
+import { TProduct } from 'services/ServerAPI/types';
+
 export const isDateValid = (expirationDate: string) => {
   if (!expirationDate) {
     return false;
@@ -30,4 +32,13 @@ export const isMonthValid = (expirationDate: string) => {
   const [expMonth] = expirationDate.split('/');
 
   return Number(expMonth) <= 12;
+};
+type TAggregateState = 'solid' | 'liquid';
+
+export const formatCurrency = (amount: number) => `${amount} AED`;
+export const formatAmount = (product: TProduct) => {
+  if (product.milliliters) {
+    return `${product.milliliters} ml`;
+  }
+  return `${product.weight} g`;
 };

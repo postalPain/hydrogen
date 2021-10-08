@@ -1,7 +1,7 @@
 import { TYPES } from './actions';
 
 const defaultState = {
-  accessToken: null,
+  accessToken: '',
   user: null,
   errorMessage: '',
   loading: false,

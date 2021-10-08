@@ -13,3 +13,5 @@ export { default as Close } from './Close';
 export { default as CreditCard } from './CreditCard';
 export { default as PlusCard } from './PlusCard';
 export { default as LeftChevron } from './LeftChevron';
+export { default as CrossIcon } from './Cross';
+export { default as CheckCircleIcon } from './CheckCircle';

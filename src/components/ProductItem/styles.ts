@@ -24,6 +24,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingVertical: 15,
     backgroundColor: '#fff',
   },
+  touchableContent: {
+    marginTop: 18,
+  },
   p: {
     marginBottom: 5,
   },
@@ -58,6 +61,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     right: 0,
     top: 0,
     padding: 10,
+  },
+  addToCartButtonCounter: {
+    width: 'auto',
+    position: 'absolute',
+    zIndex: 1,
+    left: 8,
+    right: 8,
+    top: 0,
+    height: 18,
   },
   disableOverlay: {
     position: 'absolute',

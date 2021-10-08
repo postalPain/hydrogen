@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		007C3CE46C959BC40A7FE712 /* libPods-Blitz-BlitzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08E1BE92E761E6F8EF0EE01C /* libPods-Blitz-BlitzTests.a */; };
 		00E356F31AD99517003FC87E /* BlitzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BlitzTests.m */; };
 		0453B524693E4904BFD79FC7 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -22,9 +21,10 @@
 		3BD9B0C08C0D412895FD722B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */; };
 		4D4DD835FB2C4BE2A447CCF1 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8684BE113D95522EB5C8EAC7 /* libPods-Blitz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E417C2F7A3B4D0EA1E8B53 /* libPods-Blitz.a */; };
 		9CA31DA656BC475EBE2E9421 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */; };
+		A14FEA80C827B74737A578FD /* libPods-Blitz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A34993E0D97F8AA958CE8B6 /* libPods-Blitz.a */; };
 		BA86200C79CD4AE9B2C77D3B /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */; };
+		BCBD699C693460D960CBB685 /* libPods-Blitz-BlitzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE90D7CC2C334BF15F6E14E /* libPods-Blitz-BlitzTests.a */; };
 		D8BC9177317B4669AD3DA442 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */; };
 		F2F31934B35F48EAA96BD8A1 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */; };
 /* End PBXBuildFile section */
@@ -43,8 +43,8 @@
 		00E356EE1AD99517003FC87E /* BlitzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlitzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* BlitzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlitzTests.m; sourceTree = "<group>"; };
-		08E1BE92E761E6F8EF0EE01C /* libPods-Blitz-BlitzTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blitz-BlitzTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		0E2B43198591355C912B68E5 /* Pods-Blitz-BlitzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.debug.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Blitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Blitz/AppDelegate.h; sourceTree = "<group>"; };
@@ -53,22 +53,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Blitz/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Blitz/main.m; sourceTree = "<group>"; };
 		1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		2A8C6EAE2F53E05FF6D80BEE /* Pods-Blitz-BlitzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.debug.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		2E22F2F526CBD9A600B0C1EC /* GoogleMapApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapApi.m; sourceTree = "<group>"; };
 		2EFDA3DD26D3B33A004704D5 /* Blitz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blitz-Bridging-Header.h"; sourceTree = "<group>"; };
 		2EFDA3DF26D3B33A004704D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		35CEA63EF66981B27399FF62 /* Pods-Blitz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.debug.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.debug.xcconfig"; sourceTree = "<group>"; };
 		41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		4EA534E9B380603CF93DDA3C /* Pods-Blitz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.release.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.release.xcconfig"; sourceTree = "<group>"; };
-		68E417C2F7A3B4D0EA1E8B53 /* libPods-Blitz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blitz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4814968D44D92E516F9A9D0A /* Pods-Blitz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.release.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.release.xcconfig"; sourceTree = "<group>"; };
+		5A34993E0D97F8AA958CE8B6 /* libPods-Blitz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blitz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		817DC632F8BF5095C3379CAE /* Pods-Blitz-BlitzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.release.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Blitz/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		901D45AB542F71EFB01567F1 /* Pods-Blitz-BlitzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.release.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.release.xcconfig"; sourceTree = "<group>"; };
 		97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		AAE90D7CC2C334BF15F6E14E /* libPods-Blitz-BlitzTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blitz-BlitzTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FE5D17CE93CF61E8FBBEDB59 /* Pods-Blitz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.debug.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.debug.xcconfig"; sourceTree = "<group>"; };
 		FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				007C3CE46C959BC40A7FE712 /* libPods-Blitz-BlitzTests.a in Frameworks */,
+				BCBD699C693460D960CBB685 /* libPods-Blitz-BlitzTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8684BE113D95522EB5C8EAC7 /* libPods-Blitz.a in Frameworks */,
+				A14FEA80C827B74737A578FD /* libPods-Blitz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				68E417C2F7A3B4D0EA1E8B53 /* libPods-Blitz.a */,
-				08E1BE92E761E6F8EF0EE01C /* libPods-Blitz-BlitzTests.a */,
+				5A34993E0D97F8AA958CE8B6 /* libPods-Blitz.a */,
+				AAE90D7CC2C334BF15F6E14E /* libPods-Blitz-BlitzTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,10 +138,10 @@
 		5901C1690B659B725FFE8343 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				35CEA63EF66981B27399FF62 /* Pods-Blitz.debug.xcconfig */,
-				4EA534E9B380603CF93DDA3C /* Pods-Blitz.release.xcconfig */,
-				2A8C6EAE2F53E05FF6D80BEE /* Pods-Blitz-BlitzTests.debug.xcconfig */,
-				901D45AB542F71EFB01567F1 /* Pods-Blitz-BlitzTests.release.xcconfig */,
+				FE5D17CE93CF61E8FBBEDB59 /* Pods-Blitz.debug.xcconfig */,
+				4814968D44D92E516F9A9D0A /* Pods-Blitz.release.xcconfig */,
+				0E2B43198591355C912B68E5 /* Pods-Blitz-BlitzTests.debug.xcconfig */,
+				817DC632F8BF5095C3379CAE /* Pods-Blitz-BlitzTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -202,12 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BlitzTests" */;
 			buildPhases = (
-				B426C2BB933E9F2D9A15209B /* [CP] Check Pods Manifest.lock */,
+				A2FB886D52657C61ED72FEE6 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				7D5C450FAAF9DBFA955F201A /* [CP] Embed Pods Frameworks */,
-				DBA00C297459C1EF4C1731BC /* [CP] Copy Pods Resources */,
+				D12FF0668A7BF3584FEE8467 /* [CP] Embed Pods Frameworks */,
+				96C25A0C1FAF54FD6B289634 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,14 +223,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Blitz" */;
 			buildPhases = (
-				3212E0C106B877A9F9E7CF6D /* [CP] Check Pods Manifest.lock */,
+				4C662A03F069F73DF5ED6EA6 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				D928679D66184A2BAA35CAF9 /* [CP] Embed Pods Frameworks */,
-				7A73A351E9D0D54AE05CE4DC /* [CP] Copy Pods Resources */,
+				D33AE1DBE04041322B743C23 /* [CP] Embed Pods Frameworks */,
+				7082BD539DEACDB02614A138 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,7 +322,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		3212E0C106B877A9F9E7CF6D /* [CP] Check Pods Manifest.lock */ = {
+		4C662A03F069F73DF5ED6EA6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,7 +344,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A73A351E9D0D54AE05CE4DC /* [CP] Copy Pods Resources */ = {
+		7082BD539DEACDB02614A138 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,24 +361,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D5C450FAAF9DBFA955F201A /* [CP] Embed Pods Frameworks */ = {
+		96C25A0C1FAF54FD6B289634 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B426C2BB933E9F2D9A15209B /* [CP] Check Pods Manifest.lock */ = {
+		A2FB886D52657C61ED72FEE6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -400,7 +400,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D928679D66184A2BAA35CAF9 /* [CP] Embed Pods Frameworks */ = {
+		D12FF0668A7BF3584FEE8467 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D33AE1DBE04041322B743C23 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -415,23 +432,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz/Pods-Blitz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DBA00C297459C1EF4C1731BC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -489,7 +489,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A8C6EAE2F53E05FF6D80BEE /* Pods-Blitz-BlitzTests.debug.xcconfig */;
+			baseConfigurationReference = 0E2B43198591355C912B68E5 /* Pods-Blitz-BlitzTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -521,7 +521,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 901D45AB542F71EFB01567F1 /* Pods-Blitz-BlitzTests.release.xcconfig */;
+			baseConfigurationReference = 817DC632F8BF5095C3379CAE /* Pods-Blitz-BlitzTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -549,7 +549,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35CEA63EF66981B27399FF62 /* Pods-Blitz.debug.xcconfig */;
+			baseConfigurationReference = FE5D17CE93CF61E8FBBEDB59 /* Pods-Blitz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -579,7 +579,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EA534E9B380603CF93DDA3C /* Pods-Blitz.release.xcconfig */;
+			baseConfigurationReference = 4814968D44D92E516F9A9D0A /* Pods-Blitz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

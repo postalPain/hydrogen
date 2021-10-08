@@ -4,8 +4,11 @@ import {
   View,
   Animated,
   Dimensions,
-  PanResponder,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
+
+import { CrossIcon } from 'components/Icons';
 import useStyles from './styles';
 
 interface ISlideUp {
@@ -28,19 +31,6 @@ const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
     useNativeDriver: false,
   }));
   const handleDismiss = () => closeAnim.current.start(onClose);
-  const panResponders = useRef(PanResponder.create({
-    onStartShouldSetPanResponder: () => true,
-    onMoveShouldSetPanResponder: () => false,
-    onPanResponderMove: Animated.event([
-      null, { dy: panY },
-    ], { useNativeDriver: false }),
-    onPanResponderRelease: (e, gs) => {
-      if (gs.dy > 0 && gs.vy > 0.02) {
-        return closeAnim.current.start(onClose);
-      }
-      return resetPositionAnim.current.start();
-    },
-  }));
 
   useEffect(() => {
     if (visible) {
@@ -61,15 +51,27 @@ const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
       transparent
       onRequestClose={() => handleDismiss()}
     >
-      <View style={styles.overlay}>
-        <View {...panResponders.current.panHandlers}>
-          <Animated.View style={[styles.container, { top }]}>
+      <TouchableOpacity
+        style={styles.overlay}
+        activeOpacity={1}
+        onPress={() => handleDismiss()}
+      >
+        <TouchableWithoutFeedback>
+          <Animated.View
+            style={[styles.container, { top }]}
+          >
+            <TouchableOpacity
+              style={styles.crossButton}
+              onPress={() => handleDismiss()}
+            >
+              <CrossIcon />
+            </TouchableOpacity>
             <View style={styles.contentBox}>
               { children }
             </View>
           </Animated.View>
-        </View>
-      </View>
+        </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </Modal>
   );
 };
