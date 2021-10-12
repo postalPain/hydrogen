@@ -1,8 +1,10 @@
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
   SIGNED_IN: 'SIGNED_IN',
+  SAVE_AUTH_TOKEN: 'SAVE_AUTH_TOKEN',
   GET_USER: 'GET_USER',
   GET_USER_SUCCESS: 'GET_USER_SUCCESS',
+  SAVE_USER: 'SAVE_USER',
   SIGN_OUT: 'SIGN_OUT',
   SIGNED_OUT: 'SIGNED_IN',
   AUTH_ERROR: 'AUTH_ERROR',
@@ -76,6 +78,11 @@ export const getCardList = () => ({
 export const saveCardList = (cardList) => ({
   type: TYPES.SAVE_CARD_LIST,
   payload: cardList,
+});
+
+export const saveUser = (user) => ({
+  type: TYPES.SAVE_USER,
+  payload: user,
 });
 
 export const addAddress = (address) => ({
