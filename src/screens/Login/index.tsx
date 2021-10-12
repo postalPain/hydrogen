@@ -15,7 +15,7 @@ interface ILoginProps {
 
 }
 
-const Login: React.FC<ILoginProps> = ({}) => {
+const Login: React.FC<ILoginProps> = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const loginError = useSelector(userErrorSelector);
