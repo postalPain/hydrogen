@@ -55,9 +55,6 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
     <ScrollView
       ref={scrollViewRef}
       style={styles.container}
-      onContentSizeChange={(_, height) => {
-        console.log(height);
-      }}
     >
       <View style={styles.contentWrapper}>
         <Text style={styles.title}>

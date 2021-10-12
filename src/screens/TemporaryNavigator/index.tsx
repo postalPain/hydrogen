@@ -1,8 +1,9 @@
-import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { SafeAreaView, ScrollView, Alert } from 'react-native';
 import { Button, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
+import { STRIPE_PUBLIC_KEY, GOOGLE_PLACE_API_KEY } from '@env';
 
 import { signIn } from 'store/user/actions';
 import { Routes } from 'navigation';
@@ -20,6 +21,11 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   const onLoginPress = () => {
     dispatch(signIn({ email: 'vlad@stryber.com', password: '1234567Z' }));
   };
+
+  useEffect(() => {
+    Alert.alert(STRIPE_PUBLIC_KEY, GOOGLE_PLACE_API_KEY);
+  }, []);
+
 
   return (
     <SafeAreaView style={theme.components.safeArea}>
