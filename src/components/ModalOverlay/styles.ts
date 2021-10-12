@@ -4,7 +4,7 @@ const useStyles = () => StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 30,
-    paddingTop: 25,
+    paddingVertical: 25,
   },
   overlay: {
     position: 'absolute',

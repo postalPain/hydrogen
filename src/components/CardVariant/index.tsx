@@ -32,11 +32,15 @@ const CardVariant: React.FC<ICardVariantProps> = ({ theme }) => {
   };
 
   return (
-    <BottomSheetScrollView>
+    <BottomSheetScrollView style={{ paddingBottom: 50 }}>
       <Text style={styles.title}>{i18n.t('components.cardVariant.title')}</Text>
-      {cardList.map((cardInfo) => (
+      {cardList.map((cardInfo, idx) => (
         <Pressable onPress={() => handleCardChange(cardInfo.uuid)} key={cardInfo.uuid}>
-          <View style={styles.cardContainer}>
+          <View
+            style={[
+              styles.cardContainer,
+              idx === (cardList.length - 1) && styles.lastCardContainer]}
+          >
             <View style={styles.cardNumContainer}>
               <Checkbox radio text="" onPress={() => handleCardChange(cardInfo.uuid)} value={cardInfo.uuid === cardId} key={cardId} />
               <View style={styles.cardWrapper}>
