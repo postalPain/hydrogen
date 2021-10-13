@@ -8,7 +8,7 @@ import useStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAddress } from 'store/user/actions';
-import { errorMessageSelector } from 'store/user/selectors';
+import { userErrorSelector } from 'store/user/selectors';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
@@ -18,7 +18,7 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
   const { goBack } = useNavigation();
-  const errorMessage = useSelector(errorMessageSelector);
+  const errorMessage = useSelector(userErrorSelector);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { params: { address, geoCoords: { latitude, longitude } } } = route;
 
