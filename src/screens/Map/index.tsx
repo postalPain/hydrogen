@@ -113,6 +113,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
       <View style={styles.mapContainer}>
         <MapView
           provider={PROVIDER_GOOGLE}
+          showsUserLocation
           style={styles.map}
           ref={mapRef}
           initialRegion={{
