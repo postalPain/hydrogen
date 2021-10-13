@@ -10,8 +10,9 @@ import MapView, {
   PROVIDER_GOOGLE, Polygon, Region,
 } from 'react-native-maps';
 import marker from '../../../assets/images/marker.png';
+import { areaPoints } from 'screens/Map/areaPoints';
+import { isPointInPolygon } from 'geolib';
 
-import GoogleMapApi from 'services/GoogleMapApi';
 import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
 import i18n from 'i18n';
@@ -25,47 +26,13 @@ interface IMapProps {
 
 const delta = 0.015;
 
-const areaPoints = [
-  {
-    latitude: 50.4462739,
-    longitude: 30.5673602,
-  },
-  {
-    latitude: 50.4452901,
-    longitude: 30.568991,
-  },
-  {
-    latitude: 50.4372547,
-    longitude: 30.5738833,
-  },
-  {
-    latitude: 50.4279056,
-    longitude: 30.5861571,
-  },
-  {
-    latitude: 50.428179,
-    longitude: 30.5879595,
-  },
-  {
-    latitude: 50.4339198,
-    longitude: 30.588732,
-  },
-  {
-    latitude: 50.4493346,
-    longitude: 30.5834105,
-  },
-  {
-    latitude: 50.4462739,
-    longitude: 30.5673602,
-  },
-];
 
 const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
   const styles: any = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
   const [deliveryPoint, setDeliveryPoint] = useState({
-    latitude: 50.44020,
-    longitude: 30.57982,
+    latitude: 24.469675197234857,
+    longitude: 54.342443123459816,
   });
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const mapRef = useRef<MapView>(null);
@@ -92,7 +59,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
     (async () => {
       const currentPosition = await GeolocationApi.getCurrentPosition();
 
-      const inArea = await GoogleMapApi.isPointInArea(currentPosition, areaPoints);
+      const inArea = isPointInPolygon(currentPosition, areaPoints);
       if (inArea) {
         setPosition(currentPosition);
       }
@@ -103,7 +70,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
 
   const onRegionChange = async (region: Region) => {
     setDeliveryPoint(region);
-    const inArea = await GoogleMapApi.isPointInArea(region, areaPoints);
+    const inArea = isPointInPolygon(region, areaPoints);
     setPointInArea(inArea);
     await updateAddress(region);
   };

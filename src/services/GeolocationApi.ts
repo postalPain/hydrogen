@@ -91,10 +91,7 @@ const GeolocationApi = {
       location_type: 'ROOFTOP',
       result_type: 'street_address',
     },
-  }).then(({ data }): GAddressResult => {
-    console.log(data);
-    return (data.results && data.results[0] || null);
-  }),
+  }).then(({ data }): GAddressResult => (data.results && data.results[0] || null)),
 };
 
 export default GeolocationApi;
