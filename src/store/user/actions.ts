@@ -13,6 +13,7 @@ export const TYPES = {
   GET_CARD_LIST: 'GET_CARD_LIST',
   SAVE_CARD_LIST: 'SAVE_CARD_LIST',
   ADD_ADDRESS: 'ADD_ADDRESS',
+  SAVE_ADDRESS: 'SAVE_ADDRESS',
 };
 
 interface ISignIn {
@@ -79,5 +80,10 @@ export const saveCardList = (cardList) => ({
 
 export const addAddress = (address) => ({
   type: TYPES.ADD_ADDRESS,
+  payload: address,
+});
+
+export const saveAddress = (address) => ({
+  type: TYPES.SAVE_ADDRESS,
   payload: address,
 });

@@ -6,9 +6,9 @@ import { View } from 'react-native';
 import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addAddress } from 'store/user/actions';
+import { errorMessageSelector } from 'store/user/selectors';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
@@ -17,12 +17,12 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
-  const { goBack, navigate } = useNavigation();
+  const { goBack } = useNavigation();
+  const errorMessage = useSelector(errorMessageSelector);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { params: { address, geoCoords: { latitude, longitude } } } = route;
 
   const handleFormSubmit = (values) => {
-    console.log(values);
     dispatch(addAddress({
       ...values,
       type: addressType === 'Villa' ? 'villa' : 'apartment',
@@ -30,7 +30,6 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
       latitude,
       longitude,
     }));
-    // navigate(Routes.TabNavigation);
   };
 
   const renderVillaForm = () => (
@@ -143,5 +142,6 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
     renderApartmentForm,
     handleSubmit,
     goBack,
+    errorMessage,
   };
 };
