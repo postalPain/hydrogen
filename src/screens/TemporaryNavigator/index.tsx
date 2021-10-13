@@ -48,6 +48,9 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
         <Button onPress={() => navigator.navigate(Routes.Onboard)}>
           {Routes.Onboard}
         </Button>
+        <Button onPress={() => navigator.navigate(Routes.Login)}>
+          {Routes.Login}
+        </Button>
       </ScrollView>
     </SafeAreaView>
   );

@@ -12,7 +12,9 @@ import {
   getUserSuccess,
   saveCard,
   saveCardList,
-  saveDefaultCard, saveAddress,
+  saveDefaultCard,
+  saveUser,
+  saveAddress,
 } from './actions';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
@@ -31,13 +33,14 @@ function* getUserWorker(): SagaIterator {
 
 function* signInWorker(action): SagaIterator {
   try {
+    yield put(setError(''));
     const response = yield call(userAPI.signIn, action.payload);
-    const { data: { access_token: accessToken } } = response.data;
+    const { data: { access_token: accessToken, user } } = response.data;
     yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
     setItem(AUTH_TOKEN, accessToken);
     yield put(signedIn(accessToken));
-    // TODO uncomment when api will be available
-    // yield put(getUser());
+    yield put(saveUser(user));
+    yield call(navigate, Routes.TabNavigation);
     // TODO: move this logic to initialization
     const { data: { data } } = yield call(userAPI.getCardList);
     yield put(saveCardList(data));

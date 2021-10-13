@@ -35,3 +35,8 @@ export const CardSchema = Yup.object().shape({
     ),
   cvc: Yup.string().required(i18n.t(i18n.t('components.paymentCardForm.errors.cvcRequired'))).min(3, i18n.t('components.paymentCardForm.errors.cvc')),
 });
+
+export const LoginSchema = Yup.object().shape({
+  email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
+  password: Yup.string().min(8, i18n.t('screens.signUp.errors.password2')).required(i18n.t('screens.signUp.errors.password')),
+});

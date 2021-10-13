@@ -26,6 +26,12 @@ export default function authentication(state = defaultState, action) {
         loading: false,
       };
     }
+    case TYPES.SAVE_USER: {
+      return {
+        ...state,
+        user: action.payload,
+      };
+    }
     case TYPES.AUTH_ERROR: {
       return {
         ...state,

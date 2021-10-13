@@ -27,6 +27,7 @@ import ConfirmAddress from 'screens/ConfirmAddress';
 import { Header } from 'components';
 import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
+import Login from 'screens/Login';
 
 const Stack = createStackNavigator();
 
@@ -76,6 +77,14 @@ const Navigation = () => {
             options={{
               gestureEnabled: false,
               headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.Login}
+            component={Login}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.login.header'),
             }}
           />
           <Stack.Screen

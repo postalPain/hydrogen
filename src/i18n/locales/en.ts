@@ -103,6 +103,13 @@ export default {
       button: 'Continue',
       link: 'I already have an account',
     },
+    login: {
+      header: 'Login',
+      email: 'Email Address',
+      password: 'Password',
+      forgotPassword: 'Forgot Password?',
+      button: 'Log In',
+    },
   },
   components: {
     locationButton: {
