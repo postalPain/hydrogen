@@ -12,6 +12,8 @@ export const TYPES = {
   SAVE_DEFAULT_CARD: 'SAVE_DEFAULT_CARD',
   GET_CARD_LIST: 'GET_CARD_LIST',
   SAVE_CARD_LIST: 'SAVE_CARD_LIST',
+  ADD_ADDRESS: 'ADD_ADDRESS',
+  SAVE_ADDRESS: 'SAVE_ADDRESS',
 };
 
 interface ISignIn {
@@ -74,4 +76,14 @@ export const getCardList = () => ({
 export const saveCardList = (cardList) => ({
   type: TYPES.SAVE_CARD_LIST,
   payload: cardList,
+});
+
+export const addAddress = (address) => ({
+  type: TYPES.ADD_ADDRESS,
+  payload: address,
+});
+
+export const saveAddress = (address) => ({
+  type: TYPES.SAVE_ADDRESS,
+  payload: address,
 });

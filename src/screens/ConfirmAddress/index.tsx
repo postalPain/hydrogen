@@ -3,7 +3,7 @@ import {
   View, SafeAreaView, ScrollView, Pressable,
 } from 'react-native';
 import {
-  Dropdown, Input, Button, withTheme,
+  Dropdown, Input, Button, withTheme, Text,
 } from '@stryberventures/stryber-react-native-ui-components';
 import { ProjectThemeType } from 'theme';
 import { useConfirmAddress } from 'screens/ConfirmAddress/useConfirmAddress';
@@ -26,6 +26,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     renderApartmentForm,
     handleSubmit,
     goBack,
+    errorMessage,
   } = useConfirmAddress(theme, route);
 
   return (
@@ -58,9 +59,12 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
           {addressType === 'Villa' && renderVillaForm()}
           {addressType === 'Apartment' && renderApartmentForm()}
         </View>
-        <Button style={styles.button} onPress={handleSubmit}>
-          {i18n.t('screens.confirmAddress.button')}
-        </Button>
+        <View>
+          {!!errorMessage && <Text color="red">{errorMessage}</Text>}
+          <Button style={styles.button} onPress={handleSubmit}>
+            {i18n.t('screens.confirmAddress.button')}
+          </Button>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

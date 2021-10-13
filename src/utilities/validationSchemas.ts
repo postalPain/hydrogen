@@ -10,12 +10,12 @@ export const SignUpSchema = Yup.object().shape({
 });
 
 export const VillaSchema = Yup.object().shape({
-  houseNum: Yup.string().required(i18n.t('screens.confirmAddress.errors.house')),
+  house_number: Yup.string().required(i18n.t('screens.confirmAddress.errors.house')),
 });
 
 export const ApartmentSchema = Yup.object().shape({
   floor: Yup.string().required(i18n.t('screens.confirmAddress.errors.floor')),
-  apartmentNum: Yup.string().required(i18n.t('screens.confirmAddress.errors.apartment')),
+  apartment_number: Yup.string().required(i18n.t('screens.confirmAddress.errors.apartment')),
 });
 
 export const CardSchema = Yup.object().shape({

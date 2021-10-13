@@ -12,10 +12,13 @@ import {
   getUserSuccess,
   saveCard,
   saveCardList,
-  saveDefaultCard,
+  saveDefaultCard, saveAddress,
 } from './actions';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
+import { AUTH_TOKEN } from '../../constants';
+import { navigate } from 'navigation/NavigationUtilities';
+import { Routes } from 'navigation';
 
 function* getUserWorker(): SagaIterator {
   try {
@@ -31,7 +34,7 @@ function* signInWorker(action): SagaIterator {
     const response = yield call(userAPI.signIn, action.payload);
     const { data: { access_token: accessToken } } = response.data;
     yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
-    setItem('AUTH_TOKEN', accessToken);
+    setItem(AUTH_TOKEN, accessToken);
     yield put(signedIn(accessToken));
     // TODO uncomment when api will be available
     // yield put(getUser());
@@ -84,10 +87,25 @@ function* setDefaultCardWorker(action): SagaIterator {
   }
 }
 
+function* addAddressWorker(action): SagaIterator {
+  try {
+    yield put(setError(''));
+    const { data: { data } } = yield call(userAPI.addAddress, action.payload);
+    const { access_token: accessToken, delivery_address: deliveryAddress } = data;
+    setItem(AUTH_TOKEN, accessToken);
+    yield put(signedIn(accessToken));
+    yield put(saveAddress(deliveryAddress));
+    yield call(navigate, Routes.TabNavigation);
+  } catch (e) {
+    yield put(setError('Something went wrong'));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
   yield takeEvery(TYPES.SIGN_OUT, signOutWorker);
   yield takeEvery(TYPES.ADD_CARD, addCardWorker);
   yield takeEvery(TYPES.SET_DEFAULT_CARD, setDefaultCardWorker);
+  yield takeEvery(TYPES.ADD_ADDRESS, addAddressWorker);
 }

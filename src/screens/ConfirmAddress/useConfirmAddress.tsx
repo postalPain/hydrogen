@@ -6,25 +6,37 @@ import { View } from 'react-native';
 import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { addAddress } from 'store/user/actions';
+import { errorMessageSelector } from 'store/user/selectors';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
+  const dispatch = useDispatch();
   const [addressType, setAddressType] = useState(null);
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
-  const { goBack, navigate } = useNavigation();
+  const { goBack } = useNavigation();
+  const errorMessage = useSelector(errorMessageSelector);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { params: { address, geoCoords } } = route;
+  const { params: { address, geoCoords: { latitude, longitude } } } = route;
 
-  const handleFormSubmit = () => navigate(Routes.TabNavigation);
+  const handleFormSubmit = (values) => {
+    dispatch(addAddress({
+      ...values,
+      type: addressType === 'Villa' ? 'villa' : 'apartment',
+      full_address: address,
+      latitude,
+      longitude,
+    }));
+  };
 
   const renderVillaForm = () => (
     <Formik
       innerRef={villaFormRef}
       initialValues={{
-        buildingName: '', houseNum: '',
+        building_name: '', house_number: '',
       }}
       onSubmit={handleFormSubmit}
       validationSchema={VillaSchema}
@@ -40,17 +52,17 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
             variant="simple"
             style={styles.input}
             label="Building name"
-            value={values.buildingName}
-            onChange={handleChange('buildingName')}
-            error={submitCount > 0 ? errors.buildingName : undefined}
+            value={values.building_name}
+            onChange={handleChange('building_name')}
+            error={submitCount > 0 ? errors.building_name : undefined}
           />
           <Input
             variant="simple"
             style={styles.input}
             label="House No."
-            value={values.houseNum}
-            onChange={handleChange('houseNum')}
-            error={submitCount > 0 ? errors.houseNum : undefined}
+            value={values.house_number}
+            onChange={handleChange('house_number')}
+            error={submitCount > 0 ? errors.house_number : undefined}
           />
         </View>
       )}
@@ -61,7 +73,7 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
     <Formik
       innerRef={apartmentFormRef}
       initialValues={{
-        buildingName: '', floor: '', apartmentNum: '',
+        building_name: '', floor: '', apartment_number: '',
       }}
       onSubmit={handleFormSubmit}
       validationSchema={ApartmentSchema}
@@ -77,9 +89,9 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
             variant="simple"
             style={styles.input}
             label="Building name"
-            value={values.buildingName}
-            onChange={handleChange('buildingName')}
-            error={submitCount > 0 ? errors.buildingName : undefined}
+            value={values.building_name}
+            onChange={handleChange('building_name')}
+            error={submitCount > 0 ? errors.building_name : undefined}
           />
           <Input
             variant="simple"
@@ -93,8 +105,8 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
             variant="simple"
             label="Apartment No."
             value={values.apartmentNum}
-            onChange={handleChange('apartmentNum')}
-            error={submitCount > 0 ? errors.apartmentNum : undefined}
+            onChange={handleChange('apartment_number')}
+            error={submitCount > 0 ? errors.apartment_number : undefined}
           />
         </View>
       )}
@@ -130,5 +142,6 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
     renderApartmentForm,
     handleSubmit,
     goBack,
+    errorMessage,
   };
 };

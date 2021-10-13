@@ -6,6 +6,7 @@ const defaultState = {
   errorMessage: '',
   loading: false,
   defaultCard: {},
+  deliveryAddress: null,
   cardList: [],
 };
 
@@ -64,6 +65,12 @@ export default function authentication(state = defaultState, action) {
       return {
         ...state,
         cardList: action.payload,
+      };
+    }
+    case TYPES.SAVE_ADDRESS: {
+      return {
+        ...state,
+        deliveryAddress: action.payload,
       };
     }
     default:
