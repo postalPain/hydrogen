@@ -7,20 +7,12 @@ import i18n from 'i18n';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from 'store/user/actions';
-import { userErrorSelector, userToken } from 'store/user/selectors';
-import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
+import { userErrorSelector } from 'store/user/selectors';
 
-interface ILoginProps {
-
-}
-
-const Login: React.FC<ILoginProps> = () => {
+const Login: React.FC = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const loginError = useSelector(userErrorSelector);
-  const token = useSelector(userToken);
-  const { navigate } = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -30,9 +22,6 @@ const Login: React.FC<ILoginProps> = () => {
         }}
         onSubmit={(values) => {
           dispatch(signIn(values));
-          if (!loginError && token) {
-            navigate(Routes.TabNavigation);
-          }
         }}
         validationSchema={LoginSchema}
       >
@@ -63,7 +52,7 @@ const Login: React.FC<ILoginProps> = () => {
                 style={styles.input}
               />
               <Button textStyle={styles.link} type="link">{i18n.t('screens.login.forgotPassword')}</Button>
-              <Text>{loginError}</Text>
+              {!!loginError && <Text color="red">{loginError}</Text>}
             </View>
             <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.login.button')}</Button>
           </View>
