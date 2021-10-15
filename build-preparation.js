@@ -58,12 +58,30 @@ const changeGooglePlaceApiKey = async () => new Promise((resolve, reject) => {
   } else reject();
 });
 
+const changeStripeApiKey = async () => new Promise((resolve, reject) => {
+  let STRIPE_PUBLIC_KEY = process.argv.find(val => val.includes('STRIPE_PUBLIC_KEY'));
+  STRIPE_PUBLIC_KEY = STRIPE_PUBLIC_KEY.replace('STRIPE_PUBLIC_KEY=', '');
+
+  if (STRIPE_PUBLIC_KEY) {
+    fs.readFile('.env.production', 'utf-8', (readErr, data) => {
+      if (readErr) throw readErr;
+
+      const newValue = data.replace('STRIPE_PUBLIC_KEY=$BITRISE_STRIPE_PUBLIC_KEY', `STRIPE_PUBLIC_KEY=${STRIPE_PUBLIC_KEY}`);
+
+      fs.writeFile('.env.production', newValue, 'utf-8', (writeErr) => {
+        if (writeErr) throw writeErr;
+        resolve();
+      });
+    });
+  } else reject();
+});
 
 (async () => {
   try {
     await changeBaseUrl();
     await changeEnv();
     await changeGooglePlaceApiKey();
+    await changeStripeApiKey();
   } catch (error) {
     console.log('error', error);
   }
