@@ -38,5 +38,5 @@ export const CardSchema = Yup.object().shape({
 
 export const LoginSchema = Yup.object().shape({
   email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
-  password: Yup.string().min(8, i18n.t('screens.signUp.errors.password2')).required(i18n.t('screens.signUp.errors.password')),
+  password: Yup.string().required(i18n.t('screens.signUp.errors.password')),
 });

@@ -1,4 +1,3 @@
-import { Alert } from 'react-native';
 import axios from 'axios';
 import apiUrls from './apiUrls';
 import { reportToSentry } from 'services/Sentry/sentry';
@@ -34,7 +33,7 @@ xhr.interceptors.request.use(
 xhr.interceptors.response.use(
   (response) => response,
   (error) => {
-    Alert.alert(i18n.t('alerts.title'), error.message);
+    console.log(i18n.t('alerts.title'), error.message);
     // reportToSentry(error);
     return Promise.reject(error);
   },
