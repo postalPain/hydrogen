@@ -42,3 +42,6 @@ export const formatAmount = (product: TProduct) => {
   }
   return `${product.weight} g`;
 };
+export const calcProductsPrice = (products) => products.reduce((sum, product) => (
+  sum + product.price
+), 0);

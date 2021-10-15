@@ -12,9 +12,10 @@ import { getCategories } from 'store/categories/actions';
 
 interface IProductsProps {
   theme: ProjectThemeType;
+  route: any;
 }
 
-const ProductsScreen: React.FC<IProductsProps> = ({ theme }) => {
+const ProductsScreen: React.FC<IProductsProps> = ({ theme, route }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
   const categories = useSelector(categoriesSelector);
@@ -31,6 +32,7 @@ const ProductsScreen: React.FC<IProductsProps> = ({ theme }) => {
       <CategoriesTabNavigation
         loading={categoriesLoading}
         categories={categories}
+        initialCategory={route.params.categoryId}
       />
     </SafeAreaView>
   );

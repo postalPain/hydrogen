@@ -24,7 +24,7 @@ import SignUp from 'screens/SignUp';
 import AutocompleteInput from 'screens/AtocompleteInput';
 import TabNavigation from 'navigation/TabNavigation';
 import ConfirmAddress from 'screens/ConfirmAddress';
-import { Header } from 'components';
+import { Header, BasketSlideUp } from 'components';
 import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
 import Login from 'screens/Login';
@@ -72,6 +72,14 @@ const Navigation = () => {
             }}
           />
           <Stack.Screen
+            name={Routes.TabNavigation}
+            component={TabNavigation}
+            options={{
+              gestureEnabled: false,
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
             name={Routes.Onboard}
             component={Onboard}
             options={{
@@ -103,14 +111,7 @@ const Navigation = () => {
               headerTitle: i18n.t('screens.confirmAddress.header'),
             }}
           />
-          <Stack.Screen
-            name={Routes.TabNavigation}
-            component={TabNavigation}
-            options={{
-              gestureEnabled: false,
-              headerShown: false,
-            }}
-          />
+
           <Stack.Screen
             name={Routes.SignUp}
             component={SignUp}
@@ -149,6 +150,7 @@ const Navigation = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
+      <BasketSlideUp />
     </>
   );
 };

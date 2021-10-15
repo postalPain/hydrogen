@@ -8,6 +8,7 @@ const defaultState = {
   defaultCard: {},
   deliveryAddress: null,
   cardList: [],
+  basket: {},
 };
 
 export default function authentication(state = defaultState, action) {
@@ -77,6 +78,25 @@ export default function authentication(state = defaultState, action) {
       return {
         ...state,
         deliveryAddress: action.payload,
+      };
+    }
+    case TYPES.SET_PRODUCT_TO_BASKET: {
+      let newBasketState = state.basket;
+      if (action.payload.quantity === 0) {
+        delete newBasketState[action.payload.uuid];
+      } else {
+        newBasketState = {
+          ...newBasketState,
+          [action.payload.uuid]: {
+            ...action.payload,
+          },
+        };
+      }
+      return {
+        ...state,
+        basket: {
+          ...newBasketState,
+        },
       };
     }
     default:

@@ -83,5 +83,8 @@ const useStyles = () => StyleSheet.create({
     fontWeight: '500',
     color: '#666',
   },
+  countText: {
+    color: '#fda717',
+  },
 });
 export default useStyles;

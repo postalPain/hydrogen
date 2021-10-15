@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from 'navigation/Routes';
 import Home from 'screens/Home';
-import TemporaryNavigator from 'screens/TemporaryNavigator';
 import React from 'react';
 import SignUp from 'screens/SignUp';
 import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
@@ -32,8 +31,8 @@ const TabNavigation = () => (
       options={{ tabBarIcon: () => <Search /> }}
     />
     <Tab.Screen
-      name={Routes.TemporaryNavigator}
-      component={TabWrapper(TemporaryNavigator)}
+      name={Routes.Basket}
+      component={() => null}
       options={{ tabBarIcon: () => <Checkout /> }}
     />
   </Tab.Navigator>

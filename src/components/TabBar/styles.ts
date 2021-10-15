@@ -34,6 +34,13 @@ const useStyles = () => StyleSheet.create({
     alignItems: 'center',
     marginTop: Platform.OS === 'android' ? 20 : 0,
   },
+  iconWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 30,
+    height: 30,
+  },
 });
 
 export default useStyles;

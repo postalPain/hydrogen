@@ -169,9 +169,15 @@ export default {
       price: 'Price',
       itemAdded: 'Added to cart',
       pieces: 'pieces',
-    },
-    addProductButton: {
       addItem: 'Add item',
+    },
+    basketSlideUp: {
+      header: 'My shopping cart',
+      emptyList: 'Shopping cart is empty',
+      pieces: 'pieces',
+      items: 'items',
+      deliveryFee: 'delivery fee',
+      checkout: 'Checkout',
     },
   },
 };

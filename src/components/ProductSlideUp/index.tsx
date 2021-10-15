@@ -5,14 +5,17 @@ import {
   useWindowDimensions,
   Animated,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  Text, CacheImage,
+  Text, CacheImage, ButtonCounter,
 } from '@stryberventures/stryber-react-native-ui-components';
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
 import { formatCurrency, formatAmount } from 'utilities/helpers';
-import { SlideUp, AddProductButton } from 'components';
+import { setProductToBasket } from 'store/user/actions';
+import { basketProductSelector } from 'store/user/selectors';
+import { SlideUp } from 'components';
 import { CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
 
@@ -24,6 +27,8 @@ interface IProductSlideUp {
 
 const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) => {
   const styles = useStyles();
+  const dispatch = useDispatch();
+  const basketData = useSelector(basketProductSelector(data.uuid));
   const windowSize = useWindowDimensions();
   const fadeAddProductAnim = useRef(new Animated.Value(0)).current;
   const blinkAddProductPopup = () => {
@@ -40,11 +45,15 @@ const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) =
     ]).start();
   };
   const onProductAdded = (count, increment) => {
-    // TODO add product to basket
+    dispatch(setProductToBasket({
+      ...data,
+      quantity: count,
+    }));
     if (increment > 0) {
       blinkAddProductPopup();
     }
   };
+  const initialQuantity = basketData && basketData.quantity || 0;
 
   return (
     <SlideUp
@@ -82,10 +91,18 @@ const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) =
               {i18n.t('components.productSlideUp.itemAdded')}
             </Text>
           </Animated.View>
-          <AddProductButton
-            price={data.price}
+          <ButtonCounter
+            renderCount={(count, style) => (
+              <Text style={style}>
+                {formatCurrency(data.price)}
+                <Text style={[style, styles.countText]}>{` x ${count}`}</Text>
+              </Text>
+            )}
             onCountChange={onProductAdded}
-          />
+            initialValue={initialQuantity}
+          >
+            {i18n.t('components.productSlideUp.addItem')}
+          </ButtonCounter>
         </View>
       </View>
     </SlideUp>

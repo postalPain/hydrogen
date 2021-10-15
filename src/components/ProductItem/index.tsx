@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Text,
   CacheImage,
@@ -12,6 +13,8 @@ import {
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
+import { setProductToBasket } from 'store/user/actions';
+import { basketProductQuantitySelector } from 'store/user/selectors';
 import { formatCurrency, formatAmount } from 'utilities/helpers';
 import { ProjectThemeType } from 'styles/theme';
 import { PlusCircleIcon } from 'components/Icons';
@@ -30,18 +33,32 @@ const ProductItem: React.FC<IProductItemProps> = ({
   onPress,
 }) => {
   const styles = useStyles(theme);
-  const [addButtonCounterVisible, setAddButtonCounterVisible] = useState(false);
+  const dispatch = useDispatch();
+  const basketQuantity = useSelector(basketProductQuantitySelector(data.uuid));
+  const [addButtonCounterVisible, setAddButtonCounterVisible] = useState(!!basketQuantity);
   // TODO add condition on product availability
   const disabled = false;
 
   const onPlusButtonPress = () => {
+    dispatch(setProductToBasket({
+      ...data,
+      quantity: 1,
+    }));
     setAddButtonCounterVisible(true);
   };
   const onCountButtonChange = (count) => {
+    dispatch(setProductToBasket({
+      ...data,
+      quantity: count,
+    }));
     if (count === 0) {
       setAddButtonCounterVisible(false);
     }
   };
+
+  useEffect(() => {
+    setAddButtonCounterVisible(!!basketQuantity);
+  }, [basketQuantity]);
 
   return (
     <>
@@ -52,7 +69,8 @@ const ProductItem: React.FC<IProductItemProps> = ({
               ? (
                 <ButtonCounter
                   style={styles.addToCartButtonCounter}
-                  initialValue={1}
+                  initialValue={basketQuantity}
+                  value={basketQuantity}
                   size="mini"
                   color={theme.colors.yellow}
                   onCountChange={onCountButtonChange}

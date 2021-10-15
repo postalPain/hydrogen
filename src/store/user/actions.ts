@@ -16,11 +16,16 @@ export const TYPES = {
   SAVE_CARD_LIST: 'SAVE_CARD_LIST',
   ADD_ADDRESS: 'ADD_ADDRESS',
   SAVE_ADDRESS: 'SAVE_ADDRESS',
+  SET_PRODUCT_TO_BASKET: 'SET_PRODUCT_TO_BASKET',
 };
 
 interface ISignIn {
   email: string;
   password: string;
+}
+interface ISetProductToBasketPayload {
+  uuid: string;
+  quantity: number;
 }
 
 export const signIn = ({ email, password }) => ({
@@ -93,4 +98,9 @@ export const addAddress = (address) => ({
 export const saveAddress = (address) => ({
   type: TYPES.SAVE_ADDRESS,
   payload: address,
+});
+
+export const setProductToBasket = (payload: ISetProductToBasketPayload) => ({
+  type: TYPES.SET_PRODUCT_TO_BASKET,
+  payload,
 });

@@ -15,9 +15,19 @@ interface ISlideUp {
   children: React.ReactNode;
   visible: boolean;
   onClose: () => void;
+  renderWrapper?: (node: React.ReactNode) => React.ReactNode;
+  containerStyle?: any;
+  contentStyle?: any;
 }
 
-const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
+const SlideUp: React.FC<ISlideUp> = ({
+  visible,
+  children,
+  onClose,
+  renderWrapper = (node) => node,
+  containerStyle,
+  contentStyle,
+}) => {
   const styles = useStyles();
   const [panY] = useState(new Animated.Value(Dimensions.get('screen').height));
   const resetPositionAnim = useRef(Animated.timing(panY, {
@@ -43,6 +53,24 @@ const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
     outputRange: [0, 0, 1],
   });
 
+
+  const renderModal = () => (
+    <View
+      style={[styles.container, containerStyle]}
+    >
+      <TouchableOpacity
+        style={styles.crossButton}
+        onPress={() => handleDismiss()}
+      >
+        <CrossIcon />
+      </TouchableOpacity>
+      <View style={[styles.contentBox, contentStyle]}>
+        { children }
+      </View>
+    </View>
+  );
+
+
   return (
     <Modal
       animated
@@ -57,18 +85,8 @@ const SlideUp = ({ visible, children, onClose }: ISlideUp) => {
         onPress={() => handleDismiss()}
       >
         <TouchableWithoutFeedback>
-          <Animated.View
-            style={[styles.container, { top }]}
-          >
-            <TouchableOpacity
-              style={styles.crossButton}
-              onPress={() => handleDismiss()}
-            >
-              <CrossIcon />
-            </TouchableOpacity>
-            <View style={styles.contentBox}>
-              { children }
-            </View>
+          <Animated.View style={{ top }}>
+            {renderWrapper(renderModal())}
           </Animated.View>
         </TouchableWithoutFeedback>
       </TouchableOpacity>

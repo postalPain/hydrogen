@@ -14,6 +14,7 @@ import useStyles from './styles';
 interface ICategoriesTabNavigationProps {
   theme?: ProjectThemeType;
   categories?: ICategoriesState['data'];
+  initialCategory?: string;
   loading?: boolean;
 }
 
@@ -23,9 +24,12 @@ const getCategoriesRoutesFromList = (categories) => categories.map((item) => ({
   data: item,
 }));
 
-const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = (
-  { theme, categories, loading = false },
-) => {
+const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
+  theme,
+  categories,
+  loading = false,
+  initialCategory,
+}) => {
   const styles = useStyles(theme);
   const [categoriesNavState, setCategoriesNavState] = useState({
     index: 0,
@@ -36,6 +40,7 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = (
     if (categories) {
       setCategoriesNavState({
         ...categoriesNavState,
+        index: categories.findIndex(category => category.uuid === initialCategory),
         routes: getCategoriesRoutesFromList(categories),
       });
     }
