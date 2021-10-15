@@ -39,6 +39,7 @@ const ModalOverlay: React.FC<IModalOverlayProps> = ({
         enablePanDownToClose
         handleComponent={() => null}
         onAnimate={() => setOpen(!open)}
+        android_keyboardInputMode="adjustResize"
       >
         <View style={styles.container}>
           <CloseModal />

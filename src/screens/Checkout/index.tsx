@@ -23,9 +23,20 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const addCardModalRef = useRef<BottomSheet>(null);
   const changeCardModalRef = useRef<BottomSheet>(null);
   const cardVariantModalRef = useRef<BottomSheet>(null);
-  const handleOpenPaymentCardModal = () => addCardModalRef.current.expand();
-  const handleOpenChangeCard = () => changeCardModalRef.current.expand();
-  const handleOpenCardVariant = () => cardVariantModalRef.current.expand();
+  const scrollViewRef = useRef<ScrollView>(null);
+  const scrollToTheBottom = () => scrollViewRef.current.scrollToEnd();
+  const handleOpenPaymentCardModal = () => {
+    addCardModalRef.current.expand();
+    scrollToTheBottom();
+  };
+  const handleOpenChangeCard = () => {
+    changeCardModalRef.current.expand();
+    scrollToTheBottom();
+  };
+  const handleOpenCardVariant = () => {
+    cardVariantModalRef.current.expand();
+    scrollToTheBottom();
+  };
   const handleClosePaymentCardModal = () => addCardModalRef.current.close();
   const handleCloseChangeCard = () => changeCardModalRef.current.close();
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
@@ -41,7 +52,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      ref={scrollViewRef}
+      style={styles.container}
+    >
       <View style={styles.contentWrapper}>
         <Text style={styles.title}>
           {i18n.t('screens.checkout.deliveryDetails')}
