@@ -82,7 +82,7 @@ export default function authentication(state = defaultState, action) {
     }
     case TYPES.SET_PRODUCT_TO_BASKET: {
       let newBasketState = state.basket;
-      if (action.payload.quantity === 0) {
+      if (action.payload.basketQuantity === 0) {
         delete newBasketState[action.payload.uuid];
       } else {
         newBasketState = {

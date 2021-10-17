@@ -4,6 +4,7 @@ import { ProjectThemeType } from 'styles/theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   header: {
+    paddingHorizontal: 20,
     marginTop: -theme.spaces.xs,
     marginBottom: theme.spaces.m,
     fontSize: theme.fontSizes.headline,
@@ -47,6 +48,11 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   inventoryPriceCol: {
     flex: 1,
   },
+  inventoryName: {
+    fontSize: theme.fontSizes.small,
+    color: '#666',
+    fontWeight: '700',
+  },
   inventoryText: {
     fontSize: theme.fontSizes.small,
     color: '#666',
@@ -83,6 +89,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     borderBottomLeftRadius: 12,
   },
   wrapperBoxContent: {
+    paddingLeft: 0,
+    paddingRight: 0,
     paddingBottom: 0,
   },
   totalBlockLeftCol: {
@@ -111,6 +119,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontWeight: '600',
   },
   scrollBox: {
+    paddingTop: 8,
+    paddingHorizontal: 20,
     height: 400,
   },
 });

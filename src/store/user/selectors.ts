@@ -9,9 +9,11 @@ export const basketProductSelector = (id: string) => (state: RootState) => (
 );
 
 export const basketProductQuantitySelector = (id: string) => (state: RootState) => (
-  state.user.basket[id] && state.user.basket[id].quantity || 0
+  state.user.basket[id] && state.user.basket[id].basketQuantity || 0
 );
 
 export const basketLengthSelector = () => (state: RootState) => (
-  Object.keys(state.user.basket).length
+  Object.values(state.user.basket).reduce((sum, item) => (
+    sum + item.basketQuantity
+  ), 0)
 );

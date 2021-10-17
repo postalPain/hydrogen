@@ -8,11 +8,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
 import { DELIVERY_FEE } from 'constants/';
-import { formatCurrency, formatAmount, calcProductsPrice } from 'utilities/helpers';
+import {
+  formatCurrency,
+  formatAmount,
+  calcProductsPrice,
+  roundPrice,
+} from 'utilities/helpers';
 import { appBasketVisibilitySelector } from 'store/app/selectors';
 import { setBasketVisibility } from 'store/app/actions';
 import { setProductToBasket } from 'store/user/actions';
-import { basketSelector } from 'store/user/selectors';
+import { basketSelector, basketLengthSelector } from 'store/user/selectors';
 import { SlideUp } from 'components';
 import useStyles from './styles';
 
@@ -26,11 +31,12 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
   const visible = useSelector(appBasketVisibilitySelector);
   const basket = useSelector(basketSelector());
   const products = Object.values(basket);
+  const basketLength = useSelector(basketLengthSelector());
   const dispatch = useDispatch();
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
       ...data,
-      quantity: count,
+      basketQuantity: count,
     }));
   };
   const onSlideUpClose = () => {
@@ -47,7 +53,7 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
           />
         </View>
         <View style={styles.inventoryContent}>
-          <Text style={[styles.inventoryText, styles.p]}>
+          <Text style={[styles.inventoryName, styles.p]}>
             {`${product.name}${product.pieces ? (` (${product.pieces} ${i18n.t('components.basketSlideUp.pieces')})`) : ''}`}
           </Text>
           <Text style={[styles.inventoryText, styles.p]}>
@@ -55,11 +61,13 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
           </Text>
           <View style={styles.inventoryPanel}>
             <View style={styles.inventoryPriceCol}>
-              <Text style={styles.priceText}>{formatCurrency(product.price)}</Text>
+              <Text style={styles.priceText}>
+                {formatCurrency(roundPrice(product.price * product.basketQuantity))}
+              </Text>
             </View>
             <ButtonCounter
               style={styles.addToCartButtonCounter}
-              initialValue={product.quantity}
+              initialValue={product.basketQuantity}
               size="mini"
               color={theme.colors.yellow}
               onCountChange={(count) => onCountButtonChange(product, count)}
@@ -86,7 +94,7 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
             <View style={styles.totalBlock}>
               <View style={styles.totalBlockLeftCol}>
                 <Text style={[styles.textSmall, styles.p]}>
-                  {`${products.length} ${i18n.t('components.basketSlideUp.items')} + ${formatCurrency(DELIVERY_FEE)} ${i18n.t('components.basketSlideUp.deliveryFee')}`}
+                  {`${basketLength} ${i18n.t('components.basketSlideUp.items')} + ${formatCurrency(DELIVERY_FEE)} ${i18n.t('components.basketSlideUp.deliveryFee')}`}
                 </Text>
                 <Text style={[styles.totalPrice, styles.p]}>
                   {formatCurrency(calcProductsPrice(products) + DELIVERY_FEE)}

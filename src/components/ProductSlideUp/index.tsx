@@ -47,13 +47,13 @@ const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) =
   const onProductAdded = (count, increment) => {
     dispatch(setProductToBasket({
       ...data,
-      quantity: count,
+      basketQuantity: count,
     }));
     if (increment > 0) {
       blinkAddProductPopup();
     }
   };
-  const initialQuantity = basketData && basketData.quantity || 0;
+  const initialQuantity = basketData && basketData.basketQuantity || 0;
 
   return (
     <SlideUp

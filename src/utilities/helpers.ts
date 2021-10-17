@@ -33,7 +33,6 @@ export const isMonthValid = (expirationDate: string) => {
 
   return Number(expMonth) <= 12;
 };
-type TAggregateState = 'solid' | 'liquid';
 
 export const formatCurrency = (amount: number) => `${amount} AED`;
 export const formatAmount = (product: TProduct) => {
@@ -42,6 +41,7 @@ export const formatAmount = (product: TProduct) => {
   }
   return `${product.weight} g`;
 };
-export const calcProductsPrice = (products) => products.reduce((sum, product) => (
-  sum + product.price
-), 0);
+export const roundPrice = (n: number) => Math.round(n * 100) / 100;
+export const calcProductsPrice = (products) => roundPrice(products.reduce((sum, product) => (
+  sum + product.price * product.basketQuantity
+), 0));

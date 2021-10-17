@@ -25,7 +25,7 @@ interface ISignIn {
 }
 interface ISetProductToBasketPayload {
   uuid: string;
-  quantity: number;
+  basketQuantity: number;
 }
 
 export const signIn = ({ email, password }) => ({

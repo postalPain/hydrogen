@@ -42,14 +42,14 @@ const ProductItem: React.FC<IProductItemProps> = ({
   const onPlusButtonPress = () => {
     dispatch(setProductToBasket({
       ...data,
-      quantity: 1,
+      basketQuantity: 1,
     }));
     setAddButtonCounterVisible(true);
   };
   const onCountButtonChange = (count) => {
     dispatch(setProductToBasket({
       ...data,
-      quantity: count,
+      basketQuantity: count,
     }));
     if (count === 0) {
       setAddButtonCounterVisible(false);
