@@ -67,4 +67,7 @@ export const userAPI = {
   addAddress(address): Promise<any> {
     return xhr.post(apiUrls.deliveryAddress, address);
   },
+  signUp(signUpData): Promise<any> {
+    return xhr.post(apiUrls.signUp, signUpData);
+  },
 };

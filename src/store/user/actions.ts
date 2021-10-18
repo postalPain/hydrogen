@@ -17,6 +17,7 @@ export const TYPES = {
   ADD_ADDRESS: 'ADD_ADDRESS',
   SAVE_ADDRESS: 'SAVE_ADDRESS',
   SET_PRODUCT_TO_BASKET: 'SET_PRODUCT_TO_BASKET',
+  SIGN_UP: 'SIGN_UP',
 };
 
 interface ISignIn {
@@ -103,4 +104,9 @@ export const saveAddress = (address) => ({
 export const setProductToBasket = (payload: ISetProductToBasketPayload) => ({
   type: TYPES.SET_PRODUCT_TO_BASKET,
   payload,
+});
+
+export const signUp = (signUpData) => ({
+  type: TYPES.SIGN_UP,
+  payload: signUpData,
 });

@@ -7,4 +7,5 @@ export default {
   cards: 'api/v1/cards',
   setDefaultCard: (id) => `api/v1/cards/${id}/default`,
   deliveryAddress: 'api/v1/user/delivery-address',
+  signUp: 'api/v1/sign-up',
 };

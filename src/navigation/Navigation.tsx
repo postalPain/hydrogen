@@ -28,6 +28,7 @@ import { Header, BasketSlideUp } from 'components';
 import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
 import Login from 'screens/Login';
+import CreatePassword from 'screens/CreatePassword';
 
 const Stack = createStackNavigator();
 
@@ -111,12 +112,20 @@ const Navigation = () => {
               headerTitle: i18n.t('screens.confirmAddress.header'),
             }}
           />
-
           <Stack.Screen
             name={Routes.SignUp}
             component={SignUp}
             options={{
               gestureEnabled: false,
+              headerTitle: i18n.t('screens.signUp.header'),
+            }}
+          />
+          <Stack.Screen
+            name={Routes.CreatePassword}
+            component={CreatePassword}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.signUp.header2'),
             }}
           />
           <Stack.Screen
