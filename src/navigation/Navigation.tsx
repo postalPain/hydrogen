@@ -29,6 +29,7 @@ import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
 import Login from 'screens/Login';
 import CreatePassword from 'screens/CreatePassword';
+import OrderConfirmation from 'screens/OrderConfirmation';
 
 const Stack = createStackNavigator();
 
@@ -155,6 +156,14 @@ const Navigation = () => {
             component={Products}
             options={{
               gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.OrderConfirmation}
+            component={OrderConfirmation}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.orderConfirmation.header'),
             }}
           />
         </Stack.Navigator>
