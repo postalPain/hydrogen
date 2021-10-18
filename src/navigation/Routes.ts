@@ -3,6 +3,7 @@ enum Routes {
   MapScreen = 'MapScreen',
   TemporaryNavigator = 'TemporaryNavigator',
   SignUp = 'SignUp',
+  CreatePassword = 'CreatePassword',
   AutocompleteInput = 'AutocompleteInput',
   TabNavigation = 'TabNavigation',
   ConfirmAddress = 'ConfirmAddress',

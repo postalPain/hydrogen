@@ -55,7 +55,7 @@ function* signOutWorker(): SagaIterator {
   try {
     yield call(removeHeader, 'Authorization');
     yield call(userAPI.signOut);
-    yield call(removeItem, 'AUTH_TOKEN');
+    yield call(removeItem, AUTH_TOKEN);
   } catch (error) {
     yield put(setError('Error on logout'));
   }
@@ -104,6 +104,20 @@ function* addAddressWorker(action): SagaIterator {
   }
 }
 
+function* signUpWorker(action): SagaIterator {
+  try {
+    yield put(setError(''));
+    const { data: { data } } = yield call(userAPI.signUp, action.payload);
+    const { access_token: accessToken, user } = data;
+    setItem(AUTH_TOKEN, accessToken);
+    yield put(signedIn(accessToken));
+    yield put(saveUser(user));
+    navigate(Routes.Checkout);
+  } catch (error) {
+    yield put(setError('Something went wrong'));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
@@ -111,4 +125,5 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.ADD_CARD, addCardWorker);
   yield takeEvery(TYPES.SET_DEFAULT_CARD, setDefaultCardWorker);
   yield takeEvery(TYPES.ADD_ADDRESS, addAddressWorker);
+  yield takeEvery(TYPES.SIGN_UP, signUpWorker);
 }

@@ -75,6 +75,9 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
     await updateAddress(region);
   };
 
+  const handleLocationConfirm = () => navigation
+    .navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint });
+
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
@@ -111,7 +114,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
         </View>
         <View style={styles.footer}>
           {pointInArea
-            ? <Button style={styles.button} onPress={() => navigation.navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint })}>{i18n.t('screens.map.button')}</Button>
+            ? <Button style={styles.button} onPress={handleLocationConfirm}>{i18n.t('screens.map.button')}</Button>
             : (
               <Card card shadow style={styles.card}>
                 <Text semibold color="#666" size={14} style={styles.title}>{i18n.t('screens.map.message1')}</Text>
