@@ -30,6 +30,8 @@ import Onboard from 'screens/Onboard';
 import Login from 'screens/Login';
 import CreatePassword from 'screens/CreatePassword';
 import OrderConfirmation from 'screens/OrderConfirmation';
+import ResetPassword from 'screens/ResetPassword';
+import CheckEmail from 'screens/CheckEmail';
 
 const Stack = createStackNavigator();
 
@@ -156,6 +158,22 @@ const Navigation = () => {
             component={Products}
             options={{
               gestureEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.ResetPassword}
+            component={ResetPassword}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.resetPassword.header'),
+            }}
+          />
+          <Stack.Screen
+            name={Routes.CheckEmail}
+            component={CheckEmail}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.resetPassword.header'),
             }}
           />
           <Stack.Screen

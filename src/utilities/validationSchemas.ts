@@ -48,3 +48,7 @@ export const LoginSchema = Yup.object().shape({
   email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
   password: Yup.string().required(i18n.t('screens.signUp.errors.password')),
 });
+
+export const ResetPasswordSchema = Yup.object().shape({
+  email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
+});
