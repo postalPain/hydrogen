@@ -13,6 +13,7 @@ import {
   formatAmount,
   calcProductsPrice,
   roundPrice,
+  getMaxProductCount,
 } from 'utilities/helpers';
 import { appBasketVisibilitySelector } from 'store/app/selectors';
 import { setBasketVisibility } from 'store/app/actions';
@@ -68,6 +69,7 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
             <ButtonCounter
               style={styles.addToCartButtonCounter}
               initialValue={product.basketQuantity}
+              maxValue={getMaxProductCount(product)}
               size="mini"
               color={theme.colors.yellow}
               onCountChange={(count) => onCountButtonChange(product, count)}

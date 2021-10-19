@@ -1,4 +1,17 @@
-import { TYPES } from './actions';
+import { TYPES, TBasketProduct } from './actions';
+
+interface IUserState {
+  accessToken: string;
+  user: string | null;
+  errorMessage: string;
+  loading: boolean;
+  defaultCard: any;
+  deliveryAddress: string | null;
+  cardList: any[],
+  basket: {
+    [key: string]: TBasketProduct
+  },
+}
 
 const defaultState = {
   accessToken: '',
@@ -11,7 +24,7 @@ const defaultState = {
   basket: {},
 };
 
-export default function authentication(state = defaultState, action) {
+export default function user(state: IUserState = defaultState, action) {
   switch (action.type) {
     case TYPES.SIGN_IN: {
       return {

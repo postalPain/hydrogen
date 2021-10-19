@@ -45,3 +45,6 @@ export const roundPrice = (n: number) => Math.round(n * 100) / 100;
 export const calcProductsPrice = (products) => roundPrice(products.reduce((sum, product) => (
   sum + product.price * product.basketQuantity
 ), 0));
+export const getMaxProductCount = (product: TProduct) => (
+  product.quantity < product.max_per_order ? product.quantity : product.max_per_order
+);

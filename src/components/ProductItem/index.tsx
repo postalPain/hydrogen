@@ -15,7 +15,7 @@ import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
 import { setProductToBasket } from 'store/user/actions';
 import { basketProductQuantitySelector } from 'store/user/selectors';
-import { formatCurrency, formatAmount } from 'utilities/helpers';
+import { formatCurrency, formatAmount, getMaxProductCount } from 'utilities/helpers';
 import { ProjectThemeType } from 'styles/theme';
 import { PlusCircleIcon } from 'components/Icons';
 import useStyles from './styles';
@@ -36,8 +36,7 @@ const ProductItem: React.FC<IProductItemProps> = ({
   const dispatch = useDispatch();
   const basketQuantity = useSelector(basketProductQuantitySelector(data.uuid));
   const [addButtonCounterVisible, setAddButtonCounterVisible] = useState(!!basketQuantity);
-  // TODO add condition on product availability
-  const disabled = false;
+  const disabled = !data.quantity;
 
   const onPlusButtonPress = () => {
     dispatch(setProductToBasket({
@@ -71,6 +70,7 @@ const ProductItem: React.FC<IProductItemProps> = ({
                   style={styles.addToCartButtonCounter}
                   initialValue={basketQuantity}
                   value={basketQuantity}
+                  maxValue={getMaxProductCount(data)}
                   size="mini"
                   color={theme.colors.yellow}
                   onCountChange={onCountButtonChange}
@@ -114,7 +114,7 @@ const ProductItem: React.FC<IProductItemProps> = ({
               <View style={styles.disableOverlay}>
                 <View style={styles.badgeNotAvailable}>
                   <Text style={styles.badgeNotAvailableText}>
-                    {i18n.t('components.subcategoryTab.backSoon')}
+                    {i18n.t('components.productItem.backSoon')}
                   </Text>
                 </View>
               </View>

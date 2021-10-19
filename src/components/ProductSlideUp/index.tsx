@@ -12,7 +12,7 @@ import {
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
-import { formatCurrency, formatAmount } from 'utilities/helpers';
+import { formatCurrency, formatAmount, getMaxProductCount } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
 import { basketProductSelector } from 'store/user/selectors';
 import { SlideUp } from 'components';
@@ -100,6 +100,7 @@ const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) =
             )}
             onCountChange={onProductAdded}
             initialValue={initialQuantity}
+            maxValue={getMaxProductCount(data)}
           >
             {i18n.t('components.productSlideUp.addItem')}
           </ButtonCounter>

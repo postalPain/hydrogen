@@ -14,18 +14,22 @@ export type TCategory = {
 
 export type TProduct = {
   uuid: string;
+  product_uuid: string;
+  warehouse_uuid: string;
+  cost: number;
+  price: number;
+  quantity: number;
+  max_per_order: number;
+  shelf_no: string;
   name: string;
   description: string | null;
   origin: any | null;
-  weight: number | null;
-  price: number;
-  max_per_order: number;
+  tax: number;
   image_url: string;
+  slug: string;
+  weight: number | null;
   milliliters: number | null;
   pieces: number | null;
-  created_at: string;
-  updated_at: string;
-  subcategories: string[] | null;
 };
 
 type TMetaList = {

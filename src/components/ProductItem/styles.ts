@@ -85,7 +85,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     position: 'absolute',
     zIndex: 10,
     left: 8,
-    top: 8,
+    top: 10,
     borderRadius: 3,
     paddingVertical: 2,
     paddingHorizontal: 4,

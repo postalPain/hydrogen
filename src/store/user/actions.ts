@@ -1,3 +1,5 @@
+import { TProduct } from 'services/ServerAPI/types';
+
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
   SIGNED_IN: 'SIGNED_IN',
@@ -20,13 +22,13 @@ export const TYPES = {
   SIGN_UP: 'SIGN_UP',
 };
 
+export type TBasketProduct = TProduct & {
+  basketQuantity: number;
+};
+
 interface ISignIn {
   email: string;
   password: string;
-}
-interface ISetProductToBasketPayload {
-  uuid: string;
-  basketQuantity: number;
 }
 
 export const signIn = ({ email, password }) => ({
@@ -101,7 +103,7 @@ export const saveAddress = (address) => ({
   payload: address,
 });
 
-export const setProductToBasket = (payload: ISetProductToBasketPayload) => ({
+export const setProductToBasket = (payload: TBasketProduct) => ({
   type: TYPES.SET_PRODUCT_TO_BASKET,
   payload,
 });
