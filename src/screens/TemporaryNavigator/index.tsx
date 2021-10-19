@@ -60,6 +60,12 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
         <Button onPress={() => navigator.navigate(Routes.CheckEmail)}>
           {Routes.CheckEmail}
         </Button>
+        <Button onPress={() => navigator.navigate(Routes.UpdatePassword)}>
+          {Routes.UpdatePassword}
+        </Button>
+        <Button onPress={() => navigator.navigate(Routes.ResetPasswordSuccess)}>
+          {Routes.ResetPasswordSuccess}
+        </Button>
       </ScrollView>
     </SafeAreaView>
   );

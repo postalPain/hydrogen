@@ -15,6 +15,8 @@ enum Routes {
   OrderConfirmation = 'OrderConfirmation',
   ResetPassword = 'ResetPassword',
   CheckEmail = 'CheckEmail',
+  UpdatePassword = 'UpdatePassword',
+  ResetPasswordSuccess = 'ResetPasswordSuccess',
 }
 
 export default Routes;
