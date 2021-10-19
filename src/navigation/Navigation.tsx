@@ -32,6 +32,8 @@ import CreatePassword from 'screens/CreatePassword';
 import OrderConfirmation from 'screens/OrderConfirmation';
 import ResetPassword from 'screens/ResetPassword';
 import CheckEmail from 'screens/CheckEmail';
+import UpdatePassword from 'screens/UpdatePassword';
+import ResetPasswordSuccess from 'screens/ResetPasswordSuccess';
 
 const Stack = createStackNavigator();
 
@@ -182,6 +184,22 @@ const Navigation = () => {
             options={{
               gestureEnabled: false,
               headerTitle: i18n.t('screens.orderConfirmation.header'),
+            }}
+          />
+          <Stack.Screen
+            name={Routes.UpdatePassword}
+            component={UpdatePassword}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.updatePassword.header'),
+            }}
+          />
+          <Stack.Screen
+            name={Routes.ResetPasswordSuccess}
+            component={ResetPasswordSuccess}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.resetPasswordSuccess.header'),
             }}
           />
         </Stack.Navigator>

@@ -153,6 +153,21 @@ export default {
       bottomText2: 'or',
       link: 'try another email address',
     },
+    updatePassword: {
+      header: 'Create Password',
+      title: 'Create new password',
+      description: 'Your new password must be different from',
+      description2: 'previously used passwords.',
+      password: 'New password',
+      confirmPassword: 'Confirm password',
+      button: 'Reset password',
+    },
+    resetPasswordSuccess: {
+      header: 'Reset Password',
+      title: 'Success!',
+      description: 'You have successfully reset',
+      description2: 'your password!',
+    },
   },
   components: {
     locationButton: {

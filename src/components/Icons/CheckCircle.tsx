@@ -1,14 +1,18 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
+import { ViewStyle } from 'react-native';
 
 interface ICheckCircle {
   width?: number;
   height?: number;
   fill?: string;
+  style?: ViewStyle;
 }
 
-const CheckCircle: React.FC<ICheckCircle> = ({ width, height, fill }) => (
-  <Svg width={width} height={height} viewBox="0 0 14 14" fill="none">
+const CheckCircle: React.FC<ICheckCircle> = ({
+  width, height, fill, style,
+}) => (
+  <Svg style={style} width={width} height={height} viewBox="0 0 14 14" fill="none">
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -22,6 +26,7 @@ CheckCircle.defaultProps = {
   width: 14,
   height: 14,
   fill: '#b4bc48',
+  style: {},
 };
 
 export default CheckCircle;
