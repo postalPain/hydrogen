@@ -13,6 +13,8 @@ enum Routes {
   Login = 'Login',
   Basket = 'Basket',
   OrderConfirmation = 'OrderConfirmation',
+  ResetPassword = 'ResetPassword',
+  CheckEmail = 'CheckEmail',
 }
 
 export default Routes;

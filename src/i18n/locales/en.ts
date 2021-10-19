@@ -137,6 +137,22 @@ export default {
       details: 'Order details',
       button: 'Browse Products',
     },
+    resetPassword: {
+      header: 'Reset Password',
+      title: 'Reset password',
+      description: 'Enter the email associated with your account and we’ll send an email with instructions to reset your password in no time!',
+      email: 'Email',
+      button: 'Send instructions',
+    },
+    checkEmail: {
+      title: 'Check your email',
+      description: 'We have sent password recovery',
+      description2: 'instructions to your email.',
+      button: 'Open email app',
+      bottomText: 'Didn’t receive our email? Please check your spam,',
+      bottomText2: 'or',
+      link: 'try another email address',
+    },
   },
   components: {
     locationButton: {
