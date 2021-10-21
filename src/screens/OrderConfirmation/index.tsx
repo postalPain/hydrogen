@@ -16,7 +16,7 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const { navigate } = useNavigation();
 
-  const handleBrowseProducts = () => navigate(Routes.TabNavigation);
+  const handleBrowseProducts = () => navigate(Routes.DrawerNavigation);
   return (
     <ScrollView style={styles.wrapper} contentContainerStyle={styles.container}>
       <View style={styles.titleContainer}>

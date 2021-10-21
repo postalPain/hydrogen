@@ -1,5 +1,6 @@
 import { RootState } from 'store/rootReducer';
 
+export const userSelector = (state: RootState) => state.user.user;
 export const userErrorSelector = (state: RootState) => state.user.errorMessage;
 export const userToken = (state: RootState) => state.user.accessToken;
 export const basketSelector = () => (state: RootState) => state.user.basket;
