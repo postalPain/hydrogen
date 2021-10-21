@@ -231,11 +231,12 @@ export default {
     },
     basketSlideUp: {
       header: 'My shopping cart',
-      emptyList: 'Shopping cart is empty',
+      emptyList: 'Nothing in your cart yet!',
       pieces: 'pieces',
       items: 'items',
       deliveryFee: 'delivery fee',
       checkout: 'Checkout',
+      exploreButton: 'Explore products',
     },
   },
 };

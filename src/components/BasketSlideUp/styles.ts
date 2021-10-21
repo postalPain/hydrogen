@@ -13,12 +13,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     color: '#666',
   },
   inventoryItem: {
-    marginBottom: theme.spaces.m,
+    marginVertical: theme.spaces.xs,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
     paddingVertical: 10,
     paddingHorizontal: 15,
+    marginHorizontal: 8,
     backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: 'rgb(56, 96, 165)',
@@ -89,6 +90,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     borderBottomLeftRadius: 12,
   },
   wrapperBoxContent: {
+    height: 400,
     paddingLeft: 0,
     paddingRight: 0,
     paddingBottom: 0,
@@ -109,7 +111,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontWeight: '700',
   },
   emptyList: {
-    fontSize: theme.fontSizes.h2,
+    fontSize: theme.fontSizes.body,
     color: '#666',
     marginTop: 20,
     marginBottom: 30,
@@ -119,9 +121,35 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontWeight: '600',
   },
   scrollBox: {
-    paddingTop: 8,
+    paddingHorizontal: 14,
+  },
+  cartIconContainer: {
+    marginTop: 40,
+    marginBottom: 20,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: theme.colors.primary,
+  },
+  emptyBlock: {
+    flex: 1,
+  },
+  emptyBlockContent: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  emptyBlockPanel: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingVertical: 20,
     paddingHorizontal: 20,
-    height: 400,
+  },
+  exploreButton: {
+    width: '100%',
   },
 });
 export default useStyles;

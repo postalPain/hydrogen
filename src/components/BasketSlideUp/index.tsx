@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
+import { Routes } from 'navigation';
+import { navigate } from 'navigation/NavigationUtilities';
 import { DELIVERY_FEE } from 'constants/';
 import {
   formatCurrency,
@@ -20,6 +22,7 @@ import { setBasketVisibility } from 'store/app/actions';
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector } from 'store/user/selectors';
 import { SlideUp } from 'components';
+import { CartIcon } from 'components/Icons';
 import useStyles from './styles';
 
 
@@ -43,44 +46,67 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
   const onSlideUpClose = () => {
     dispatch(setBasketVisibility(false));
   };
+  const onExploreButtonPress = () => {
+    dispatch(setBasketVisibility(false));
+    navigate(Routes.ProductsScreen);
+  };
 
   const renderProducts = () => (
-    products.map(product => (
-      <View style={styles.inventoryItem} key={product.uuid}>
-        <View style={styles.inventoryImageContainer}>
-          <CacheImage
-            source={{ uri: product.image_url }}
-            style={styles.inventoryImage}
-          />
-        </View>
-        <View style={styles.inventoryContent}>
-          <Text style={[styles.inventoryName, styles.p]}>
-            {`${product.name}${product.pieces ? (` (${product.pieces} ${i18n.t('components.basketSlideUp.pieces')})`) : ''}`}
-          </Text>
-          <Text style={[styles.inventoryText, styles.p]}>
-            {`${formatAmount(product)}, ${product.origin}`}
-          </Text>
-          <View style={styles.inventoryPanel}>
-            <View style={styles.inventoryPriceCol}>
-              <Text style={styles.priceText}>
-                {formatCurrency(roundPrice(product.price * product.basketQuantity))}
-              </Text>
+    <ScrollView style={styles.scrollBox}>
+      <View onStartShouldSetResponder={() => true}>
+        { products.map(product => (
+          <View style={styles.inventoryItem} key={product.uuid}>
+            <View style={styles.inventoryImageContainer}>
+              <CacheImage
+                source={{ uri: product.image_url }}
+                style={styles.inventoryImage}
+              />
             </View>
-            <ButtonCounter
-              style={styles.addToCartButtonCounter}
-              initialValue={product.basketQuantity}
-              maxValue={getMaxProductCount(product)}
-              size="mini"
-              color={theme.colors.yellow}
-              onCountChange={(count) => onCountButtonChange(product, count)}
-            />
+            <View style={styles.inventoryContent}>
+              <Text style={[styles.inventoryName, styles.p]}>
+                {`${product.name}${product.pieces ? (` (${product.pieces} ${i18n.t('components.basketSlideUp.pieces')})`) : ''}`}
+              </Text>
+              <Text style={[styles.inventoryText, styles.p]}>
+                {`${formatAmount(product)}, ${product.origin}`}
+              </Text>
+              <View style={styles.inventoryPanel}>
+                <View style={styles.inventoryPriceCol}>
+                  <Text style={styles.priceText}>
+                    {formatCurrency(roundPrice(product.price * product.basketQuantity))}
+                  </Text>
+                </View>
+                <ButtonCounter
+                  style={styles.addToCartButtonCounter}
+                  initialValue={product.basketQuantity}
+                  maxValue={getMaxProductCount(product)}
+                  size="mini"
+                  color={theme.colors.yellow}
+                  onCountChange={(count) => onCountButtonChange(product, count)}
+                />
+              </View>
+            </View>
           </View>
-        </View>
+        ))}
       </View>
-    ))
+    </ScrollView>
   );
   const renderEmptyList = () => (
-    <Text style={styles.emptyList}>{i18n.t('components.basketSlideUp.emptyList')}</Text>
+    <View style={styles.emptyBlock}>
+      <View style={styles.emptyBlockContent}>
+        <View style={styles.cartIconContainer}>
+          <CartIcon />
+        </View>
+        <Text style={styles.emptyList}>{i18n.t('components.basketSlideUp.emptyList')}</Text>
+      </View>
+      <View style={styles.emptyBlockPanel}>
+        <Button
+          style={styles.exploreButton}
+          onPress={onExploreButtonPress}
+        >
+          {i18n.t('components.basketSlideUp.exploreButton')}
+        </Button>
+      </View>
+    </View>
   );
 
   return (
@@ -116,11 +142,7 @@ const BasketSlideUp: React.FC<IBasketSlideUpProps> = ({ theme }) => {
       onClose={onSlideUpClose}
     >
       <Text style={styles.header}>{i18n.t('components.basketSlideUp.header')}</Text>
-      <ScrollView style={styles.scrollBox}>
-        <View onStartShouldSetResponder={() => true}>
-          { products.length && renderProducts() || renderEmptyList()}
-        </View>
-      </ScrollView>
+      {products.length && renderProducts() || renderEmptyList()}
     </SlideUp>
   );
 };

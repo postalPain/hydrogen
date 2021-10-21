@@ -20,6 +20,7 @@ const ProductsScreen: React.FC<IProductsProps> = ({ theme, route }) => {
   const dispatch = useDispatch();
   const categories = useSelector(categoriesSelector);
   const categoriesLoading = useSelector(categoriesLoadingSelector);
+  const initialCategoryId = route.params && route.params.categoryId || categories[0].uuid;
 
   useEffect(() => {
     if (!categories && !categoriesLoading) {
@@ -32,7 +33,7 @@ const ProductsScreen: React.FC<IProductsProps> = ({ theme, route }) => {
       <CategoriesTabNavigation
         loading={categoriesLoading}
         categories={categories}
-        initialCategory={route.params.categoryId}
+        initialCategory={initialCategoryId}
       />
     </SafeAreaView>
   );

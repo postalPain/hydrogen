@@ -8,6 +8,6 @@ describe('Example', () => {
   });
 
   it('should true be equal of true', async () => {
-    await expect(element(by.text("HomeScreen"))).toBeVisible();
+    await expect(element(by.text("xxx"))).toNotExist();
   });
 });
