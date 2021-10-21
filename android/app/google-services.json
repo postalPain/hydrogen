@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "935341338218",
+    "project_id": "hydrogen-6d7eb",
+    "storage_bucket": "hydrogen-6d7eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935341338218:android:484aeedac53868c2176413",
+        "android_client_info": {
+          "package_name": "com.qstudio.blitz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935341338218-gggsq5q3ekkl1oss6mp9klm18gldq0ko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW-y2Be9vDxBZfO2hhrsByp0TMIMnlIIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935341338218-gggsq5q3ekkl1oss6mp9klm18gldq0ko.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "935341338218-iufqq5fohmpkqjmntojlct5kj1a0tsml.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.qstudio.blitz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
