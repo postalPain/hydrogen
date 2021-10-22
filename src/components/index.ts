@@ -17,3 +17,4 @@ export { default as PaymentCardForm } from './PaymentCardForm';
 export { default as ChangePaymentMethod } from './ChangePaymentMethod';
 export { default as BasketSlideUp } from './BasketSlideUp';
 export { default as BasketBadge } from './BasketBadge';
+export { default as DrawerContent } from './DrawerContent';

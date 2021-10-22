@@ -40,7 +40,7 @@ function* signInWorker(action): SagaIterator {
     setItem(AUTH_TOKEN, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
-    yield call(navigate, Routes.TabNavigation);
+    yield call(navigate, Routes.DrawerNavigation);
     // TODO: move this logic to initialization
     const { data: { data } } = yield call(userAPI.getCardList);
     yield put(saveCardList(data));
@@ -54,8 +54,10 @@ function* signInWorker(action): SagaIterator {
 function* signOutWorker(): SagaIterator {
   try {
     yield call(removeHeader, 'Authorization');
-    yield call(userAPI.signOut);
+    // TODO: Uncomment when backend will be ready
+    // yield call(userAPI.signOut);
     yield call(removeItem, AUTH_TOKEN);
+    yield call(navigate, Routes.Onboard);
   } catch (error) {
     yield put(setError('Error on logout'));
   }
@@ -98,7 +100,7 @@ function* addAddressWorker(action): SagaIterator {
     setItem(AUTH_TOKEN, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveAddress(deliveryAddress));
-    yield call(navigate, Routes.TabNavigation);
+    yield call(navigate, Routes.DrawerNavigation);
   } catch (e) {
     yield put(setError('Something went wrong'));
   }

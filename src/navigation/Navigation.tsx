@@ -22,6 +22,7 @@ import TemporaryNavigator from 'screens/TemporaryNavigator';
 import SignUp from 'screens/SignUp';
 import AutocompleteInput from 'screens/AtocompleteInput';
 import TabNavigation from 'navigation/TabNavigation';
+import DrawerNavigation from 'navigation/DrowerNavigation';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import { BasketSlideUp, Header } from 'components';
 import Checkout from 'screens/Checkout';
@@ -87,6 +88,14 @@ const Navigation = () => {
           <Stack.Screen
             name={Routes.TabNavigation}
             component={TabNavigation}
+            options={{
+              gestureEnabled: false,
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name={Routes.DrawerNavigation}
+            component={DrawerNavigation}
             options={{
               gestureEnabled: false,
               headerShown: false,

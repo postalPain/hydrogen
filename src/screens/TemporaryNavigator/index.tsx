@@ -36,7 +36,7 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
         >
           {Routes.AutocompleteInput}
         </Button>
-        <Button onPress={() => navigator.navigate(Routes.TabNavigation)}>
+        <Button onPress={() => navigator.navigate(Routes.DrawerNavigation)}>
           {Routes.TabNavigation}
         </Button>
         <Button onPress={() => navigator.navigate(Routes.ConfirmAddress, { address: 'Mocked Address' })}>

@@ -17,6 +17,7 @@ enum Routes {
   CheckEmail = 'CheckEmail',
   UpdatePassword = 'UpdatePassword',
   ResetPasswordSuccess = 'ResetPasswordSuccess',
+  DrawerNavigation = 'DrawerNavigation',
 }
 
 export default Routes;

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
-import { NavigationContainerRef } from '@react-navigation/native';
+import { NavigationContainerRef, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { categoriesSelector } from 'store/categories/selectors';
@@ -27,6 +27,7 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
   const categories = useSelector(categoriesSelector);
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (!categories || !categories.length) {
@@ -48,7 +49,10 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
               <Text style={styles.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
             </View>
             <View style={styles.headerProfileBlockRightCol}>
-              <TouchableOpacity style={styles.accountButton}>
+              <TouchableOpacity
+                onPress={() => navigation.openDrawer()}
+                style={styles.accountButton}
+              >
                 <AccountIcon />
               </TouchableOpacity>
             </View>

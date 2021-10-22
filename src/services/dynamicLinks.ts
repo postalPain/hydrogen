@@ -8,7 +8,7 @@ export const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink 
     return;
   }
   if (link.url === `${DYNAMIC_LINK_URL}/home`) {
-    navigate(Routes.TabNavigation);
+    navigate(Routes.DrawerNavigation);
   }
   if (link.url === `${DYNAMIC_LINK_URL}/password`) {
     navigate(Routes.UpdatePassword);
