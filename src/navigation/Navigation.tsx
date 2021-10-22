@@ -24,7 +24,7 @@ import AutocompleteInput from 'screens/AtocompleteInput';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 import ConfirmAddress from 'screens/ConfirmAddress';
-import { BasketSlideUp, Header } from 'components';
+import { Header } from 'components';
 import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
 import Login from 'screens/Login';
@@ -33,6 +33,7 @@ import OrderConfirmation from 'screens/OrderConfirmation';
 import ResetPassword from 'screens/ResetPassword';
 import CheckEmail from 'screens/CheckEmail';
 import UpdatePassword from 'screens/UpdatePassword';
+import Basket from 'screens/Basket';
 import ResetPasswordSuccess from 'screens/ResetPasswordSuccess';
 import { dynamicLinksHandler } from 'services/dynamicLinks';
 
@@ -218,9 +219,16 @@ const Navigation = () => {
               headerTitle: i18n.t('screens.resetPasswordSuccess.header'),
             }}
           />
+          <Stack.Screen
+            name={Routes.Basket}
+            component={Basket}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.basket.header'),
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
-      <BasketSlideUp />
     </>
   );
 };

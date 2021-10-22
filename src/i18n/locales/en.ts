@@ -168,6 +168,9 @@ export default {
       description: 'You have successfully reset',
       description2: 'your password!',
     },
+    basket: {
+      header: 'Shopping Cart',
+    },
   },
   components: {
     locationButton: {
@@ -229,8 +232,8 @@ export default {
       pieces: 'pieces',
       addItem: 'Add item',
     },
-    basketSlideUp: {
-      header: 'My shopping cart',
+    basket: {
+      header: 'My cart',
       emptyList: 'Nothing in your cart yet!',
       pieces: 'pieces',
       items: 'items',

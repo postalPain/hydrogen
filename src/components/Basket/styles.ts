@@ -1,16 +1,33 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { ProjectThemeType } from 'styles/theme';
 
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
+  container: {
+    display: 'flex',
+    flex: 1,
+  },
   header: {
-    paddingHorizontal: 20,
-    marginTop: -theme.spaces.xs,
+    marginTop: theme.spaces.xs,
     marginBottom: theme.spaces.m,
+    paddingHorizontal: theme.spaces.xxl2,
     fontSize: theme.fontSizes.headline,
     lineHeight: 30,
     fontWeight: '700',
     color: '#666',
+  },
+  fullBlock: {
+    display: 'flex',
+    flex: 1,
+  },
+  fullContent: {
+    flex: 1,
+    borderBottomRightRadius: 22,
+    borderBottomLeftRadius: 22,
+    backgroundColor: '#fff',
+  },
+  scrollBox: {
+    paddingHorizontal: 14,
   },
   inventoryItem: {
     marginVertical: theme.spaces.xs,
@@ -72,28 +89,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     height: 23,
     width: 70,
   },
-  wrapperBox: {
-    backgroundColor: '#eee',
-    borderTopRightRadius: 12,
-    borderTopLeftRadius: 12,
-  },
   totalBlock: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: 25,
     paddingRight: theme.spaces.s,
-    paddingVertical: 20,
-  },
-  wrapperBoxContainer: {
-    borderBottomRightRadius: 12,
-    borderBottomLeftRadius: 12,
-  },
-  wrapperBoxContent: {
-    height: 400,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingBottom: 0,
+    paddingTop: 20,
+    paddingBottom: Platform.OS === 'ios' ? 0 : 20,
   },
   totalBlockLeftCol: {
     flex: 1,
@@ -110,18 +113,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     color: '#666',
     fontWeight: '700',
   },
+  buttonTextCheckout: {
+    fontWeight: '600',
+  },
   emptyList: {
     fontSize: theme.fontSizes.body,
     color: '#666',
     marginTop: 20,
     marginBottom: 30,
     textAlign: 'center',
-  },
-  buttonTextCheckout: {
-    fontWeight: '600',
-  },
-  scrollBox: {
-    paddingHorizontal: 14,
   },
   cartIconContainer: {
     marginTop: 40,
@@ -145,8 +145,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   emptyBlockPanel: {
     display: 'flex',
     alignItems: 'center',
-    paddingVertical: 20,
     paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: Platform.OS === 'ios' ? 0 : 20,
   },
   exploreButton: {
     width: '100%',

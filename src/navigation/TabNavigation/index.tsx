@@ -1,7 +1,8 @@
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BASKET_TAB_NAME } from 'constants/';
 import Routes from 'navigation/Routes';
 import Home from 'screens/Home';
-import React from 'react';
 import SignUp from 'screens/SignUp';
 import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
 import { TabBar, TabWrapper } from 'components';
@@ -22,18 +23,18 @@ const TabNavigation = () => (
       // TabWrapper adds View wrapper with padding bottom = TabBar
       component={TabWrapper(Home)}
       options={{
-        tabBarIcon: () => <HomeIcon />,
+        tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
       }}
     />
     <Tab.Screen
       name={Routes.SignUp}
       component={TabWrapper(SignUp)}
-      options={{ tabBarIcon: () => <Search /> }}
+      options={{ tabBarIcon: ({ color }) => <Search fill={color} /> }}
     />
     <Tab.Screen
-      name={Routes.Basket}
+      name={BASKET_TAB_NAME}
       component={() => null}
-      options={{ tabBarIcon: () => <Checkout /> }}
+      options={{ tabBarIcon: ({ color }) => <Checkout fill={color} /> }}
     />
   </Tab.Navigator>
 );

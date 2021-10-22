@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { useDispatch } from 'react-redux';
 
-import { setBasketVisibility } from 'store/app/actions';
+import { BASKET_TAB_NAME } from 'constants/';
 import { NavBackground, NavSide } from 'components/Icons';
 import { BasketBadge } from 'components';
 import Routes from 'navigation/Routes';
@@ -11,12 +10,12 @@ import useStyles from './styles';
 
 const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
   const styles = useStyles();
-  const dispatch = useDispatch();
 
   const onTabPress = (e, { route, isFocused }) => {
-    if (route.name === Routes.Basket) {
+    if (route.name === BASKET_TAB_NAME) {
       e.preventDefault();
-      dispatch(setBasketVisibility(true));
+      // @ts-ignore
+      navigation.navigate(Routes.Basket);
       return;
     }
 
@@ -38,9 +37,10 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
   };
 
   const onTabLongPress = (e, route) => {
-    if (route === Routes.Basket) {
+    if (route === BASKET_TAB_NAME) {
       e.preventDefault();
-      dispatch(setBasketVisibility(true));
+      // @ts-ignore
+      navigation.navigate(Routes.Basket);
       return;
     }
 
@@ -73,11 +73,11 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
               style={styles.item}
             >
               <View style={styles.iconWrapper}>
-                { route.name === Routes.Basket && <BasketBadge />}
+                { route.name === BASKET_TAB_NAME && <BasketBadge />}
                 {icon({
                   focused: isFocused,
                   size: 25,
-                  color: 'transparent',
+                  color: isFocused ? '#fda717' : '#eee',
                 })}
               </View>
             </TouchableOpacity>
