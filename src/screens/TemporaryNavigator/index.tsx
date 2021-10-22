@@ -1,5 +1,7 @@
-import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import {
+  SafeAreaView, ScrollView,
+} from 'react-native';
 import { Button, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from 'store/user/actions';
 import { Routes } from 'navigation';
 import { ProjectThemeType } from 'theme';
+import DeclinedPaymentModal from 'components/DeclinedPaymentModal';
 
 interface ITemporaryNavigator {
   theme: ProjectThemeType;
@@ -20,6 +23,7 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   const onLoginPress = () => {
     dispatch(signIn({ email: 'vlad@stryber.com', password: '1234567Z' }));
   };
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <SafeAreaView style={theme.components.safeArea}>
@@ -69,6 +73,8 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
         <Button onPress={() => navigator.navigate(Routes.Basket)}>
           {Routes.Basket}
         </Button>
+        <Button onPress={() => setShowModal(true)}>Show Declined Payment Modal</Button>
+        <DeclinedPaymentModal visible={showModal} onClose={() => setShowModal(false)} />
       </ScrollView>
     </SafeAreaView>
   );
