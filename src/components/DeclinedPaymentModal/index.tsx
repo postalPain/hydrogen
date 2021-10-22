@@ -3,6 +3,7 @@ import useStyles from './styles';
 import { Button, Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import Modal from 'components/Modal';
 import { ProjectThemeType } from 'theme';
+import i18n from 'i18n';
 
 interface IDeclinedPaymentModalProps {
   visible: boolean;
@@ -18,13 +19,9 @@ const DeclinedPaymentModal: React.FC<IDeclinedPaymentModalProps> = ({
   const styles = useStyles(theme);
   return (
     <Modal visible={visible}>
-      <Text style={styles.title}>Oh snap!</Text>
-      <Text style={styles.description}>
-        This payment was declined. Your card has not been charged.
-        Please try again or try another card.
-        If the error proceeds then please contact your card issuer.
-      </Text>
-      <Button style={styles.button} onPress={onClose}>Okay</Button>
+      <Text style={styles.title}>{i18n.t('modals.declinedPaymentModal.title')}</Text>
+      <Text style={styles.description}>{i18n.t('modals.declinedPaymentModal.description')}</Text>
+      <Button style={styles.button} onPress={onClose}>{i18n.t('modals.declinedPaymentModal.button')}</Button>
     </Modal>
   );
 };
