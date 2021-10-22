@@ -7,6 +7,7 @@ import i18n from 'i18n';
 import { CheckCircleIcon } from 'components/Icons';
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from 'navigation';
+import { DismissKeyboard } from 'components';
 
 interface IResetPasswordSuccessProps {
   theme?: ProjectThemeType;
@@ -19,15 +20,17 @@ const ResetPasswordSuccess: React.FC<IResetPasswordSuccessProps> = ({ theme }) =
   const handleLoginPress = () => navigate(Routes.Login);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <CheckCircleIcon style={styles.icon} width={70} height={70} />
-        <Text style={styles.title}>{i18n.t('screens.resetPasswordSuccess.title')}</Text>
-        <Text style={styles.description}>{i18n.t('screens.resetPasswordSuccess.description')}</Text>
-        <Text style={styles.description}>{i18n.t('screens.resetPasswordSuccess.description2')}</Text>
+    <DismissKeyboard>
+      <View style={styles.container}>
+        <View style={styles.contentContainer}>
+          <CheckCircleIcon style={styles.icon} width={70} height={70} />
+          <Text style={styles.title}>{i18n.t('screens.resetPasswordSuccess.title')}</Text>
+          <Text style={styles.description}>{i18n.t('screens.resetPasswordSuccess.description')}</Text>
+          <Text style={styles.description}>{i18n.t('screens.resetPasswordSuccess.description2')}</Text>
+        </View>
+        <Button onPress={handleLoginPress} style={styles.button}>Login</Button>
       </View>
-      <Button onPress={handleLoginPress} style={styles.button}>Login</Button>
-    </View>
+    </DismissKeyboard>
   );
 };
 
