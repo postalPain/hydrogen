@@ -13,6 +13,7 @@ import { Formik } from 'formik';
 import { ProjectThemeType } from 'theme';
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from 'navigation';
+import { DismissKeyboard } from 'components';
 
 interface IUpdatePasswordProps {
   theme?: ProjectThemeType;
@@ -27,51 +28,53 @@ const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme }) => {
     navigate(Routes.ResetPasswordSuccess);
   };
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{i18n.t('screens.updatePassword.title')}</Text>
-      <Text style={styles.description}>{i18n.t('screens.updatePassword.description')}</Text>
-      <Text style={styles.description}>{i18n.t('screens.updatePassword.description2')}</Text>
-      <Formik
-        initialValues={{
-          password: '',
-          password_confirmation: '',
-        }}
-        onSubmit={handleUpdatePassword}
-        validationSchema={CreatePasswordSchema}
-      >
-        {({
-          handleChange,
-          handleSubmit,
-          values,
-          errors,
-          submitCount,
-        }) => (
-          <View style={styles.formContainer}>
-            <View>
-              <Input
-                variant="simple"
-                label={i18n.t('screens.updatePassword.password')}
-                value={values.password}
-                secure
-                onChange={handleChange('password')}
-                error={submitCount > 0 ? errors.password : undefined}
-                style={styles.input}
-              />
-              <Input
-                variant="simple"
-                label={i18n.t('screens.updatePassword.confirmPassword')}
-                value={values.password_confirmation}
-                secure
-                onChange={handleChange('password_confirmation')}
-                error={submitCount > 0 ? errors.password_confirmation : undefined}
-                style={styles.input}
-              />
+    <DismissKeyboard>
+      <View style={styles.container}>
+        <Text style={styles.title}>{i18n.t('screens.updatePassword.title')}</Text>
+        <Text style={styles.description}>{i18n.t('screens.updatePassword.description')}</Text>
+        <Text style={styles.description}>{i18n.t('screens.updatePassword.description2')}</Text>
+        <Formik
+          initialValues={{
+            password: '',
+            password_confirmation: '',
+          }}
+          onSubmit={handleUpdatePassword}
+          validationSchema={CreatePasswordSchema}
+        >
+          {({
+            handleChange,
+            handleSubmit,
+            values,
+            errors,
+            submitCount,
+          }) => (
+            <View style={styles.formContainer}>
+              <View>
+                <Input
+                  variant="simple"
+                  label={i18n.t('screens.updatePassword.password')}
+                  value={values.password}
+                  secure
+                  onChange={handleChange('password')}
+                  error={submitCount > 0 ? errors.password : undefined}
+                  style={styles.input}
+                />
+                <Input
+                  variant="simple"
+                  label={i18n.t('screens.updatePassword.confirmPassword')}
+                  value={values.password_confirmation}
+                  secure
+                  onChange={handleChange('password_confirmation')}
+                  error={submitCount > 0 ? errors.password_confirmation : undefined}
+                  style={styles.input}
+                />
+              </View>
+              <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.updatePassword.button')}</Button>
             </View>
-            <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.updatePassword.button')}</Button>
-          </View>
-        )}
-      </Formik>
-    </View>
+          )}
+        </Formik>
+      </View>
+    </DismissKeyboard>
   );
 };
 

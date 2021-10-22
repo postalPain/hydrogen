@@ -40,7 +40,8 @@ function* signInWorker(action): SagaIterator {
     setItem(AUTH_TOKEN, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
-    yield call(navigate, Routes.DrawerNavigation);
+    // TODO: Enable when whole app flow will be ready
+    // yield call(navigate, Routes.DrawerNavigation);
     // TODO: move this logic to initialization
     const { data: { data } } = yield call(userAPI.getCardList);
     yield put(saveCardList(data));
