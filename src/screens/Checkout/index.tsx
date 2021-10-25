@@ -117,10 +117,6 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             <Text style={styles.priceText}>{i18n.t('screens.checkout.fee')}</Text>
             <Text style={styles.priceText}>AED 54.00</Text>
           </View>
-          <View style={styles.priceContainer}>
-            <Text style={styles.priceText}>{i18n.t('screens.checkout.vat')}</Text>
-            <Text style={styles.priceText}>AED 54.00</Text>
-          </View>
           <View style={[styles.priceContainer, styles.totalContainer]}>
             <Text style={[styles.priceText, styles.priceTotal]}>
               {i18n.t('screens.checkout.total')}
@@ -128,6 +124,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             <Text style={[styles.priceText, styles.priceTotal]}>
               AED 54.00
             </Text>
+          </View>
+          <View style={styles.priceContainer}>
+            <Text style={styles.priceText}>{i18n.t('screens.checkout.vat')}</Text>
+            <Text style={styles.priceText}>AED 54.00</Text>
           </View>
           <Button
             style={styles.button}
