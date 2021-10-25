@@ -43,7 +43,13 @@ export default {
   buttons: {},
   links: {},
   inputs: {},
-  modals: {},
+  modals: {
+    declinedPaymentModal: {
+      title: 'Oh snap!',
+      description: 'This payment was declined. Your card has not been charged. Please try again or try another card. If the error proceeds then please contact your card issuer.',
+      button: 'Okay',
+    },
+  },
   screens: {
     home: {
       helloMessage: 'Hey there!',
