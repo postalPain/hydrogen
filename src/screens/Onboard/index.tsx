@@ -18,6 +18,7 @@ const Onboard: React.FC<IOnboardProps> = ({ theme }) => {
   const { navigate } = useNavigation();
 
   const onContinuePress = () => navigate(Routes.MapScreen);
+  const onLoginPres = () => navigate(Routes.Login);
   return (
     <ImageBackground
       source={require('../../../assets/images/onboardBg.png')}
@@ -31,7 +32,14 @@ const Onboard: React.FC<IOnboardProps> = ({ theme }) => {
           </View>
           <View style={[styles.contentWrapper, styles.bottomWrapper]}>
             <Button style={styles.button} onPress={onContinuePress}>{i18n.t('screens.onboard.button')}</Button>
-            <Button type="link" style={styles.linkContainer} textStyle={styles.link}>{i18n.t('screens.onboard.link')}</Button>
+            <Button
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+              onPress={onLoginPres}
+            >
+              {i18n.t('screens.onboard.link')}
+            </Button>
           </View>
         </View>
       </SafeAreaView>

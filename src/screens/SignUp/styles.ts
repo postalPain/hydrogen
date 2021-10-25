@@ -35,6 +35,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
   },
+  link: {
+    color: theme.colors.primary,
+    fontWeight: '600',
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
 });
 
 export default useStyles;

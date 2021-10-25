@@ -79,6 +79,7 @@ export default {
         password2: 'Password must be at least 8 characters and have one upper case letter and one number',
         confirmPassword: 'Passwords do not match. Please try again.',
       },
+      loginButton: 'Already have an account ? Login now',
       button: 'Next',
       button2: 'Confirm',
     },
