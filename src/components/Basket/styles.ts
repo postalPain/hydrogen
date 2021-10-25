@@ -152,5 +152,27 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   exploreButton: {
     width: '100%',
   },
+  successBlock: {
+    paddingHorizontal: theme.spaces.xxl2,
+    marginBottom: 15,
+  },
+  successHeaderSection: {
+    marginBottom: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  successUpdateHeader: {
+    marginLeft: 15,
+    fontSize: theme.fontSizes.body,
+    color: '#666',
+    fontWeight: '700',
+  },
+  successUpdateText: {
+    fontSize: theme.fontSizes.small,
+    // @ts-ignore
+    fontWeight: '400',
+    lineHeight: 20,
+  },
 });
 export default useStyles;

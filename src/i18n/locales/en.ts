@@ -246,6 +246,14 @@ export default {
       deliveryFee: 'delivery fee',
       checkout: 'Checkout',
       exploreButton: 'Explore products',
+      successHeader: 'Success!',
+      successText: 'Your cart has been up updated!\nAdd more products or proceed to place order.',
+    },
+    outOfStockSlideUp: {
+      header: '%{count} items not available',
+      unavailable: 'Unavailable',
+      updateCart: 'Update Cart',
+      description: 'We’re sorry. The following items are no longer available and have been removed from your cart.',
     },
     drawerContent: {
       title: 'Don’t have an account yet?',

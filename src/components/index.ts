@@ -19,3 +19,5 @@ export { default as BasketBadge } from './BasketBadge';
 export { default as DrawerContent } from './DrawerContent';
 export { default as DismissKeyboard } from './DismissKeyboard';
 export { default as Basket } from './Basket';
+export { default as OutOfStockSlideUp } from './OutOfStockSlideUp';
+export { default as CardVariant } from './CardVariant';

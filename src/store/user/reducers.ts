@@ -112,6 +112,18 @@ export default function user(state: IUserState = defaultState, action) {
         },
       };
     }
+    case TYPES.REMOVE_PRODUCTS_FROM_BASKET: {
+      const newBasketState = state.basket;
+      action.payload.uuids.forEach((uuid) => {
+        delete newBasketState[uuid];
+      });
+      return {
+        ...state,
+        basket: {
+          ...newBasketState,
+        },
+      };
+    }
     default:
       return state;
   }

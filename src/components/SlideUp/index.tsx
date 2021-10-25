@@ -14,19 +14,21 @@ import useStyles from './styles';
 interface ISlideUp {
   children: React.ReactNode;
   visible: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   renderWrapper?: (node: React.ReactNode) => React.ReactNode;
   containerStyle?: any;
   contentStyle?: any;
+  disableClose?: boolean;
 }
 
 const SlideUp: React.FC<ISlideUp> = ({
   visible,
   children,
-  onClose,
+  onClose = () => {},
   renderWrapper = (node) => node,
   containerStyle,
   contentStyle,
+  disableClose = false,
 }) => {
   const styles = useStyles();
   const [panY] = useState(new Animated.Value(Dimensions.get('screen').height));
@@ -40,7 +42,11 @@ const SlideUp: React.FC<ISlideUp> = ({
     duration: 300,
     useNativeDriver: false,
   }));
-  const handleDismiss = () => closeAnim.current.start(onClose);
+  const handleDismiss = () => {
+    if (!disableClose) {
+      closeAnim.current.start(onClose);
+    }
+  };
 
   useEffect(() => {
     if (visible) {
@@ -58,12 +64,14 @@ const SlideUp: React.FC<ISlideUp> = ({
     <View
       style={[styles.container, containerStyle]}
     >
-      <TouchableOpacity
-        style={styles.crossButton}
-        onPress={() => handleDismiss()}
-      >
-        <CrossIcon />
-      </TouchableOpacity>
+      { !disableClose && (
+        <TouchableOpacity
+          style={styles.crossButton}
+          onPress={() => handleDismiss()}
+        >
+          <CrossIcon />
+        </TouchableOpacity>
+      )}
       <View style={[styles.contentBox, contentStyle]}>
         { children }
       </View>

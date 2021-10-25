@@ -11,15 +11,17 @@ import useStyles from './styles';
 
 interface IBasketProps {
   theme: ProjectThemeType;
+  route: any;
 }
 
-const BasketScreen: React.FC<IBasketProps> = ({ theme }) => {
+const BasketScreen: React.FC<IBasketProps> = ({ theme, route }) => {
   const basketLength = useSelector(basketLengthSelector());
   const styles = useStyles(theme, basketLength);
+  const updated = !!route.params && route.params.updated;
 
   return (
     <SafeAreaView style={styles.container}>
-      <Basket />
+      <Basket updated={updated} />
     </SafeAreaView>
   );
 };

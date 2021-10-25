@@ -20,6 +20,7 @@ export const TYPES = {
   SAVE_ADDRESS: 'SAVE_ADDRESS',
   SET_PRODUCT_TO_BASKET: 'SET_PRODUCT_TO_BASKET',
   SIGN_UP: 'SIGN_UP',
+  REMOVE_PRODUCTS_FROM_BASKET: 'REMOVE_PRODUCTS_FROM_BASKET',
 };
 
 export type TBasketProduct = TProduct & {
@@ -29,6 +30,10 @@ export type TBasketProduct = TProduct & {
 interface ISignIn {
   email: string;
   password: string;
+}
+
+interface IRemoveProductsFromBasketPayload {
+  uuids: string[],
 }
 
 export const signIn = ({ email, password }) => ({
@@ -111,4 +116,9 @@ export const setProductToBasket = (payload: TBasketProduct) => ({
 export const signUp = (signUpData) => ({
   type: TYPES.SIGN_UP,
   payload: signUpData,
+});
+
+export const removeProductsFromBasket = (payload: IRemoveProductsFromBasketPayload) => ({
+  type: TYPES.REMOVE_PRODUCTS_FROM_BASKET,
+  payload,
 });

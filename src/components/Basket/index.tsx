@@ -19,15 +19,16 @@ import {
 } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector } from 'store/user/selectors';
-import { CartIcon } from 'components/Icons';
+import { CartIcon, CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
 
 
 interface IBasketProps {
   theme?: ProjectThemeType;
+  updated?: boolean;
 }
 
-const Basket: React.FC<IBasketProps> = ({ theme }) => {
+const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const styles = useStyles(theme);
   const basket = useSelector(basketSelector());
   const products = Object.values(basket);
@@ -42,11 +43,34 @@ const Basket: React.FC<IBasketProps> = ({ theme }) => {
   const onExploreButtonPress = () => {
     navigate(Routes.HomeScreen);
   };
+  const onCheckoutPress = () => {
+    // TODO check are we signed up and if no goto sign up
+    // otherwise goto checkout page
+    navigate(Routes.Checkout);
+  };
+
+  const renderSuccessUpdateBlock = () => (
+    <View style={styles.successBlock}>
+      <View style={styles.successHeaderSection}>
+        <CheckCircleIcon
+          width={25}
+          height={25}
+        />
+        <Text style={styles.successUpdateHeader}>
+          {i18n.t('components.basket.successHeader')}
+        </Text>
+      </View>
+      <Text style={styles.successUpdateText}>
+        {i18n.t('components.basket.successText')}
+      </Text>
+    </View>
+  );
 
   const renderFullBasket = () => (
     <View style={styles.fullBlock}>
       <View style={styles.fullContent}>
         <Text style={styles.header}>{i18n.t('components.basket.header')}</Text>
+        { updated && renderSuccessUpdateBlock()}
         <ScrollView style={styles.scrollBox}>
           { products.map(product => (
             <View style={styles.inventoryItem} key={product.uuid}>
@@ -93,7 +117,11 @@ const Basket: React.FC<IBasketProps> = ({ theme }) => {
           </Text>
         </View>
         <View style={styles.totalBlockRightCol}>
-          <Button size="small" textStyle={styles.buttonTextCheckout}>
+          <Button
+            size="small"
+            textStyle={styles.buttonTextCheckout}
+            onPress={onCheckoutPress}
+          >
             {i18n.t('components.basket.checkout')}
           </Button>
         </View>
