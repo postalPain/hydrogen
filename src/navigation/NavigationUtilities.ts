@@ -15,6 +15,13 @@ export const navigate = (name: Routes, params?: any) => {
   }
 };
 
+export const getNavigationState = () => {
+  if (isMountedRef.current && navigationRef.current) {
+    return navigationRef.current?.getState()?.routes;
+  }
+  return null;
+};
+
 export const hardwareBackPressHandler = () => {
   const isAbleGoBack = navigationRef.current?.canGoBack();
     navigationRef.current?.goBack();

@@ -19,7 +19,7 @@ import {
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
 import { AUTH_TOKEN } from '../../constants';
-import { navigate } from 'navigation/NavigationUtilities';
+import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import { Routes } from 'navigation';
 
 function* getUserWorker(): SagaIterator {
@@ -33,6 +33,8 @@ function* getUserWorker(): SagaIterator {
 
 function* signInWorker(action): SagaIterator {
   try {
+    const navigationState = getNavigationState();
+    const previousScreen = navigationState && navigationState[navigationState.length - 2]?.name;
     yield put(setError(''));
     const response = yield call(userAPI.signIn, action.payload);
     const { data: { access_token: accessToken, user } } = response.data;
@@ -40,8 +42,12 @@ function* signInWorker(action): SagaIterator {
     setItem(AUTH_TOKEN, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
-    // TODO: Enable when whole app flow will be ready
-    // yield call(navigate, Routes.DrawerNavigation);
+    if (previousScreen === Routes.SignUp) {
+      yield call(navigate, Routes.Checkout);
+    } else {
+      // TODO: Enable when whole app flow will be ready
+      // yield call(navigate, Routes.DrawerNavigation);
+    }
     // TODO: move this logic to initialization
     const { data: { data } } = yield call(userAPI.getCardList);
     yield put(saveCardList(data));

@@ -80,6 +80,14 @@ const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
                     type="email"
                     style={styles.input}
                   />
+                  <Button
+                    type="link"
+                    style={styles.input}
+                    textStyle={styles.link}
+                    onPress={() => navigate(Routes.Login)}
+                  >
+                    {i18n.t('screens.signUp.loginButton')}
+                  </Button>
                 </View>
                 <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.signUp.button')}</Button>
               </View>
