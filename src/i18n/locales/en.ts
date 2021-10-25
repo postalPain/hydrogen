@@ -241,5 +241,16 @@ export default {
       checkout: 'Checkout',
       exploreButton: 'Explore products',
     },
+    drawerContent: {
+      title: 'Don’t have an account yet?',
+      description: 'Create your account now and enjoy your first oder with a promo code',
+      orders: 'My orders',
+      faq: 'FAQ',
+      about: 'Get to know us',
+      contact: 'Get in touch',
+      delivery: 'Delivery',
+      terms: 'Terms & Privacy',
+      logout: 'Log Out',
+    },
   },
 };

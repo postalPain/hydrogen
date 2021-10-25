@@ -11,6 +11,7 @@ import { openLink } from 'services/inAppBrowser';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSelector } from 'store/user/selectors';
 import { signOut } from 'store/user/actions';
+import i18n from 'i18n';
 
 interface IDrawerContentProps extends DrawerContentComponentProps {
   theme?: ProjectThemeType;
@@ -35,9 +36,9 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
     </View>
   ) : (
     <View style={styles.headerContainer}>
-      <Text style={styles.title}>Don’t have an account yet?</Text>
+      <Text style={styles.title}>{i18n.t('components.drawerContent.title')}</Text>
       <Text style={styles.description}>
-        Create your account now and enjoy your first oder with a promo code
+        {i18n.t('components.drawerContent.description')}
       </Text>
       <Text selectable style={styles.promoCode}>GOBLITZ50</Text>
     </View>
@@ -53,7 +54,15 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             style={styles.linkContainer}
             textStyle={styles.mainLink}
           >
-            My orders
+            {i18n.t('components.drawerContent.orders')}
+          </Button>
+          <Button
+            onPress={() => openLink('https://www.getblitz.io/faq/')}
+            type="link"
+            style={styles.linkContainer}
+            textStyle={styles.link}
+          >
+            {i18n.t('components.drawerContent.faq')}
           </Button>
           <Button
             onPress={() => openLink('https://www.getblitz.io/about-us/')}
@@ -61,7 +70,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             style={styles.linkContainer}
             textStyle={styles.link}
           >
-            Get to know us
+            {i18n.t('components.drawerContent.about')}
           </Button>
           <Button
             onPress={() => openLink('https://www.getblitz.io/contact-us/')}
@@ -69,7 +78,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             style={styles.linkContainer}
             textStyle={styles.link}
           >
-            Get in touch
+            {i18n.t('components.drawerContent.contact')}
           </Button>
           <Button
             onPress={() => openLink('https://www.getblitz.io/delivery/')}
@@ -77,7 +86,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             style={styles.linkContainer}
             textStyle={styles.link}
           >
-            Delivery
+            {i18n.t('components.drawerContent.delivery')}
           </Button>
           <Button
             onPress={() => openLink('https://www.getblitz.io/terms-privacy/')}
@@ -85,7 +94,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             style={styles.linkContainer}
             textStyle={styles.link}
           >
-            Terms & Privacy
+            {i18n.t('components.drawerContent.terms')}
           </Button>
           {isUser && (
           <Button
@@ -94,7 +103,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             style={styles.linkContainer}
             textStyle={styles.link}
           >
-            Log Out
+            {i18n.t('components.drawerContent.logout')}
           </Button>
           )}
         </View>
