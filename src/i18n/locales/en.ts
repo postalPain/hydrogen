@@ -178,6 +178,13 @@ export default {
     basket: {
       header: 'Shopping Cart',
     },
+    orderList: {
+      header: 'My Orders',
+      title: 'Order History',
+      cancelled: 'Cancelled',
+      delivered: 'Delivered',
+      pending: 'On the way',
+    },
   },
   components: {
     locationButton: {

@@ -1,4 +1,5 @@
 import { TProduct } from 'services/ServerAPI/types';
+import { IOrder } from 'store/user/reducers/types';
 
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
@@ -21,6 +22,8 @@ export const TYPES = {
   SET_PRODUCT_TO_BASKET: 'SET_PRODUCT_TO_BASKET',
   SIGN_UP: 'SIGN_UP',
   REMOVE_PRODUCTS_FROM_BASKET: 'REMOVE_PRODUCTS_FROM_BASKET',
+  GET_ORDERS: 'GET_ORDERS',
+  SAVE_ORDERS: 'ADD_ORDERS',
 };
 
 export type TBasketProduct = TProduct & {
@@ -120,5 +123,14 @@ export const signUp = (signUpData) => ({
 
 export const removeProductsFromBasket = (payload: IRemoveProductsFromBasketPayload) => ({
   type: TYPES.REMOVE_PRODUCTS_FROM_BASKET,
+  payload,
+});
+
+export const getOrders = () => ({
+  type: TYPES.GET_ORDERS,
+});
+
+export const saveOrders = (payload: IOrder[]) => ({
+  type: TYPES.SAVE_ORDERS,
   payload,
 });

@@ -17,3 +17,4 @@ export { default as CrossIcon } from './Cross';
 export { default as CheckCircleIcon } from './CheckCircle';
 export { default as BigLocationCircle } from './BigLocationCircle';
 export { default as CartIcon } from './Cart';
+export { default as ArrowCircle } from './ArrowCircle';

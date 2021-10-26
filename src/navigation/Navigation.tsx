@@ -36,6 +36,7 @@ import UpdatePassword from 'screens/UpdatePassword';
 import Basket from 'screens/Basket';
 import ResetPasswordSuccess from 'screens/ResetPasswordSuccess';
 import { dynamicLinksHandler } from 'services/dynamicLinks';
+import OrderList from 'screens/OrderList';
 
 const Stack = createStackNavigator();
 
@@ -225,6 +226,14 @@ const Navigation = () => {
             options={{
               gestureEnabled: false,
               headerTitle: i18n.t('screens.basket.header'),
+            }}
+          />
+          <Stack.Screen
+            name={Routes.OrderList}
+            component={OrderList}
+            options={{
+              gestureEnabled: false,
+              headerTitle: i18n.t('screens.orderList.header'),
             }}
           />
         </Stack.Navigator>
