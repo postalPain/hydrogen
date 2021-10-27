@@ -15,14 +15,31 @@ export interface IDeliveryAddress {
   type: string;
 }
 
+export interface IOrderProduct {
+  milliliters: null | number;
+  name: string;
+  origin: string;
+  pieces: null | number;
+  price: number;
+  quantity: number;
+  total: number;
+  uuid: string;
+  weight: null | number;
+}
+
+interface IPromoCode {
+  code: string;
+  discount: number;
+}
+
 export interface IOrder {
   comment: string;
   created_at: string;
   delivery_address: IDeliveryAddress;
   delivery_fee: number;
   delivery_name: IDeliveryName;
-  products: any[];
-  promo_codes: any[]
+  products: IOrderProduct[];
+  promo_codes: IPromoCode[];
   status: string;
   sub_total: number;
   tax: number;

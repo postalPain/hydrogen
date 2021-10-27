@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
+import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
 
 export const isDateValid = (expirationDate: string) => {
@@ -79,4 +80,22 @@ export const getProductsReceipt = (products, discount = 0) => {
     total: formatCurrency(subTotalWithDiscount + DELIVERY_FEE),
     vat: formatCurrency(calcProductsTaxes(products)),
   };
+};
+
+export const addZeroes = (number) => {
+  let num: number | string = Number(number);
+  if (Number.isNaN(num)) {
+    return 0;
+  }
+  if (String(num).split('.').length < 2 || String(num).split('.')[1].length <= 2) {
+    num = num.toFixed(2);
+  }
+  return num;
+};
+
+export const checkProductWeight = ({ weight, milliliters, pieces }: IOrderProduct) => {
+  if (weight) return `${weight}g`;
+  if (milliliters) return `${milliliters}ml`;
+  if (pieces) return pieces;
+  return null;
 };

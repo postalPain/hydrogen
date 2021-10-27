@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import useStyles from './styles';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Pressable } from 'react-native';
 import { Text, withTheme, Card } from '@stryberventures/stryber-react-native-ui-components';
 import { ProjectThemeType } from 'theme';
 import { ArrowCircle, CheckCircleIcon, Checkout } from 'components/Icons';
@@ -9,6 +9,8 @@ import { getOrders } from 'store/user/actions';
 import { orderListSelector } from 'store/user/selectors';
 import { IOrder } from 'store/user/reducers/types';
 import i18n from 'i18n';
+import { useNavigation } from '@react-navigation/native';
+import { Routes } from 'navigation';
 
 interface IOrderListProps {
   theme: ProjectThemeType;
@@ -47,6 +49,7 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
   const orderList = useSelector(orderListSelector);
+  const { navigate } = useNavigation();
 
   useEffect(() => {
     dispatch(getOrders());
@@ -66,22 +69,25 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
     const [date, time] = order.created_at.split(' ');
     const [, month, day] = date.split('-');
     const [hours, minutes] = time.split(':');
+    const orderNum = `#${order.uuid.slice(-4).toUpperCase()}`;
 
     return (
-      <Card shadow style={styles.card} key={order.uuid}>
-        <View>
-          <Text style={styles.subTitle}>{order.delivery_address.full_address}</Text>
-          <Text style={styles.content}>{`${day}.${month}, ${hours}:${minutes}`}</Text>
-          <Text style={styles.content}>
-            #
-            {order.uuid.slice(-4).toUpperCase()}
-          </Text>
-        </View>
-        <View style={styles.statusContainer}>
-          {IconComponent}
-          <Text style={[styles.status, { color }]}>{text}</Text>
-        </View>
-      </Card>
+      <Pressable
+        onPress={() => navigate(Routes.OrderDetails, { order, orderTitle: orderNum })}
+        key={order.uuid}
+      >
+        <Card shadow style={styles.card}>
+          <View>
+            <Text style={styles.subTitle}>{order.delivery_address.full_address}</Text>
+            <Text style={styles.content}>{`${day}.${month}, ${hours}:${minutes}`}</Text>
+            <Text style={styles.content}>{orderNum}</Text>
+          </View>
+          <View style={styles.statusContainer}>
+            {IconComponent}
+            <Text style={[styles.status, { color }]}>{text}</Text>
+          </View>
+        </Card>
+      </Pressable>
     );
   });
 

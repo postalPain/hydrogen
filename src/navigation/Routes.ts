@@ -19,6 +19,7 @@ enum Routes {
   ResetPasswordSuccess = 'ResetPasswordSuccess',
   DrawerNavigation = 'DrawerNavigation',
   OrderList = 'OrderList',
+  OrderDetails = 'OrderDetails',
 }
 
 export default Routes;
