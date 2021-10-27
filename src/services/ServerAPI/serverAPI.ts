@@ -4,6 +4,7 @@ import { reportToSentry } from 'services/Sentry/sentry';
 import { API_URL } from '@env';
 
 import i18n from 'i18n';
+import { getAxiosErrorMessage } from 'utilities/helpers';
 
 export const xhr = axios.create({
   baseURL: API_URL,
@@ -35,7 +36,7 @@ xhr.interceptors.response.use(
   (error) => {
     console.log(i18n.t('alerts.title'), error.message);
     // reportToSentry(error);
-    return Promise.reject(error);
+    return Promise.reject(getAxiosErrorMessage(error));
   },
 );
 
@@ -72,5 +73,11 @@ export const userAPI = {
   },
   getOrders(): Promise<any> {
     return xhr.get(apiUrls.orders);
+  },
+  createOrder(orderData): Promise<any> {
+    return xhr.post(apiUrls.createOrder, orderData);
+  },
+  checkPromoCode(code): Promise<any> {
+    return xhr.get(apiUrls.checkPromoCode(code));
   },
 };

@@ -49,3 +49,28 @@ export interface IProducts {
   data: TProduct[];
   meta: TMetaList;
 }
+
+export interface IOrder {
+  products: {
+    uuid: string;
+    quantity: number;
+  }[],
+  comment: string;
+  delivery_address: {
+    latitude: number;
+    longitude: number;
+    type: string; // apartments | villa
+    building_name: string;
+    house_number: string;
+    floor: number;
+    apartment_number: string;
+    full_address: string;
+    promo_code?: string;
+    token: string;
+  }
+}
+
+export type TPromoCode = {
+  code: string;
+  discount: number;
+};

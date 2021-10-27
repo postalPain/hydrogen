@@ -6,6 +6,7 @@ export default {
     bad_request: "We are unable to find what you're looking for",
     services_unavailable: 'Sorry, our service is temporarily not available.',
     unauthenticated: 'Unauthenticated',
+    networkError: 'You are offline. Please check your internet connection and try again.',
   },
   alerts: {
     title: 'App',
@@ -112,6 +113,7 @@ export default {
       vat: 'VAT',
       total: 'Total',
       submit: 'Place Order',
+      promo: 'Promo',
     },
     onboard: {
       title: 'Welcome!',

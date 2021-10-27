@@ -77,6 +77,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   label: {
     color: theme.colors.black,
   },
+  loadingScreen: {
+    position: 'absolute',
+    zIndex: 100,
+    left: 0,
+    right: 0,
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
 });
 
 export default useStyles;

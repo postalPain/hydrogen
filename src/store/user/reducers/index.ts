@@ -1,4 +1,5 @@
 import { TYPES, TBasketProduct } from '../actions';
+import { TPromoCode } from 'services/ServerAPI/types';
 import { IOrder } from 'store/user/reducers/types';
 
 interface IUserState {
@@ -13,6 +14,16 @@ interface IUserState {
     [key: string]: TBasketProduct
   },
   orderList: IOrder[],
+  checkout: {
+    loading: boolean;
+    data: any;
+    errorMessage: string | null;
+  },
+  promoCode: {
+    loading: boolean;
+    data: TPromoCode | null;
+    errorMessage: string | null;
+  }
 }
 
 const defaultState = {
@@ -25,6 +36,16 @@ const defaultState = {
   cardList: [],
   basket: {},
   orderList: [],
+  checkout: {
+    loading: false,
+    data: null,
+    errorMessage: null,
+  },
+  promoCode: {
+    loading: false,
+    data: null,
+    errorMessage: null,
+  },
 };
 
 export default function user(state: IUserState = defaultState, action) {
@@ -131,6 +152,77 @@ export default function user(state: IUserState = defaultState, action) {
       return {
         ...state,
         orderList: action.payload,
+      };
+    }
+    case TYPES.CREATE_ORDER: {
+      return {
+        ...state,
+        checkout: {
+          ...state.checkout,
+          loading: true,
+        },
+      };
+    }
+    case TYPES.CREATE_ORDER_SUCCESS: {
+      return {
+        ...state,
+        checkout: {
+          errorMessage: null,
+          data: null,
+          loading: false,
+        },
+      };
+    }
+    case TYPES.CREATE_ORDER_ERROR: {
+      return {
+        ...state,
+        checkout: {
+          errorMessage: null,
+          data: null,
+          loading: false,
+        },
+      };
+    }
+    case TYPES.CHECK_PROMO_CODE: {
+      return {
+        ...state,
+        promoCode: {
+          ...state.promoCode,
+          errorMessage: null,
+          loading: true,
+        },
+      };
+    }
+    case TYPES.CHECK_PROMO_CODE_SUCCESS: {
+      return {
+        ...state,
+        promoCode: {
+          errorMessage: null,
+          data: {
+            ...action.payload,
+          },
+          loading: false,
+        },
+      };
+    }
+    case TYPES.CHECK_PROMO_CODE_ERROR: {
+      return {
+        ...state,
+        promoCode: {
+          data: null,
+          errorMessage: action.payload,
+          loading: false,
+        },
+      };
+    }
+    case TYPES.RESET_PROMO_CODE: {
+      return {
+        ...state,
+        promoCode: {
+          data: null,
+          errorMessage: null,
+          loading: false,
+        },
       };
     }
     default:

@@ -1,4 +1,4 @@
-import { TProduct } from 'services/ServerAPI/types';
+import { TProduct, TPromoCode } from 'services/ServerAPI/types';
 import { IOrder } from 'store/user/reducers/types';
 
 export const TYPES = {
@@ -24,6 +24,13 @@ export const TYPES = {
   REMOVE_PRODUCTS_FROM_BASKET: 'REMOVE_PRODUCTS_FROM_BASKET',
   GET_ORDERS: 'GET_ORDERS',
   SAVE_ORDERS: 'ADD_ORDERS',
+  CREATE_ORDER: 'CREATE_ORDER',
+  CREATE_ORDER_SUCCESS: 'CREATE_ORDER_SUCCESS',
+  CREATE_ORDER_ERROR: 'CREATE_ORDER_ERROR',
+  CHECK_PROMO_CODE: 'CHECK_PROMO_CODE',
+  CHECK_PROMO_CODE_SUCCESS: 'CHECK_PROMO_CODE_SUCCESS',
+  CHECK_PROMO_CODE_ERROR: 'CHECK_PROMO_CODE_ERROR',
+  RESET_PROMO_CODE: 'RESET_PROMO_CODE',
 };
 
 export type TBasketProduct = TProduct & {
@@ -133,4 +140,36 @@ export const getOrders = () => ({
 export const saveOrders = (payload: IOrder[]) => ({
   type: TYPES.SAVE_ORDERS,
   payload,
+});
+
+export const createOrder = (payload: { comment: string }) => ({
+  type: TYPES.CREATE_ORDER,
+  payload,
+});
+
+export const createOrderSuccess = () => ({
+  type: TYPES.CREATE_ORDER_SUCCESS,
+});
+
+export const createOrderError = () => ({
+  type: TYPES.CREATE_ORDER_ERROR,
+});
+
+export const checkPromoCode = (code: string) => ({
+  type: TYPES.CHECK_PROMO_CODE,
+  payload: code,
+});
+
+export const checkPromoCodeSuccess = (payload: TPromoCode) => ({
+  type: TYPES.CHECK_PROMO_CODE_SUCCESS,
+  payload,
+});
+
+export const checkPromoCodeError = (errorMessage: string) => ({
+  type: TYPES.CHECK_PROMO_CODE_ERROR,
+  payload: errorMessage,
+});
+
+export const resetPromoCode = () => ({
+  type: TYPES.RESET_PROMO_CODE,
 });

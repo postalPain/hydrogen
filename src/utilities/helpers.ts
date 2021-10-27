@@ -1,4 +1,8 @@
+import { AxiosError } from 'axios';
+
+import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
+import { DELIVERY_FEE } from 'constants/';
 
 export const isDateValid = (expirationDate: string) => {
   if (!expirationDate) {
@@ -34,7 +38,12 @@ export const isMonthValid = (expirationDate: string) => {
   return Number(expMonth) <= 12;
 };
 
-export const formatCurrency = (amount: number) => `${amount} AED`;
+export const formatCurrency = (amount: number, { order } = { order: 'straight' }) => {
+  const CURRENCY = 'AED';
+  const formattedAmount = amount.toFixed(2);
+
+  return order === 'reverse' ? `${CURRENCY} ${formattedAmount}` : `${formattedAmount} ${CURRENCY}`;
+};
 export const formatAmount = (product: TProduct) => {
   if (product.milliliters) {
     return `${product.milliliters} ml`;
@@ -45,6 +54,29 @@ export const roundPrice = (n: number) => Math.round(n * 100) / 100;
 export const calcProductsPrice = (products) => roundPrice(products.reduce((sum, product) => (
   sum + product.price * product.basketQuantity
 ), 0));
+export const calcProductsTaxes = (products) => roundPrice(products.reduce((sum, product) => (
+  sum + product.tax * product.basketQuantity
+), 0));
 export const getMaxProductCount = (product: TProduct) => (
   product.quantity < product.max_per_order ? product.quantity : product.max_per_order
 );
+export const getAxiosErrorMessage = (error: AxiosError) => {
+  if (!error.response && error.message === 'Network Error') {
+    return {
+      message: i18n.t('errors.networkError'),
+    };
+  }
+  return error!.response!.data;
+};
+
+export const getProductsReceipt = (products, discount = 0) => {
+  const subtotal = calcProductsPrice(products);
+  const subTotalWithDiscount = subtotal - discount > 0 ? subtotal - discount : 0;
+  return {
+    subtotal: formatCurrency(subtotal),
+    delivery: formatCurrency(DELIVERY_FEE),
+    discount: formatCurrency(discount),
+    total: formatCurrency(subTotalWithDiscount + DELIVERY_FEE),
+    vat: formatCurrency(calcProductsTaxes(products)),
+  };
+};

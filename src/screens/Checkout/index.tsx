@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { View, TextInput, ScrollView } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  View,
+  TextInput,
+  ScrollView,
+  Alert,
+} from 'react-native';
 import {
   Text, Input, Button, withTheme,
 } from '@stryberventures/stryber-react-native-ui-components';
@@ -10,6 +15,14 @@ import { useNavigation } from '@react-navigation/native';
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import Routes from 'navigation/Routes';
+import { getProductsReceipt } from 'utilities/helpers';
+import { checkPromoCode, resetPromoCode, createOrder } from 'store/user/actions';
+import {
+  promoCodeSelector,
+  promoCodeLoadingSelector,
+  promoCodeErrorSelector,
+  basketSelector,
+} from 'store/user/selectors';
 import {
   ChangePaymentMethod,
   ModalOverlay,
@@ -28,6 +41,7 @@ interface ICheckoutProps {
 
 const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const styles = useStyles(theme);
+  const dispatch = useDispatch();
   const navigator = useNavigation();
   const addCardModalRef = useRef<BottomSheet>(null);
   const changeCardModalRef = useRef<BottomSheet>(null);
@@ -52,6 +66,15 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const defaultCard = useSelector(state => state.user.defaultCard);
   const isDefaultCard = !!Object.keys(defaultCard).length;
   const [outOfStockSlideUpVisible, setOutOfStockSlideUpVisible] = useState(false);
+  const [deliveryInstructions, setDeliveryInstructions] = useState('');
+  const [couponName, setCouponName] = useState('');
+  const promoCode = useSelector(promoCodeSelector());
+  const promoCodeLoading = useSelector(promoCodeLoadingSelector());
+  const promoCodeError = useSelector(promoCodeErrorSelector());
+  const basket = useSelector(basketSelector());
+  const products = Object.values(basket);
+  const discount = promoCode && promoCode.discount || 0;
+  const receipt = getProductsReceipt(products, discount);
 
   // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
   useEffect(() => {
@@ -61,16 +84,36 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
     }, 400);
   }, []);
 
+  useEffect(() => {
+    if (promoCodeError) {
+      Alert.alert(i18n.t('alerts.title'), promoCodeError);
+      dispatch(resetPromoCode());
+    }
+  }, [promoCodeError]);
+
   const onCheckoutPress = () => {
-    // TODO add submit order to server logic
-    // add set out of stock products to the store
-    setOutOfStockSlideUpVisible(true);
+    dispatch(createOrder({
+      comment: deliveryInstructions,
+    }));
   };
   const onCartUpdate = () => {
     setOutOfStockSlideUpVisible(false);
     // @ts-ignore
     navigator.navigate(Routes.Basket, { updated: true });
   };
+  const onCouponButtonPress = () => {
+    if (couponName) {
+      dispatch(checkPromoCode(couponName));
+    }
+  };
+  const onCouponTextChange = (text) => {
+    setCouponName(text);
+    if (promoCode) {
+      dispatch(resetPromoCode());
+    }
+  };
+
+  const loading = promoCodeLoading;
 
   return (
     <>
@@ -90,12 +133,22 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             style={styles.input}
             inputLabelStyle={styles.label}
           />
-          <Input label={i18n.t('screens.checkout.instructionsLabel')} multiline maxLength={250} />
+          <Input
+            label={i18n.t('screens.checkout.instructionsLabel')}
+            multiline
+            maxLength={250}
+            onChangeText={(text) => setDeliveryInstructions(text)}
+          />
           <View style={styles.couponContainer}>
-            <TextInput placeholder={i18n.t('screens.checkout.couponPlaceholder')} style={styles.couponField} />
+            <TextInput
+              placeholder={i18n.t('screens.checkout.couponPlaceholder')}
+              style={styles.couponField}
+              onChangeText={onCouponTextChange}
+            />
             <Button
               style={styles.couponButton}
               textStyle={styles.couponButtonText}
+              onPress={onCouponButtonPress}
             >
               {i18n.t('screens.checkout.couponButton')}
               {'   '}
@@ -111,23 +164,31 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           </Text>
           <View style={styles.priceContainer}>
             <Text style={styles.priceText} semibold size={14}>{i18n.t('screens.checkout.subtotal')}</Text>
-            <Text style={styles.priceText} bold>AED 54.00</Text>
+            <Text style={styles.priceText} bold>{receipt.subtotal}</Text>
           </View>
+          {
+            !!promoCode && (
+              <View style={styles.priceContainer}>
+                <Text style={styles.priceText}>{i18n.t('screens.checkout.promo')}</Text>
+                <Text style={styles.priceText}>{receipt.discount}</Text>
+              </View>
+            )
+          }
           <View style={styles.priceContainer}>
             <Text style={styles.priceText}>{i18n.t('screens.checkout.fee')}</Text>
-            <Text style={styles.priceText}>AED 54.00</Text>
+            <Text style={styles.priceText}>{receipt.delivery}</Text>
           </View>
           <View style={[styles.priceContainer, styles.totalContainer]}>
             <Text style={[styles.priceText, styles.priceTotal]}>
               {i18n.t('screens.checkout.total')}
             </Text>
             <Text style={[styles.priceText, styles.priceTotal]}>
-              AED 54.00
+              {receipt.total}
             </Text>
           </View>
           <View style={styles.priceContainer}>
             <Text style={styles.priceText}>{i18n.t('screens.checkout.vat')}</Text>
-            <Text style={styles.priceText}>AED 54.00</Text>
+            <Text style={styles.priceText}>{receipt.vat}</Text>
           </View>
           <Button
             style={styles.button}
@@ -156,6 +217,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         onCartUpdate={onCartUpdate}
         products={[]}
       />
+      { loading && <View style={styles.loadingScreen} /> }
     </>
   );
 };

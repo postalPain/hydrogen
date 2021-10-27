@@ -14,7 +14,10 @@ import {
   saveCardList,
   saveDefaultCard,
   saveUser,
-  saveAddress, saveOrders,
+  checkPromoCodeSuccess,
+  checkPromoCodeError,
+  saveAddress,
+  saveOrders,
 } from './actions';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
@@ -139,6 +142,25 @@ function* getOrdersWorker(): SagaIterator {
   }
 }
 
+function* createOrderWorker(action): SagaIterator {
+  try {
+    // TODO add data preparation for submit
+    const { data: { data } } = yield call(userAPI.createOrder, action.payload);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* checkPromoCodeWorker(action): SagaIterator {
+  try {
+    const { data: { data } } = yield call(userAPI.checkPromoCode, action.payload);
+    yield put(checkPromoCodeSuccess(data));
+  } catch (error) {
+    yield put(checkPromoCodeError(error.message));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
@@ -148,4 +170,6 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.ADD_ADDRESS, addAddressWorker);
   yield takeEvery(TYPES.SIGN_UP, signUpWorker);
   yield takeEvery(TYPES.GET_ORDERS, getOrdersWorker);
+  yield takeEvery(TYPES.CREATE_ORDER, createOrderWorker);
+  yield takeEvery(TYPES.CHECK_PROMO_CODE, checkPromoCodeWorker);
 }

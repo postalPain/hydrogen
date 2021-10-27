@@ -9,4 +9,6 @@ export default {
   deliveryAddress: 'api/v1/user/delivery-address',
   signUp: 'api/v1/sign-up',
   orders: 'api/v1/orders',
+  createOrder: 'api/v1/orders',
+  checkPromoCode: (code) => `api/v1/promo-codes/${code}`,
 };

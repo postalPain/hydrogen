@@ -20,3 +20,9 @@ export const basketLengthSelector = () => (state: RootState) => (
 );
 
 export const orderListSelector = (state: RootState) => state.user.orderList;
+
+export const promoCodeSelector = () => (state: RootState) => (
+  state.user.promoCode.data
+);
+export const promoCodeLoadingSelector = () => (state: RootState) => state.user.promoCode.loading;
+export const promoCodeErrorSelector = () => (state: RootState) => state.user.promoCode.errorMessage;
