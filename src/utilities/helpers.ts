@@ -45,7 +45,8 @@ export const formatCurrency = (amount: number, { order } = { order: 'straight' }
 
   return order === 'reverse' ? `${CURRENCY} ${formattedAmount}` : `${formattedAmount} ${CURRENCY}`;
 };
-export const formatAmount = (product: TProduct) => {
+
+export const formatAmount = (product: TProduct | IOrderProduct) => {
   if (product.milliliters) {
     return `${product.milliliters} ml`;
   }
@@ -80,22 +81,4 @@ export const getProductsReceipt = (products, discount = 0) => {
     total: formatCurrency(subTotalWithDiscount + DELIVERY_FEE),
     vat: formatCurrency(calcProductsTaxes(products)),
   };
-};
-
-export const addZeroes = (number) => {
-  let num: number | string = Number(number);
-  if (Number.isNaN(num)) {
-    return 0;
-  }
-  if (String(num).split('.').length < 2 || String(num).split('.')[1].length <= 2) {
-    num = num.toFixed(2);
-  }
-  return num;
-};
-
-export const checkProductWeight = ({ weight, milliliters, pieces }: IOrderProduct) => {
-  if (weight) return `${weight}g`;
-  if (milliliters) return `${milliliters}ml`;
-  if (pieces) return pieces;
-  return null;
 };

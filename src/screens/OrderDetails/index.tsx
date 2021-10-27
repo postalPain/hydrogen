@@ -4,7 +4,7 @@ import { View, SafeAreaView, ScrollView } from 'react-native';
 import { Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import { ProjectThemeType } from 'theme';
 import { IOrder } from 'store/user/reducers/types';
-import { addZeroes, checkProductWeight } from 'utilities/helpers';
+import { formatAmount, formatCurrency } from 'utilities/helpers';
 import i18n from 'i18n';
 
 interface IOrderDetailsProps {
@@ -24,10 +24,10 @@ const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
         <Text style={styles.priceContent}>
           {`${product.name} x ${product.quantity}`}
         </Text>
-        <Text style={styles.priceContent}>{`${checkProductWeight(product)}, ${product.origin}`}</Text>
+        <Text style={styles.priceContent}>{`${formatAmount(product)}, ${product.origin}`}</Text>
       </View>
       <Text style={[styles.priceContent, styles.total]}>
-        {`AED ${addZeroes(product.total)}`}
+        {formatCurrency(product.total)}
       </Text>
     </View>
   ));
@@ -36,7 +36,8 @@ const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
     <View style={styles.priceContainer} key={code.code}>
       <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.promo')}</Text>
       <Text style={styles.priceContent}>
-        {`AED -${addZeroes(code.discount)}`}
+        -
+        {formatCurrency(code.discount)}
       </Text>
     </View>
   ));
@@ -64,27 +65,27 @@ const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
           <View style={styles.priceContainer}>
             <Text style={[styles.priceContent, styles.subTotal]}>{i18n.t('screens.orderDetails.subtotal')}</Text>
             <Text style={styles.priceContent}>
-              {`AED ${addZeroes(order.sub_total)}`}
+              {formatCurrency(order.sub_total)}
             </Text>
           </View>
           {renderPromoCodes()}
           <View style={styles.priceContainer}>
-            <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.vat')}</Text>
+            <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.fee')}</Text>
             <Text style={styles.priceContent}>
-              {`AED ${addZeroes(order.tax)}`}
+              {formatCurrency(order.delivery_fee)}
             </Text>
           </View>
           <View style={styles.totalContainer}>
             <View style={styles.priceContainer}>
-              <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.fee')}</Text>
-              <Text style={styles.priceContent}>
-                {`AED ${addZeroes(order.delivery_fee)}`}
+              <Text style={[styles.priceContent, styles.total]}>{i18n.t('screens.orderDetails.total')}</Text>
+              <Text style={[styles.priceContent, styles.total]}>
+                {formatCurrency(order.total)}
               </Text>
             </View>
             <View style={styles.priceContainer}>
-              <Text style={[styles.priceContent, styles.total]}>{i18n.t('screens.orderDetails.total')}</Text>
-              <Text style={[styles.priceContent, styles.total]}>
-                {`AED ${addZeroes(order.total)}`}
+              <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.vat')}</Text>
+              <Text style={styles.priceContent}>
+                {formatCurrency(order.tax)}
               </Text>
             </View>
           </View>
