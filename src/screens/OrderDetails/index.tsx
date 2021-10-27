@@ -27,7 +27,7 @@ const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
         <Text style={styles.priceContent}>{`${formatAmount(product)}, ${product.origin}`}</Text>
       </View>
       <Text style={[styles.priceContent, styles.total]}>
-        {formatCurrency(product.total)}
+        {formatCurrency(product.total, { order: 'reverse' })}
       </Text>
     </View>
   ));
@@ -37,7 +37,7 @@ const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
       <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.promo')}</Text>
       <Text style={styles.priceContent}>
         -
-        {formatCurrency(code.discount)}
+        {formatCurrency(code.discount, { order: 'reverse' })}
       </Text>
     </View>
   ));
@@ -65,27 +65,27 @@ const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
           <View style={styles.priceContainer}>
             <Text style={[styles.priceContent, styles.subTotal]}>{i18n.t('screens.orderDetails.subtotal')}</Text>
             <Text style={styles.priceContent}>
-              {formatCurrency(order.sub_total)}
+              {formatCurrency(order.sub_total, { order: 'reverse' })}
             </Text>
           </View>
           {renderPromoCodes()}
           <View style={styles.priceContainer}>
             <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.fee')}</Text>
             <Text style={styles.priceContent}>
-              {formatCurrency(order.delivery_fee)}
+              {formatCurrency(order.delivery_fee, { order: 'reverse' })}
             </Text>
           </View>
           <View style={styles.totalContainer}>
             <View style={styles.priceContainer}>
               <Text style={[styles.priceContent, styles.total]}>{i18n.t('screens.orderDetails.total')}</Text>
               <Text style={[styles.priceContent, styles.total]}>
-                {formatCurrency(order.total)}
+                {formatCurrency(order.total, { order: 'reverse' })}
               </Text>
             </View>
             <View style={styles.priceContainer}>
               <Text style={styles.priceContent}>{i18n.t('screens.orderDetails.vat')}</Text>
               <Text style={styles.priceContent}>
-                {formatCurrency(order.tax)}
+                {formatCurrency(order.tax, { order: 'reverse' })}
               </Text>
             </View>
           </View>
