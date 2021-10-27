@@ -2,7 +2,7 @@ import { RootState } from 'store/rootReducer';
 
 export const userSelector = (state: RootState) => state.user.user;
 export const userErrorSelector = (state: RootState) => state.user.errorMessage;
-export const userToken = (state: RootState) => state.user.accessToken;
+export const userTokenSelector = (state: RootState) => state.user.accessToken;
 export const basketSelector = () => (state: RootState) => state.user.basket;
 
 export const basketProductSelector = (id: string) => (state: RootState) => (
@@ -18,3 +18,5 @@ export const basketLengthSelector = () => (state: RootState) => (
     sum + item.basketQuantity
   ), 0)
 );
+
+export const orderListSelector = (state: RootState) => state.user.orderList;

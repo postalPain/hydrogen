@@ -74,6 +74,9 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
           {Routes.Basket}
         </Button>
         <Button onPress={() => setShowModal(true)}>Show Declined Payment Modal</Button>
+        <Button onPress={() => navigator.navigate(Routes.OrderList)}>
+          {Routes.OrderList}
+        </Button>
         <DeclinedPaymentModal visible={showModal} onClose={() => setShowModal(false)} />
       </ScrollView>
     </SafeAreaView>

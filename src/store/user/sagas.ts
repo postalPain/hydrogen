@@ -14,13 +14,14 @@ import {
   saveCardList,
   saveDefaultCard,
   saveUser,
-  saveAddress,
+  saveAddress, saveOrders,
 } from './actions';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
 import { AUTH_TOKEN } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import { Routes } from 'navigation';
+import { userTokenSelector } from 'store/user/selectors';
 
 function* getUserWorker(): SagaIterator {
   try {
@@ -76,7 +77,7 @@ function* addCardWorker(action): SagaIterator {
     const { id } = yield client.createToken(action.payload);
 
     // TODO remove it when app initialization will be done
-    const accessToken = yield select(state => state.user.accessToken);
+    const accessToken = yield select(userTokenSelector);
     yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
 
     const { data: { data } } = yield call(userAPI.addCard, { token: id });
@@ -127,6 +128,17 @@ function* signUpWorker(action): SagaIterator {
   }
 }
 
+function* getOrdersWorker(): SagaIterator {
+  try {
+    const accessToken = yield select(userTokenSelector);
+    yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
+    const { data: { data } } = yield call(userAPI.getOrders);
+    yield put(saveOrders(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
@@ -135,4 +147,5 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SET_DEFAULT_CARD, setDefaultCardWorker);
   yield takeEvery(TYPES.ADD_ADDRESS, addAddressWorker);
   yield takeEvery(TYPES.SIGN_UP, signUpWorker);
+  yield takeEvery(TYPES.GET_ORDERS, getOrdersWorker);
 }

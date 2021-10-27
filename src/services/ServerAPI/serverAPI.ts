@@ -70,4 +70,7 @@ export const userAPI = {
   signUp(signUpData): Promise<any> {
     return xhr.post(apiUrls.signUp, signUpData);
   },
+  getOrders(): Promise<any> {
+    return xhr.get(apiUrls.orders);
+  },
 };

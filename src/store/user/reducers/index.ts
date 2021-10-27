@@ -1,4 +1,5 @@
-import { TYPES, TBasketProduct } from './actions';
+import { TYPES, TBasketProduct } from '../actions';
+import { IOrder } from 'store/user/reducers/types';
 
 interface IUserState {
   accessToken: string;
@@ -11,6 +12,7 @@ interface IUserState {
   basket: {
     [key: string]: TBasketProduct
   },
+  orderList: IOrder[],
 }
 
 const defaultState = {
@@ -22,6 +24,7 @@ const defaultState = {
   deliveryAddress: null,
   cardList: [],
   basket: {},
+  orderList: [],
 };
 
 export default function user(state: IUserState = defaultState, action) {
@@ -122,6 +125,12 @@ export default function user(state: IUserState = defaultState, action) {
         basket: {
           ...newBasketState,
         },
+      };
+    }
+    case TYPES.SAVE_ORDERS: {
+      return {
+        ...state,
+        orderList: action.payload,
       };
     }
     default:
