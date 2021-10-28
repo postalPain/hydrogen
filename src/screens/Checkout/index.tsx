@@ -21,7 +21,7 @@ import {
   promoCodeSelector,
   promoCodeLoadingSelector,
   promoCodeErrorSelector,
-  basketSelector,
+  basketSelector, defaultCardSelector,
 } from 'store/user/selectors';
 import {
   ChangePaymentMethod,
@@ -62,8 +62,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   };
   const handleClosePaymentCardModal = () => addCardModalRef.current.close();
   const handleCloseChangeCard = () => changeCardModalRef.current.close();
-  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
-  const defaultCard = useSelector(state => state.user.defaultCard);
+  const defaultCard = useSelector(defaultCardSelector);
   const isDefaultCard = !!Object.keys(defaultCard).length;
   const [outOfStockSlideUpVisible, setOutOfStockSlideUpVisible] = useState(false);
   const [deliveryInstructions, setDeliveryInstructions] = useState('');
@@ -92,6 +91,8 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   }, [promoCodeError]);
 
   const onCheckoutPress = () => {
+    // TODO: Add different object for order submission
+    //  if payment card is temporary and logic for removing this card
     dispatch(createOrder({
       comment: deliveryInstructions,
     }));

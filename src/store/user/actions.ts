@@ -1,5 +1,5 @@
 import { TProduct, TPromoCode } from 'services/ServerAPI/types';
-import { IOrder } from 'store/user/reducers/types';
+import { ICard, IOrder } from 'store/user/reducers/types';
 
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
@@ -12,6 +12,7 @@ export const TYPES = {
   SIGNED_OUT: 'SIGNED_OUT',
   AUTH_ERROR: 'AUTH_ERROR',
   ADD_CARD: 'ADD_CARD',
+  ADD_TEMPORARY_CARD: 'ADD_TEMPORARY_CARD',
   SAVE_CARD: 'SAVE_CARD',
   SET_DEFAULT_CARD: 'SET_DEFAULT_CARD',
   SAVE_DEFAULT_CARD: 'SAVE_DEFAULT_CARD',
@@ -80,12 +81,17 @@ export const addCard = (cardInfo) => ({
   payload: cardInfo,
 });
 
+export const addTemporaryCard = (cardInfo) => ({
+  type: TYPES.ADD_TEMPORARY_CARD,
+  payload: cardInfo,
+});
+
 export const saveCard = (cardInfo) => ({
   type: TYPES.SAVE_CARD,
   payload: cardInfo,
 });
 
-export const saveDefaultCard = (cardInfo) => ({
+export const saveDefaultCard = (cardInfo: ICard) => ({
   type: TYPES.SAVE_DEFAULT_CARD,
   payload: cardInfo,
 });
@@ -99,7 +105,7 @@ export const getCardList = () => ({
   type: TYPES.GET_CARD_LIST,
 });
 
-export const saveCardList = (cardList) => ({
+export const saveCardList = (cardList: ICard[]) => ({
   type: TYPES.SAVE_CARD_LIST,
   payload: cardList,
 });

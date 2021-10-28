@@ -49,3 +49,15 @@ export interface IOrder {
     uuid: string;
   }
 }
+
+export interface ICard {
+  brand: string;
+  created_at?: string;
+  isDefault: boolean;
+  last4: string;
+  stripe_card_id: string;
+  updated_at?: string;
+  user_uuid?: string;
+  uuid?: string;
+  temporary?: boolean;
+}
