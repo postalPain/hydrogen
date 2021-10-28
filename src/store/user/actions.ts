@@ -9,7 +9,7 @@ export const TYPES = {
   GET_USER_SUCCESS: 'GET_USER_SUCCESS',
   SAVE_USER: 'SAVE_USER',
   SIGN_OUT: 'SIGN_OUT',
-  SIGNED_OUT: 'SIGNED_IN',
+  SIGNED_OUT: 'SIGNED_OUT',
   AUTH_ERROR: 'AUTH_ERROR',
   ADD_CARD: 'ADD_CARD',
   SAVE_CARD: 'SAVE_CARD',
@@ -31,6 +31,7 @@ export const TYPES = {
   CHECK_PROMO_CODE_SUCCESS: 'CHECK_PROMO_CODE_SUCCESS',
   CHECK_PROMO_CODE_ERROR: 'CHECK_PROMO_CODE_ERROR',
   RESET_PROMO_CODE: 'RESET_PROMO_CODE',
+  CREATE_TEMPORARY_USER: 'CREATE_TEMPORARY_USER',
 };
 
 export type TBasketProduct = TProduct & {
@@ -108,8 +109,8 @@ export const saveUser = (user) => ({
   payload: user,
 });
 
-export const addAddress = (address) => ({
-  type: TYPES.ADD_ADDRESS,
+export const createTemporaryUser = (address) => ({
+  type: TYPES.CREATE_TEMPORARY_USER,
   payload: address,
 });
 

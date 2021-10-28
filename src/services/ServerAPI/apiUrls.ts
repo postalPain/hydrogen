@@ -11,4 +11,5 @@ export default {
   orders: 'api/v1/orders',
   createOrder: 'api/v1/orders',
   checkPromoCode: (code) => `api/v1/promo-codes/${code}`,
+  createTemporaryUser: 'api/v1/user/guest',
 };

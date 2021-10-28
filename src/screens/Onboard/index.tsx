@@ -1,13 +1,14 @@
 import React from 'react';
-import useStyles from './styles';
 import {
   View, SafeAreaView, Image, ImageBackground,
 } from 'react-native';
-import { Text, withTheme, Button } from '@stryberventures/stryber-react-native-ui-components';
-import { ProjectThemeType } from 'theme';
 import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
+import { Text, withTheme, Button } from '@stryberventures/stryber-react-native-ui-components';
+
 import i18n from 'i18n';
+import { Routes } from 'navigation';
+import { ProjectThemeType } from 'theme';
+import useStyles from './styles';
 
 interface IOnboardProps {
   theme?: ProjectThemeType;

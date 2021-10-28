@@ -7,7 +7,7 @@ import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAddress } from 'store/user/actions';
+import { createTemporaryUser } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
@@ -23,7 +23,7 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const { params: { address, geoCoords: { latitude, longitude } } } = route;
 
   const handleFormSubmit = (values) => {
-    dispatch(addAddress({
+    dispatch(createTemporaryUser({
       ...values,
       type: addressType === 'Villa' ? 'villa' : 'apartment',
       full_address: address,

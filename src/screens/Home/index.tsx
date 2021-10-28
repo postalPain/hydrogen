@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   ScrollView,
   View,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
 import { NavigationContainerRef, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { categoriesSelector } from 'store/categories/selectors';
-import { getCategories } from 'store/categories/actions';
 import { LocationButton, HomeCarousel, CategoriesViewer } from 'components';
 import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
@@ -25,15 +24,8 @@ interface IHomeProps {
 
 const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const styles = useStyles(theme);
-  const dispatch = useDispatch();
   const categories = useSelector(categoriesSelector);
   const navigation = useNavigation();
-
-  useEffect(() => {
-    if (!categories || !categories.length) {
-      dispatch(getCategories());
-    }
-  }, [categories]);
 
   return (
     <View style={styles.container}>

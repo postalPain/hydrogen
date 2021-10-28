@@ -1,32 +1,33 @@
 import {
-  takeEvery, put, call, select,
+  call, put, takeEvery, select,
 } from 'redux-saga/effects';
 import { SagaIterator } from '@redux-saga/core';
-import { userAPI, addHeader, removeHeader } from 'services/ServerAPI/serverAPI';
+import { addHeader, removeHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
+import { appCompleteBoarding } from 'store/app/actions';
+import { signedAppDataWorker } from 'store/app/sagas';
 import {
-  TYPES,
-  signedIn,
-  setError,
+  checkPromoCodeError,
+  checkPromoCodeSuccess,
   getUserSuccess,
+  saveAddress,
   saveCard,
   saveCardList,
   saveDefaultCard,
-  saveUser,
-  checkPromoCodeSuccess,
-  checkPromoCodeError,
-  saveAddress,
   saveOrders,
+  saveUser,
+  setError,
+  signedIn,
+  TYPES,
 } from './actions';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
-import { AUTH_TOKEN } from '../../constants';
+import { storageKeys } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
-import { Routes } from 'navigation';
-import { userTokenSelector } from 'store/user/selectors';
+import Routes from 'navigation/Routes';
 
-function* getUserWorker(): SagaIterator {
+export function* getUserWorker(): SagaIterator {
   try {
     const response = yield call(userAPI.getCurrentUser);
     yield put(getUserSuccess(response.data));
@@ -43,9 +44,15 @@ function* signInWorker(action): SagaIterator {
     const response = yield call(userAPI.signIn, action.payload);
     const { data: { access_token: accessToken, user } } = response.data;
     yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
-    setItem(AUTH_TOKEN, accessToken);
+    setItem(storageKeys.authToken, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
+
+    const boardingCompleted = yield select(state => state.app.boardingCompleted);
+    if (!boardingCompleted) {
+      yield put(appCompleteBoarding());
+    }
+
     if (previousScreen === Routes.SignUp) {
       yield call(navigate, Routes.Checkout);
     } else {
@@ -67,8 +74,7 @@ function* signOutWorker(): SagaIterator {
     yield call(removeHeader, 'Authorization');
     // TODO: Uncomment when backend will be ready
     // yield call(userAPI.signOut);
-    yield call(removeItem, AUTH_TOKEN);
-    yield call(navigate, Routes.Onboard);
+    yield call(removeItem, storageKeys.authToken);
   } catch (error) {
     yield put(setError('Error on logout'));
   }
@@ -78,10 +84,6 @@ function* addCardWorker(action): SagaIterator {
   try {
     const client = new Stripe(STRIPE_PUBLIC_KEY);
     const { id } = yield client.createToken(action.payload);
-
-    // TODO remove it when app initialization will be done
-    const accessToken = yield select(userTokenSelector);
-    yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
 
     const { data: { data } } = yield call(userAPI.addCard, { token: id });
 
@@ -103,15 +105,22 @@ function* setDefaultCardWorker(action): SagaIterator {
   }
 }
 
-function* addAddressWorker(action): SagaIterator {
+function* createTemporaryUserWorker(action): SagaIterator {
   try {
     yield put(setError(''));
-    const { data: { data } } = yield call(userAPI.addAddress, action.payload);
+    const { data: { data } } = yield call(userAPI.createTemporaryUser, action.payload);
     const { access_token: accessToken, delivery_address: deliveryAddress } = data;
-    setItem(AUTH_TOKEN, accessToken);
+
+    setItem(storageKeys.authToken, accessToken);
     yield put(signedIn(accessToken));
+    yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
+
     yield put(saveAddress(deliveryAddress));
-    yield call(navigate, Routes.DrawerNavigation);
+    yield call(signedAppDataWorker);
+
+    // finish onboarding
+    yield put(appCompleteBoarding());
+    navigate(Routes.DrawerNavigation);
   } catch (e) {
     yield put(setError('Something went wrong'));
   }
@@ -122,7 +131,7 @@ function* signUpWorker(action): SagaIterator {
     yield put(setError(''));
     const { data: { data } } = yield call(userAPI.signUp, action.payload);
     const { access_token: accessToken, user } = data;
-    setItem(AUTH_TOKEN, accessToken);
+    setItem(storageKeys.authToken, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
     navigate(Routes.Checkout);
@@ -133,8 +142,6 @@ function* signUpWorker(action): SagaIterator {
 
 function* getOrdersWorker(): SagaIterator {
   try {
-    const accessToken = yield select(userTokenSelector);
-    yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
     const { data: { data } } = yield call(userAPI.getOrders);
     yield put(saveOrders(data));
   } catch (e) {
@@ -167,7 +174,7 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_OUT, signOutWorker);
   yield takeEvery(TYPES.ADD_CARD, addCardWorker);
   yield takeEvery(TYPES.SET_DEFAULT_CARD, setDefaultCardWorker);
-  yield takeEvery(TYPES.ADD_ADDRESS, addAddressWorker);
+  yield takeEvery(TYPES.CREATE_TEMPORARY_USER, createTemporaryUserWorker);
   yield takeEvery(TYPES.SIGN_UP, signUpWorker);
   yield takeEvery(TYPES.GET_ORDERS, getOrdersWorker);
   yield takeEvery(TYPES.CREATE_ORDER, createOrderWorker);

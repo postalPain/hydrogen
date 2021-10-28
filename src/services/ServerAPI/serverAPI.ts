@@ -65,8 +65,8 @@ export const userAPI = {
   setDefaultCard(id): Promise<any> {
     return xhr.put(apiUrls.setDefaultCard(id));
   },
-  addAddress(address): Promise<any> {
-    return xhr.post(apiUrls.deliveryAddress, address);
+  createTemporaryUser(address): Promise<any> {
+    return xhr.post(apiUrls.createTemporaryUser, address);
   },
   signUp(signUpData): Promise<any> {
     return xhr.post(apiUrls.signUp, signUpData);
