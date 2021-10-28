@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useStyles from '../SignUp/styles';
 import { SafeAreaView, ScrollView, View } from 'react-native';
 import {
@@ -12,7 +12,7 @@ import { CreatePasswordSchema } from 'utilities/validationSchemas';
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUp } from 'store/user/actions';
+import { setError, signUp } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
 import { DismissKeyboard } from 'components';
 
@@ -29,6 +29,10 @@ const CreatePassword: React.FC<ICreatePasswordProps> = ({ theme, route }) => {
   const handleConfirmPassword = (values) => {
     dispatch(signUp({ ...signupData, ...values }));
   };
+
+  useEffect(() => {
+    dispatch(setError(''));
+  }, []);
 
   return (
     <DismissKeyboard>
