@@ -1,15 +1,15 @@
 import { TYPES, TBasketProduct } from '../actions';
 import { TPromoCode } from 'services/ServerAPI/types';
-import { IOrder } from 'store/user/reducers/types';
+import { ICard, IOrder } from 'store/user/reducers/types';
 
 interface IUserState {
   accessToken: string;
   user: string | null;
   errorMessage: string;
   loading: boolean;
-  defaultCard: any;
+  defaultCard: ICard | {};
   deliveryAddress: string | null;
-  cardList: any[],
+  cardList: ICard[],
   basket: {
     [key: string]: TBasketProduct
   },

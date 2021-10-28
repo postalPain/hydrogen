@@ -26,3 +26,5 @@ export const promoCodeSelector = () => (state: RootState) => (
 );
 export const promoCodeLoadingSelector = () => (state: RootState) => state.user.promoCode.loading;
 export const promoCodeErrorSelector = () => (state: RootState) => state.user.promoCode.errorMessage;
+export const defaultCardSelector = (state: RootState) => state.user.defaultCard;
+export const cardListSelector = (state: RootState) => state.user.cardList;

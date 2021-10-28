@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useStyles from './styles';
 import { Image, View, Pressable } from 'react-native';
 import { Text, Checkbox, withTheme } from '@stryberventures/stryber-react-native-ui-components';
@@ -10,6 +10,7 @@ import { useBottomSheet, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import i18n from 'i18n';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDefaultCard } from 'store/user/actions';
+import { cardListSelector, defaultCardSelector } from 'store/user/selectors';
 
 interface ICardVariantProps {
   theme?: ProjectThemeType;
@@ -18,10 +19,8 @@ interface ICardVariantProps {
 const CardVariant: React.FC<ICardVariantProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const { close } = useBottomSheet();
-  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
-  const cardList = useSelector(state => state.user.cardList);
-  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
-  const defaultCard = useSelector(state => state.user.defaultCard);
+  const cardList = useSelector(cardListSelector);
+  const defaultCard = useSelector(defaultCardSelector);
   const dispatch = useDispatch();
   const [cardId, setCardId] = useState(defaultCard.uuid);
 
@@ -30,6 +29,10 @@ const CardVariant: React.FC<ICardVariantProps> = ({ theme }) => {
     dispatch(setDefaultCard(id));
     close();
   };
+
+  useEffect(() => {
+    setCardId(defaultCard.uuid);
+  }, [defaultCard.uuid]);
 
   return (
     <BottomSheetScrollView style={{ paddingBottom: 50 }}>

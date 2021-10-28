@@ -12,7 +12,7 @@ import { Formik } from 'formik';
 import { CardSchema } from 'utilities/validationSchemas';
 import i18n from 'i18n';
 import { useDispatch } from 'react-redux';
-import { addCard } from 'store/user/actions';
+import { addCard, addTemporaryCard } from 'store/user/actions';
 
 const PaymentCardForm: React.FC = () => {
   const styles = useStyles();
@@ -32,16 +32,21 @@ const PaymentCardForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        card: '', expDate: '', cvc: '',
+        card: '', expDate: '', cvc: '', save: true,
       }}
       onSubmit={(values) => {
         const [expMonth, expYear] = values.expDate.split('/');
-        dispatch(addCard({
+        const cardInfo = {
           number: values.card,
           exp_month: expMonth,
           exp_year: expYear,
           cvc: values.cvc,
-        }));
+        };
+        if (values.save) {
+          dispatch(addCard(cardInfo));
+        } else {
+          dispatch(addTemporaryCard(cardInfo));
+        }
         close();
       }}
       validationSchema={CardSchema}
@@ -101,7 +106,7 @@ const PaymentCardForm: React.FC = () => {
             </View>
             <Checkbox
               text={i18n.t('components.paymentCardForm.fields.save')}
-              value
+              value={values.save}
               onPress={(val) => setFieldValue('save', val)}
             />
           </View>

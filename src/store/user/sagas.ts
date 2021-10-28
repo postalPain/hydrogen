@@ -26,6 +26,7 @@ import { STRIPE_PUBLIC_KEY } from '@env';
 import { storageKeys } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
+import { ICard } from 'store/user/reducers/types';
 
 export function* getUserWorker(): SagaIterator {
   try {
@@ -89,6 +90,23 @@ function* addCardWorker(action): SagaIterator {
 
     yield put(saveDefaultCard(data));
     yield put(saveCard(data));
+  } catch (e) {
+    yield put(setError('Something went wrong'));
+  }
+}
+
+function* addTemporaryCardWorker(action): SagaIterator {
+  try {
+    const client = new Stripe(STRIPE_PUBLIC_KEY);
+    const { card: { id, last4, brand } } = yield client.createToken(action.payload);
+    const temporaryDefaultCard: ICard = {
+      brand,
+      last4,
+      isDefault: true,
+      stripe_card_id: id,
+      temporary: true,
+    };
+    yield put(saveDefaultCard(temporaryDefaultCard));
   } catch (e) {
     yield put(setError('Something went wrong'));
   }
@@ -173,6 +191,7 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.GET_USER, getUserWorker);
   yield takeEvery(TYPES.SIGN_OUT, signOutWorker);
   yield takeEvery(TYPES.ADD_CARD, addCardWorker);
+  yield takeEvery(TYPES.ADD_TEMPORARY_CARD, addTemporaryCardWorker);
   yield takeEvery(TYPES.SET_DEFAULT_CARD, setDefaultCardWorker);
   yield takeEvery(TYPES.CREATE_TEMPORARY_USER, createTemporaryUserWorker);
   yield takeEvery(TYPES.SIGN_UP, signUpWorker);
