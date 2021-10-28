@@ -187,6 +187,19 @@ export default {
       delivered: 'Delivered',
       pending: 'On the way',
     },
+    orderDetails: {
+      title: 'Order Summary',
+      date: 'Order date',
+      address: 'Delivery address',
+      instructions: 'Delivery instructions',
+      cartTotal: 'Cart totals',
+      subtotal: 'Subtotal',
+      vat: 'VAT',
+      fee: 'Delivery fees',
+      total: 'Total',
+      details: 'Order details',
+      promo: 'Promo',
+    },
   },
   components: {
     locationButton: {

@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
+import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
 
 export const isDateValid = (expirationDate: string) => {
@@ -44,7 +45,8 @@ export const formatCurrency = (amount: number, { order } = { order: 'straight' }
 
   return order === 'reverse' ? `${CURRENCY} ${formattedAmount}` : `${formattedAmount} ${CURRENCY}`;
 };
-export const formatAmount = (product: TProduct) => {
+
+export const formatAmount = (product: TProduct | IOrderProduct) => {
   if (product.milliliters) {
     return `${product.milliliters} ml`;
   }

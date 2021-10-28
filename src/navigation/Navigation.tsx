@@ -34,6 +34,7 @@ import UpdatePassword from 'screens/UpdatePassword';
 import Basket from 'screens/Basket';
 import ResetPasswordSuccess from 'screens/ResetPasswordSuccess';
 import OrderList from 'screens/OrderList';
+import OrderDetails from 'screens/OrderDetails';
 
 import Routes from './Routes';
 import {
@@ -245,6 +246,15 @@ const Navigation = () => {
                       gestureEnabled: false,
                       headerTitle: i18n.t('screens.orderList.header'),
                     }}
+                  />
+                  <Stack.Screen
+                    name={Routes.OrderDetails}
+                    component={OrderDetails}
+                    options={({ route }) => ({
+                      gestureEnabled: false,
+                      // @ts-ignore
+                      headerTitle: route.params.orderTitle,
+                    })}
                   />
                 </>
               )
