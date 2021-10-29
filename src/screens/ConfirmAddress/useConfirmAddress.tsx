@@ -7,8 +7,9 @@ import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTemporaryUser } from 'store/user/actions';
+import { createTemporaryUser, saveTemporaryAddress } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
+import { Routes } from 'navigation';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
@@ -17,19 +18,31 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
-  const { goBack } = useNavigation();
+  const { goBack, navigate, getState } = useNavigation();
   const errorMessage = useSelector(userErrorSelector);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { params: { address, geoCoords: { latitude, longitude } } } = route;
+  const changeAddress = route.params?.changeAddress;
 
   const handleFormSubmit = (values) => {
-    dispatch(createTemporaryUser({
+    const addressDetails = {
       ...values,
       type: addressType === 'Villa' ? 'villa' : 'apartment',
       full_address: address,
       latitude,
       longitude,
-    }));
+    };
+    if (changeAddress) {
+      const navState = getState()?.routes;
+      const beforePreviousScreen = navState && navState[navState.length - 3]?.name;
+      dispatch(saveTemporaryAddress(addressDetails));
+      if (beforePreviousScreen === Routes.Checkout) {
+        navigate(Routes.Checkout);
+      } else {
+        navigate(Routes.DrawerNavigation);
+      }
+    } else {
+      dispatch(createTemporaryUser(addressDetails));
+    }
   };
 
   const renderVillaForm = () => (

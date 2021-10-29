@@ -5,14 +5,14 @@ export interface IDeliveryName {
 }
 
 export interface IDeliveryAddress {
-  apartment_number: string;
-  building_name: string;
-  floor: number;
+  apartment_number: string | null;
+  building_name: string | null;
+  floor: string | null;
   full_address: string;
-  house_number: string;
-  latitude: string;
-  longitude: string;
-  type: string;
+  house_number: string | null;
+  latitude: number;
+  longitude: number;
+  type: string
 }
 
 export interface IOrderProduct {

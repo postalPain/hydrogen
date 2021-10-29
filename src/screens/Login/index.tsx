@@ -9,11 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
 import { DismissKeyboard } from 'components';
+import { useNavigation } from '@react-navigation/native';
+import { Routes } from 'navigation';
 
 const Login: React.FC = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const loginError = useSelector(userErrorSelector);
+  const { navigate } = useNavigation();
 
   return (
     <DismissKeyboard>
@@ -53,7 +56,7 @@ const Login: React.FC = () => {
                   error={submitCount > 0 ? errors.password : undefined}
                   style={styles.input}
                 />
-                <Button textStyle={styles.link} type="link">{i18n.t('screens.login.forgotPassword')}</Button>
+                <Button textStyle={styles.link} onPress={() => navigate(Routes.ResetPassword)} type="link">{i18n.t('screens.login.forgotPassword')}</Button>
                 {!!loginError && <Text color="red">{loginError}</Text>}
               </View>
               <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.login.button')}</Button>

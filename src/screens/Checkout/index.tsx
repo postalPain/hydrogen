@@ -4,13 +4,13 @@ import {
   View,
   TextInput,
   ScrollView,
-  Alert,
+  Alert, Pressable,
 } from 'react-native';
 import {
   Text, Input, Button, withTheme,
 } from '@stryberventures/stryber-react-native-ui-components';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
@@ -21,7 +21,10 @@ import {
   promoCodeSelector,
   promoCodeLoadingSelector,
   promoCodeErrorSelector,
-  basketSelector, defaultCardSelector,
+  basketSelector,
+  deliveryAddressSelector,
+  temporaryDeliveryAddressSelector,
+  defaultCardSelector,
 } from 'store/user/selectors';
 import {
   ChangePaymentMethod,
@@ -33,6 +36,7 @@ import {
 } from 'components';
 import { GeoPoint, LeftArrow } from 'components/Icons';
 import useStyles from './styles';
+import { IDeliveryAddress } from 'store/user/reducers/types';
 
 
 interface ICheckoutProps {
@@ -74,6 +78,11 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const products = Object.values(basket);
   const discount = promoCode && promoCode.discount || 0;
   const receipt = getProductsReceipt(products, discount);
+  const deliveryAddress = useSelector(deliveryAddressSelector);
+  const temporaryDeliveryAddress = useSelector(temporaryDeliveryAddressSelector);
+  const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
+  const handleChangeAddress = () => navigator
+    .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
 
   // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
   useEffect(() => {
@@ -126,14 +135,16 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           <Text style={styles.title}>
             {i18n.t('screens.checkout.deliveryDetails')}
           </Text>
-          <Input
-            label={i18n.t('screens.checkout.addressLabel')}
-            value="Address here"
-            disabled
-            icon={() => <GeoPoint />}
-            style={styles.input}
-            inputLabelStyle={styles.label}
-          />
+          <Pressable onPress={handleChangeAddress}>
+            <Input
+              label={i18n.t('screens.checkout.addressLabel')}
+              value={address.full_address}
+              disabled
+              icon={() => <GeoPoint />}
+              style={styles.input}
+              inputLabelStyle={styles.label}
+            />
+          </Pressable>
           <Input
             label={i18n.t('screens.checkout.instructionsLabel')}
             multiline

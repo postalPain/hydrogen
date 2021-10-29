@@ -12,7 +12,13 @@ import { DismissKeyboard } from 'components';
 
 interface IConfirmAddressProps {
   theme: ProjectThemeType;
-  route: any;
+  route: {
+    params: {
+      address: string;
+      geoCoords: { latitude: number; longitude: number; };
+      changeAddress?: boolean;
+    }
+  };
 }
 
 const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {

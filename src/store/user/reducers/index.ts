@@ -1,6 +1,6 @@
 import { TYPES, TBasketProduct } from '../actions';
 import { TPromoCode } from 'services/ServerAPI/types';
-import { ICard, IOrder } from 'store/user/reducers/types';
+import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
 
 interface IUserState {
   accessToken: string;
@@ -8,7 +8,8 @@ interface IUserState {
   errorMessage: string;
   loading: boolean;
   defaultCard: ICard | {};
-  deliveryAddress: string | null;
+  deliveryAddress: IDeliveryAddress | null;
+  temporaryDeliveryAddress: IDeliveryAddress | null;
   cardList: ICard[],
   basket: {
     [key: string]: TBasketProduct
@@ -33,6 +34,7 @@ const defaultState = {
   loading: false,
   defaultCard: {},
   deliveryAddress: null,
+  temporaryAddress: null,
   cardList: [],
   basket: {},
   orderList: [],
@@ -115,6 +117,12 @@ export default function user(state: IUserState = defaultState, action) {
       return {
         ...state,
         deliveryAddress: action.payload,
+      };
+    }
+    case TYPES.SAVE_TEMPORARY_ADDRESS: {
+      return {
+        ...state,
+        temporaryDeliveryAddress: action.payload,
       };
     }
     case TYPES.SET_PRODUCT_TO_BASKET: {
