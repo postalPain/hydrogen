@@ -138,7 +138,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           <Pressable onPress={handleChangeAddress}>
             <Input
               label={i18n.t('screens.checkout.addressLabel')}
-              value={address.full_address || i18n.t('components.locationButton.defaultLocation')}
+              value={address?.full_address || i18n.t('components.locationButton.defaultLocation')}
               disabled
               icon={() => <GeoPoint />}
               style={styles.input}
