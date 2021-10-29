@@ -57,8 +57,7 @@ function* signInWorker(action): SagaIterator {
     if (previousScreen === Routes.SignUp) {
       yield call(navigate, Routes.Checkout);
     } else {
-      // TODO: Enable when whole app flow will be ready
-      // yield call(navigate, Routes.DrawerNavigation);
+      yield call(navigate, Routes.DrawerNavigation);
     }
     // TODO: move this logic to initialization
     const { data: { data } } = yield call(userAPI.getCardList);
