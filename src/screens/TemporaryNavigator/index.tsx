@@ -19,7 +19,7 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   const navigator = useNavigation();
   const dispatch = useDispatch();
   // eslint-disable-next-line
-  const token = useSelector(state => state.user.accessToken);
+  const isUser = useSelector(state => state.user.user.email);
   const onLoginPress = () => {
     dispatch(signIn({ email: 'vlad@stryber.com', password: '1234567Z' }));
   };
@@ -28,7 +28,7 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   return (
     <SafeAreaView style={theme.components.safeArea}>
       <ScrollView>
-        { !token && <Button onPress={onLoginPress}>Login</Button>}
+        { !isUser && <Button onPress={onLoginPress}>Login</Button>}
         <Button onPress={() => navigator.navigate(Routes.HomeScreen)}>{Routes.HomeScreen}</Button>
         <Button onPress={() => navigator.navigate(Routes.SignUp)}>{Routes.SignUp}</Button>
         <Button onPress={() => navigator.navigate(Routes.MapScreen)}>{Routes.MapScreen}</Button>

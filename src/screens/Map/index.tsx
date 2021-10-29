@@ -5,7 +5,7 @@ import {
 import {
   withTheme, Button, Card, Text, Input,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { NavigationContainerRef } from '@react-navigation/native';
+import { NavigationContainerRef, StackActions } from '@react-navigation/native';
 import MapView, {
   PROVIDER_GOOGLE, Polygon, Region,
 } from 'react-native-maps';
@@ -22,12 +22,17 @@ import { GeoPoint } from 'components/Icons';
 interface IMapProps {
   navigation: NavigationContainerRef;
   theme: any;
+  route: {
+    params: {
+      changeAddress?: boolean;
+    }
+  }
 }
 
 const delta = 0.015;
 
 
-const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
+const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const styles: any = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
   const [deliveryPoint, setDeliveryPoint] = useState({
@@ -36,6 +41,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
   });
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const mapRef = useRef<MapView>(null);
+  const changeAddress = route.params?.changeAddress;
 
   const setPosition = (position) => {
     setDeliveryPoint({
@@ -75,8 +81,15 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation }) => {
     await updateAddress(region);
   };
 
-  const handleLocationConfirm = () => navigation
-    .navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint });
+  const handleLocationConfirm = () => (changeAddress
+    ? navigation.dispatch(StackActions.push(Routes.ConfirmAddress,
+      {
+        address: deliveryAddress,
+        geoCoords: deliveryPoint,
+        changeAddress,
+      }))
+    : navigation
+      .navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint }));
 
   return (
     <View style={styles.container}>

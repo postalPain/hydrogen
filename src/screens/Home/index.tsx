@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
-import { NavigationContainerRef, useNavigation } from '@react-navigation/native';
+import { NavigationContainerRef, StackActions, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { categoriesSelector } from 'store/categories/selectors';
@@ -15,6 +15,9 @@ import { LocationButton, HomeCarousel, CategoriesViewer } from 'components';
 import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
+import { deliveryAddressSelector, temporaryDeliveryAddressSelector } from 'store/user/selectors';
+import { Routes } from 'navigation';
+import { IDeliveryAddress } from 'store/user/reducers/types';
 
 
 interface IHomeProps {
@@ -24,8 +27,13 @@ interface IHomeProps {
 
 const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const styles = useStyles(theme);
-  const categories = useSelector(categoriesSelector);
   const navigation = useNavigation();
+  const categories = useSelector(categoriesSelector);
+  const deliveryAddress = useSelector(deliveryAddressSelector);
+  const temporaryDeliveryAddress = useSelector(temporaryDeliveryAddressSelector);
+  const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
+  const handleChangeAddress = () => navigation
+    .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
 
   return (
     <View style={styles.container}>
@@ -42,6 +50,7 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
             </View>
             <View style={styles.headerProfileBlockRightCol}>
               <TouchableOpacity
+                // @ts-ignore
                 onPress={() => navigation.openDrawer()}
                 style={styles.accountButton}
               >
@@ -55,7 +64,8 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
             </Text>
           </View>
           <LocationButton
-            onPress={() => {}}
+            location={address?.full_address}
+            onPress={handleChangeAddress}
           />
         </ImageBackground>
         <View style={styles.contentBox}>

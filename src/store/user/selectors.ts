@@ -28,3 +28,6 @@ export const promoCodeLoadingSelector = () => (state: RootState) => state.user.p
 export const promoCodeErrorSelector = () => (state: RootState) => state.user.promoCode.errorMessage;
 export const defaultCardSelector = (state: RootState) => state.user.defaultCard;
 export const cardListSelector = (state: RootState) => state.user.cardList;
+export const deliveryAddressSelector = (state: RootState) => state.user.deliveryAddress;
+export const temporaryDeliveryAddressSelector = (state: RootState) => state
+  .user.temporaryDeliveryAddress;

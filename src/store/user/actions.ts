@@ -1,5 +1,5 @@
 import { TProduct, TPromoCode } from 'services/ServerAPI/types';
-import { ICard, IOrder } from 'store/user/reducers/types';
+import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
 
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
@@ -20,6 +20,7 @@ export const TYPES = {
   SAVE_CARD_LIST: 'SAVE_CARD_LIST',
   ADD_ADDRESS: 'ADD_ADDRESS',
   SAVE_ADDRESS: 'SAVE_ADDRESS',
+  SAVE_TEMPORARY_ADDRESS: 'SAVE_TEMPORARY_ADDRESS',
   SET_PRODUCT_TO_BASKET: 'SET_PRODUCT_TO_BASKET',
   SIGN_UP: 'SIGN_UP',
   REMOVE_PRODUCTS_FROM_BASKET: 'REMOVE_PRODUCTS_FROM_BASKET',
@@ -120,9 +121,14 @@ export const createTemporaryUser = (address) => ({
   payload: address,
 });
 
-export const saveAddress = (address) => ({
+export const saveAddress = (address: IDeliveryAddress) => ({
   type: TYPES.SAVE_ADDRESS,
   payload: address,
+});
+
+export const saveTemporaryAddress = (payload: IDeliveryAddress) => ({
+  type: TYPES.SAVE_TEMPORARY_ADDRESS,
+  payload,
 });
 
 export const setProductToBasket = (payload: TBasketProduct) => ({
