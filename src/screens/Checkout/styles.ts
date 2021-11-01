@@ -85,6 +85,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
+  errorText: {
+    marginBottom: 20,
+    color: theme.colors.red,
+  },
+  errorTextPromo: {
+    marginTop: -20,
+    marginBottom: 20,
+    color: theme.colors.red,
+  },
 });
 
 export default useStyles;

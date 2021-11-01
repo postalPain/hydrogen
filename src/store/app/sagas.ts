@@ -1,4 +1,9 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import {
+  call,
+  put,
+  takeEvery,
+  select,
+} from 'redux-saga/effects';
 import { SagaIterator } from '@redux-saga/core';
 import SplashScreen from 'react-native-splash-screen';
 
@@ -6,10 +11,10 @@ import { storageKeys } from 'constants/';
 import { navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
 import { setItem, getItem } from 'services/LocalStorage';
-import { addHeader } from 'services/ServerAPI/serverAPI';
+import { addHeader, userAPI } from 'services/ServerAPI/serverAPI';
 // import { getUserWorker } from '../user/sagas';
+import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
-import { signedIn } from 'store/user/actions';
 import { appCompleteInit, setBoardingCompleted } from './actions';
 import { AppActionTypes } from './actions/types';
 
@@ -19,6 +24,15 @@ export function* signedAppDataWorker(): SagaIterator {
     // TODO uncomment when BAE will be ready
     // yield call(getUserWorker);
     yield call(getCategoriesWorker);
+    const user = yield select(state => state.user.user);
+
+    // check is registered user
+    if (user && user.email) {
+      const { data: { data } } = yield call(userAPI.getCardList);
+      yield put(saveCardList(data));
+      const defaultCard = data.find((card) => card.isDefault);
+      yield put(saveDefaultCard(defaultCard));
+    }
   } catch (e) {
     console.log(e);
   }

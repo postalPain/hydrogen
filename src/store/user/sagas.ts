@@ -20,12 +20,16 @@ import {
   setError,
   signedIn,
   TYPES,
+  createOrderError,
+  createOrderSuccess,
 } from './actions';
+import { temporaryDeliveryAddressSelector } from 'store/user/selectors';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
 import { storageKeys } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
+import { convertProductsForOrderSubmission } from 'utilities/helpers';
 import { ICard } from 'store/user/reducers/types';
 
 export function* getUserWorker(): SagaIterator {
@@ -54,16 +58,13 @@ function* signInWorker(action): SagaIterator {
       yield put(appCompleteBoarding());
     }
 
+    yield call(signedAppDataWorker);
+
     if (previousScreen === Routes.SignUp) {
       yield call(navigate, Routes.Checkout);
     } else {
       yield call(navigate, Routes.DrawerNavigation);
     }
-    // TODO: move this logic to initialization
-    const { data: { data } } = yield call(userAPI.getCardList);
-    yield put(saveCardList(data));
-    const defaultCard = data.find((card) => card.isDefault);
-    yield put(saveDefaultCard(defaultCard));
   } catch (error) {
     yield put(setError('Wrong email or password'));
   }
@@ -168,11 +169,34 @@ function* getOrdersWorker(): SagaIterator {
 
 function* createOrderWorker(action): SagaIterator {
   try {
-    // TODO add data preparation for submit
-    const { data: { data } } = yield call(userAPI.createOrder, action.payload);
+    const basket = yield select(state => state.user.basket);
+    const products = convertProductsForOrderSubmission(Object.values(basket));
+    const deliveryAddress = yield select(temporaryDeliveryAddressSelector);
+    const promoCodeData = yield select(state => state.user.promoCode.data);
+    const promoCode = promoCodeData ? { promo_code: promoCodeData.code } : {};
+
+    const submitData = {
+      products,
+      comment: action.payload.comment,
+      delivery_address: deliveryAddress,
+      ...promoCode,
+    };
+
+    const { data: { data } } = yield call(userAPI.createOrder, submitData);
     console.log(data);
+    yield put(createOrderSuccess());
   } catch (error) {
-    console.log(error);
+    if (error.errors) {
+      if (error.errors.products) {
+        const data = error.errors.products;
+        yield put(createOrderError(error.message, data));
+      } else {
+        const errorMessage = Object.values(error.errors).join(' ');
+        yield put(createOrderError(errorMessage));
+      }
+    } else {
+      yield put(createOrderError(error));
+    }
   }
 }
 

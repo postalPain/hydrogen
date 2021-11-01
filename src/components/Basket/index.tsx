@@ -18,10 +18,10 @@ import {
   getMaxProductCount,
 } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
-import { basketSelector, basketLengthSelector } from 'store/user/selectors';
+import { basketSelector, basketLengthSelector, userSelector } from 'store/user/selectors';
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
-import useStyles from './styles';
 import { WorkingHoursModal } from 'components';
+import useStyles from './styles';
 
 
 interface IBasketProps {
@@ -34,6 +34,8 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const basket = useSelector(basketSelector());
   const products = Object.values(basket);
   const basketLength = useSelector(basketLengthSelector());
+  const user = useSelector(userSelector);
+  const isRegisteredUser = user?.email;
   const dispatch = useDispatch();
   const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
   // TODO: Add WorkingHours logic when backend will be ready
@@ -50,9 +52,9 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const onCheckoutPress = () => {
     if (!isWorkingHours) {
       setShowWorkingHoursModal(true);
+    } else if (!isRegisteredUser) {
+      navigate(Routes.SignUp);
     } else {
-      // TODO check are we signed up and if no goto sign up
-      // otherwise goto checkout page
       navigate(Routes.Checkout);
     }
   };

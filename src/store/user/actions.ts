@@ -29,6 +29,7 @@ export const TYPES = {
   CREATE_ORDER: 'CREATE_ORDER',
   CREATE_ORDER_SUCCESS: 'CREATE_ORDER_SUCCESS',
   CREATE_ORDER_ERROR: 'CREATE_ORDER_ERROR',
+  RESET_CREATE_ORDER_ERROR: 'RESET_CREATE_ORDER_ERROR',
   CHECK_PROMO_CODE: 'CHECK_PROMO_CODE',
   CHECK_PROMO_CODE_SUCCESS: 'CHECK_PROMO_CODE_SUCCESS',
   CHECK_PROMO_CODE_ERROR: 'CHECK_PROMO_CODE_ERROR',
@@ -164,8 +165,16 @@ export const createOrderSuccess = () => ({
   type: TYPES.CREATE_ORDER_SUCCESS,
 });
 
-export const createOrderError = () => ({
+export const createOrderError = (errorMessage: string, data: any = null) => ({
   type: TYPES.CREATE_ORDER_ERROR,
+  payload: {
+    message: errorMessage,
+    data,
+  },
+});
+
+export const resetCreateOrderError = () => ({
+  type: TYPES.RESET_CREATE_ORDER_ERROR,
 });
 
 export const checkPromoCode = (code: string) => ({

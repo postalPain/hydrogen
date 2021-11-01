@@ -3,7 +3,7 @@ import { View, ScrollView } from 'react-native';
 import {
   Text, CacheImage, withTheme, Button,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
@@ -12,6 +12,7 @@ import {
   formatAmount,
 } from 'utilities/helpers';
 import { removeProductsFromBasket } from 'store/user/actions';
+import { productsListSelector } from 'store/products/selectors';
 import { SlideUp } from 'components';
 import useStyles from './styles';
 
@@ -20,26 +21,27 @@ interface IOutOfStockSlideUpProps {
   theme?: ProjectThemeType;
   visible: boolean;
   onCartUpdate: () => void;
-  products?: TProduct[];
+  productIds?: string[];
 }
 
 const OutOfStockSlideUp: React.FC<IOutOfStockSlideUpProps> = ({
   theme,
   visible,
   onCartUpdate,
-  products,
+  productIds = [],
 }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
+  const products = useSelector(productsListSelector(productIds));
   const onUpdateCartPress = () => {
     dispatch(removeProductsFromBasket({
-      uuids: products.map(item => item.uuid),
+      uuids: productIds,
     }));
     onCartUpdate();
   };
 
   const renderProducts = () => (
-    products.map(product => (
+    products.map((product: TProduct) => (
       <View style={styles.inventoryItem} key={product.uuid}>
         <View style={styles.inventoryImageContainer}>
           <CacheImage

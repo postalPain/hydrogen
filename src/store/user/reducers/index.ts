@@ -34,7 +34,7 @@ const defaultState = {
   loading: false,
   defaultCard: {},
   deliveryAddress: null,
-  temporaryAddress: null,
+  temporaryDeliveryAddress: null,
   cardList: [],
   basket: {},
   orderList: [],
@@ -95,7 +95,7 @@ export default function user(state: IUserState = defaultState, action) {
     case TYPES.SAVE_DEFAULT_CARD: {
       return {
         ...state,
-        defaultCard: action.payload,
+        defaultCard: action.payload || {},
       };
     }
     case TYPES.SAVE_CARD: {
@@ -182,6 +182,16 @@ export default function user(state: IUserState = defaultState, action) {
       };
     }
     case TYPES.CREATE_ORDER_ERROR: {
+      return {
+        ...state,
+        checkout: {
+          errorMessage: action.payload.message,
+          data: action.payload.data,
+          loading: false,
+        },
+      };
+    }
+    case TYPES.RESET_CREATE_ORDER_ERROR: {
       return {
         ...state,
         checkout: {

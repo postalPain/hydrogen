@@ -4,7 +4,7 @@ import {
   View,
   TextInput,
   ScrollView,
-  Alert, Pressable,
+  Pressable,
 } from 'react-native';
 import {
   Text, Input, Button, withTheme,
@@ -16,7 +16,12 @@ import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import Routes from 'navigation/Routes';
 import { getProductsReceipt } from 'utilities/helpers';
-import { checkPromoCode, resetPromoCode, createOrder } from 'store/user/actions';
+import {
+  checkPromoCode,
+  resetPromoCode,
+  createOrder,
+  resetCreateOrderError,
+} from 'store/user/actions';
 import {
   promoCodeSelector,
   promoCodeLoadingSelector,
@@ -25,6 +30,9 @@ import {
   deliveryAddressSelector,
   temporaryDeliveryAddressSelector,
   defaultCardSelector,
+  checkoutLoadingSelector,
+  checkoutErrorMessageSelector,
+  checkoutDataSelector,
 } from 'store/user/selectors';
 import {
   ChangePaymentMethod,
@@ -74,6 +82,9 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const promoCode = useSelector(promoCodeSelector());
   const promoCodeLoading = useSelector(promoCodeLoadingSelector());
   const promoCodeError = useSelector(promoCodeErrorSelector());
+  const checkoutLoading = useSelector(checkoutLoadingSelector());
+  const checkoutErrorMessage = useSelector(checkoutErrorMessageSelector());
+  const checkoutResponseData = useSelector(checkoutDataSelector());
   const basket = useSelector(basketSelector());
   const products = Object.values(basket);
   const discount = promoCode && promoCode.discount || 0;
@@ -93,11 +104,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   }, []);
 
   useEffect(() => {
-    if (promoCodeError) {
-      Alert.alert(i18n.t('alerts.title'), promoCodeError);
-      dispatch(resetPromoCode());
+    if (checkoutResponseData) {
+      setOutOfStockSlideUpVisible(true);
     }
-  }, [promoCodeError]);
+  }, [checkoutResponseData]);
 
   const onCheckoutPress = () => {
     // TODO: Add different object for order submission
@@ -108,6 +118,8 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   };
   const onCartUpdate = () => {
     setOutOfStockSlideUpVisible(false);
+
+    dispatch(resetCreateOrderError());
     // @ts-ignore
     navigator.navigate(Routes.Basket, { updated: true });
   };
@@ -118,13 +130,13 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   };
   const onCouponTextChange = (text) => {
     setCouponName(text);
-    if (promoCode) {
+    if (promoCode || promoCodeError) {
       dispatch(resetPromoCode());
     }
   };
 
-  const loading = promoCodeLoading;
-
+  const loading = promoCodeLoading || checkoutLoading;
+  const unAvailableProductIds = (checkoutResponseData || []).map(item => item.uuid);
   return (
     <>
       <ScrollView
@@ -135,6 +147,11 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
           <Text style={styles.title}>
             {i18n.t('screens.checkout.deliveryDetails')}
           </Text>
+          {
+            !!checkoutErrorMessage && (
+              <Text style={styles.errorText}>{checkoutErrorMessage}</Text>
+            )
+          }
           <Pressable onPress={handleChangeAddress}>
             <Input
               label={i18n.t('screens.checkout.addressLabel')}
@@ -167,6 +184,11 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
               <LeftArrow />
             </Button>
           </View>
+          {
+            !!promoCodeError && (
+              <Text style={styles.errorTextPromo}>{promoCodeError}</Text>
+            )
+          }
           <PaymentMethod
             addCard={handleOpenPaymentCardModal}
             changeCard={handleOpenChangeCard}
@@ -227,7 +249,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
       <OutOfStockSlideUp
         visible={outOfStockSlideUpVisible}
         onCartUpdate={onCartUpdate}
-        products={[]}
+        productIds={unAvailableProductIds}
       />
       { loading && <View style={styles.loadingScreen} /> }
     </>

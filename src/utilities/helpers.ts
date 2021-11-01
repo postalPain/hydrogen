@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 
 import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
+import { TBasketProduct } from 'store/user/actions';
 import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
 
@@ -82,3 +83,10 @@ export const getProductsReceipt = (products, discount = 0) => {
     vat: formatCurrency(calcProductsTaxes(products)),
   };
 };
+
+export const convertProductsForOrderSubmission = (products: TBasketProduct[]) => products.map(
+  item => ({
+    uuid: item.uuid,
+    quantity: item.basketQuantity,
+  }),
+);

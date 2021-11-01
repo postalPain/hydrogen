@@ -23,7 +23,7 @@ const CategoriesViewer = ({ data }: ICategoriesViewer) => {
 
   return (
     <View style={styles.container}>
-      { data.map((item) => <CategoryItem {...item} />)}
+      { data.map((item) => <CategoryItem {...item} key={item.uuid} />)}
     </View>
   );
 };

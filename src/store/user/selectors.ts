@@ -31,3 +31,9 @@ export const cardListSelector = (state: RootState) => state.user.cardList;
 export const deliveryAddressSelector = (state: RootState) => state.user.deliveryAddress;
 export const temporaryDeliveryAddressSelector = (state: RootState) => state
   .user.temporaryDeliveryAddress;
+
+export const checkoutLoadingSelector = () => (state: RootState) => state.user.checkout.loading;
+export const checkoutErrorMessageSelector = () => (state: RootState) => (
+  state.user.checkout.errorMessage
+);
+export const checkoutDataSelector = () => (state: RootState) => state.user.checkout.data;
