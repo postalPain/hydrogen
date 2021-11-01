@@ -50,6 +50,10 @@ export default {
       description: 'This payment was declined. Your card has not been charged. Please try again or try another card. If the error proceeds then please contact your card issuer.',
       button: 'Okay',
     },
+    workingHoursModal: {
+      title: 'We’ll be back soon!!',
+      description: 'We’re currently closed for deliveries. We’ll be open again tomorrow morning from 08:00  and will be at your service as always!! Hope to see you tomorrow.',
+    },
   },
   screens: {
     home: {
