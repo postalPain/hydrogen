@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import useStyles from './styles';
-import { Pressable, View } from 'react-native';
+import { Pressable, View, Keyboard } from 'react-native';
 import BottomSheet, { useBottomSheet } from '@gorhom/bottom-sheet';
 import { Close } from 'components/Icons';
 
@@ -12,9 +12,17 @@ interface IModalOverlayProps {
 const CloseModal = () => {
   const styles = useStyles();
   const { close } = useBottomSheet();
+
+  const handleCloseModal = () => {
+    Keyboard.dismiss();
+    close();
+  };
+
   return (
     <View style={styles.closeContainer}>
-      <Pressable onPress={() => close()}><Close /></Pressable>
+      <Pressable onPress={handleCloseModal}>
+        <Close />
+      </Pressable>
     </View>
   );
 };
@@ -36,7 +44,7 @@ const ModalOverlay: React.FC<IModalOverlayProps> = ({
         ref={modalRef}
         index={-1}
         snapPoints={[height]}
-        enablePanDownToClose
+        enablePanDownToClose={false}
         handleComponent={() => null}
         onAnimate={() => setOpen(!open)}
         android_keyboardInputMode="adjustResize"
