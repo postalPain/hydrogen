@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ScrollView,
   View,
@@ -11,7 +11,9 @@ import { NavigationContainerRef, StackActions, useNavigation } from '@react-navi
 
 import i18n from 'i18n';
 import { categoriesSelector } from 'store/categories/selectors';
-import { LocationButton, HomeCarousel, CategoriesViewer } from 'components';
+import {
+  LocationButton, HomeCarousel, CategoriesViewer, WorkingHoursModal,
+} from 'components';
 import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
@@ -34,46 +36,53 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
   const handleChangeAddress = () => navigation
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
+  // TODO: Add WorkingHours logic when backend will be ready
+  const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <ScrollView testID="homeScrollView">
-        <ImageBackground
-          source={require('../../../assets/images/header.png')}
-          style={styles.header}
-          imageStyle={styles.headerImage}
-
-        >
-          <View style={styles.headerProfileBlock}>
-            <View style={styles.headerProfileBlockLeftCol}>
-              <Text style={styles.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
-            </View>
-            <View style={styles.headerProfileBlockRightCol}>
-              <TouchableOpacity
+    <>
+      <View style={styles.container}>
+        <ScrollView testID="homeScrollView">
+          <ImageBackground
+            source={require('../../../assets/images/header.png')}
+            style={styles.header}
+            imageStyle={styles.headerImage}
+          >
+            <View style={styles.headerProfileBlock}>
+              <View style={styles.headerProfileBlockLeftCol}>
+                <Text style={styles.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
+              </View>
+              <View style={styles.headerProfileBlockRightCol}>
+                <TouchableOpacity
                 // @ts-ignore
-                onPress={() => navigation.openDrawer()}
-                style={styles.accountButton}
-              >
-                <AccountIcon />
-              </TouchableOpacity>
+                  onPress={() => navigation.openDrawer()}
+                  style={styles.accountButton}
+                >
+                  <AccountIcon />
+                </TouchableOpacity>
+              </View>
             </View>
+            <View style={styles.openHours}>
+              <Text style={styles.openHoursText}>
+                {i18n.t('screens.home.openHours')}
+              </Text>
+            </View>
+            <LocationButton
+              location={address?.full_address}
+              onPress={handleChangeAddress}
+            />
+          </ImageBackground>
+          <View style={styles.contentBox}>
+            <HomeCarousel style={styles.homeCarousel} />
+            <CategoriesViewer data={categories} />
           </View>
-          <View style={styles.openHours}>
-            <Text style={styles.openHoursText}>
-              {i18n.t('screens.home.openHours')}
-            </Text>
-          </View>
-          <LocationButton
-            location={address?.full_address}
-            onPress={handleChangeAddress}
-          />
-        </ImageBackground>
-        <View style={styles.contentBox}>
-          <HomeCarousel style={styles.homeCarousel} />
-          <CategoriesViewer data={categories} />
-        </View>
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </View>
+      <WorkingHoursModal
+        visible={showWorkingHoursModal}
+        onClose={() => setShowWorkingHoursModal(false)}
+      />
+    </>
   );
 };
 

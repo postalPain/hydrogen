@@ -12,6 +12,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     backgroundColor: theme.colors.white,
     paddingVertical: 38,
     paddingHorizontal: 28,
+    paddingTop: 20,
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',

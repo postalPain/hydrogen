@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import {
   Text, CacheImage, withTheme, ButtonCounter, Button,
@@ -21,6 +21,7 @@ import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector } from 'store/user/selectors';
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
+import { WorkingHoursModal } from 'components';
 
 
 interface IBasketProps {
@@ -34,6 +35,9 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const products = Object.values(basket);
   const basketLength = useSelector(basketLengthSelector());
   const dispatch = useDispatch();
+  const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
+  // TODO: Add WorkingHours logic when backend will be ready
+  const isWorkingHours = false;
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
       ...data,
@@ -44,9 +48,13 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
     navigate(Routes.HomeScreen);
   };
   const onCheckoutPress = () => {
-    // TODO check are we signed up and if no goto sign up
-    // otherwise goto checkout page
-    navigate(Routes.Checkout);
+    if (!isWorkingHours) {
+      setShowWorkingHoursModal(true);
+    } else {
+      // TODO check are we signed up and if no goto sign up
+      // otherwise goto checkout page
+      navigate(Routes.Checkout);
+    }
   };
 
   const renderSuccessUpdateBlock = () => (
@@ -149,9 +157,15 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   );
 
   return (
-    <View style={styles.container}>
-      { basketLength ? renderFullBasket() : renderEmptyBasket() }
-    </View>
+    <>
+      <View style={styles.container}>
+        { basketLength ? renderFullBasket() : renderEmptyBasket() }
+      </View>
+      <WorkingHoursModal
+        visible={showWorkingHoursModal}
+        onClose={() => setShowWorkingHoursModal(false)}
+      />
+    </>
   );
 };
 
