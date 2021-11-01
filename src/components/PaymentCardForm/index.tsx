@@ -1,6 +1,6 @@
 import React from 'react';
 import useStyles from './styles';
-import { Image, View } from 'react-native';
+import { Image, View, Keyboard } from 'react-native';
 import {
   Button, Checkbox, Input, Text,
 } from '@stryberventures/stryber-react-native-ui-components';
@@ -29,26 +29,29 @@ const PaymentCardForm: React.FC = () => {
     return null;
   };
 
+  const handleAddCardSubmit = (values) => {
+    const [expMonth, expYear] = values.expDate.split('/');
+    const cardInfo = {
+      number: values.card,
+      exp_month: expMonth,
+      exp_year: expYear,
+      cvc: values.cvc,
+    };
+    if (values.save) {
+      dispatch(addCard(cardInfo));
+    } else {
+      dispatch(addTemporaryCard(cardInfo));
+    }
+    Keyboard.dismiss();
+    close();
+  };
+
   return (
     <Formik
       initialValues={{
         card: '', expDate: '', cvc: '', save: true,
       }}
-      onSubmit={(values) => {
-        const [expMonth, expYear] = values.expDate.split('/');
-        const cardInfo = {
-          number: values.card,
-          exp_month: expMonth,
-          exp_year: expYear,
-          cvc: values.cvc,
-        };
-        if (values.save) {
-          dispatch(addCard(cardInfo));
-        } else {
-          dispatch(addTemporaryCard(cardInfo));
-        }
-        close();
-      }}
+      onSubmit={handleAddCardSubmit}
       validationSchema={CardSchema}
     >
       {({

@@ -19,7 +19,7 @@ const TemporaryNavigator: React.FC<ITemporaryNavigator> = ({ theme }) => {
   const navigator = useNavigation();
   const dispatch = useDispatch();
   // eslint-disable-next-line
-  const isUser = useSelector(state => state.user.user.email);
+  const isUser = useSelector(state => state.user?.user?.email);
   const onLoginPress = () => {
     dispatch(signIn({ email: 'vlad@stryber.com', password: '1234567Z' }));
   };
