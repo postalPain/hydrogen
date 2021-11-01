@@ -120,6 +120,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
           <Input
             variant="simple"
             value={deliveryAddress}
+            selection={{ start: 0 }}
             disabled
             icon={() => <GeoPoint />}
             style={styles.input}
