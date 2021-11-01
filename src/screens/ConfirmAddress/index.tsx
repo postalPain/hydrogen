@@ -46,7 +46,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
                 label="Delivery address"
                 disabled
                 inputLabelStyle={styles.label}
-                placeholder={address}
+                value={address}
                 style={styles.input}
               />
             </Pressable>
