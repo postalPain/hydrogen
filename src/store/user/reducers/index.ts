@@ -89,7 +89,7 @@ export default function user(state: IUserState = defaultState, action) {
     case TYPES.GET_USER_SUCCESS: {
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.data,
       };
     }
     case TYPES.SAVE_DEFAULT_CARD: {

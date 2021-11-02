@@ -12,7 +12,7 @@ import { navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
 import { setItem, getItem } from 'services/LocalStorage';
 import { addHeader, userAPI } from 'services/ServerAPI/serverAPI';
-// import { getUserWorker } from '../user/sagas';
+import { getUserWorker } from '../user/sagas';
 import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
 import { appCompleteInit, setBoardingCompleted } from './actions';
@@ -21,8 +21,7 @@ import { AppActionTypes } from './actions/types';
 
 export function* signedAppDataWorker(): SagaIterator {
   try {
-    // TODO uncomment when BAE will be ready
-    // yield call(getUserWorker);
+    yield call(getUserWorker);
     yield call(getCategoriesWorker);
     const user = yield select(state => state.user.user);
 

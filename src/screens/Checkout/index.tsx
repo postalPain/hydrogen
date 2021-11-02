@@ -166,7 +166,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             label={i18n.t('screens.checkout.instructionsLabel')}
             multiline
             maxLength={250}
-            onChangeText={(text) => setDeliveryInstructions(text)}
+            onChange={(text) => setDeliveryInstructions(text)}
           />
           <View style={styles.couponContainer}>
             <TextInput

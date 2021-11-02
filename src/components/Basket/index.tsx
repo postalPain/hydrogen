@@ -39,7 +39,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const dispatch = useDispatch();
   const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
   // TODO: Add WorkingHours logic when backend will be ready
-  const isWorkingHours = false;
+  const isWorkingHours = true;
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
       ...data,
