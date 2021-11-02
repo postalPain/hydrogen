@@ -11,9 +11,10 @@ import { ResetPasswordSchema } from 'utilities/validationSchemas';
 import i18n from 'i18n';
 import { Formik } from 'formik';
 import { ProjectThemeType } from 'theme';
-import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
 import { DismissKeyboard } from 'components';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetPassword } from 'store/user/actions';
+import { userErrorSelector } from 'store/user/selectors';
 
 interface IResetPasswordProps {
   theme?: ProjectThemeType
@@ -21,11 +22,11 @@ interface IResetPasswordProps {
 
 const ResetPassword: React.FC<IResetPasswordProps> = ({ theme }) => {
   const styles = useStyles(theme);
-  const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+  const resetPasswordError = useSelector(userErrorSelector);
 
   const handleResetPasswordSubmit = (values) => {
-    console.log(values);
-    navigate(Routes.CheckEmail);
+    dispatch(resetPassword(values));
   };
 
   return (
@@ -48,14 +49,17 @@ const ResetPassword: React.FC<IResetPasswordProps> = ({ theme }) => {
             submitCount,
           }) => (
             <View style={styles.formContainer}>
-              <Input
-                variant="simple"
-                label={i18n.t('screens.resetPassword.email')}
-                value={values.email}
-                onChange={handleChange('email')}
-                error={submitCount > 0 ? errors.email : undefined}
-                type="email"
-              />
+              <View>
+                <Input
+                  variant="simple"
+                  label={i18n.t('screens.resetPassword.email')}
+                  value={values.email}
+                  onChange={handleChange('email')}
+                  error={submitCount > 0 ? errors.email : undefined}
+                  type="email"
+                />
+                {!!resetPasswordError && <Text color="red">{resetPasswordError}</Text>}
+              </View>
               <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.resetPassword.button')}</Button>
             </View>
           )}

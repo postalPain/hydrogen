@@ -12,4 +12,6 @@ export default {
   createOrder: 'api/v1/orders',
   checkPromoCode: (code) => `api/v1/promo-codes/${code}`,
   createTemporaryUser: 'api/v1/user/guest',
+  resetPassword: 'api/v1/mail-reset-password',
+  updatePassword: 'api/v1/reset-password',
 };
