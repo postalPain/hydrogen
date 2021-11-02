@@ -70,6 +70,8 @@ export default function user(state: IUserState = defaultState, action) {
       return {
         ...state,
         user: action.payload,
+        // TODO refactor handling delivery address to user section
+        deliveryAddress: action.payload.delivery_address,
       };
     }
     case TYPES.AUTH_ERROR: {
@@ -90,6 +92,8 @@ export default function user(state: IUserState = defaultState, action) {
       return {
         ...state,
         user: action.payload.data,
+        // TODO refactor handling delivery address to user section
+        deliveryAddress: action.payload.data.delivery_address,
       };
     }
     case TYPES.SAVE_DEFAULT_CARD: {
@@ -179,6 +183,7 @@ export default function user(state: IUserState = defaultState, action) {
           data: null,
           loading: false,
         },
+        basket: {},
       };
     }
     case TYPES.CREATE_ORDER_ERROR: {

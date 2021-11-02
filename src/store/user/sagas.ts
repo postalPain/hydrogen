@@ -185,17 +185,18 @@ function* createOrderWorker(action): SagaIterator {
     const { data: { data } } = yield call(userAPI.createOrder, submitData);
     console.log(data);
     yield put(createOrderSuccess());
+    yield call(navigate, Routes.OrderConfirmation);
   } catch (error) {
     if (error.errors) {
-      if (error.errors.products) {
-        const data = error.errors.products;
+      if (error.errors.meta) {
+        const data = error.errors.meta.products;
         yield put(createOrderError(error.message, data));
       } else {
-        const errorMessage = Object.values(error.errors).join(' ');
+        const errorMessage = Object.values(error.errors.fields).join(' ');
         yield put(createOrderError(errorMessage));
       }
     } else {
-      yield put(createOrderError(error));
+      yield put(createOrderError(error.message));
     }
   }
 }
