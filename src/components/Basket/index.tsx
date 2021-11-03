@@ -47,7 +47,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
     }));
   };
   const onExploreButtonPress = () => {
-    navigate(Routes.HomeScreen);
+    navigate(Routes.DrawerNavigation);
   };
   const onCheckoutPress = () => {
     if (!isWorkingHours) {
