@@ -23,7 +23,11 @@ import {
   signedIn,
   TYPES,
 } from './actions';
-import { temporaryDeliveryAddressSelector } from 'store/user/selectors';
+import {
+  defaultCardSelector,
+  deliveryAddressSelector,
+  temporaryDeliveryAddressSelector,
+} from 'store/user/selectors';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
 import { storageKeys } from '../../constants';
@@ -172,16 +176,21 @@ function* createOrderWorker(action): SagaIterator {
   try {
     const basket = yield select(state => state.user.basket);
     const products = convertProductsForOrderSubmission(Object.values(basket));
-    const deliveryAddress = yield select(temporaryDeliveryAddressSelector);
+    const deliveryAddress = yield select(deliveryAddressSelector);
+    const temporaryDeliveryAddress = yield select(temporaryDeliveryAddressSelector);
     const promoCodeData = yield select(state => state.user.promoCode.data);
     const promoCode = promoCodeData ? { promo_code: promoCodeData.code } : {};
     const comment = action.payload.comment ? { comment: action.payload.comment } : {};
+    const defaultCard = yield select(defaultCardSelector);
+
+    const card = defaultCard.temporary ? { card_id: defaultCard.stripe_card_id } : {};
 
     const submitData = {
       products,
       ...comment,
-      delivery_address: deliveryAddress,
+      delivery_address: temporaryDeliveryAddress || deliveryAddress,
       ...promoCode,
+      ...card,
     };
 
     const { data: { data } } = yield call(userAPI.createOrder, submitData);
