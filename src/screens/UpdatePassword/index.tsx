@@ -15,18 +15,12 @@ import { DismissKeyboard } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import { updatePassword } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
+import { UpdatePasswordType } from 'store/user/actions/types';
 
 interface IUpdatePasswordProps {
   theme?: ProjectThemeType;
   route: { params: { token: string; email: string; } }
 }
-
-export type UpdatePasswordType = {
-  token: string;
-  email: string;
-  password: string;
-  password_confirmation: string;
-};
 
 const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme, route }) => {
   const styles = useStyles(theme);

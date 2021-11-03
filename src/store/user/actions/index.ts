@@ -1,6 +1,6 @@
 import { TProduct, TPromoCode } from 'services/ServerAPI/types';
 import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
-import { UpdatePasswordType } from 'screens/UpdatePassword';
+import { UpdatePasswordType } from 'store/user/actions/types';
 
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
