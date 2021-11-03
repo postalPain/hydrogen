@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
-import { CacheImage } from '@stryberventures/stryber-react-native-ui-components';
+import { View, Image } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import { CarouselDotElement } from 'components';
@@ -14,24 +13,23 @@ interface IHomeCarousel {
 const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
   const styles = useStyles();
   const [activeIndex, setActiveIndex] = useState(0);
-  // mocked values(will be changed in future)
   const carouselItems = [
     {
-      imgUrl: 'https://png.pngtree.com/background/20210706/original/pngtree-business-technology-background-banner-design-picture-image_188904.jpg',
+      img: require('../../../assets/images/slide_1.png'),
     },
     {
-      imgUrl: 'https://png.pngtree.com/background/20210709/original/pngtree-business-technology-background-material-picture-image_415908.jpg',
+      img: require('../../../assets/images/slide_2.png'),
     },
     {
-      imgUrl: 'https://png.pngtree.com/background/20210706/original/pngtree-triangle-geometry-black-background-picture-image_141561.jpg',
+      img: require('../../../assets/images/slide_3.png'),
     },
   ];
 
   const renderItem = ({ item }) => (
     <View style={styles.carouselItem}>
       <View style={styles.imageBannerWrapper}>
-        <CacheImage
-          source={{ uri: item.imgUrl }}
+        <Image
+          source={item.img}
           style={styles.imageBanner}
         />
       </View>
