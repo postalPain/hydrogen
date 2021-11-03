@@ -175,17 +175,17 @@ function* createOrderWorker(action): SagaIterator {
     const deliveryAddress = yield select(temporaryDeliveryAddressSelector);
     const promoCodeData = yield select(state => state.user.promoCode.data);
     const promoCode = promoCodeData ? { promo_code: promoCodeData.code } : {};
+    const comment = action.payload.comment ? { comment: action.payload.comment } : {};
 
     const submitData = {
       products,
-      comment: action.payload.comment,
+      ...comment,
       delivery_address: deliveryAddress,
       ...promoCode,
     };
 
     const { data: { data } } = yield call(userAPI.createOrder, submitData);
-    console.log(data);
-    yield put(createOrderSuccess());
+    yield put(createOrderSuccess(data));
     yield call(navigate, Routes.OrderConfirmation);
   } catch (error) {
     if (error.errors) {

@@ -32,7 +32,7 @@ import {
   defaultCardSelector,
   checkoutLoadingSelector,
   checkoutErrorMessageSelector,
-  checkoutDataSelector,
+  checkoutErrorDataSelector,
 } from 'store/user/selectors';
 import {
   ChangePaymentMethod,
@@ -84,7 +84,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const promoCodeError = useSelector(promoCodeErrorSelector());
   const checkoutLoading = useSelector(checkoutLoadingSelector());
   const checkoutErrorMessage = useSelector(checkoutErrorMessageSelector());
-  const checkoutResponseData = useSelector(checkoutDataSelector());
+  const checkoutErrorResponseData = useSelector(checkoutErrorDataSelector());
   const basket = useSelector(basketSelector());
   const products = Object.values(basket);
   const discount = promoCode && promoCode.discount || 0;
@@ -104,10 +104,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   }, []);
 
   useEffect(() => {
-    if (checkoutResponseData) {
+    if (checkoutErrorResponseData) {
       setOutOfStockSlideUpVisible(true);
     }
-  }, [checkoutResponseData]);
+  }, [checkoutErrorResponseData]);
 
   const onCheckoutPress = () => {
     // TODO: Add different object for order submission
@@ -136,7 +136,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   };
 
   const loading = promoCodeLoading || checkoutLoading;
-  const unAvailableProductIds = (checkoutResponseData || []).map(item => item.uuid);
+  const unAvailableProductIds = (checkoutErrorResponseData || []).map(item => item.uuid);
   return (
     <>
       <ScrollView

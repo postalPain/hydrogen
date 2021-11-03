@@ -17,7 +17,8 @@ const Header: React.FC<StackHeaderProps & IHeaderProps> = ({
   navigation,
 }) => {
   const styles = useStyles(theme);
-  const { headerTitle } = options;
+  // @ts-ignore
+  const { headerTitle, hideBackButton } = options;
   const { name } = route;
   const { canGoBack, goBack } = navigation;
   return (
@@ -26,7 +27,7 @@ const Header: React.FC<StackHeaderProps & IHeaderProps> = ({
       <NavBackground style={styles.headerLine} />
       <NavSide style={styles.headerRightSide} />
       <View style={styles.contentWrapper}>
-        {canGoBack() && (
+        {(!hideBackButton && canGoBack()) && (
         <TouchableOpacity onPress={goBack} style={styles.backButton}>
           <Back />
         </TouchableOpacity>

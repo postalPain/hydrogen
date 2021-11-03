@@ -1,4 +1,4 @@
-import { TProduct, TPromoCode } from 'services/ServerAPI/types';
+import { TProduct, TPromoCode, IOrderCreated } from 'services/ServerAPI/types';
 import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
 import { UpdatePasswordType } from 'store/user/actions/types';
 
@@ -164,8 +164,9 @@ export const createOrder = (payload: { comment: string }) => ({
   payload,
 });
 
-export const createOrderSuccess = () => ({
+export const createOrderSuccess = (payload: IOrderCreated) => ({
   type: TYPES.CREATE_ORDER_SUCCESS,
+  payload,
 });
 
 export const createOrderError = (errorMessage: string, data: any = null) => ({

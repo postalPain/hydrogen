@@ -1,3 +1,16 @@
+export enum EOrderStatus {
+  pending = 'pending',
+  packing = 'packing',
+  packed = 'packed',
+  delivered = 'delivered',
+  cancelled = 'cancelled',
+  unfulfilled = 'unfulfilled', // might be removed in the future
+}
+export enum EApartmentType {
+  apartments = 'apartments',
+  villa = 'villa',
+}
+
 export type TSubcategory = {
   uuid: string;
   name: string;
@@ -59,18 +72,48 @@ export interface IOrder {
   delivery_address: {
     latitude: number;
     longitude: number;
-    type: string; // apartments | villa
+    type: EApartmentType;
     building_name: string;
     house_number: string;
     floor: number;
     apartment_number: string;
     full_address: string;
-    promo_code?: string;
-    token: string;
-  }
+  };
+  promo_code?: string;
 }
 
 export type TPromoCode = {
   code: string;
   discount: number;
 };
+
+export interface IOrderCreated {
+  uuid: string;
+  status: EOrderStatus;
+  delivery_address: {
+    latitude: number;
+    longitude: number;
+    type: EApartmentType;
+    building_name: string;
+    house_number: string;
+    floor: number;
+    apartment_number: string;
+    full_address: string;
+  };
+  products: TProduct[];
+  total: number;
+  sub_total: number;
+  tax: number;
+  delivery_fee: number;
+  comment: string;
+  created_at: string,
+  delivery_name: {
+    first_name: string,
+    last_name: string,
+    phone: string
+  },
+  promo_codes: string[],
+  warehouse: {
+    uuid: string,
+  }
+}

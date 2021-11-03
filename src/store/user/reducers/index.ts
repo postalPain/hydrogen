@@ -1,5 +1,5 @@
 import { TYPES, TBasketProduct } from '../actions';
-import { TPromoCode } from 'services/ServerAPI/types';
+import { TPromoCode, IOrderCreated } from 'services/ServerAPI/types';
 import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
 
 interface IUserState {
@@ -17,7 +17,8 @@ interface IUserState {
   orderList: IOrder[],
   checkout: {
     loading: boolean;
-    data: any;
+    data: IOrderCreated | null;
+    errorData: any;
     errorMessage: string | null;
   },
   promoCode: {
@@ -27,7 +28,7 @@ interface IUserState {
   }
 }
 
-const defaultState = {
+const defaultState: IUserState = {
   accessToken: '',
   user: null,
   errorMessage: '',
@@ -41,6 +42,7 @@ const defaultState = {
   checkout: {
     loading: false,
     data: null,
+    errorData: null,
     errorMessage: null,
   },
   promoCode: {
@@ -50,7 +52,7 @@ const defaultState = {
   },
 };
 
-export default function user(state: IUserState = defaultState, action) {
+export default function user(state: IUserState = defaultState, action): IUserState {
   switch (action.type) {
     case TYPES.SIGN_IN: {
       return {
@@ -180,7 +182,8 @@ export default function user(state: IUserState = defaultState, action) {
         ...state,
         checkout: {
           errorMessage: null,
-          data: null,
+          errorData: null,
+          data: action.payload,
           loading: false,
         },
         basket: {},
@@ -191,7 +194,8 @@ export default function user(state: IUserState = defaultState, action) {
         ...state,
         checkout: {
           errorMessage: action.payload.message,
-          data: action.payload.data,
+          errorData: action.payload.data,
+          data: null,
           loading: false,
         },
       };
@@ -201,6 +205,7 @@ export default function user(state: IUserState = defaultState, action) {
         ...state,
         checkout: {
           errorMessage: null,
+          errorData: null,
           data: null,
           loading: false,
         },

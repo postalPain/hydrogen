@@ -197,6 +197,8 @@ const Navigation = () => {
                     options={{
                       gestureEnabled: false,
                       headerTitle: i18n.t('screens.orderConfirmation.header'),
+                      // @ts-ignore
+                      hideBackButton: true,
                     }}
                   />
                   <Stack.Screen

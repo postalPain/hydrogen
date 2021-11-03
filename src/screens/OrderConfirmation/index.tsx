@@ -1,12 +1,16 @@
 import React from 'react';
-import useStyles from './styles';
 import { ScrollView, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import { Button, Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
-import { CheckCircleIcon } from 'components/Icons';
-import { ProjectThemeType } from 'theme';
 import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
+
 import i18n from 'i18n';
+import { ProjectThemeType } from 'theme';
+import { Routes } from 'navigation';
+import { formatCurrency, formatAmount } from 'utilities/helpers';
+import { checkoutDataSelector } from 'store/user/selectors';
+import { CheckCircleIcon } from 'components/Icons';
+import useStyles from './styles';
 
 interface IOrderConfirmationProps {
   theme?: ProjectThemeType;
@@ -15,8 +19,9 @@ interface IOrderConfirmationProps {
 const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const { navigate } = useNavigation();
-
+  const orderData = useSelector(checkoutDataSelector());
   const handleBrowseProducts = () => navigate(Routes.DrawerNavigation);
+
   return (
     <ScrollView style={styles.wrapper} contentContainerStyle={styles.container}>
       <View style={styles.titleContainer}>
@@ -35,46 +40,52 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
         <Text style={styles.title}>{i18n.t('screens.orderConfirmation.summary')}</Text>
         <View style={styles.infoBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.date')}</Text>
-          <Text style={styles.info}>21.09.2021</Text>
+          <Text style={styles.info}>{orderData.created_at}</Text>
         </View>
         <View style={styles.infoBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.address')}</Text>
-          <Text style={styles.info}>Grand Hyatt, Corniche Rd</Text>
+          <Text style={styles.info}>{orderData.delivery_address.full_address}</Text>
         </View>
         <View style={styles.infoBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.instructions')}</Text>
-          <Text style={styles.info}>Please leave at the doorstep and do not ring the bell.</Text>
+          <Text style={styles.info}>{orderData.comment}</Text>
         </View>
         <View style={styles.infoBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.cartTotal')}</Text>
           <View style={styles.priceBlock}>
             <Text style={styles.info}>{i18n.t('screens.orderConfirmation.subtotal')}</Text>
-            <Text style={styles.price}>AED 48.00</Text>
+            <Text style={styles.price}>{formatCurrency(orderData.sub_total)}</Text>
           </View>
           <View style={styles.priceBlock}>
             <Text style={styles.price}>{i18n.t('screens.orderConfirmation.fee')}</Text>
-            <Text style={styles.price}>AED 48.00</Text>
+            <Text style={styles.price}>{formatCurrency(orderData.delivery_fee)}</Text>
           </View>
           <View style={styles.priceBlock}>
             <Text style={styles.price}>{i18n.t('screens.orderConfirmation.vat')}</Text>
-            <Text style={styles.price}>AED 48.00</Text>
+            <Text style={styles.price}>{formatCurrency(orderData.tax)}</Text>
           </View>
           <View style={styles.totalBlock}>
             <View style={styles.priceBlock}>
               <Text style={styles.info}>{i18n.t('screens.orderConfirmation.total')}</Text>
-              <Text style={styles.info}>AED 48.00</Text>
+              <Text style={styles.info}>{formatCurrency(orderData.total)}</Text>
             </View>
           </View>
         </View>
         <View style={styles.detailsBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.details')}</Text>
-          <View style={[styles.priceBlock, styles.productPrice]}>
-            <View>
-              <Text style={styles.price}>Veggies x 2</Text>
-              <Text style={styles.price}>750g, Deutschland</Text>
+          { orderData.products.map((product) => (
+            <View style={[styles.priceBlock, styles.productPrice]}>
+              <View>
+                <Text style={styles.price}>
+                  {`${product.name} x ${product.quantity}`}
+                </Text>
+                <Text style={styles.price}>
+                  {`${formatAmount(product)}, ${product.origin}`}
+                </Text>
+              </View>
+              <Text style={styles.info}>{formatCurrency(product.price * product.quantity)}</Text>
             </View>
-            <Text style={styles.info}>AED 48.00</Text>
-          </View>
+          ))}
         </View>
       </View>
       <Button onPress={handleBrowseProducts} style={styles.button}>{i18n.t('screens.orderConfirmation.button')}</Button>
