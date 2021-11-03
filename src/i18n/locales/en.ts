@@ -7,6 +7,7 @@ export default {
     services_unavailable: 'Sorry, our service is temporarily not available.',
     unauthenticated: 'Unauthenticated',
     networkError: 'You are offline. Please check your internet connection and try again.',
+    resetPassword: 'Please check if your Email is correct',
   },
   alerts: {
     title: 'App',

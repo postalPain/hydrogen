@@ -11,21 +11,29 @@ import i18n from 'i18n';
 import { CreatePasswordSchema } from 'utilities/validationSchemas';
 import { Formik } from 'formik';
 import { ProjectThemeType } from 'theme';
-import { useNavigation } from '@react-navigation/native';
-import { Routes } from 'navigation';
 import { DismissKeyboard } from 'components';
+import { useDispatch, useSelector } from 'react-redux';
+import { updatePassword } from 'store/user/actions';
+import { userErrorSelector } from 'store/user/selectors';
+import { UpdatePasswordType } from 'store/user/actions/types';
 
 interface IUpdatePasswordProps {
   theme?: ProjectThemeType;
+  route: { params: { token: string; email: string; } }
 }
 
-const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme }) => {
+const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme, route }) => {
   const styles = useStyles(theme);
-  const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+  const { params: { token, email } } = route;
+  const updatePasswordError = useSelector(userErrorSelector);
 
   const handleUpdatePassword = (values) => {
-    console.log(values);
-    navigate(Routes.ResetPasswordSuccess);
+    dispatch(updatePassword({
+      token,
+      email,
+      ...values,
+    } as UpdatePasswordType));
   };
   return (
     <DismissKeyboard>
@@ -68,6 +76,7 @@ const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme }) => {
                   error={submitCount > 0 ? errors.password_confirmation : undefined}
                   style={styles.input}
                 />
+                {!!updatePasswordError && <Text color="red">{updatePasswordError}</Text>}
               </View>
               <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.updatePassword.button')}</Button>
             </View>

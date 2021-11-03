@@ -1,5 +1,6 @@
 import { TProduct, TPromoCode } from 'services/ServerAPI/types';
 import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
+import { UpdatePasswordType } from 'store/user/actions/types';
 
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
@@ -35,6 +36,8 @@ export const TYPES = {
   CHECK_PROMO_CODE_ERROR: 'CHECK_PROMO_CODE_ERROR',
   RESET_PROMO_CODE: 'RESET_PROMO_CODE',
   CREATE_TEMPORARY_USER: 'CREATE_TEMPORARY_USER',
+  RESET_PASSWORD: 'RESET_PASSWORD',
+  UPDATE_PASSWORD: 'UPDATE_PASSWORD',
 };
 
 export type TBasketProduct = TProduct & {
@@ -194,4 +197,14 @@ export const checkPromoCodeError = (errorMessage: string) => ({
 
 export const resetPromoCode = () => ({
   type: TYPES.RESET_PROMO_CODE,
+});
+
+export const resetPassword = (payload: { email: string }) => ({
+  type: TYPES.RESET_PASSWORD,
+  payload,
+});
+
+export const updatePassword = (payload: UpdatePasswordType) => ({
+  type: TYPES.UPDATE_PASSWORD,
+  payload,
 });

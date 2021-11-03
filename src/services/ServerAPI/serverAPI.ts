@@ -80,4 +80,10 @@ export const userAPI = {
   checkPromoCode(code): Promise<any> {
     return xhr.get(apiUrls.checkPromoCode(code));
   },
+  resetPassword(email: { email: string }): Promise<any> {
+    return xhr.post(apiUrls.resetPassword, email);
+  },
+  updatePassword(passwordData): Promise<any> {
+    return xhr.post(apiUrls.updatePassword, passwordData);
+  },
 };

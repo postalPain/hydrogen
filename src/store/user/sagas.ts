@@ -1,5 +1,5 @@
 import {
-  call, put, takeEvery, select,
+  call, put, select, takeEvery,
 } from 'redux-saga/effects';
 import { SagaIterator } from '@redux-saga/core';
 import { addHeader, removeHeader, userAPI } from 'services/ServerAPI/serverAPI';
@@ -10,6 +10,8 @@ import { signedAppDataWorker } from 'store/app/sagas';
 import {
   checkPromoCodeError,
   checkPromoCodeSuccess,
+  createOrderError,
+  createOrderSuccess,
   getUserSuccess,
   saveAddress,
   saveCard,
@@ -20,8 +22,6 @@ import {
   setError,
   signedIn,
   TYPES,
-  createOrderError,
-  createOrderSuccess,
 } from './actions';
 import { temporaryDeliveryAddressSelector } from 'store/user/selectors';
 import Stripe from 'react-native-stripe-api';
@@ -31,6 +31,7 @@ import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
 import { convertProductsForOrderSubmission } from 'utilities/helpers';
 import { ICard } from 'store/user/reducers/types';
+import i18n from 'i18n';
 
 export function* getUserWorker(): SagaIterator {
   try {
@@ -210,6 +211,26 @@ function* checkPromoCodeWorker(action): SagaIterator {
   }
 }
 
+function* resetPasswordWorker(action): SagaIterator {
+  try {
+    setError('');
+    yield call(userAPI.resetPassword, action.payload);
+    navigate(Routes.CheckEmail);
+  } catch (error) {
+    yield put(setError(i18n.t('errors.resetPassword')));
+  }
+}
+
+function* updatePasswordWorker(action): SagaIterator {
+  try {
+    setError('');
+    yield call(userAPI.updatePassword, action.payload);
+    navigate(Routes.ResetPasswordSuccess);
+  } catch (error) {
+    yield put(setError(i18n.t('errors.something_went_wrong')));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
@@ -222,4 +243,6 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.GET_ORDERS, getOrdersWorker);
   yield takeEvery(TYPES.CREATE_ORDER, createOrderWorker);
   yield takeEvery(TYPES.CHECK_PROMO_CODE, checkPromoCodeWorker);
+  yield takeEvery(TYPES.RESET_PASSWORD, resetPasswordWorker);
+  yield takeEvery(TYPES.UPDATE_PASSWORD, updatePasswordWorker);
 }
