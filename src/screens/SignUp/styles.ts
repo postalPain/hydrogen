@@ -2,13 +2,15 @@ import { StyleSheet } from 'react-native';
 import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
+  flexStyle: {
+    flex: 1,
+  },
   safeArea: {
     ...theme.components.safeArea,
     backgroundColor: theme.colors.white,
   },
   container: {
     paddingHorizontal: 27,
-    flex: 1,
   },
   input: {
     marginTop: 54,
