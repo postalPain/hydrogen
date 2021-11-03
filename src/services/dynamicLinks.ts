@@ -9,13 +9,14 @@ export const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink 
   }
 
   const { query, pathname } = url.parse(link.url, true);
+  const [,crumb] = pathname.split('/');
   const routeParams = query || {};
   const isResetPassword = /\/password\/(.+)\//;
 
-  if (pathname === '/home') {
+  if (crumb === 'home') {
     navigate(Routes.DrawerNavigation);
   }
-  if (isResetPassword.test(pathname)) {
+  if (crumb === 'password' && isResetPassword.test(pathname)) {
     const [,token] = isResetPassword.exec(pathname);
     navigate(Routes.UpdatePassword, { token, ...routeParams });
   }
