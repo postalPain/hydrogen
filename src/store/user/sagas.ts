@@ -33,7 +33,7 @@ import { STRIPE_PUBLIC_KEY } from '@env';
 import { storageKeys } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
-import { convertProductsForOrderSubmission } from 'utilities/helpers';
+import { convertProductsForOrderSubmission, getCleanObject } from 'utilities/helpers';
 import { ICard } from 'store/user/reducers/types';
 import i18n from 'i18n';
 
@@ -179,19 +179,17 @@ function* createOrderWorker(action): SagaIterator {
     const deliveryAddress = yield select(deliveryAddressSelector);
     const temporaryDeliveryAddress = yield select(temporaryDeliveryAddressSelector);
     const promoCodeData = yield select(state => state.user.promoCode.data);
-    const promoCode = promoCodeData ? { promo_code: promoCodeData.code } : {};
-    const comment = action.payload.comment ? { comment: action.payload.comment } : {};
     const defaultCard = yield select(defaultCardSelector);
 
     const card = defaultCard.temporary ? { card_id: defaultCard.stripe_card_id } : {};
 
-    const submitData = {
+    const submitData = getCleanObject({
       products,
-      ...comment,
+      comment: action.payload.comment,
       delivery_address: temporaryDeliveryAddress || deliveryAddress,
-      ...promoCode,
+      promo_code: promoCodeData ? promoCodeData.code : null,
       ...card,
-    };
+    });
 
     const { data: { data } } = yield call(userAPI.createOrder, submitData);
     yield put(createOrderSuccess(data));

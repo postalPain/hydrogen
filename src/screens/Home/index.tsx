@@ -10,20 +10,24 @@ import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-compon
 import { NavigationContainerRef, StackActions, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
+import { IDeliveryAddress } from 'store/user/reducers/types';
 import { categoriesSelector } from 'store/categories/selectors';
+import {
+  deliveryAddressSelector,
+  temporaryDeliveryAddressSelector,
+  userSelector,
+} from 'store/user/selectors';
+import { Routes } from 'navigation';
 import {
   LocationButton, HomeCarousel, CategoriesViewer, WorkingHoursModal,
 } from 'components';
 import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
-import { deliveryAddressSelector, temporaryDeliveryAddressSelector } from 'store/user/selectors';
-import { Routes } from 'navigation';
-import { IDeliveryAddress } from 'store/user/reducers/types';
 
 
 interface IHomeProps {
-  navigation: NavigationContainerRef;
+  navigation: NavigationContainerRef<any>;
   theme: ProjectThemeType;
 }
 
@@ -31,6 +35,7 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const navigation = useNavigation();
   const categories = useSelector(categoriesSelector);
+  const user = useSelector(userSelector);
   const deliveryAddress = useSelector(deliveryAddressSelector);
   const temporaryDeliveryAddress = useSelector(temporaryDeliveryAddressSelector);
   const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
@@ -50,7 +55,11 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
           >
             <View style={styles.headerProfileBlock}>
               <View style={styles.headerProfileBlockLeftCol}>
-                <Text style={styles.helloText}>{i18n.t('screens.home.helloMessage')}</Text>
+                <Text style={styles.helloText}>
+                  { user
+                    ? i18n.t('screens.home.helloUserMessage', { name: user.first_name })
+                    : i18n.t('screens.home.helloMessage')}
+                </Text>
               </View>
               <View style={styles.headerProfileBlockRightCol}>
                 <TouchableOpacity

@@ -1,10 +1,10 @@
 import { TYPES, TBasketProduct } from '../actions';
-import { TPromoCode, IOrderCreated } from 'services/ServerAPI/types';
+import { TPromoCode, IOrderCreated, TUser } from 'services/ServerAPI/types';
 import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
 
 interface IUserState {
   accessToken: string;
-  user: string | null;
+  user: TUser | null;
   errorMessage: string;
   loading: boolean;
   defaultCard: ICard | {};

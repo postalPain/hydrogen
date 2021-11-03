@@ -90,3 +90,16 @@ export const convertProductsForOrderSubmission = (products: TBasketProduct[]) =>
     quantity: item.basketQuantity,
   }),
 );
+
+export const getCleanObject = (obj) => Object.keys(obj).reduce((prevCleanObj, key) => {
+  const cleanObj = { ...prevCleanObj };
+  if (obj[key]) {
+    const isArray = Array.isArray(obj[key]);
+    const isObject = (typeof obj[key]).toLowerCase() === 'object' && !isArray;
+
+    cleanObj[key] = isObject
+      ? getCleanObject(obj[key])
+      : obj[key];
+  }
+  return cleanObj;
+}, {});

@@ -1,3 +1,5 @@
+import { IDeliveryAddress } from 'store/user/reducers/types';
+
 export enum EOrderStatus {
   pending = 'pending',
   packing = 'packing',
@@ -117,3 +119,12 @@ export interface IOrderCreated {
     uuid: string,
   }
 }
+
+export type TUser = {
+  delivery_address: IDeliveryAddress;
+  email: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  uuid: string;
+};
