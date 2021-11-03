@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userSelector } from 'store/user/selectors';
 import { signOut } from 'store/user/actions';
 import i18n from 'i18n';
+import { useNavigation } from '@react-navigation/native';
+import { Routes } from 'navigation';
 
 interface IDrawerContentProps extends DrawerContentComponentProps {
   theme?: ProjectThemeType;
@@ -21,6 +23,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
   const styles = useStyles(theme);
   const user = useSelector(userSelector);
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
 
   const isUser = user?.email;
 
@@ -53,6 +56,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             type="link"
             style={styles.linkContainer}
             textStyle={styles.mainLink}
+            onPress={() => navigate(Routes.OrderList)}
           >
             {i18n.t('components.drawerContent.orders')}
           </Button>
