@@ -14,8 +14,11 @@ export const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink 
   const isResetPassword = /\/password\/(.+)\//;
 
   if (crumb === 'home') {
-    navigate(Routes.HomeTabScreen, {
-      screen: Routes.HomeScreen,
+    navigate(Routes.TabNavigation, {
+      screen: Routes.HomeTabScreen,
+      params: {
+        screen: Routes.HomeScreen,
+      },
     });
   }
   if (crumb === 'password' && isResetPassword.test(pathname)) {

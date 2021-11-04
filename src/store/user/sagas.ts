@@ -143,9 +143,7 @@ function* createTemporaryUserWorker(action): SagaIterator {
 
     // finish onboarding
     yield put(appCompleteBoarding());
-    navigate(Routes.HomeTabScreen, {
-      screen: Routes.HomeScreen,
-    });
+    navigate(Routes.DrawerNavigation);
   } catch (e) {
     yield put(setError('Something went wrong'));
   }

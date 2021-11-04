@@ -11,10 +11,13 @@ import { Routes } from 'navigation';
 const CategoryItem = ({ name, image_url, uuid }: TCategory) => {
   const styles = useStyles();
   const onItemPress = () => {
-    navigate(Routes.HomeTabScreen, {
-      screen: Routes.ProductsScreen,
+    navigate(Routes.TabNavigation, {
+      screen: Routes.HomeTabScreen,
       params: {
-        categoryId: uuid,
+        screen: Routes.ProductsScreen,
+        params: {
+          categoryId: uuid,
+        },
       },
     });
   };
