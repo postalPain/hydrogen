@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
@@ -11,7 +11,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   container: {
     paddingHorizontal: 15,
-    paddingTop: 22,
+    paddingTop: Platform.OS === 'ios' ? 22 : 44,
     paddingBottom: 22,
     backgroundColor: theme.colors.white,
   },
