@@ -222,7 +222,7 @@ function* checkPromoCodeWorker(action): SagaIterator {
 
 function* resetPasswordWorker(action): SagaIterator {
   try {
-    setError('');
+    yield put(setError(''));
     yield call(userAPI.resetPassword, action.payload);
     navigate(Routes.CheckEmail);
   } catch (error) {
@@ -232,7 +232,7 @@ function* resetPasswordWorker(action): SagaIterator {
 
 function* updatePasswordWorker(action): SagaIterator {
   try {
-    setError('');
+    yield put(setError(''));
     yield call(userAPI.updatePassword, action.payload);
     navigate(Routes.ResetPasswordSuccess);
   } catch (error) {
