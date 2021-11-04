@@ -76,7 +76,7 @@ const OutOfStockSlideUp: React.FC<IOutOfStockSlideUpProps> = ({
         {i18n.t('components.outOfStockSlideUp.description')}
       </Text>
       <ScrollView style={styles.scrollBox}>
-        <View onStartShouldSetResponder={() => true}>
+        <View style={styles.inventoriesList} onStartShouldSetResponder={() => true}>
           { !!products && !!products.length && renderProducts()}
         </View>
       </ScrollView>

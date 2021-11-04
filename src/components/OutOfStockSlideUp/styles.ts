@@ -40,7 +40,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   inventoryContent: {
     flex: 1,
   },
-  inventorySideCol: {},
+  inventoriesList: {
+    paddingHorizontal: theme.spaces.s,
+  },
+  inventorySideCol: {
+    paddingLeft: theme.spaces.s,
+  },
   inventoryPanel: {
     display: 'flex',
     flexDirection: 'row',
@@ -67,6 +72,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginBottom: 7,
   },
   scrollBox: {
+    marginHorizontal: -theme.spaces.s,
     paddingTop: 8,
     paddingHorizontal: 20,
     height: 400,
