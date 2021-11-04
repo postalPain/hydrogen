@@ -174,6 +174,8 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         checkout: {
           ...state.checkout,
           loading: true,
+          errorMessage: null,
+          errorData: null,
         },
       };
     }
