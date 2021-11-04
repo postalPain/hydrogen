@@ -45,6 +45,7 @@ import {
 import { GeoPoint, LeftArrow } from 'components/Icons';
 import useStyles from './styles';
 import { IDeliveryAddress } from 'store/user/reducers/types';
+import DeclinedPaymentModal from 'components/DeclinedPaymentModal';
 
 
 interface ICheckoutProps {
@@ -94,6 +95,8 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
   const handleChangeAddress = () => navigator
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
+  const isCardDeclined = checkoutErrorMessage?.includes('Your card was declined');
+  const [showDeclinedCardModal, setShowDeclinedCardModal] = useState(isCardDeclined);
 
   // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
   useEffect(() => {
@@ -108,6 +111,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
       setOutOfStockSlideUpVisible(true);
     }
   }, [checkoutErrorResponseData]);
+
+  useEffect(() => {
+    setShowDeclinedCardModal(isCardDeclined);
+  }, [isCardDeclined]);
 
   const onCheckoutPress = () => {
     // TODO: Add different object for order submission
@@ -148,7 +155,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             {i18n.t('screens.checkout.deliveryDetails')}
           </Text>
           {
-            !!checkoutErrorMessage && (
+            !!checkoutErrorMessage && !isCardDeclined && (
               <Text style={styles.errorText}>{checkoutErrorMessage}</Text>
             )
           }
@@ -250,6 +257,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         visible={outOfStockSlideUpVisible}
         onCartUpdate={onCartUpdate}
         productIds={unAvailableProductIds}
+      />
+      <DeclinedPaymentModal
+        onClose={() => setShowDeclinedCardModal(false)}
+        visible={showDeclinedCardModal}
       />
       { loading && <View style={styles.loadingScreen} /> }
     </>
