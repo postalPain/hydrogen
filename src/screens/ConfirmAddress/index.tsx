@@ -48,6 +48,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
                 inputLabelStyle={styles.label}
                 value={address}
                 style={styles.input}
+                selection={{ start: 0 }}
               />
             </Pressable>
             <Dropdown

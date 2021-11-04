@@ -67,7 +67,7 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
   const renderOrderList = () => orderList.map((order: IOrder) => {
     const { color, IconComponent, text } = checkOrderStatus(order);
     const [date, time] = order.created_at.split(' ');
-    const [, month, day] = date.split('-');
+    const monthNameAndDay = new Date(date).toLocaleString('en-us', { month: 'short' }).split(',')[0];
     const [hours, minutes] = time.split(':');
     const orderNum = `#${order.uuid.slice(0, 8).toUpperCase()}`;
 
@@ -81,7 +81,7 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
             <Text style={styles.subTitle}>
               {order.delivery_address.full_address}
             </Text>
-            <Text style={styles.content}>{`${day}.${month}, ${hours}:${minutes}`}</Text>
+            <Text style={styles.content}>{`${monthNameAndDay}, ${hours}:${minutes}`}</Text>
             <Text style={styles.content}>{orderNum}</Text>
           </View>
           <View style={styles.statusContainer}>
