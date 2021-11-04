@@ -4,9 +4,9 @@ import useStyles from './styles';
 
 const TabWrapper = (TabComponent: any) => {
   const styles = useStyles();
-  return () => (
+  return (params) => (
     <View style={styles.container}>
-      <TabComponent />
+      <TabComponent {...params} />
     </View>
   );
 };

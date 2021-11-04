@@ -16,10 +16,7 @@ import DrawerNavigation from 'navigation/DrowerNavigation';
 
 import { Header } from 'components';
 
-import Home from 'screens/Home';
 import Map from 'screens/Map';
-import Products from 'screens/Products';
-import TemporaryNavigator from 'screens/TemporaryNavigator';
 import SignUp from 'screens/SignUp';
 import AutocompleteInput from 'screens/AtocompleteInput';
 import ConfirmAddress from 'screens/ConfirmAddress';
@@ -115,14 +112,6 @@ const Navigation = () => {
                     }}
                   />
                   <Stack.Screen
-                    name={Routes.TemporaryNavigator}
-                    component={TemporaryNavigator}
-                    options={{
-                      gestureEnabled: false,
-                      headerTitle: 'Temporary screen',
-                    }}
-                  />
-                  <Stack.Screen
                     name={Routes.TabNavigation}
                     component={TabNavigation}
                     options={{
@@ -163,13 +152,6 @@ const Navigation = () => {
                     }}
                   />
                   <Stack.Screen
-                    name={Routes.HomeScreen}
-                    component={Home}
-                    options={{
-                      gestureEnabled: false,
-                    }}
-                  />
-                  <Stack.Screen
                     name={Routes.MapScreen}
                     component={Map}
                     options={{
@@ -180,13 +162,6 @@ const Navigation = () => {
                   <Stack.Screen
                     name={Routes.AutocompleteInput}
                     component={AutocompleteInput}
-                    options={{
-                      gestureEnabled: false,
-                    }}
-                  />
-                  <Stack.Screen
-                    name={Routes.ProductsScreen}
-                    component={Products}
                     options={{
                       gestureEnabled: false,
                     }}

@@ -2,8 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BASKET_TAB_NAME } from 'constants/';
 import Routes from 'navigation/Routes';
-import Home from 'screens/Home';
 import SignUp from 'screens/SignUp';
+import HomeTabNavigation from '../HomeTabNavigation';
 import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
 import { TabBar, TabWrapper } from 'components';
 
@@ -18,10 +18,10 @@ const TabNavigation = () => (
     }}
   >
     <Tab.Screen
-      name={Routes.HomeScreen}
+      name={Routes.HomeTabScreen}
       // To make tab bar transparent we apply to it position absolute
       // TabWrapper adds View wrapper with padding bottom = TabBar
-      component={TabWrapper(Home)}
+      component={HomeTabNavigation}
       options={{
         tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
       }}

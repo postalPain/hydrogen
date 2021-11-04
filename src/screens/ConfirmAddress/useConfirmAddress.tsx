@@ -38,7 +38,9 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
       if (beforePreviousScreen === Routes.Checkout) {
         navigate(Routes.Checkout);
       } else {
-        navigate(Routes.DrawerNavigation);
+        navigate(Routes.HomeTabScreen, {
+          screen: Routes.HomeScreen,
+        });
       }
     } else {
       dispatch(createTemporaryUser(addressDetails));

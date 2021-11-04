@@ -20,7 +20,11 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const { navigate } = useNavigation();
   const orderData = useSelector(checkoutDataSelector());
-  const handleBrowseProducts = () => navigate(Routes.DrawerNavigation);
+  const handleBrowseProducts = () => (
+    navigate(Routes.HomeTabScreen, {
+      screen: Routes.HomeScreen,
+    })
+  );
 
   return (
     <ScrollView style={styles.wrapper} contentContainerStyle={styles.container}>

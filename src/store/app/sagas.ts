@@ -67,7 +67,9 @@ function* initAppWorker(): SagaIterator {
     yield call(signedAppDataWorker);
 
     yield put(appCompleteInit());
-    navigate(Routes.DrawerNavigation);
+    navigate(Routes.HomeTabScreen, {
+      screen: Routes.HomeScreen,
+    });
     // Hide native splashscreen
     SplashScreen.hide();
   } catch (error) {

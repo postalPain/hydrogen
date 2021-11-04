@@ -1,19 +1,21 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { Text, CacheImage } from '@stryberventures/stryber-react-native-ui-components';
-import { useNavigation } from '@react-navigation/native';
 
 import { TCategory } from 'services/ServerAPI/types';
+import { navigate } from 'navigation/NavigationUtilities';
 import useStyles from './styles';
 import { Routes } from 'navigation';
 
 
 const CategoryItem = ({ name, image_url, uuid }: TCategory) => {
   const styles = useStyles();
-  const navigator = useNavigation();
   const onItemPress = () => {
-    navigator.navigate(Routes.ProductsScreen, {
-      categoryId: uuid,
+    navigate(Routes.HomeTabScreen, {
+      screen: Routes.ProductsScreen,
+      params: {
+        categoryId: uuid,
+      },
     });
   };
 
