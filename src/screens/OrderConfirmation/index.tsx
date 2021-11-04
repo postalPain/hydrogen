@@ -20,6 +20,7 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const { navigate } = useNavigation();
   const orderData = useSelector(checkoutDataSelector());
+  const [createdAtDate] = orderData.created_at.split(' ');
   const handleBrowseProducts = () => (
     navigate(Routes.HomeTabScreen, {
       screen: Routes.HomeScreen,
@@ -44,7 +45,7 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
         <Text style={styles.title}>{i18n.t('screens.orderConfirmation.summary')}</Text>
         <View style={styles.infoBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.date')}</Text>
-          <Text style={styles.info}>{orderData.created_at}</Text>
+          <Text style={styles.info}>{createdAtDate}</Text>
         </View>
         <View style={styles.infoBlock}>
           <Text style={styles.subTitle}>{i18n.t('screens.orderConfirmation.address')}</Text>
