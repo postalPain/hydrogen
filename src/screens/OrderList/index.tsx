@@ -69,7 +69,7 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
     const [date, time] = order.created_at.split(' ');
     const [, month, day] = date.split('-');
     const [hours, minutes] = time.split(':');
-    const orderNum = `#${order.uuid.slice(-4).toUpperCase()}`;
+    const orderNum = `#${order.uuid.slice(0, 8).toUpperCase()}`;
 
     return (
       <Pressable
@@ -77,8 +77,10 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
         key={order.uuid}
       >
         <Card shadow style={styles.card}>
-          <View>
-            <Text style={styles.subTitle}>{order.delivery_address.full_address}</Text>
+          <View style={styles.contentWrapper}>
+            <Text style={styles.subTitle}>
+              {order.delivery_address.full_address}
+            </Text>
             <Text style={styles.content}>{`${day}.${month}, ${hours}:${minutes}`}</Text>
             <Text style={styles.content}>{orderNum}</Text>
           </View>

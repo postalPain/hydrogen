@@ -63,6 +63,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   statusContainer: {
     alignItems: 'center',
   },
+  contentWrapper: {
+    maxWidth: '70%',
+  },
 });
 
 export default useStyles;
