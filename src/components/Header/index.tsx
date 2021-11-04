@@ -5,6 +5,7 @@ import { Text, withTheme } from '@stryberventures/stryber-react-native-ui-compon
 import { StackHeaderProps } from '@react-navigation/stack';
 import { Back, NavBackground, NavSide } from 'components/Icons';
 import { ProjectThemeType } from 'theme';
+import { Routes } from 'navigation';
 
 interface IHeaderProps {
   theme?: ProjectThemeType;
@@ -20,7 +21,10 @@ const Header: React.FC<StackHeaderProps & IHeaderProps> = ({
   // @ts-ignore
   const { headerTitle, hideBackButton } = options;
   const { name } = route;
-  const { canGoBack, goBack } = navigation;
+  const { canGoBack, goBack, navigate } = navigation;
+  const isCheckout = name === Routes.Checkout;
+  const handleBackPress = () => (isCheckout ? navigate(Routes.Basket) : goBack());
+
   return (
     <View style={styles.container}>
       <NavSide style={styles.headerLeftSide} />
@@ -28,7 +32,7 @@ const Header: React.FC<StackHeaderProps & IHeaderProps> = ({
       <NavSide style={styles.headerRightSide} />
       <View style={styles.contentWrapper}>
         {(!hideBackButton && canGoBack()) && (
-        <TouchableOpacity onPress={goBack} style={styles.backButton}>
+        <TouchableOpacity onPress={handleBackPress} style={styles.backButton}>
           <Back />
         </TouchableOpacity>
         )}
