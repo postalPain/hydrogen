@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import useStyles from './styles';
-import { View, ScrollView, Pressable } from 'react-native';
+import {
+  View, ScrollView, Pressable,
+} from 'react-native';
 import { Text, withTheme, Card } from '@stryberventures/stryber-react-native-ui-components';
 import { ProjectThemeType } from 'theme';
 import { ArrowCircle, CheckCircleIcon, Checkout } from 'components/Icons';
@@ -67,7 +69,7 @@ const OrderList: React.FC<IOrderListProps> = ({ theme }) => {
   const renderOrderList = () => orderList.map((order: IOrder) => {
     const { color, IconComponent, text } = checkOrderStatus(order);
     const [date, time] = order.created_at.split(' ');
-    const monthNameAndDay = new Date(date).toLocaleString('en-us', { month: 'short' }).split(',')[0];
+    const monthNameAndDay = new Date(date).toLocaleString('en-us', { month: 'short', day: 'numeric' }).split(',')[0];
     const [hours, minutes] = time.split(':');
     const orderNum = `#${order.uuid.slice(0, 8).toUpperCase()}`;
 
