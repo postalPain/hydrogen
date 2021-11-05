@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ScrollView,
   View,
@@ -24,6 +24,8 @@ import {
 import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
+import { appOptionsSelector } from 'store/app/selectors';
+import { checkWorkingHours } from 'utilities/helpers';
 
 
 interface IHomeProps {
@@ -43,6 +45,17 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
   // TODO: Add WorkingHours logic when backend will be ready
   const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
+  const appOptions = useSelector(appOptionsSelector);
+  const isWorkingHours = checkWorkingHours(
+    Number(appOptions?.working_hours_start?.slice(0, 2)),
+    Number(appOptions?.working_hours_end?.slice(0, 2)),
+  );
+
+  useEffect(() => {
+    if (!isWorkingHours) {
+      setShowWorkingHoursModal(true);
+    }
+  }, [isWorkingHours]);
 
   return (
     <>
@@ -73,7 +86,10 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
             </View>
             <View style={styles.openHours}>
               <Text style={styles.openHoursText}>
-                {i18n.t('screens.home.openHours')}
+                {i18n.t('screens.home.openHours', {
+                  start: appOptions?.working_hours_start?.slice(0, 5),
+                  end: appOptions?.working_hours_end?.slice(0, 5),
+                })}
               </Text>
             </View>
             <LocationButton

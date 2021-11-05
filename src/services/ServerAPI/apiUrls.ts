@@ -14,4 +14,5 @@ export default {
   createTemporaryUser: 'api/v1/user/guest',
   resetPassword: 'api/v1/mail-reset-password',
   updatePassword: 'api/v1/reset-password',
+  appOptions: 'api/v1/warehouses/closest',
 };

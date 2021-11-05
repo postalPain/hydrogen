@@ -15,13 +15,14 @@ import {
   formatAmount,
   calcProductsPrice,
   roundPrice,
-  getMaxProductCount,
+  getMaxProductCount, checkWorkingHours,
 } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector, userSelector } from 'store/user/selectors';
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
 import { WorkingHoursModal } from 'components';
 import useStyles from './styles';
+import { appOptionsSelector } from 'store/app/selectors';
 
 
 interface IBasketProps {
@@ -38,8 +39,12 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const isRegisteredUser = user?.email;
   const dispatch = useDispatch();
   const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
-  // TODO: Add WorkingHours logic when backend will be ready
-  const isWorkingHours = true;
+  const appOptions = useSelector(appOptionsSelector);
+  const isWorkingHours = checkWorkingHours(
+    Number(appOptions?.working_hours_start?.slice(0, 2)),
+    Number(appOptions?.working_hours_end?.slice(0, 2)),
+  );
+
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
       ...data,

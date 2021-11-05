@@ -60,7 +60,7 @@ export default {
     home: {
       helloMessage: 'Hey there!',
       helloUserMessage: 'Hey %{name}!',
-      openHours: 'We’re open 08:00 - 23:00',
+      openHours: 'We’re open %{start} - %{end}',
     },
     signUp: {
       header: 'Sign up',
