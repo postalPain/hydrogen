@@ -107,5 +107,5 @@ export const getCleanObject = (obj) => Object.keys(obj).reduce((prevCleanObj, ke
 export const checkWorkingHours = (start: number, end: number) => {
   if (!start || !end) return true;
   const currentTime = new Date().getHours();
-  return currentTime >= start && currentTime <= end;
+  return currentTime >= start && currentTime <= (end - 1);
 };
