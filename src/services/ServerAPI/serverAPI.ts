@@ -86,4 +86,7 @@ export const userAPI = {
   updatePassword(passwordData): Promise<any> {
     return xhr.post(apiUrls.updatePassword, passwordData);
   },
+  getAppOptions(): Promise<any> {
+    return xhr.get(apiUrls.appOptions);
+  },
 };

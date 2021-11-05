@@ -1,4 +1,5 @@
 import { AppActions, AppActionTypes } from './types';
+import { TAppOptions } from 'store/app/reducers/types';
 
 export const appInit = (): AppActions => ({
   type: AppActionTypes.APP_INIT,
@@ -15,4 +16,9 @@ export const appCompleteBoarding = (): AppActions => ({
 export const setBoardingCompleted = (status: boolean): AppActions => ({
   type: AppActionTypes.SET_BOARDING_COMPLETED,
   status,
+});
+
+export const saveAppOptions = (payload: TAppOptions) => ({
+  type: AppActionTypes.SAVE_APP_OPTIONS,
+  payload,
 });

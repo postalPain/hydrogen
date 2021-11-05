@@ -1,9 +1,10 @@
-import { AppActionTypes, AppActions } from '../actions/types';
+import { AppActions, AppActionTypes } from '../actions/types';
 import { IAppState } from './types';
 
 const defaultState: IAppState = {
   status: 'start',
   boardingCompleted: false,
+  appOptions: null,
 };
 
 export default function app(state: IAppState = defaultState, action: AppActions): IAppState {
@@ -30,6 +31,12 @@ export default function app(state: IAppState = defaultState, action: AppActions)
       return {
         ...state,
         boardingCompleted: action.status,
+      };
+    }
+    case AppActionTypes.SAVE_APP_OPTIONS: {
+      return {
+        ...state,
+        appOptions: action.payload,
       };
     }
     default:
