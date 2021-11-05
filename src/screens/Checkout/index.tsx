@@ -32,7 +32,7 @@ import {
   defaultCardSelector,
   checkoutLoadingSelector,
   checkoutErrorMessageSelector,
-  checkoutErrorDataSelector,
+  checkoutErrorDataSelector, userErrorSelector,
 } from 'store/user/selectors';
 import {
   ChangePaymentMethod,
@@ -97,6 +97,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
   const isCardDeclined = checkoutErrorMessage?.includes('Your card was declined');
   const [showDeclinedCardModal, setShowDeclinedCardModal] = useState(isCardDeclined);
+  const addingCardError = useSelector(userErrorSelector);
 
   // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
   useEffect(() => {
@@ -200,6 +201,11 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             addCard={handleOpenPaymentCardModal}
             changeCard={handleOpenChangeCard}
           />
+          {
+            !!addingCardError && (
+              <Text style={styles.errorText}>{addingCardError}</Text>
+            )
+          }
           <Text style={styles.title}>
             {i18n.t('screens.checkout.cartTotal')}
           </Text>

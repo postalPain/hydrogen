@@ -88,6 +88,7 @@ function* signOutWorker(): SagaIterator {
 
 function* addCardWorker(action): SagaIterator {
   try {
+    yield put(setError(''));
     const client = new Stripe(STRIPE_PUBLIC_KEY);
     const { id } = yield client.createToken(action.payload);
 
@@ -96,12 +97,13 @@ function* addCardWorker(action): SagaIterator {
     yield put(saveDefaultCard(data));
     yield put(saveCard(data));
   } catch (e) {
-    yield put(setError('Something went wrong'));
+    yield put(setError(e.message || i18n.t('errors.something_went_wrong')));
   }
 }
 
 function* addTemporaryCardWorker(action): SagaIterator {
   try {
+    yield put(setError(''));
     const client = new Stripe(STRIPE_PUBLIC_KEY);
     const { card: { id, last4, brand } } = yield client.createToken(action.payload);
     const temporaryDefaultCard: ICard = {
@@ -113,7 +115,7 @@ function* addTemporaryCardWorker(action): SagaIterator {
     };
     yield put(saveDefaultCard(temporaryDefaultCard));
   } catch (e) {
-    yield put(setError('Something went wrong'));
+    yield put(setError(e.message || i18n.t('errors.something_went_wrong')));
   }
 }
 
@@ -124,7 +126,7 @@ function* setDefaultCardWorker(action): SagaIterator {
     const defaultCard = data.find((card) => card.isDefault);
     yield put(saveDefaultCard(defaultCard));
   } catch (e) {
-    yield put(setError('Something went wrong'));
+    yield put(setError(i18n.t('errors.something_went_wrong')));
   }
 }
 
@@ -145,7 +147,7 @@ function* createTemporaryUserWorker(action): SagaIterator {
     yield put(appCompleteBoarding());
     navigate(Routes.DrawerNavigation);
   } catch (e) {
-    yield put(setError('Something went wrong'));
+    yield put(setError(i18n.t('errors.something_went_wrong')));
   }
 }
 
@@ -159,7 +161,7 @@ function* signUpWorker(action): SagaIterator {
     yield put(saveUser(user));
     navigate(Routes.Checkout);
   } catch (error) {
-    yield put(setError('Something went wrong'));
+    yield put(setError(i18n.t('errors.something_went_wrong')));
   }
 }
 
