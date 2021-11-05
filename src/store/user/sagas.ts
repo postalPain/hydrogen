@@ -234,7 +234,7 @@ function* updatePasswordWorker(action): SagaIterator {
     yield call(userAPI.updatePassword, action.payload);
     navigate(Routes.ResetPasswordSuccess);
   } catch (error) {
-    yield put(setError(i18n.t('errors.something_went_wrong')));
+    yield put(setError(error?.errors?.fields?.password[0] || i18n.t('errors.something_went_wrong')));
   }
 }
 
