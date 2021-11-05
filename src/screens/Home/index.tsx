@@ -56,7 +56,7 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
             <View style={styles.headerProfileBlock}>
               <View style={styles.headerProfileBlockLeftCol}>
                 <Text style={styles.helloText}>
-                  { user
+                  { user?.first_name
                     ? i18n.t('screens.home.helloUserMessage', { name: user.first_name })
                     : i18n.t('screens.home.helloMessage')}
                 </Text>

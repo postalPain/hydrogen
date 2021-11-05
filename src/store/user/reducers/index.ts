@@ -189,6 +189,11 @@ export default function user(state: IUserState = defaultState, action): IUserSta
           loading: false,
         },
         basket: {},
+        promoCode: {
+          ...state.promoCode,
+          errorMessage: null,
+          data: null,
+        },
       };
     }
     case TYPES.CREATE_ORDER_ERROR: {
