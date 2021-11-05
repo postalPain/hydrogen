@@ -10,7 +10,7 @@ export const SignUpSchema = Yup.object().shape({
 });
 
 export const CreatePasswordSchema = Yup.object().shape({
-  password: Yup.string().min(8, i18n.t('screens.signUp.errors.password2')).required(i18n.t('screens.signUp.errors.password')),
+  password: Yup.string().matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, i18n.t('screens.signUp.errors.password2')).required(i18n.t('screens.signUp.errors.password')),
   password_confirmation: Yup.string()
     .test('passwords-match', i18n.t('screens.signUp.errors.confirmPassword'), function (value) {
       return this.parent.password === value;
