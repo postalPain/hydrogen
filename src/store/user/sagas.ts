@@ -12,7 +12,7 @@ import {
   checkPromoCodeSuccess,
   createOrderError,
   createOrderSuccess,
-  getUserSuccess,
+  getUserSuccess, removeDefaultCard,
   saveAddress,
   saveCard,
   saveCardList,
@@ -24,6 +24,7 @@ import {
   TYPES,
 } from './actions';
 import {
+  cardListSelector,
   defaultCardSelector,
   deliveryAddressSelector,
   temporaryDeliveryAddressSelector,
@@ -182,6 +183,7 @@ function* createOrderWorker(action): SagaIterator {
     const temporaryDeliveryAddress = yield select(temporaryDeliveryAddressSelector);
     const promoCodeData = yield select(state => state.user.promoCode.data);
     const defaultCard = yield select(defaultCardSelector);
+    const cardList = yield select(cardListSelector);
 
     const card = defaultCard.temporary ? { card_id: defaultCard.stripe_card_id } : {};
 
@@ -196,6 +198,14 @@ function* createOrderWorker(action): SagaIterator {
     const { data: { data } } = yield call(userAPI.createOrder, submitData);
     yield put(createOrderSuccess(data));
     yield call(navigate, Routes.OrderConfirmation);
+
+    if (defaultCard.temporary) {
+      yield put(removeDefaultCard());
+      if (cardList.length) {
+        const newDefaultCard = cardList.find((cardItem: ICard) => cardItem.isDefault);
+        yield put(saveDefaultCard(newDefaultCard));
+      }
+    }
   } catch (error) {
     if (error.errors) {
       if (error.errors.meta) {

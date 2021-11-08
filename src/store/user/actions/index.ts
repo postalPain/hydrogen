@@ -38,6 +38,7 @@ export const TYPES = {
   CREATE_TEMPORARY_USER: 'CREATE_TEMPORARY_USER',
   RESET_PASSWORD: 'RESET_PASSWORD',
   UPDATE_PASSWORD: 'UPDATE_PASSWORD',
+  REMOVE_DEFAULT_CARD: 'REMOVE_DEFAULT_CARD',
 };
 
 export type TBasketProduct = TProduct & {
@@ -208,4 +209,8 @@ export const resetPassword = (payload: { email: string }) => ({
 export const updatePassword = (payload: UpdatePasswordType) => ({
   type: TYPES.UPDATE_PASSWORD,
   payload,
+});
+
+export const removeDefaultCard = () => ({
+  type: TYPES.REMOVE_DEFAULT_CARD,
 });
