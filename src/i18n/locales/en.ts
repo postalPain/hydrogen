@@ -59,7 +59,7 @@ export default {
   screens: {
     home: {
       helloMessage: 'Hey there!',
-      helloUserMessage: 'Hey %{name}!',
+      helloUserMessage: 'Hey\n%{name}!',
       openHours: 'We’re open %{start} - %{end}',
     },
     signUp: {
