@@ -63,13 +63,17 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
 
   useEffect(() => {
     (async () => {
-      const currentPosition = await GeolocationApi.getCurrentPosition();
+      const geoPermission = await GeolocationApi.requestPermissions();
 
-      const inArea = isPointInPolygon(currentPosition, areaPoints);
-      if (inArea) {
-        setPosition(currentPosition);
+      if (geoPermission === 'granted') {
+        const currentPosition = await GeolocationApi.getCurrentPosition();
+
+        const inArea = isPointInPolygon(currentPosition, areaPoints);
+        if (inArea) {
+          setPosition(currentPosition);
+        }
+        await updateAddress(currentPosition);
       }
-      await updateAddress(currentPosition);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
