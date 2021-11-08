@@ -2,7 +2,10 @@ import React from 'react';
 import useStyles from './styles';
 import { Image, View, Keyboard } from 'react-native';
 import {
-  Button, Checkbox, Input, Text,
+  Button,
+  // Checkbox,
+  Input,
+  Text,
 } from '@stryberventures/stryber-react-native-ui-components';
 import { BottomSheetTextInput, useBottomSheet } from '@gorhom/bottom-sheet';
 import masterCard from '../../../assets/images/mc.jpg';
@@ -49,7 +52,8 @@ const PaymentCardForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        card: '', expDate: '', cvc: '', save: true,
+        // TODO: enable saving card when stripe is ready
+        card: '', expDate: '', cvc: '', save: false,
       }}
       onSubmit={handleAddCardSubmit}
       validationSchema={CardSchema}
@@ -57,7 +61,7 @@ const PaymentCardForm: React.FC = () => {
       {({
         handleChange,
         handleSubmit,
-        setFieldValue,
+        // setFieldValue,
         values,
         errors,
         submitCount,
@@ -107,11 +111,11 @@ const PaymentCardForm: React.FC = () => {
                 customTextInputComponent={BottomSheetTextInput}
               />
             </View>
-            <Checkbox
-              text={i18n.t('components.paymentCardForm.fields.save')}
-              value={values.save}
-              onPress={(val) => setFieldValue('save', val)}
-            />
+            {/* <Checkbox */}
+            {/*  text={i18n.t('components.paymentCardForm.fields.save')} */}
+            {/*  value={values.save} */}
+            {/*  onPress={(val) => setFieldValue('save', val)} */}
+            {/* /> */}
           </View>
           <Button style={styles.button} onPress={handleSubmit}>{i18n.t('components.paymentCardForm.button')}</Button>
         </View>

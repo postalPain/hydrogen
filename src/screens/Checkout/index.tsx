@@ -118,8 +118,6 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   }, [isCardDeclined]);
 
   const onCheckoutPress = () => {
-    // TODO: Add different object for order submission
-    //  if payment card is temporary and logic for removing this card
     dispatch(createOrder({
       comment: deliveryInstructions,
     }));
