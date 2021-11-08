@@ -294,5 +294,10 @@ export default {
       terms: 'Terms & Privacy',
       logout: 'Log Out',
     },
+    comingSoon: {
+      boxText: 'Exciting\nNews',
+      header: 'Coming soon',
+      description: 'We havent’t developed this feature yet. But it’s on the top of our list!',
+    },
   },
 };

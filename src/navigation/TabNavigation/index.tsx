@@ -2,10 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BASKET_TAB_NAME } from 'constants/';
 import Routes from 'navigation/Routes';
-import SignUp from 'screens/SignUp';
-import HomeTabNavigation from '../HomeTabNavigation';
-import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
+import SearchScreen from 'screens/Search';
 import { TabBar, TabWrapper } from 'components';
+import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
+import HomeTabNavigation from '../HomeTabNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,8 +27,8 @@ const TabNavigation = () => (
       }}
     />
     <Tab.Screen
-      name={Routes.SignUp}
-      component={TabWrapper(SignUp)}
+      name={Routes.Search}
+      component={TabWrapper(SearchScreen)}
       options={{ tabBarIcon: ({ color }) => <Search fill={color} /> }}
     />
     <Tab.Screen

@@ -20,6 +20,7 @@ enum Routes {
   DrawerNavigation = 'DrawerNavigation',
   OrderList = 'OrderList',
   OrderDetails = 'OrderDetails',
+  Search = 'Search',
 }
 
 export default Routes;
