@@ -18,7 +18,7 @@ export default {
     },
     messages: {
       locationPermissionRequestFailed: 'Geolocation permissions are not granted, application functionality will be restricted',
-      locationPermissionsAreNotGranted: 'Geolocation permissions are not granted, pleas check the Settings',
+      locationPermissionsAreNotGranted: 'Geolocation permissions are not granted. Please check your settings',
     },
   },
   notifications: {
