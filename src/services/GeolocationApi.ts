@@ -2,13 +2,15 @@ import Geolocation, { PositionError } from 'react-native-geolocation-service';
 import {
   Alert,
   Linking,
-  PermissionsAndroid,
   Platform,
 } from 'react-native';
 import axios from 'axios';
 import { GOOGLE_PLACE_API_KEY } from '@env';
 
 import i18n from 'i18n';
+import {
+  check, PERMISSIONS, request, RESULTS,
+} from 'react-native-permissions';
 
 type Point = {
   latitude: number;
@@ -31,30 +33,60 @@ const mapsGoogleXHR = axios.create({
   },
 });
 
+const showDeniedAlert = () => {
+  Alert.alert(
+    i18n.t('alerts.title'),
+    i18n.t('alerts.messages.locationPermissionsAreNotGranted'),
+    [{
+      text: i18n.t('alerts.buttons.cancel'),
+    }, {
+      text: i18n.t('alerts.buttons.proceedToSettings'),
+      onPress: () => {
+        Linking.openSettings();
+      },
+    }],
+  );
+};
+
 const GeolocationApi = {
   requestPermissions: async () => {
-    let status = '';
+    let permissionCheck = '';
+    if (Platform.OS === 'ios') {
+      permissionCheck = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+
+      if (
+        permissionCheck === RESULTS.BLOCKED
+        || permissionCheck === RESULTS.DENIED
+      ) {
+        const permissionRequest = await request(
+          PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
+        );
+        if (permissionRequest === RESULTS.GRANTED) {
+          return 'granted';
+        }
+        showDeniedAlert();
+        return 'denied';
+      }
+    }
+
     if (Platform.OS === 'android') {
-      const result = await PermissionsAndroid.requestMultiple([
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-      ]);
-      status = result['android.permission.ACCESS_FINE_LOCATION'];
-    } else {
-      status = await Geolocation.requestAuthorization('whenInUse');
-    }
+      permissionCheck = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
 
-    if (status !== 'granted') {
-      Alert.alert(
-        i18n.t('alerts.title'),
-        i18n.t('alerts.messages.locationPermissionRequestFailed'),
-        [{
-          text: i18n.t('alerts.buttons.ok'),
-        }],
-      );
+      if (
+        permissionCheck === RESULTS.BLOCKED
+        || permissionCheck === RESULTS.DENIED
+      ) {
+        const permissionRequest = await request(
+          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+        );
+        if (permissionRequest === RESULTS.GRANTED) {
+          return 'granted';
+        }
+        showDeniedAlert();
+        return 'denied';
+      }
     }
-
-    return status;
+    return 'granted';
   },
   getCurrentPosition: (): Promise<Point> => new Promise((resolve, reject) => {
     Geolocation.getCurrentPosition(({ coords }) => {
@@ -64,20 +96,9 @@ const GeolocationApi = {
       });
     }, async ({ code, message }) => {
       if (code === PositionError.PERMISSION_DENIED) {
-        Alert.alert(
-          i18n.t('alerts.title'),
-          i18n.t('alerts.messages.locationPermissionsAreNotGranted'),
-          [{
-            text: i18n.t('alerts.buttons.cancel'),
-          }, {
-            text: i18n.t('alerts.buttons.proceedToSettings'),
-            onPress: () => {
-              Linking.openSettings();
-            },
-          }],
-        );
+        console.warn(i18n.t('alerts.title'), message);
       } else if (code !== PositionError.SETTINGS_NOT_SATISFIED) {
-        Alert.alert(i18n.t('alerts.title'), message);
+        console.warn(i18n.t('alerts.title'), message);
       }
       reject();
     },
