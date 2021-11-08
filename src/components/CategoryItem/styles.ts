@@ -7,9 +7,11 @@ const useStyles = () => StyleSheet.create({
     marginBottom: 28,
   },
   contentBox: {
+    aspectRatio: 1,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'flex-start',
     borderRadius: 8,
     shadowColor: 'rgb(56, 96, 165)',
     shadowOffset: {
@@ -20,23 +22,17 @@ const useStyles = () => StyleSheet.create({
     elevation: 8,
     shadowOpacity: 0.15,
     paddingHorizontal: 15,
-    paddingVertical: 7,
+    paddingVertical: 9,
     backgroundColor: '#fff',
   },
-  labelContainer: {
-    height: 24,
-    marginBottom: 5,
+  contentBoxImage: {
+    resizeMode: 'contain',
   },
   label: {
     fontSize: 9,
     lineHeight: 12,
     fontWeight: '700',
     textAlign: 'center',
-  },
-  imageWrapper: {},
-  image: {
-    width: 72,
-    height: 56,
   },
 });
 export default useStyles;
