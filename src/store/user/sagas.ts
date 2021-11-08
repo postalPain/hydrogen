@@ -134,7 +134,9 @@ function* setDefaultCardWorker(action): SagaIterator {
 function* createTemporaryUserWorker(action): SagaIterator {
   try {
     yield put(setError(''));
-    const { data: { data } } = yield call(userAPI.createTemporaryUser, action.payload);
+    const { data: { data } } = yield call(
+      userAPI.createTemporaryUser, getCleanObject(action.payload),
+    );
     const { access_token: accessToken, delivery_address: deliveryAddress } = data;
 
     setItem(storageKeys.authToken, accessToken);
