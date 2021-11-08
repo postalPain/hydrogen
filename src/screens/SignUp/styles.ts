@@ -43,6 +43,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: 14,
     textDecorationLine: 'underline',
   },
+  formWrapper: {
+    flex: 1,
+  },
 });
 
 export default useStyles;
