@@ -12,7 +12,7 @@ import {
   checkPromoCodeSuccess,
   createOrderError,
   createOrderSuccess,
-  getUserSuccess,
+  getUserSuccess, removeDefaultCard,
   saveAddress,
   saveCard,
   saveCardList,
@@ -24,6 +24,7 @@ import {
   TYPES,
 } from './actions';
 import {
+  cardListSelector,
   defaultCardSelector,
   deliveryAddressSelector,
   temporaryDeliveryAddressSelector,
@@ -105,7 +106,7 @@ function* addTemporaryCardWorker(action): SagaIterator {
   try {
     yield put(setError(''));
     const client = new Stripe(STRIPE_PUBLIC_KEY);
-    const { card: { id, last4, brand } } = yield client.createToken(action.payload);
+    const { id, card: { last4, brand } } = yield client.createToken(action.payload);
     const temporaryDefaultCard: ICard = {
       brand,
       last4,
@@ -182,8 +183,9 @@ function* createOrderWorker(action): SagaIterator {
     const temporaryDeliveryAddress = yield select(temporaryDeliveryAddressSelector);
     const promoCodeData = yield select(state => state.user.promoCode.data);
     const defaultCard = yield select(defaultCardSelector);
+    const cardList = yield select(cardListSelector);
 
-    const card = defaultCard.temporary ? { card_id: defaultCard.stripe_card_id } : {};
+    const card = defaultCard.temporary ? { token: defaultCard.stripe_card_id } : {};
 
     const submitData = getCleanObject({
       products,
@@ -195,6 +197,15 @@ function* createOrderWorker(action): SagaIterator {
 
     const { data: { data } } = yield call(userAPI.createOrder, submitData);
     yield put(createOrderSuccess(data));
+
+    if (defaultCard.temporary) {
+      yield put(removeDefaultCard());
+      if (cardList.length) {
+        const newDefaultCard = cardList.find((cardItem: ICard) => cardItem.isDefault);
+        yield put(saveDefaultCard(newDefaultCard));
+      }
+    }
+
     yield call(navigate, Routes.OrderConfirmation);
   } catch (error) {
     if (error.errors) {

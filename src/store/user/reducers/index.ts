@@ -260,6 +260,12 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         },
       };
     }
+    case TYPES.REMOVE_DEFAULT_CARD: {
+      return {
+        ...state,
+        defaultCard: {},
+      };
+    }
     default:
       return state;
   }
