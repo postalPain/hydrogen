@@ -71,8 +71,8 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
         const inArea = isPointInPolygon(currentPosition, areaPoints);
         if (inArea) {
           setPosition(currentPosition);
+          await updateAddress(currentPosition);
         }
-        await updateAddress(currentPosition);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps

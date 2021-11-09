@@ -201,6 +201,38 @@ const Navigation = () => {
                       headerTitle: route.params.orderTitle,
                     })}
                   />
+                  <Stack.Screen
+                    name={Routes.UpdatePassword}
+                    component={UpdatePassword}
+                    options={{
+                      gestureEnabled: false,
+                      headerTitle: i18n.t('screens.updatePassword.header'),
+                    }}
+                  />
+                  <Stack.Screen
+                    name={Routes.ResetPasswordSuccess}
+                    component={ResetPasswordSuccess}
+                    options={{
+                      gestureEnabled: false,
+                      headerTitle: i18n.t('screens.resetPasswordSuccess.header'),
+                    }}
+                  />
+                  <Stack.Screen
+                    name={Routes.ResetPassword}
+                    component={ResetPassword}
+                    options={{
+                      gestureEnabled: false,
+                      headerTitle: i18n.t('screens.resetPassword.header'),
+                    }}
+                  />
+                  <Stack.Screen
+                    name={Routes.CheckEmail}
+                    component={CheckEmail}
+                    options={{
+                      gestureEnabled: false,
+                      headerTitle: i18n.t('screens.resetPassword.header'),
+                    }}
+                  />
                 </>
               )
               : (
