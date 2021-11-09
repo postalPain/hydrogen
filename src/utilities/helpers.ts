@@ -51,8 +51,11 @@ export const formatAmount = (product: TProduct | IOrderProduct) => {
   if (product.milliliters) {
     return `${product.milliliters} ml`;
   }
-  return `${product.weight} g`;
+  return product.weight ? `${product.weight} g` : null;
 };
+export const checkHasProductAmount = (product: TProduct | IOrderProduct) => (
+  !!product.milliliters || !!product.weight
+);
 export const roundPrice = (n: number) => Math.round(n * 100) / 100;
 export const calcProductsPrice = (products) => roundPrice(products.reduce((sum, product) => (
   sum + product.price * product.basketQuantity

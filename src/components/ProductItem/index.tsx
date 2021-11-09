@@ -15,7 +15,12 @@ import i18n from 'i18n';
 import { TProduct } from 'services/ServerAPI/types';
 import { setProductToBasket } from 'store/user/actions';
 import { basketProductQuantitySelector } from 'store/user/selectors';
-import { formatCurrency, formatAmount, getMaxProductCount } from 'utilities/helpers';
+import {
+  formatCurrency,
+  formatAmount,
+  getMaxProductCount,
+  checkHasProductAmount,
+} from 'utilities/helpers';
 import { ProjectThemeType } from 'styles/theme';
 import { PlusCircleIcon } from 'components/Icons';
 import useStyles from './styles';
@@ -102,9 +107,11 @@ const ProductItem: React.FC<IProductItemProps> = ({
             <Text style={[styles.text, styles.p]}>
               {data.name}
             </Text>
-            <Text style={[styles.text, styles.p]}>
-              {formatAmount(data)}
-            </Text>
+            {checkHasProductAmount(data) && (
+              <Text style={[styles.text, styles.p]}>
+                {formatAmount(data)}
+              </Text>
+            )}
             <Text style={[styles.more, styles.p]}>
               {i18n.t('components.productItem.more')}
             </Text>

@@ -8,6 +8,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingRight: theme.spaces.m,
   },
   contentBox: {
+    flex: 1,
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',

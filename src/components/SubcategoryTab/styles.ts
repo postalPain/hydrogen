@@ -18,6 +18,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    alignItems: 'stretch',
     paddingLeft: theme.spaces.m,
   },
   messageBox: {
