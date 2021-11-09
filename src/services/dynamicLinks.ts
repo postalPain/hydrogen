@@ -22,7 +22,13 @@ export const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink 
     });
   }
   if (crumb === 'password' && isResetPassword.test(pathname)) {
+    const { email } = routeParams;
     const [,token] = isResetPassword.exec(pathname);
-    navigate(Routes.UpdatePassword, { token, ...routeParams });
+    // @ts-ignore
+    navigate(Routes.UpdatePassword, {
+      token,
+      // @ts-ignore
+      email: email.replace(' ', '+'),
+    });
   }
 };
