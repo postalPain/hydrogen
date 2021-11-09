@@ -7,7 +7,6 @@ import store from 'store';
 import theme from 'styles/theme';
 import Navigation from 'navigation/Navigation';
 
-// import { setupSentry } from 'services/Sentry/sentry';
 
 export const App = () => (
   <Provider store={store}>

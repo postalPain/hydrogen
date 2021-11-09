@@ -11,6 +11,7 @@ import { appInit } from 'store/app/actions';
 import { appStatusSelector, appBoardingCompletedSelector } from 'store/app/selectors';
 import { userTokenSelector } from 'store/user/selectors';
 import { dynamicLinksHandler } from 'services/dynamicLinks';
+import { setupSentry } from 'services/Sentry/sentry';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
@@ -55,6 +56,10 @@ const Navigation = () => {
       BackHandler.addEventListener('hardwareBackPress', hardwareBackPressHandler);
       enableES5();
     }
+
+    // Enable bug tracking
+    setupSentry();
+
     // isMountedRef necessary for NavigationUtils.navigate() function
     isMountedRef.current = true;
 

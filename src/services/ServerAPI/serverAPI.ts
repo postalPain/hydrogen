@@ -1,6 +1,6 @@
 import axios from 'axios';
 import apiUrls from './apiUrls';
-import { reportToSentry } from 'services/Sentry/sentry';
+import { reportToSentryApiError } from 'services/Sentry/sentry';
 import { API_URL } from '@env';
 
 import i18n from 'i18n';
@@ -27,7 +27,7 @@ export const removeHeader = (headerName: string, callback?: () => void) => {
 xhr.interceptors.request.use(
   (config) => config,
   (error) => {
-    reportToSentry(error);
+    reportToSentryApiError(error);
     return Promise.reject(error);
   },
 );
@@ -35,7 +35,7 @@ xhr.interceptors.response.use(
   (response) => response,
   (error) => {
     console.log(i18n.t('alerts.title'), error.message);
-    // reportToSentry(error);
+    reportToSentryApiError(error);
     return Promise.reject(getAxiosErrorMessage(error));
   },
 );

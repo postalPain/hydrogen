@@ -1,4 +1,7 @@
 import * as Sentry from '@sentry/react-native';
+import { AxiosResponse } from 'axios';
+
+import { TUser } from 'services/ServerAPI/types';
 
 import { SENTRY_DSN, ENV } from '@env';
 
@@ -18,10 +21,13 @@ export const reportToSentry = (error: Error) => {
   }
 };
 
-// TODO call this function when user logged in
-// TODO rewrite type of user from object to user interface
-export const setSentryUser = (user: object) => {
+export const setSentryUser = (user: TUser) => {
   if (!__DEV__) {
     Sentry.setUser(user);
   }
+};
+
+export const reportToSentryApiError = (error: AxiosResponse) => {
+  // TODO add filter of expected errors
+  reportToSentry(error);
 };
