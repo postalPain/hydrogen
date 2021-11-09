@@ -8,7 +8,7 @@ export default {
   setDefaultCard: (id) => `api/v1/cards/${id}/default`,
   deliveryAddress: 'api/v1/user/delivery-address',
   signUp: 'api/v1/sign-up',
-  orders: 'api/v1/orders',
+  orders: 'api/v1/orders?perPage=100',
   createOrder: 'api/v1/orders',
   checkPromoCode: (code) => `api/v1/promo-codes/${code}`,
   createTemporaryUser: 'api/v1/user/guest',
