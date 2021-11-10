@@ -114,7 +114,7 @@ export interface IOrderCreated {
     last_name: string,
     phone: string
   },
-  promo_codes: string[],
+  promo_codes: TPromoCode[],
   warehouse: {
     uuid: string,
   }

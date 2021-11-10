@@ -27,6 +27,16 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
     })
   );
 
+  const renderPromoCodes = () => orderData.promo_codes.map((code) => (
+    <View style={styles.priceBlock} key={code.code}>
+      <Text style={styles.price}>{i18n.t('screens.orderDetails.promo')}</Text>
+      <Text style={styles.price}>
+        -
+        {formatCurrency(code.discount, { order: 'reverse' })}
+      </Text>
+    </View>
+  ));
+
   return (
     <ScrollView style={styles.wrapper} contentContainerStyle={styles.container}>
       <View style={styles.titleContainer}>
@@ -61,6 +71,7 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
             <Text style={styles.info}>{i18n.t('screens.orderConfirmation.subtotal')}</Text>
             <Text style={styles.price}>{formatCurrency(orderData.sub_total)}</Text>
           </View>
+          {renderPromoCodes()}
           <View style={styles.priceBlock}>
             <Text style={styles.price}>{i18n.t('screens.orderConfirmation.fee')}</Text>
             <Text style={styles.price}>{formatCurrency(orderData.delivery_fee)}</Text>
