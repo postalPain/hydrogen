@@ -2,6 +2,7 @@ import React from 'react';
 import {
   NavigationContainerRef, NavigationState,
 } from '@react-navigation/native';
+import analytics from '@react-native-firebase/analytics';
 
 import Routes from './Routes';
 
@@ -29,11 +30,15 @@ export const hardwareBackPressHandler = () => {
     return isAbleGoBack;
 };
 
-export const onStateChangeHandler = (state: NavigationState | undefined) => {
+export const onStateChangeHandler = async (state: NavigationState | undefined) => {
   if (!state) {
     return;
   }
 
   const route = state.routes[state.routes.length - 1];
+  await analytics().logScreenView({
+    screen_name: route.name,
+    screen_class: route.name,
+  });
   console.log(`Navigate to: ${route.name}`, route.params);
 };
