@@ -46,6 +46,7 @@ import { GeoPoint, LeftArrow } from 'components/Icons';
 import useStyles from './styles';
 import { IDeliveryAddress } from 'store/user/reducers/types';
 import DeclinedPaymentModal from 'components/DeclinedPaymentModal';
+import { useResetUserError } from 'utilities/hooks';
 
 
 interface ICheckoutProps {
@@ -116,6 +117,8 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   useEffect(() => {
     setShowDeclinedCardModal(isCardDeclined);
   }, [isCardDeclined]);
+
+  useResetUserError();
 
   const onCheckoutPress = () => {
     dispatch(createOrder({
