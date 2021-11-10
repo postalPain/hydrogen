@@ -218,7 +218,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             !!promoCode && (
               <View style={styles.priceContainer}>
                 <Text style={styles.priceText}>{i18n.t('screens.checkout.promo')}</Text>
-                <Text style={styles.priceText}>{receipt.discount}</Text>
+                <Text style={styles.priceText}>{`- ${receipt.discount}`}</Text>
               </View>
             )
           }
