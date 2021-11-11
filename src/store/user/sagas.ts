@@ -82,6 +82,7 @@ function* signOutWorker(): SagaIterator {
     // TODO: Uncomment when backend will be ready
     // yield call(userAPI.signOut);
     yield call(removeItem, storageKeys.authToken);
+    navigate(Routes.Onboard);
   } catch (error) {
     yield put(setError('Error on logout'));
   }
