@@ -45,6 +45,7 @@ export type TProduct = {
   weight: number | null;
   milliliters: number | null;
   pieces: number | null;
+  brand: string;
 };
 
 type TMetaList = {

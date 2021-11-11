@@ -267,6 +267,13 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         defaultCard: {},
       };
     }
+    case TYPES.SIGN_UP: {
+      return {
+        ...state,
+        loading: true,
+        errorMessage: '',
+      };
+    }
     default:
       return state;
   }

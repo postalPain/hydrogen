@@ -13,7 +13,7 @@ import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from 'store/user/actions';
-import { userErrorSelector } from 'store/user/selectors';
+import { userErrorSelector, userLoadingSelector } from 'store/user/selectors';
 import { DismissKeyboard } from 'components';
 import { useResetUserError } from 'utilities/hooks';
 
@@ -27,6 +27,8 @@ const CreatePassword: React.FC<ICreatePasswordProps> = ({ theme, route }) => {
   const dispatch = useDispatch();
   const { params: { signupData } } = route;
   const signUpError = useSelector(userErrorSelector);
+  const loading = useSelector(userLoadingSelector);
+
   const handleConfirmPassword = (values) => {
     dispatch(signUp({ ...signupData, ...values }));
   };
@@ -75,7 +77,7 @@ const CreatePassword: React.FC<ICreatePasswordProps> = ({ theme, route }) => {
                   />
                   {!!signUpError && <Text color="red">{signUpError}</Text>}
                 </View>
-                <Button style={styles.button} onPress={handleSubmit}>{i18n.t('screens.signUp.button2')}</Button>
+                <Button disabled={loading} style={styles.button} onPress={handleSubmit}>{i18n.t('screens.signUp.button2')}</Button>
               </View>
             )}
           </Formik>
