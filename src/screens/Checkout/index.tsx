@@ -157,7 +157,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             {i18n.t('screens.checkout.deliveryDetails')}
           </Text>
           {
-            !!checkoutErrorMessage && !isCardDeclined && (
+            !!checkoutErrorMessage && !isCardDeclined && !checkoutErrorResponseData && (
               <Text style={styles.errorText}>{checkoutErrorMessage}</Text>
             )
           }

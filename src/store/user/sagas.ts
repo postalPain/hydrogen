@@ -116,7 +116,7 @@ function* addTemporaryCardWorker(action): SagaIterator {
     };
     yield put(saveDefaultCard(temporaryDefaultCard));
   } catch (e) {
-    yield put(setError(e.message || i18n.t('errors.something_went_wrong')));
+    yield put(setError(i18n.t('errors.something_went_wrong')));
   }
 }
 
