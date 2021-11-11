@@ -73,7 +73,7 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         ...state,
         user: action.payload,
         // TODO refactor handling delivery address to user section
-        deliveryAddress: action.payload.delivery_address,
+        deliveryAddress: action.payload.delivery_address || state.deliveryAddress,
       };
     }
     case TYPES.AUTH_ERROR: {
