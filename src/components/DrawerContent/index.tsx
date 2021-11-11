@@ -93,7 +93,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             {i18n.t('components.drawerContent.delivery')}
           </Button>
           <Button
-            onPress={() => openLink('https://www.getblitz.io/terms-privacy/')}
+            onPress={() => openLink('https://www.getblitz.io/privacy-policy-app/')}
             type="link"
             style={styles.linkContainer}
             textStyle={styles.link}

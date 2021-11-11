@@ -47,7 +47,6 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   const dispatch = useDispatch();
   const appStatus = useSelector(appStatusSelector);
-  const boardingCompleted = useSelector(appBoardingCompletedSelector);
   const isAuthorized = !!useSelector(userTokenSelector);
 
   useEffect(() => {
@@ -242,34 +241,30 @@ const Navigation = () => {
               )
               : (
                 <>
-                  { !boardingCompleted && (
-                    <>
-                      <Stack.Screen
-                        name={Routes.Onboard}
-                        component={Onboard}
-                        options={{
-                          gestureEnabled: false,
-                          headerShown: false,
-                        }}
-                      />
-                      <Stack.Screen
-                        name={Routes.MapScreen}
-                        component={Map}
-                        options={{
-                          gestureEnabled: false,
-                          headerTitle: i18n.t('screens.map.header'),
-                        }}
-                      />
-                      <Stack.Screen
-                        name={Routes.ConfirmAddress}
-                        component={ConfirmAddress}
-                        options={{
-                          gestureEnabled: false,
-                          headerTitle: i18n.t('screens.confirmAddress.header'),
-                        }}
-                      />
-                    </>
-                  )}
+                  <Stack.Screen
+                    name={Routes.Onboard}
+                    component={Onboard}
+                    options={{
+                      gestureEnabled: false,
+                      headerShown: false,
+                    }}
+                  />
+                  <Stack.Screen
+                    name={Routes.MapScreen}
+                    component={Map}
+                    options={{
+                      gestureEnabled: false,
+                      headerTitle: i18n.t('screens.map.header'),
+                    }}
+                  />
+                  <Stack.Screen
+                    name={Routes.ConfirmAddress}
+                    component={ConfirmAddress}
+                    options={{
+                      gestureEnabled: false,
+                      headerTitle: i18n.t('screens.confirmAddress.header'),
+                    }}
+                  />
                   <Stack.Screen
                     name={Routes.Login}
                     component={Login}
