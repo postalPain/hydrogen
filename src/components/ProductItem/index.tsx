@@ -105,7 +105,7 @@ const ProductItem: React.FC<IProductItemProps> = ({
               {formatCurrency(data.price)}
             </Text>
             <Text style={[styles.text, styles.p]}>
-              {data.name}
+              {`${data.brand} ${data.name}`}
             </Text>
             {checkHasProductAmount(data) && (
               <Text style={[styles.text, styles.p]}>

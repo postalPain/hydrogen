@@ -38,3 +38,4 @@ export const checkoutErrorMessageSelector = () => (state: RootState) => (
 );
 export const checkoutDataSelector = () => (state: RootState) => state.user.checkout.data;
 export const checkoutErrorDataSelector = () => (state: RootState) => state.user.checkout.errorData;
+export const userLoadingSelector = (state: RootState) => state.user.loading;

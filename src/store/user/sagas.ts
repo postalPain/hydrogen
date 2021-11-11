@@ -156,7 +156,6 @@ function* createTemporaryUserWorker(action): SagaIterator {
 
 function* signUpWorker(action): SagaIterator {
   try {
-    yield put(setError(''));
     const { data: { data } } = yield call(userAPI.signUp, action.payload);
     const { access_token: accessToken, user } = data;
     setItem(storageKeys.authToken, accessToken);
