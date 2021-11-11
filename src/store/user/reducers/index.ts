@@ -88,6 +88,7 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         ...state,
         accessToken: '',
         user: null,
+        basket: {},
       };
     }
     case TYPES.GET_USER_SUCCESS: {
