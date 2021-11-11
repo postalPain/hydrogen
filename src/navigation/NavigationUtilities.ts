@@ -36,9 +36,12 @@ export const onStateChangeHandler = async (state: NavigationState | undefined) =
   }
 
   const route = state.routes[state.routes.length - 1];
-  await analytics().logScreenView({
-    screen_name: route.name,
-    screen_class: route.name,
-  });
+  if (!__DEV__) {
+    await analytics()
+      .logScreenView({
+        screen_name: route.name,
+        screen_class: route.name,
+      });
+  }
   console.log(`Navigate to: ${route.name}`, route.params);
 };
