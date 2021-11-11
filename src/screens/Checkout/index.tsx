@@ -249,7 +249,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         </View>
       </ScrollView>
       <ModalOverlay height="75%" ref={addCardModalRef}>
-        <PaymentCardForm />
+        <PaymentCardForm total={receipt.total} />
       </ModalOverlay>
       <ModalOverlay height="45%" ref={changeCardModalRef}>
         <ChangePaymentMethod
