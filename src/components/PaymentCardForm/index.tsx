@@ -17,7 +17,11 @@ import i18n from 'i18n';
 import { useDispatch } from 'react-redux';
 import { addCard, addTemporaryCard } from 'store/user/actions';
 
-const PaymentCardForm: React.FC = () => {
+interface IPaymentCardForm {
+  total: string;
+}
+
+const PaymentCardForm: React.FC<IPaymentCardForm> = ({ total }) => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const { close } = useBottomSheet();
@@ -68,7 +72,7 @@ const PaymentCardForm: React.FC = () => {
       }) => (
         <View style={styles.contentContainer}>
           <View>
-            <Text style={styles.title}>{i18n.t('components.paymentCardForm.title', { price: 54 })}</Text>
+            <Text style={styles.title}>{i18n.t('components.paymentCardForm.title', { price: total })}</Text>
             <Input
               mask="XXXX XXXX XXXX XXXX"
               maxLength={19}
