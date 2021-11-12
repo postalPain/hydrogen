@@ -15,7 +15,7 @@ import { StackActions, useNavigation } from '@react-navigation/native';
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import Routes from 'navigation/Routes';
-import { getProductsReceipt } from 'utilities/helpers';
+import { checkoutErrorHandler, getProductsReceipt } from 'utilities/helpers';
 import {
   checkPromoCode,
   resetPromoCode,
@@ -157,8 +157,8 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             {i18n.t('screens.checkout.deliveryDetails')}
           </Text>
           {
-            !!checkoutErrorMessage && !isCardDeclined && !checkoutErrorResponseData && (
-              <Text style={styles.errorText}>{checkoutErrorMessage}</Text>
+            !!checkoutErrorHandler(checkoutErrorMessage) && !checkoutErrorResponseData && (
+              <Text style={styles.errorText}>{checkoutErrorHandler(checkoutErrorMessage)}</Text>
             )
           }
           <Pressable onPress={handleChangeAddress}>

@@ -112,3 +112,9 @@ export const checkWorkingHours = (start: number, end: number) => {
   const currentTime = new Date().getHours();
   return currentTime >= start && currentTime < end;
 };
+
+export const checkoutErrorHandler = (error: string) => {
+  if (error.includes('Your card was declined')) return '';
+  if (error.includes('delivery address field is required')) return i18n.t('errors.deliveryAddress');
+  return error;
+};
