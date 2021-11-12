@@ -20,7 +20,7 @@ import {
   checkPromoCode,
   resetPromoCode,
   createOrder,
-  resetCreateOrderError,
+  resetCreateOrderError, removeDefaultCard,
 } from 'store/user/actions';
 import {
   promoCodeSelector,
@@ -116,6 +116,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
 
   useEffect(() => {
     setShowDeclinedCardModal(isCardDeclined);
+    if (isCardDeclined) dispatch(removeDefaultCard());
   }, [isCardDeclined]);
 
   useResetUserError();
