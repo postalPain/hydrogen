@@ -8,6 +8,7 @@ export default {
     unauthenticated: 'Unauthenticated',
     networkError: 'You are offline. Please check your internet connection and try again.',
     resetPassword: 'Please check if your Email is correct',
+    deliveryAddress: 'The delivery address field is required',
   },
   alerts: {
     title: 'App',
@@ -208,7 +209,7 @@ export default {
   },
   components: {
     locationButton: {
-      defaultLocation: 'Location delivery is not specified',
+      defaultLocation: 'Delivery address is not specified',
     },
     categoriesViewer: {
       emptyList: 'Categories list is empty',
