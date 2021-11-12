@@ -114,6 +114,7 @@ export const checkWorkingHours = (start: number, end: number) => {
 };
 
 export const checkoutErrorHandler = (error: string) => {
+  if (!error) return '';
   if (error.includes('Your card was declined')) return '';
   if (error.includes('delivery address field is required')) return i18n.t('errors.deliveryAddress');
   return error;
