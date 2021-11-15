@@ -55,9 +55,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires access to your location when the screen is on and the app is displayed.</string>
+	<string>We use your location to make sure we deliver your groceries to your exact address. We only detect your location whilst you’re on the map screen to help you locate yourself easier.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires access to your location when the screen is on and the app is displayed.</string>
+	<string>We use your location to make sure we deliver your groceries to your exact address. We only detect your location whilst you’re on the map screen to help you locate yourself easier.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
@@ -80,8 +80,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
