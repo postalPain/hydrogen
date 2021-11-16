@@ -3,6 +3,7 @@ import {
   NavigationContainerRef, NavigationState,
 } from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
+import { getTrackingStatus } from 'react-native-tracking-transparency';
 
 import Routes from './Routes';
 
@@ -36,7 +37,8 @@ export const onStateChangeHandler = async (state: NavigationState | undefined) =
   }
 
   const route = state.routes[state.routes.length - 1];
-  if (!__DEV__) {
+  const trackingStatus = await getTrackingStatus();
+  if (!__DEV__ && (trackingStatus === 'authorized' || trackingStatus === 'unavailable')) {
     await analytics()
       .logScreenView({
         screen_name: route.name,

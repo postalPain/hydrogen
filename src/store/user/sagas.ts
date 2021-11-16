@@ -2,6 +2,8 @@ import {
   call, put, select, takeEvery,
 } from 'redux-saga/effects';
 import { SagaIterator } from '@redux-saga/core';
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
+
 import { addHeader, removeHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
@@ -70,6 +72,7 @@ function* signInWorker(action): SagaIterator {
       yield call(navigate, Routes.Checkout);
     } else {
       yield call(navigate, Routes.DrawerNavigation);
+      yield call(requestTrackingPermission);
     }
   } catch (error) {
     yield put(setError('Wrong email or password'));
@@ -150,6 +153,7 @@ function* createTemporaryUserWorker(action): SagaIterator {
     // finish onboarding
     yield put(appCompleteBoarding());
     navigate(Routes.DrawerNavigation);
+    yield call(requestTrackingPermission);
   } catch (e) {
     yield put(setError(i18n.t('errors.something_went_wrong')));
   }
