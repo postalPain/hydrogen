@@ -58,6 +58,8 @@
 	<string>We use your location to make sure we deliver your groceries to your exact address. We only detect your location whilst you’re on the map screen to help you locate yourself easier.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to make sure we deliver your groceries to your exact address. We only detect your location whilst you’re on the map screen to help you locate yourself easier.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Your data will be used for an improved app experience and to show you personalized ads and promotions.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
