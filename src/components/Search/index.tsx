@@ -17,11 +17,11 @@ import {
 import { ProductItem, ProductSlideUp } from 'components/index';
 import { TProduct } from 'services/ServerAPI/types';
 
-interface IHeaderProps {
+interface ISearchProps {
   theme?: ProjectThemeType;
 }
 
-const Search: React.FC<IHeaderProps> = ({
+const Search: React.FC<ISearchProps> = ({
   theme,
 }) => {
   const styles = useStyles(theme);
