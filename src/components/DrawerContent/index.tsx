@@ -43,7 +43,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
       <Text style={styles.description}>
         {i18n.t('components.drawerContent.description')}
       </Text>
-      <Text selectable style={styles.promoCode}>GOBLITZ100</Text>
+      <Text selectable style={styles.promoCode}>BLITZYFIFTY</Text>
     </View>
   ));
 
