@@ -12,9 +12,6 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     borderRadius: 26,
     backgroundColor: '#fff',
   },
-  containerActive: {
-    zIndex: 10,
-  },
   tabBar: {
     backgroundColor: '#fff',
     shadowColor: '#ccc',

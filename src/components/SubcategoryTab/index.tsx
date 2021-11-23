@@ -9,7 +9,7 @@ import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
 import { TCategory, TProduct } from 'services/ServerAPI/types';
 import { getProductsBySubcategory } from 'store/products/actions';
-import { productsByCategoryIdSelector, productsLoadingSelector, isActiveSubCategory } from 'store/products/selectors';
+import { productsByCategoryIdSelector, productsLoadingSelector } from 'store/products/selectors';
 import { ProductItem, ProductSlideUp } from 'components';
 import useStyles from './styles';
 
@@ -26,7 +26,6 @@ const SubcategoryTab: React.FC<ISubcategoryTabProps> = ({ theme, data }) => {
   const [currentProductData, setCurrentProductData]: [TProduct, any] = useState(null);
   const products = useSelector(productsByCategoryIdSelector(data.uuid));
   const productsLoading = useSelector(productsLoadingSelector(data.uuid));
-  const isActive = useSelector(isActiveSubCategory(data.uuid));
 
   const onProductShow = (p: TProduct) => {
     setCurrentProductData(p);
@@ -38,10 +37,10 @@ const SubcategoryTab: React.FC<ISubcategoryTabProps> = ({ theme, data }) => {
   };
 
   useEffect(() => {
-    if (!products && !productsLoading && isActive) {
+    if (!products && !productsLoading) {
       dispatch(getProductsBySubcategory(data.uuid));
     }
-  }, [isActive]);
+  });
 
   return (
     <>

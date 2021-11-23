@@ -6,10 +6,8 @@ import {
 import {
   withTheme, TabView, SceneMap, TabBar,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { useDispatch } from 'react-redux';
 
 import { ProjectThemeType } from 'styles/theme';
-import { setCurrentSubcategory } from 'store/categories/actions';
 import { TCategory } from 'services/ServerAPI/types';
 import { SubcategoryTab } from 'components';
 import useStyles from './styles';
@@ -18,7 +16,6 @@ import useStyles from './styles';
 interface ICategoryTabProps {
   theme?: ProjectThemeType;
   data: TCategory;
-  isActive?: boolean;
 }
 
 const getSubcategoriesRoutesFromList = (subcategories) => subcategories.map((item) => ({
@@ -27,9 +24,8 @@ const getSubcategoriesRoutesFromList = (subcategories) => subcategories.map((ite
   data: item,
 }));
 
-const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data, isActive }) => {
+const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data }) => {
   const styles = useStyles(theme);
-  const dispatch = useDispatch();
   const windowDimensions = useWindowDimensions();
   const [subcategoriesNavState, setSubcategoriesNavState] = useState({
     index: 0,
@@ -41,7 +37,6 @@ const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data, isActive }) => 
       ...subcategoriesNavState,
       index,
     });
-    dispatch(setCurrentSubcategory(subcategoriesNavState.routes[index].data.uuid));
   };
 
   const renderSubcategoryScene = () => {
@@ -65,23 +60,9 @@ const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data, isActive }) => 
       routes: getSubcategoriesRoutesFromList(data.subcategories),
     });
   }, [data]);
-  useEffect(() => {
-    if (isActive) {
-      setSubcategoriesNavState({
-        ...subcategoriesNavState,
-        index: 0,
-      });
-      dispatch(setCurrentSubcategory(data.subcategories[0].uuid));
-    }
-  }, [isActive]);
 
   return (
-    <View
-      style={[
-        styles.container,
-        isActive ? styles.containerActive : {},
-      ]}
-    >
+    <View style={styles.container}>
       <TabView
         navigationState={subcategoriesNavState}
         renderScene={sceneMap}

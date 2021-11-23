@@ -26,6 +26,3 @@ export const productsListSelector = (ids: string[]) => (state: RootState): TProd
 export const productsLoadingSelector = (id: string) => (state: RootState) => (
   state.products[id] && state.products[id].loading
 );
-export const isActiveSubCategory = (id: string) => (state:RootState) => (
-  state.categories.currentSubcategory === id
-);

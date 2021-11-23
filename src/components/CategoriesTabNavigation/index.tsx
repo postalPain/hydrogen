@@ -75,6 +75,7 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
     handleCategoriesNavIndexChange(index);
   };
 
+  const currentCategoryData = categories[categoriesNavState.index];
   return (
     <>
       <TabBar
@@ -89,13 +90,10 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
         jumpTo={onTabPress}
       />
       <View style={styles.categoriesBox}>
-        { categories.map((category, index) => (
-          <CategoryTab
-            key={category.uuid}
-            data={category}
-            isActive={categoriesNavState.index === index}
-          />
-        ))}
+        <CategoryTab
+          key={currentCategoryData.uuid}
+          data={currentCategoryData}
+        />
       </View>
     </>
   );
