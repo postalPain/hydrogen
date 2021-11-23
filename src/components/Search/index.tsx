@@ -40,29 +40,37 @@ const Search: React.FC<ISearchProps> = ({
     setProductSlideUpVisible(false);
     setCurrentProductData(null);
   };
+  const [containerHeight, setContainerHeight] = useState(0);
 
   return (
     <>
-      <View style={styles.container}>
+      <View
+        style={[styles.container, { height: containerHeight }]}
+        onLayout={({ nativeEvent: { layout: { height } } }) => setContainerHeight(height)}
+      >
         <Input
           icon={() => <SearchIcon height={18} width={18} fill="#666" />}
           variant="simple"
           style={styles.inputContainer}
           inputBoxStyle={styles.input}
           placeholder={i18n.t('screens.search.placeholder')}
-          onSubmitEditing={({ nativeEvent: { text } }) => dispatch(searchProducts(text))}
+          onSubmitEditing={({ nativeEvent: { text } }) => {
+            if (text) {
+              dispatch(searchProducts(text));
+            }
+          }}
           returnKeyType="search"
         />
         <ScrollView style={styles.resultContainer}>
           {loading && (
-          <View style={styles.messageContainer}>
-            <Text>{i18n.t('screens.search.loading')}</Text>
-          </View>
+            <View style={styles.messageContainer}>
+              <Text>{i18n.t('screens.search.loading')}</Text>
+            </View>
           )}
           {!!(searchResult && !searchResult.length) && (
-          <View style={styles.messageContainer}>
-            <Text>{i18n.t('screens.search.empty')}</Text>
-          </View>
+            <View style={styles.messageContainer}>
+              <Text>{i18n.t('screens.search.empty')}</Text>
+            </View>
           )}
           <View style={styles.productWrapper}>
             {!!(searchResult && searchResult?.length) && searchResult.map((product) => (
