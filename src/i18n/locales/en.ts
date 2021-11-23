@@ -285,8 +285,8 @@ export default {
       description: 'We’re sorry. The following items are no longer available and have been removed from your cart.',
     },
     drawerContent: {
-      title: 'Sign up now and get \nAED 100 off your first order with the code',
-      description: 'Create your account now and enjoy your first order with a promo code',
+      title: 'Don’t have an account yet?',
+      description: 'Sign up now and get AED 50 off your first order with code',
       orders: 'My orders',
       faq: 'FAQ',
       about: 'Get to know us',
