@@ -43,7 +43,6 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
   const handleChangeAddress = () => navigation
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
-  // TODO: Add WorkingHours logic when backend will be ready
   const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
   const appOptions = useSelector(appOptionsSelector);
   const isWorkingHours = checkWorkingHours(

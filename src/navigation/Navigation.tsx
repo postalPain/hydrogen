@@ -42,6 +42,7 @@ import {
   onStateChangeHandler,
 } from './NavigationUtilities';
 import { setupSegment } from 'services/Segment';
+import { setupAppsFlyer } from 'services/AppsFlyer';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,9 @@ const Navigation = () => {
 
     // Enable segment tracking
     setupSegment();
+
+    // Enable AppsFlyer tracking
+    setupAppsFlyer();
 
     // isMountedRef necessary for NavigationUtils.navigate() function
     isMountedRef.current = true;
