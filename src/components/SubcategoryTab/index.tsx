@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
-import { TCategory, TProduct } from 'services/ServerAPI/types';
+import { TProduct, TSubcategory } from 'services/ServerAPI/types';
 import { getProductsBySubcategory } from 'store/products/actions';
 import { productsByCategoryIdSelector, productsLoadingSelector } from 'store/products/selectors';
 import { ProductItem, ProductSlideUp } from 'components';
@@ -16,7 +16,7 @@ import useStyles from './styles';
 
 interface ISubcategoryTabProps {
   theme?: ProjectThemeType;
-  data: TCategory;
+  data: TSubcategory;
 }
 
 const SubcategoryTab: React.FC<ISubcategoryTabProps> = ({ theme, data }) => {

@@ -10,6 +10,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     bottom: 0,
     right: 0,
     borderRadius: 26,
+    overflow: 'hidden',
     backgroundColor: '#fff',
   },
   tabBar: {
