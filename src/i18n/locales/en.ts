@@ -206,6 +206,11 @@ export default {
       details: 'Order details',
       promo: 'Promo',
     },
+    search: {
+      placeholder: 'Search',
+      loading: 'Searching...',
+      empty: 'Nothing was found',
+    },
   },
   components: {
     locationButton: {
