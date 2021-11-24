@@ -8,7 +8,7 @@ import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 import i18n from 'i18n';
 import { appInit } from 'store/app/actions';
-import { appStatusSelector, appBoardingCompletedSelector } from 'store/app/selectors';
+import { appStatusSelector } from 'store/app/selectors';
 import { userTokenSelector } from 'store/user/selectors';
 import { dynamicLinksHandler } from 'services/dynamicLinks';
 import { setupSentry } from 'services/Sentry/sentry';
@@ -41,6 +41,8 @@ import {
   navigationRef,
   onStateChangeHandler,
 } from './NavigationUtilities';
+import { setupSegment } from 'services/Segment';
+import { setupAppsFlyer } from 'services/AppsFlyer';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +60,12 @@ const Navigation = () => {
 
     // Enable bug tracking
     setupSentry();
+
+    // Enable segment tracking
+    setupSegment();
+
+    // Enable AppsFlyer tracking
+    setupAppsFlyer();
 
     // isMountedRef necessary for NavigationUtils.navigate() function
     isMountedRef.current = true;

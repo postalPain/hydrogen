@@ -75,9 +75,11 @@ const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) =
             </View>
             <Text style={styles.productName}>{`${data.brand} ${data.name}${data.pieces ? ` (${data.pieces} ${i18n.t('components.productSlideUp.pieces')})` : ''}`}</Text>
             <Text style={styles.description}>{data.description}</Text>
+            {!!data.origin && (
             <Text style={styles.origin}>
               {`${i18n.t('components.productSlideUp.origin')}: ${data.origin}`}
             </Text>
+            )}
             <Text style={styles.amount}>{formatAmount(data)}</Text>
             <Text style={styles.price}>
               {`${i18n.t('components.productSlideUp.price')}: ${formatCurrency(data.price)}`}

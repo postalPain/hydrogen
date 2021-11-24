@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { withTheme } from '@stryberventures/stryber-react-native-ui-components';
 
-import { ComingSoon } from 'components';
+import { Search } from 'components';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
 
@@ -16,7 +16,7 @@ const SearchScreen: React.FC<ISearchProps> = ({ theme }) => {
 
   return (
     <View style={styles.container}>
-      <ComingSoon />
+      <Search />
     </View>
   );
 };

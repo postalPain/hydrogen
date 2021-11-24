@@ -206,6 +206,11 @@ export default {
       details: 'Order details',
       promo: 'Promo',
     },
+    search: {
+      placeholder: 'Search',
+      loading: 'Searching...',
+      empty: 'Nothing was found',
+    },
   },
   components: {
     locationButton: {
@@ -286,7 +291,7 @@ export default {
     },
     drawerContent: {
       title: 'Don’t have an account yet?',
-      description: 'Create your account now and enjoy your first oder with a promo code',
+      description: 'Sign up now and get AED 50 off your first order with code',
       orders: 'My orders',
       faq: 'FAQ',
       about: 'Get to know us',

@@ -4,7 +4,7 @@ import userSagas from './user/sagas';
 import categoriesSagas from './categories/sagas';
 import productsSagas from './products/sagas';
 import appSagas from './app/sagas';
-
+import searchSaga from './search/sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -12,5 +12,6 @@ export default function* rootSaga() {
     fork(userSagas),
     fork(categoriesSagas),
     fork(productsSagas),
+    fork(searchSaga),
   ]);
 }
