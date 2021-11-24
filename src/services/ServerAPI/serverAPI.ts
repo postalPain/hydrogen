@@ -89,4 +89,7 @@ export const userAPI = {
   getAppOptions(): Promise<any> {
     return xhr.get(apiUrls.appOptions);
   },
+  search(searchText: string): Promise<any> {
+    return xhr.get(apiUrls.search(searchText));
+  },
 };

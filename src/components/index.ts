@@ -22,5 +22,5 @@ export { default as Basket } from './Basket';
 export { default as OutOfStockSlideUp } from './OutOfStockSlideUp';
 export { default as CardVariant } from './CardVariant';
 export { default as WorkingHoursModal } from './WorkingHoursModal';
-export { default as ComingSoon } from './ComingSoon';
+export { default as Search } from './Search';
 export { default as TabMenu } from './TabMenu';
