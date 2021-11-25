@@ -33,6 +33,7 @@ const getStyles = (theme: any) => StyleSheet.create({
     position: 'absolute',
     width: '100%',
     alignItems: 'center',
+    paddingHorizontal: 34,
   },
   header: {
     position: 'absolute',
@@ -48,18 +49,25 @@ const getStyles = (theme: any) => StyleSheet.create({
     margin: 20,
   },
   button: {
-    width: '80%',
     borderRadius: 15,
+    width: '100%',
   },
   card: {
     paddingVertical: 15,
     paddingHorizontal: 34,
-    marginHorizontal: 33,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     marginBottom: 5,
+  },
+  locator: {
+    width: 60,
+    height: 60,
+  },
+  locatorContainer: {
+    alignSelf: 'flex-end',
+    marginRight: -10,
   },
 });
 export default getStyles;

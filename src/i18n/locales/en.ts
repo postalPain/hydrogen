@@ -56,6 +56,12 @@ export default {
       title: 'We’ll be back soon!!',
       description: 'We’re currently closed for deliveries. We’ll be open again tomorrow morning from 08:00  and will be at your service as always!! Hope to see you tomorrow.',
     },
+    locationError: {
+      title: 'Enable Geolocation',
+      description: 'Your location permissions are currently turned off. Please go to your Settings to turn them on to detect your currently location for deliveries.',
+      cancelButton: 'Not now',
+      settingsButton: 'Go to settings',
+    },
   },
   screens: {
     home: {
