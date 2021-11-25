@@ -1,7 +1,5 @@
 import Geolocation, { PositionError } from 'react-native-geolocation-service';
 import {
-  Alert,
-  Linking,
   Platform,
 } from 'react-native';
 import axios from 'axios';
@@ -33,23 +31,8 @@ const mapsGoogleXHR = axios.create({
   },
 });
 
-const showDeniedAlert = () => {
-  Alert.alert(
-    i18n.t('alerts.title'),
-    i18n.t('alerts.messages.locationPermissionsAreNotGranted'),
-    [{
-      text: i18n.t('alerts.buttons.cancel'),
-    }, {
-      text: i18n.t('alerts.buttons.proceedToSettings'),
-      onPress: () => {
-        Linking.openSettings();
-      },
-    }],
-  );
-};
-
 const GeolocationApi = {
-  requestPermissions: async () => {
+  requestPermissions: async (onDeny?: () => void) => {
     let permissionCheck = '';
     if (Platform.OS === 'ios') {
       permissionCheck = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
@@ -64,7 +47,7 @@ const GeolocationApi = {
         if (permissionRequest === RESULTS.GRANTED) {
           return 'granted';
         }
-        showDeniedAlert();
+        if (onDeny) onDeny();
         return 'denied';
       }
     }
@@ -82,7 +65,7 @@ const GeolocationApi = {
         if (permissionRequest === RESULTS.GRANTED) {
           return 'granted';
         }
-        showDeniedAlert();
+        if (onDeny) onDeny();
         return 'denied';
       }
     }
