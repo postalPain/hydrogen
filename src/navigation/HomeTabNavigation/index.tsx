@@ -6,6 +6,8 @@ import Products from 'screens/Products';
 import { TabWrapper } from 'components';
 
 const Stack = createStackNavigator();
+const WrappedHome = TabWrapper(Home);
+const WrappedProducts = TabWrapper(Products);
 
 const HomeTabNavigation = () => (
   <Stack.Navigator
@@ -15,14 +17,14 @@ const HomeTabNavigation = () => (
   >
     <Stack.Screen
       name={Routes.HomeScreen}
-      component={TabWrapper(Home)}
+      component={WrappedHome}
       options={{
         gestureEnabled: false,
       }}
     />
     <Stack.Screen
       name={Routes.ProductsScreen}
-      component={TabWrapper(Products)}
+      component={WrappedProducts}
       options={{
         gestureEnabled: false,
       }}

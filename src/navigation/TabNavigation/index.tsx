@@ -9,6 +9,7 @@ import HomeTabNavigation from '../HomeTabNavigation';
 
 const Tab = createBottomTabNavigator();
 const NullComponent = () => null;
+const WrappedSearchScreen = TabWrapper(SearchScreen);
 
 const TabNavigation = () => (
   <Tab.Navigator
@@ -29,7 +30,7 @@ const TabNavigation = () => (
     />
     <Tab.Screen
       name={Routes.Search}
-      component={TabWrapper(SearchScreen)}
+      component={WrappedSearchScreen}
       options={{ tabBarIcon: ({ color }) => <Search fill={color} /> }}
     />
     <Tab.Screen
