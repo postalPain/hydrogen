@@ -10,6 +10,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     backgroundColor: '#fff',
   },
   tabBar: {
+    position: 'relative',
+    zIndex: 1,
     backgroundColor: '#fff',
     shadowColor: '#ccc',
     shadowOffset: {
