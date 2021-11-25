@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Text,
-  CacheImage,
   withTheme,
   ButtonCounter,
 } from '@stryberventures/stryber-react-native-ui-components';
@@ -96,7 +96,7 @@ const ProductItem: React.FC<IProductItemProps> = ({
             style={styles.touchableContent}
           >
             <View style={styles.imageWrapper}>
-              <CacheImage
+              <Image
                 source={{ uri: data.image_url }}
                 style={styles.image}
               />

@@ -8,6 +8,7 @@ import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
 import HomeTabNavigation from '../HomeTabNavigation';
 
 const Tab = createBottomTabNavigator();
+const NullComponent = () => null;
 
 const TabNavigation = () => (
   <Tab.Navigator
@@ -33,7 +34,7 @@ const TabNavigation = () => (
     />
     <Tab.Screen
       name={BASKET_TAB_NAME}
-      component={() => null}
+      component={NullComponent}
       options={{ tabBarIcon: ({ color }) => <Checkout fill={color} /> }}
     />
   </Tab.Navigator>

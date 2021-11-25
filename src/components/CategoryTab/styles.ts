@@ -4,16 +4,10 @@ import { ProjectThemeType } from 'theme';
 // eslint-disable-next-line
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   container: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    bottom: 0,
-    right: 0,
+    flex: 1,
     borderRadius: 26,
+    overflow: 'hidden',
     backgroundColor: '#fff',
-  },
-  containerActive: {
-    zIndex: 10,
   },
   tabBar: {
     backgroundColor: '#fff',
@@ -29,8 +23,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   tabBarTab: {
     width: 'auto',
     borderWidth: 0,
-    paddingTop: 1,
-    paddingBottom: 0,
+    paddingTop: 12,
+    paddingBottom: 13,
     paddingHorizontal: 11,
   },
   tabBarLabel: {
