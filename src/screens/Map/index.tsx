@@ -151,7 +151,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
             {pointInArea
               ? <Button style={styles.button} onPress={handleLocationConfirm}>{i18n.t('screens.map.button')}</Button>
               : (
-                <Card card shadow style={styles.card}>
+                <Card card shadow containerStyles={styles.cardContainer} style={styles.card}>
                   <Text semibold color="#666" size={14} style={styles.title}>{i18n.t('screens.map.message1')}</Text>
                   <Text center color="#666" size={10}>
                     {i18n.t('screens.map.message2')}
