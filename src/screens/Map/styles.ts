@@ -33,7 +33,7 @@ const getStyles = (theme: any) => StyleSheet.create({
     position: 'absolute',
     width: '100%',
     alignItems: 'center',
-    paddingHorizontal: 34,
+    paddingHorizontal: 22,
   },
   header: {
     position: 'absolute',
@@ -52,9 +52,11 @@ const getStyles = (theme: any) => StyleSheet.create({
     borderRadius: 15,
     width: '100%',
   },
+  cardContainer: {
+    width: '100%',
+  },
   card: {
     paddingVertical: 15,
-    paddingHorizontal: 34,
     alignItems: 'center',
     justifyContent: 'center',
   },
