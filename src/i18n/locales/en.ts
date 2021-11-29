@@ -62,6 +62,15 @@ export default {
       cancelButton: 'Not now',
       settingsButton: 'Go to settings',
     },
+    updateApp: {
+      title: 'The Blitz App just got\n better ⚡️',
+      description: 'We’ve been working hard to improve the Blitz app experience for you!',
+      description2: 'Please refresh the Updates page in the %{store} to see the latest Blitz version.',
+      cancelButton: 'Not now',
+      updateButton: 'Update',
+      appStore: 'App Store',
+      googlePlay: 'Google Play Store',
+    },
   },
   screens: {
     home: {

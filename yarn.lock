@@ -5704,6 +5704,21 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
+  integrity sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==
+
+lodash.isnil@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isnil/-/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
+  integrity sha1-SeKM1VkBNFjIFMVHnTxmOiG/qmw=
+
+lodash.pick@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
+  integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
+
 lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
@@ -7223,6 +7238,16 @@ react-native-tracking-transparency@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/react-native-tracking-transparency/-/react-native-tracking-transparency-0.1.1.tgz#6426d4c826d0deaed7ed32f707cb2d15b09c3c3f"
   integrity sha512-yGzpprmZ7dnlScegpoq1uQLuMLR2yDcFVHKF39FB0hxUBmck3G0bKSIbjj1ienM9IgjPvJQPgvG0dX9asyZ7NA==
+
+react-native-version-check@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.4.2.tgz#f330c3050b5e8de249eb2dd53ef55c5a17bfa0cd"
+  integrity sha512-f2eHI6p60UlBzlcxuy4pQaGqCEmR5cNvRQuyG/pFydLdutYpa05zeg4KkTfHWdVmGHhiawyaAfto9QsnBZ70Ew==
+  dependencies:
+    lodash.isfunction "^3.0.9"
+    lodash.isnil "^4.0.0"
+    lodash.pick "^4.4.0"
+    semver "^6.1.1"
 
 react-native-webview@^11.13.0:
   version "11.13.0"

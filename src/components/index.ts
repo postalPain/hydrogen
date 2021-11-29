@@ -25,3 +25,4 @@ export { default as WorkingHoursModal } from './WorkingHoursModal';
 export { default as Search } from './Search';
 export { default as TabMenu } from './TabMenu';
 export { default as LocationErrorModal } from './LocationErrorModal';
+export { default as UpdateAppModal } from './UpdateAppModal';
