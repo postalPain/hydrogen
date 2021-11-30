@@ -29,3 +29,5 @@ export { default as AppUpdateHandler } from './AppUpdateHandler';
 export { default as AppLoadingScreen } from './AppLoadingScreen';
 export { default as Loader } from './Loader';
 export { default as LocationInput } from './LocationInput';
+export { default as WorkingHoursProvider } from './WorkingHoursProvider';
+export { default as WorkingHoursHandler } from './WorkingHoursHandler';

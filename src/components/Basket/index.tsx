@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { View, ScrollView } from 'react-native';
 import {
   Text, CacheImage, withTheme, ButtonCounter, Button,
@@ -20,9 +20,8 @@ import {
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector, userSelector } from 'store/user/selectors';
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
-import { WorkingHoursModal } from 'components';
 import useStyles from './styles';
-import { appOptionsSelector } from 'store/app/selectors';
+import { WorkingHoursContext } from 'components/WorkingHoursProvider';
 
 
 interface IBasketProps {
@@ -38,12 +37,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const user = useSelector(userSelector);
   const isRegisteredUser = user?.email;
   const dispatch = useDispatch();
-  const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
-  const appOptions = useSelector(appOptionsSelector);
-  const isWorkingHours = checkWorkingHours(
-    Number(appOptions?.working_hours_start?.slice(0, 2)),
-    Number(appOptions?.working_hours_end?.slice(0, 2)),
-  );
+  const { setShowModal } = useContext(WorkingHoursContext);
 
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
@@ -56,9 +50,10 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
       screen: Routes.HomeScreen,
     });
   };
-  const onCheckoutPress = () => {
+  const onCheckoutPress = async () => {
+    const isWorkingHours = await checkWorkingHours();
     if (!isWorkingHours) {
-      setShowWorkingHoursModal(true);
+      setShowModal(true);
     } else if (!isRegisteredUser) {
       navigate(Routes.SignUp);
     } else {
@@ -166,15 +161,9 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   );
 
   return (
-    <>
-      <View style={styles.container}>
-        { basketLength ? renderFullBasket() : renderEmptyBasket() }
-      </View>
-      <WorkingHoursModal
-        visible={showWorkingHoursModal}
-        onClose={() => setShowWorkingHoursModal(false)}
-      />
-    </>
+    <View style={styles.container}>
+      { basketLength ? renderFullBasket() : renderEmptyBasket() }
+    </View>
   );
 };
 

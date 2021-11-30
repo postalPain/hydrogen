@@ -14,7 +14,7 @@ import { dynamicLinksHandler } from 'services/dynamicLinks';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
-import { AppUpdateHandler, Header, AppLoadingScreen } from 'components';
+import { AppUpdateHandler, Header, AppLoadingScreen, WorkingHoursHandler } from 'components';
 
 import Map from 'screens/Map';
 import SignUp from 'screens/SignUp';
@@ -316,6 +316,7 @@ const Navigation = () => {
       </NavigationContainer>
       <AppUpdateHandler />
       <AppLoadingScreen />
+      <WorkingHoursHandler />
     </>
   );
 };
