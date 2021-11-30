@@ -15,7 +15,7 @@ import { setupSentry } from 'services/Sentry/sentry';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
-import { Header } from 'components';
+import { AppUpdateHandler, Header } from 'components';
 
 import Map from 'screens/Map';
 import SignUp from 'screens/SignUp';
@@ -318,6 +318,7 @@ const Navigation = () => {
           }
         </Stack.Navigator>
       </NavigationContainer>
+      <AppUpdateHandler />
     </>
   );
 };

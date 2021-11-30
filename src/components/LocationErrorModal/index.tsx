@@ -6,13 +6,13 @@ import { ProjectThemeType } from 'theme';
 import i18n from 'i18n';
 import { View, TouchableOpacity, Linking } from 'react-native';
 
-interface IDeclinedPaymentModalProps {
+interface ILocationErrorModalProps {
   visible: boolean;
   onClose: () => void;
   theme?: ProjectThemeType;
 }
 
-const LocationErrorModal: React.FC<IDeclinedPaymentModalProps> = ({
+const LocationErrorModal: React.FC<ILocationErrorModalProps> = ({
   visible,
   onClose,
   theme,
