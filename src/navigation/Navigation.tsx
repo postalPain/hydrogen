@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BackHandler, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { enableES5 } from 'immer';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import VersionCheck from 'react-native-version-check';
 
 import i18n from 'i18n';
 import { appInit } from 'store/app/actions';
@@ -16,7 +15,7 @@ import { setupSentry } from 'services/Sentry/sentry';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
-import { Header, UpdateAppModal } from 'components';
+import { AppUpdateHandler, Header } from 'components';
 
 import Map from 'screens/Map';
 import SignUp from 'screens/SignUp';
@@ -51,8 +50,6 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const appStatus = useSelector(appStatusSelector);
   const isAuthorized = !!useSelector(userTokenSelector);
-  const [showUpdateAppModal, setShowUpdateAppModal] = useState(false);
-  const [updateLink, setUpdateLink] = useState<string>(null);
 
   useEffect(() => {
     // android specific functionality
@@ -88,16 +85,6 @@ const Navigation = () => {
     const unsubscribeDynamicLinks = dynamicLinks().onLink(dynamicLinksHandler);
 
     return () => unsubscribeDynamicLinks();
-  }, []);
-
-  useEffect(() => {
-    VersionCheck.needUpdate()
-      .then((res) => {
-        if (res?.isNeeded) {
-          setUpdateLink(res?.storeUrl);
-          setShowUpdateAppModal(true);
-        }
-      });
   }, []);
 
   if (appStatus !== 'initialized') {
@@ -331,11 +318,7 @@ const Navigation = () => {
           }
         </Stack.Navigator>
       </NavigationContainer>
-      <UpdateAppModal
-        visible={showUpdateAppModal}
-        updateURL={updateLink}
-        onClose={() => setShowUpdateAppModal(false)}
-      />
+      <AppUpdateHandler />
     </>
   );
 };
