@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+} from 'react';
 import {
-  View, Image, TouchableOpacity,
+  View, Image, TouchableOpacity, Keyboard,
 } from 'react-native';
 import {
-  withTheme, Button, Card, Text, Input,
+  withTheme, Button, Card, Text,
 } from '@stryberventures/stryber-react-native-ui-components';
 import { NavigationContainerRef, StackActions } from '@react-navigation/native';
 import MapView, {
@@ -20,6 +24,12 @@ import i18n from 'i18n';
 import { Routes } from 'navigation';
 import { GeoPoint } from 'components/Icons';
 import { LocationErrorModal } from 'components';
+import { GOOGLE_PLACE_API_KEY } from '@env';
+import {
+  GooglePlaceDetail,
+  GooglePlacesAutocomplete,
+  GooglePlacesAutocompleteRef,
+} from 'react-native-google-places-autocomplete';
 
 interface IMapProps {
   navigation: NavigationContainerRef;
@@ -34,7 +44,7 @@ interface IMapProps {
 const delta = 0.015;
 
 const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
-  const styles: any = getStyles(theme);
+  const styles = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
   const [deliveryPoint, setDeliveryPoint] = useState({
     latitude: 24.469675197234857,
@@ -43,6 +53,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [showLocationErrorModal, setShowLocationErrorModal] = useState(false);
   const mapRef = useRef<MapView>(null);
+  const mapInputRef = useRef<GooglePlacesAutocompleteRef>(null);
   const changeAddress = route.params?.changeAddress;
 
   const setPosition = (position) => {
@@ -60,6 +71,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
     const currentPositionDesc = await GeolocationApi.getAddressByPoint(position);
     if (currentPositionDesc) {
       setDeliveryAddress(currentPositionDesc.formatted_address);
+      mapInputRef.current.setAddressText(currentPositionDesc.formatted_address);
     }
   };
 
@@ -106,6 +118,16 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
     : navigation
       .navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint }));
 
+  const handleInputPress = (_, details: GooglePlaceDetail = null) => {
+    if (details) {
+      const { geometry: { location } } = details;
+      setPosition({
+        latitude: location.lat,
+        longitude: location.lng,
+      });
+    }
+  };
+
   return (
     <>
       <View style={styles.container}>
@@ -121,6 +143,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
               longitudeDelta: delta,
             }}
             onRegionChangeComplete={onRegionChange}
+            onPress={() => Keyboard.dismiss()}
           >
             <Polygon
               coordinates={areaPoints}
@@ -133,14 +156,23 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
             <Image style={styles.marker} source={marker} />
           </View>
           <View style={styles.header}>
-            <Input
-              variant="simple"
-              value={deliveryAddress}
-              selection={{ start: 0 }}
-              disabled
-              icon={() => <GeoPoint />}
-              style={styles.input}
-            />
+            <View>
+              <GeoPoint style={styles.icon} />
+              <GooglePlacesAutocomplete
+                placeholder={i18n.t('screens.map.search')}
+                debounce={300}
+                fetchDetails
+                styles={{
+                  textInput: styles.input,
+                }}
+                onPress={handleInputPress}
+                query={{
+                  key: GOOGLE_PLACE_API_KEY,
+                  language: i18n.locale,
+                }}
+                ref={mapInputRef}
+              />
+            </View>
           </View>
           <View style={styles.footer}>
             <View style={styles.locatorContainer}>

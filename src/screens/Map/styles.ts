@@ -37,11 +37,9 @@ const getStyles = (theme: any) => StyleSheet.create({
   },
   header: {
     position: 'absolute',
-    top: 10,
+    top: 40,
     width: '100%',
-  },
-  input: {
-    marginHorizontal: 27,
+    paddingHorizontal: 27,
   },
   region: {
     color: '#fff',
@@ -59,6 +57,7 @@ const getStyles = (theme: any) => StyleSheet.create({
     paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
   title: {
     marginBottom: 5,
@@ -70,6 +69,16 @@ const getStyles = (theme: any) => StyleSheet.create({
   locatorContainer: {
     alignSelf: 'flex-end',
     marginRight: -10,
+  },
+  icon: {
+    position: 'absolute',
+    left: 15,
+    top: 20,
+    zIndex: 1,
+  },
+  input: {
+    height: 55,
+    paddingLeft: 40,
   },
 });
 export default getStyles;
