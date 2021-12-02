@@ -43,6 +43,7 @@ import {
 } from './NavigationUtilities';
 import { setupSegment } from 'services/Segment';
 import { setupAppsFlyer } from 'services/AppsFlyer';
+import { requestPushNotificationUserPermission } from 'services/PushNotifications';
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,9 @@ const Navigation = () => {
 
     // Enable AppsFlyer tracking
     setupAppsFlyer();
+
+    // Request permissions for push notifications for iOS
+    requestPushNotificationUserPermission();
 
     // isMountedRef necessary for NavigationUtils.navigate() function
     isMountedRef.current = true;
