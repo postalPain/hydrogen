@@ -41,8 +41,6 @@ interface IMapProps {
   }
 }
 
-const delta = 0.015;
-
 const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const styles = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
@@ -55,6 +53,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const mapRef = useRef<MapView>(null);
   const mapInputRef = useRef<GooglePlacesAutocompleteRef>(null);
   const changeAddress = route.params?.changeAddress;
+  let delta: 0.015 | 0.001 = 0.015;
 
   const setPosition = (position) => {
     setDeliveryPoint({
@@ -82,9 +81,11 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
 
     if (geoPermission === 'granted') {
       const currentPosition = await GeolocationApi.getCurrentPosition();
+      const inArea = isPointInPolygon(currentPosition, areaPoints);
+      // zoom map if user's coords inside delivery area
+      if (inArea) delta = 0.001;
 
       if (params?.inAreaChecking) {
-        const inArea = isPointInPolygon(currentPosition, areaPoints);
         if (inArea) {
           setPosition(currentPosition);
           await updateAddress(currentPosition);
