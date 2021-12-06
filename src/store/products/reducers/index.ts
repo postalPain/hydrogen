@@ -5,7 +5,7 @@ const defaultState = {};
 
 export default function products(state: IProductsState = defaultState, action) {
   switch (action.type) {
-    case ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY: {
+    case ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY: {
       return {
         ...state,
         [action.id]: {
@@ -15,7 +15,7 @@ export default function products(state: IProductsState = defaultState, action) {
         },
       };
     }
-    case ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY_SUCCESS: {
+    case ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY_SUCCESS: {
       return {
         ...state,
         [action.id]: {
@@ -25,11 +25,12 @@ export default function products(state: IProductsState = defaultState, action) {
         },
       };
     }
-    case ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY_ERROR: {
+    case ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY_ERROR: {
       return {
         ...state,
         [action.id]: {
           ...(state[action.id] || {}),
+          error: action.payload.message,
           loading: false,
         },
       };

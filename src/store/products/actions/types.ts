@@ -1,26 +1,31 @@
-import { IProducts } from 'services/ServerAPI/types';
+import { ISubcategoryProducts } from 'services/ServerAPI/types';
 
 export enum ProductsActionTypes {
-  GET_PRODUCTS_BY_SUBCATEGORY = 'GET_PRODUCTS_BY_SUBCATEGORY',
-  GET_PRODUCTS_BY_SUBCATEGORY_SUCCESS = 'GET_PRODUCTS_BY_SUBCATEGORY_SUCCESS',
-  GET_PRODUCTS_BY_SUBCATEGORY_ERROR = 'GET_PRODUCTS_BY_SUBCATEGORY_ERROR',
+  GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY',
+  GET_PRODUCTS_BY_CATEGORY_SUCCESS = 'GET_PRODUCTS_BY_CATEGORY_SUCCESS',
+  GET_PRODUCTS_BY_CATEGORY_ERROR = 'GET_PRODUCTS_BY_CATEGORY_ERROR',
 }
 
-export interface IGetProductBySubcategory {
-  type: ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY;
+interface IGetProductsByCategoryErrorPayload {
+  message: string;
+}
+
+export interface IGetProductByCategory {
+  type: ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY;
   id: string;
 }
 
-interface IGetProductsBySubcategorySuccess {
-  type: ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY_SUCCESS;
+interface IGetProductsByCategorySuccess {
+  type: ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY_SUCCESS;
   id: string;
-  payload: IProducts;
+  payload: ISubcategoryProducts[];
 }
 
-interface IGetProductsBySubcategoryError {
-  type: ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY_ERROR;
+interface IGetProductsByCategoryError {
+  type: ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY_ERROR;
   id: string;
+  payload: IGetProductsByCategoryErrorPayload;
 }
 
-export type ProductsActions = IGetProductBySubcategory | IGetProductsBySubcategorySuccess
-| IGetProductsBySubcategoryError;
+export type ProductsActions = IGetProductByCategory | IGetProductsByCategorySuccess
+| IGetProductsByCategoryError;

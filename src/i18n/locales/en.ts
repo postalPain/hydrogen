@@ -234,9 +234,9 @@ export default {
     categoriesViewer: {
       emptyList: 'Categories list is empty',
     },
-    subcategoryTab: {
-      emptyList: 'Subcategory does not have any product',
-      loading: 'Subcategory products are loading',
+    categoryTab: {
+      emptyList: 'Category does not have any product',
+      loading: 'Category products are loading',
     },
     productItem: {
       more: 'More info',

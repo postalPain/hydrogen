@@ -10,7 +10,7 @@ export { default as Header } from './Header';
 export { default as PaymentMethod } from './PaymentMethod';
 export { default as CategoriesTabNavigation } from './CategoriesTabNavigation';
 export { default as CategoryTab } from './CategoryTab';
-export { default as SubcategoryTab } from './SubcategoryTab';
+export { default as CategorySectionItem } from './CategorySectionItem';
 export { default as ProductItem } from './ProductItem';
 export { default as ModalOverlay } from './ModalOverlay';
 export { default as PaymentCardForm } from './PaymentCardForm';

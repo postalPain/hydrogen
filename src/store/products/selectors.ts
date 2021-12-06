@@ -5,10 +5,20 @@ export const productsByCategoryIdSelector = (id: string) => (state: RootState) =
   state.products[id] && state.products[id].data || null
 );
 export const productsListSelector = (ids: string[]) => (state: RootState): TProduct[] => {
-  const products: TProduct[] = Object.values(state.products).reduce((accum, product) => ([
-    ...accum,
-    ...(product.data || []),
-  ]), []);
+  const products: TProduct[] = Object.values(state.products).reduce((accum, category) => {
+    const subCategories = category.data || [];
+    const inventories = subCategories.map(subCategory => subCategory.inventories).reduce(
+      (sum, subCatInventories) => ([
+        ...sum,
+        ...subCatInventories,
+      ]), [],
+    );
+
+    return [
+      ...accum,
+      ...inventories,
+    ];
+  }, []);
 
   return (
     ids.reduce((accum, id) => {
@@ -25,4 +35,7 @@ export const productsListSelector = (ids: string[]) => (state: RootState): TProd
 };
 export const productsLoadingSelector = (id: string) => (state: RootState) => (
   state.products[id] && state.products[id].loading
+);
+export const productsErrorSelector = (id: string) => (state: RootState) => (
+  state.products[id] && state.products[id].error
 );

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import {
   withTheme,
@@ -16,7 +16,7 @@ type TMenuItem = {
 interface ITabMenuProps {
   theme?: ProjectThemeType;
   menuItems: TMenuItem[];
-  onPress: (index: number, menuItem: TMenuItem) => void;
+  onPress: (index: number, menuItem: TMenuItem, externally: boolean) => void;
   tabStyle?: any;
   tabTextStyle?: any;
   tabActiveStyle?: any;
@@ -71,11 +71,15 @@ const TabMenu: React.FC<ITabMenuProps> = ({
     }
   };
 
-  const onMenuItemPress = (index) => {
+  const onMenuItemPress = (index, externally: boolean = false) => {
     setCurrentTabIndex(index);
     setCurrentMenuItemPosition(index);
-    onMenuItemPressCallback(index, menuItems[index]);
+    onMenuItemPressCallback(index, menuItems[index], externally);
   };
+
+  useEffect(() => {
+    onMenuItemPress(activeTabIndex, true);
+  }, [activeTabIndex]);
 
   return (
     <View style={[styles.container, containerStyle]}>
