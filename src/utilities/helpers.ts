@@ -89,7 +89,7 @@ export const getProductsReceipt = (products, discount = 0) => {
 
 export const convertProductsForOrderSubmission = (products: TBasketProduct[]) => products.map(
   item => ({
-    uuid: item.uuid,
+    uuid: item.product_uuid,
     quantity: item.basketQuantity,
   }),
 );

@@ -22,7 +22,7 @@ export const productsListSelector = (ids: string[]) => (state: RootState): TProd
 
   return (
     ids.reduce((accum, id) => {
-      const product = products.find(item => item.uuid === id);
+      const product = products.find(item => item.product_uuid === id);
       if (product) {
         return [
           ...accum,
