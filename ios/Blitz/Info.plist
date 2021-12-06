@@ -32,6 +32,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.qstudio.blitz</string>
+				<string>qstudioblitz</string>
 			</array>
 		</dict>
 	</array>
