@@ -11,6 +11,7 @@ export const setupAppsFlyer = async () => {
         isDebug: false,
         appId: '1591454394',
         onInstallConversionDataListener: true,
+        timeToWaitForATTUserAuthorization: 10,
       },
     );
   }

@@ -36,7 +36,11 @@ import { STRIPE_PUBLIC_KEY } from '@env';
 import { storageKeys } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
-import { convertProductsForOrderSubmission, getCleanObject } from 'utilities/helpers';
+import {
+  convertProductsForOrderSubmission,
+  getCleanObject,
+  setupTracking,
+} from 'utilities/helpers';
 import { ICard } from 'store/user/reducers/types';
 import i18n from 'i18n';
 
@@ -73,6 +77,7 @@ function* signInWorker(action): SagaIterator {
     } else {
       yield call(navigate, Routes.DrawerNavigation);
       yield call(requestTrackingPermission);
+      yield call(setupTracking);
     }
   } catch (error) {
     yield put(setError('Wrong email or password'));
@@ -154,6 +159,7 @@ function* createTemporaryUserWorker(action): SagaIterator {
     yield put(appCompleteBoarding());
     navigate(Routes.DrawerNavigation);
     yield call(requestTrackingPermission);
+    yield call(setupTracking);
   } catch (e) {
     yield put(setError(i18n.t('errors.something_went_wrong')));
   }

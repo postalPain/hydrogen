@@ -11,7 +11,6 @@ import { appInit } from 'store/app/actions';
 import { appStatusSelector } from 'store/app/selectors';
 import { userTokenSelector } from 'store/user/selectors';
 import { dynamicLinksHandler } from 'services/dynamicLinks';
-import { setupSentry } from 'services/Sentry/sentry';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
@@ -41,8 +40,6 @@ import {
   navigationRef,
   onStateChangeHandler,
 } from './NavigationUtilities';
-import { setupSegment } from 'services/Segment';
-import { setupAppsFlyer } from 'services/AppsFlyer';
 import { requestPushNotificationUserPermission } from 'services/PushNotifications';
 
 const Stack = createStackNavigator();
@@ -58,15 +55,6 @@ const Navigation = () => {
       BackHandler.addEventListener('hardwareBackPress', hardwareBackPressHandler);
       enableES5();
     }
-
-    // Enable bug tracking
-    setupSentry();
-
-    // Enable segment tracking
-    setupSegment();
-
-    // Enable AppsFlyer tracking
-    setupAppsFlyer();
 
     // Request permissions for push notifications for iOS
     requestPushNotificationUserPermission();
