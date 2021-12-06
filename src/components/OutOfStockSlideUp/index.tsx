@@ -35,7 +35,7 @@ const OutOfStockSlideUp: React.FC<IOutOfStockSlideUpProps> = ({
   const products = useSelector(productsListSelector(productIds));
   const onUpdateCartPress = () => {
     dispatch(removeProductsFromBasket({
-      uuids: productIds,
+      uuids: products.map(product => product.uuid),
     }));
     onCartUpdate();
   };

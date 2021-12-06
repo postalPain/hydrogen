@@ -4,23 +4,26 @@ import {
 import { SagaIterator } from '@redux-saga/core';
 
 import { userAPI } from 'services/ServerAPI/serverAPI';
+
 import {
-  getProductsBySubcategorySuccess,
-  getProductsBySubcategoryError,
+  getProductsByCategorySuccess,
+  getProductsByCategoryError,
 } from './actions';
-import { ProductsActionTypes, IGetProductBySubcategory } from './actions/types';
+import { ProductsActionTypes, IGetProductByCategory } from './actions/types';
 
 
-function* getProductsBySubcategoryWorker(action: IGetProductBySubcategory): SagaIterator {
+function* getProductsByCategoryWorker(action: IGetProductByCategory): SagaIterator {
   try {
-    const response = yield call(userAPI.getProductsBySubcategory, action.id);
-    yield put(getProductsBySubcategorySuccess(action.id, response.data));
+    const response = yield call(userAPI.getProductsByCategory, action.id);
+    yield put(getProductsByCategorySuccess(action.id, response.data));
   } catch (error) {
-    console.log(error);
-    yield put(getProductsBySubcategoryError(action.id));
+    const payload = {
+      message: error.message,
+    };
+    yield put(getProductsByCategoryError(action.id, payload));
   }
 }
 
 export default function* categoriesWatcher(): SagaIterator {
-  yield takeEvery(ProductsActionTypes.GET_PRODUCTS_BY_SUBCATEGORY, getProductsBySubcategoryWorker);
+  yield takeEvery(ProductsActionTypes.GET_PRODUCTS_BY_CATEGORY, getProductsByCategoryWorker);
 }

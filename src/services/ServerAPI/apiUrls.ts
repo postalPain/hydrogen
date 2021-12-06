@@ -4,6 +4,7 @@ export default {
   signOut: 'api/v1/logout',
   getCategories: 'api/v1/categories?perPage=100',
   getProductsBySubcategory: id => `api/v1/subcategories/${id}/inventory?perPage=100`,
+  getProductsByCategory: id => `api/v1/categories/${id}/inventory`,
   cards: 'api/v1/cards',
   setDefaultCard: (id) => `api/v1/cards/${id}/default`,
   deliveryAddress: 'api/v1/user/delivery-address',

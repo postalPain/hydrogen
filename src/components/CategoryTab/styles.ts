@@ -9,6 +9,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: '#fff',
   },
+  sectionTitle: {
+    marginHorizontal: theme.spaces.xl,
+    marginVertical: theme.spaces.m,
+    fontSize: theme.fontSizes.body,
+    lineHeight: 30,
+    fontWeight: '700',
+    color: '#666',
+  },
   tabBar: {
     position: 'relative',
     zIndex: 1,
@@ -38,6 +46,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   tabBarLabelActive: {
     fontWeight: '700',
+  },
+  messageBox: {
+    padding: theme.spaces.xl,
+  },
+  productsRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    paddingLeft: theme.spaces.m,
   },
 });
 export default useStyles;

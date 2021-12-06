@@ -1,8 +1,8 @@
-import { TProduct } from 'services/ServerAPI/types';
+import { ISubcategoryProducts } from 'services/ServerAPI/types';
 
 export interface IProductsState {
   [uuid: string]: {
-    data: TProduct[] | null;
+    data: ISubcategoryProducts[] | null;
     loading: boolean;
     error: string | null;
   }

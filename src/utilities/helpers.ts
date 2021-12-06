@@ -89,7 +89,7 @@ export const getProductsReceipt = (products, discount = 0) => {
 
 export const convertProductsForOrderSubmission = (products: TBasketProduct[]) => products.map(
   item => ({
-    uuid: item.uuid,
+    uuid: item.product_uuid,
     quantity: item.basketQuantity,
   }),
 );
@@ -119,3 +119,25 @@ export const checkoutErrorHandler = (error: string) => {
   if (error.includes('delivery address field is required')) return i18n.t('errors.deliveryAddress');
   return error;
 };
+
+export const processCategoryProductsForRender = (subcategories) => subcategories.reduce(
+  (listItems, subcategory) => {
+    const { inventories, ...subcategoryProps } = subcategory;
+    const updatedListItems = [...listItems, {
+      ...subcategoryProps,
+      type: 'header',
+      key: subcategoryProps.uuid,
+    }];
+    const rowLength = 3;
+    const countRows = Math.ceil(inventories.length / rowLength);
+    for (let i = 0; i < countRows; i++) {
+      const listItemData = inventories.slice(i * rowLength, (i + 1) * rowLength);
+      updatedListItems.push({
+        type: 'row',
+        listItemData,
+        key: `${subcategoryProps.uuid}-${i}`,
+      });
+    }
+    return updatedListItems;
+  }, [],
+);
