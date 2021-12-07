@@ -70,15 +70,5 @@ const getStyles = (theme: any) => StyleSheet.create({
     alignSelf: 'flex-end',
     marginRight: -10,
   },
-  icon: {
-    position: 'absolute',
-    left: 15,
-    top: 20,
-    zIndex: 1,
-  },
-  input: {
-    height: 55,
-    paddingLeft: 40,
-  },
 });
 export default getStyles;

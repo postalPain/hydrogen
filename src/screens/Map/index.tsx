@@ -22,12 +22,9 @@ import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
 import i18n from 'i18n';
 import { Routes } from 'navigation';
-import { GeoPoint } from 'components/Icons';
-import { LocationErrorModal } from 'components';
-import { GOOGLE_PLACE_API_KEY } from '@env';
+import { LocationErrorModal, LocationInput } from 'components';
 import {
   GooglePlaceDetail,
-  GooglePlacesAutocomplete,
   GooglePlacesAutocompleteRef,
 } from 'react-native-google-places-autocomplete';
 
@@ -41,13 +38,20 @@ interface IMapProps {
   }
 }
 
+export type LocationType = {
+  latitude: number,
+  longitude: number,
+};
+
+const defaultLocation: LocationType = {
+  latitude: 24.469675197234857,
+  longitude: 54.342443123459816,
+};
+
 const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const styles = getStyles(theme);
   const [pointInArea, setPointInArea] = useState(true);
-  const [deliveryPoint, setDeliveryPoint] = useState({
-    latitude: 24.469675197234857,
-    longitude: 54.342443123459816,
-  });
+  const [deliveryPoint, setDeliveryPoint] = useState(defaultLocation);
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [showLocationErrorModal, setShowLocationErrorModal] = useState(false);
   const mapRef = useRef<MapView>(null);
@@ -55,7 +59,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const changeAddress = route.params?.changeAddress;
   let delta: 0.015 | 0.001 = 0.015;
 
-  const setPosition = (position) => {
+  const setPosition = (position: LocationType) => {
     setDeliveryPoint({
       ...position,
     });
@@ -66,7 +70,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
     });
   };
 
-  const updateAddress = async (position) => {
+  const updateAddress = async (position: LocationType) => {
     const currentPositionDesc = await GeolocationApi.getAddressByPoint(position);
     if (currentPositionDesc) {
       setDeliveryAddress(currentPositionDesc.formatted_address);
@@ -121,6 +125,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
 
   const handleInputPress = (_, details: GooglePlaceDetail = null) => {
     if (details) {
+      delta = 0.001;
       const { geometry: { location } } = details;
       setPosition({
         latitude: location.lat,
@@ -157,23 +162,11 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
             <Image style={styles.marker} source={marker} />
           </View>
           <View style={styles.header}>
-            <View>
-              <GeoPoint style={styles.icon} />
-              <GooglePlacesAutocomplete
-                placeholder={i18n.t('screens.map.search')}
-                debounce={300}
-                fetchDetails
-                styles={{
-                  textInput: styles.input,
-                }}
-                onPress={handleInputPress}
-                query={{
-                  key: GOOGLE_PLACE_API_KEY,
-                  language: i18n.locale,
-                }}
-                ref={mapInputRef}
-              />
-            </View>
+            <LocationInput
+              defaultLocation={defaultLocation}
+              ref={mapInputRef}
+              onPress={handleInputPress}
+            />
           </View>
           <View style={styles.footer}>
             <View style={styles.locatorContainer}>
