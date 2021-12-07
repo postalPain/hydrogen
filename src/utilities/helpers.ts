@@ -7,7 +7,6 @@ import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
 import { setupAppsFlyer } from 'services/AppsFlyer';
 import { setupSegment } from 'services/Segment';
-import { setupSentry } from 'services/Sentry/sentry';
 
 export const isDateValid = (expirationDate: string) => {
   if (!expirationDate) {
@@ -146,9 +145,6 @@ export const processCategoryProductsForRender = (subcategories) => subcategories
 );
 
 export const setupTracking = async () => {
-  // Enable bug tracking
-  await setupSentry();
-
   // Enable segment tracking
   await setupSegment();
 

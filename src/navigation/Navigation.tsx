@@ -41,6 +41,7 @@ import {
   onStateChangeHandler,
 } from './NavigationUtilities';
 import { requestPushNotificationUserPermission } from 'services/PushNotifications';
+import { setupSentry } from 'services/Sentry/sentry';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +56,9 @@ const Navigation = () => {
       BackHandler.addEventListener('hardwareBackPress', hardwareBackPressHandler);
       enableES5();
     }
+
+    // Enable bug tracking
+    await setupSentry();
 
     // Request permissions for push notifications for iOS
     requestPushNotificationUserPermission();
