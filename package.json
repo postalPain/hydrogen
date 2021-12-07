@@ -28,6 +28,7 @@
     "@react-native-firebase/analytics": "^13.0.1",
     "@react-native-firebase/app": "^12.9.2",
     "@react-native-firebase/dynamic-links": "^12.9.2",
+    "@react-native-firebase/messaging": "^13.0.1",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/drawer": "^6.1.8",
     "@react-navigation/native": "^6.0.2",
