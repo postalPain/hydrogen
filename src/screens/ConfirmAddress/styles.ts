@@ -11,7 +11,6 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 37,
     paddingTop: 50,
-    flex: 1,
   },
   wrapperKeyboardOpened: {
     flex: 0,

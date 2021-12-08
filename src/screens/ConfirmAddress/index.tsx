@@ -31,6 +31,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     addressType,
     renderVillaForm,
     renderApartmentForm,
+    renderOfficeForm,
     handleSubmit,
     goBack,
     errorMessage,
@@ -89,11 +90,13 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
                 data={[
                   { value: 'Villa', label: 'Villa' },
                   { value: 'Apartment', label: 'Apartment' },
+                  { value: 'Office', label: 'Office' },
                 ]}
                 error={addressTypeError && i18n.t('screens.confirmAddress.errors.addressType')}
               />
               {addressType === 'Villa' && renderVillaForm()}
               {addressType === 'Apartment' && renderApartmentForm()}
+              {addressType === 'Office' && renderOfficeForm()}
             </View>
             <View>
               {!!errorMessage && <Text color="red">{errorMessage}</Text>}

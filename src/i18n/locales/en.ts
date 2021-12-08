@@ -115,10 +115,23 @@ export default {
     confirmAddress: {
       header: 'Additional Details',
       errors: {
+        buildingName: 'Please specify your building name',
         addressType: 'Please choose an address type',
         floor: 'Please specify your floor',
         apartment: 'Please specify an apartment number',
         house: 'Please specify a house number',
+        companyName: 'Please specify your company name',
+      },
+      labels: {
+        buildingName: 'Building name',
+        house: 'House No.',
+        floor: 'Floor',
+        apartment: 'Apartment No.',
+        company: 'Company name',
+        landmark: 'Landmark',
+      },
+      placeholders: {
+        landmark: 'Help our riders find you faster',
       },
       button: 'Save address',
     },
