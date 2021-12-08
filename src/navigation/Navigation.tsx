@@ -58,7 +58,7 @@ const Navigation = () => {
     }
 
     // Enable bug tracking
-    await setupSentry();
+    setupSentry();
 
     // Request permissions for push notifications for iOS
     requestPushNotificationUserPermission();
