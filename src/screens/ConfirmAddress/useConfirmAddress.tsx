@@ -11,11 +11,12 @@ import { createTemporaryUser, saveTemporaryAddress } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
 import { Routes } from 'navigation';
 import i18n from 'i18n';
+import { AddressType } from 'screens/ConfirmAddress/index';
 
 export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
-  const [addressType, setAddressType] = useState<string>(null);
+  const [addressType, setAddressType] = useState<keyof typeof AddressType>(null);
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
@@ -212,15 +213,15 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
       return setAddressTypeError(true);
     }
 
-    if (villaForm && addressType === 'Villa') {
+    if (villaForm && addressType === AddressType.Villa) {
       villaForm.handleSubmit();
     }
 
-    if (apartmentForm && addressType === 'Apartment') {
+    if (apartmentForm && addressType === AddressType.Apartment) {
       apartmentForm.handleSubmit();
     }
 
-    if (officeFormRef && addressType === 'Office') {
+    if (officeFormRef && addressType === AddressType.Office) {
       officeForm.handleSubmit();
     }
   };

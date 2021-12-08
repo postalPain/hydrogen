@@ -123,6 +123,7 @@ export default {
         companyName: 'Please specify your company name',
       },
       labels: {
+        address: 'Address type',
         buildingName: 'Building name',
         house: 'House No.',
         floor: 'Floor',
@@ -131,7 +132,13 @@ export default {
         landmark: 'Landmark',
       },
       placeholders: {
+        address: 'Choose type',
         landmark: 'Help our riders find you faster',
+      },
+      addressType: {
+        villa: 'Villa',
+        apartment: 'Apartment',
+        office: 'Office',
       },
       button: 'Save address',
     },
