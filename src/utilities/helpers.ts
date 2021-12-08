@@ -5,6 +5,8 @@ import { TProduct } from 'services/ServerAPI/types';
 import { TBasketProduct } from 'store/user/actions';
 import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
+import { setupAppsFlyer } from 'services/AppsFlyer';
+import { setupSegment } from 'services/Segment';
 
 export const isDateValid = (expirationDate: string) => {
   if (!expirationDate) {
@@ -141,3 +143,11 @@ export const processCategoryProductsForRender = (subcategories) => subcategories
     return updatedListItems;
   }, [],
 );
+
+export const setupTracking = async () => {
+  // Enable segment tracking
+  await setupSegment();
+
+  // Enable AppsFlyer tracking
+  await setupAppsFlyer();
+};
