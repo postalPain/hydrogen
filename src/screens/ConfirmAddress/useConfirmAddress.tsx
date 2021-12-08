@@ -22,6 +22,8 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
   const errorMessage = useSelector(userErrorSelector);
   const { params: { address, geoCoords: { latitude, longitude } } } = route;
   const changeAddress = route.params?.changeAddress;
+  const scrollViewHeight = useRef(null);
+  const [isKeyboardOpened, setIsKeyboardOpened] = useState(false);
 
   const handleFormSubmit = (values) => {
     const addressDetails = {
@@ -158,5 +160,8 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
     handleSubmit,
     goBack,
     errorMessage,
+    scrollViewHeight,
+    isKeyboardOpened,
+    setIsKeyboardOpened,
   };
 };
