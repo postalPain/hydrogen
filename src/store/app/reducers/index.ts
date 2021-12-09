@@ -5,6 +5,7 @@ const defaultState: IAppState = {
   status: 'start',
   boardingCompleted: false,
   appOptions: null,
+  loaderVisibility: false,
 };
 
 export default function app(state: IAppState = defaultState, action: AppActions): IAppState {
@@ -37,6 +38,12 @@ export default function app(state: IAppState = defaultState, action: AppActions)
       return {
         ...state,
         appOptions: action.payload,
+      };
+    }
+    case AppActionTypes.SET_APP_LOADER_VISIBILITY: {
+      return {
+        ...state,
+        loaderVisibility: action.visibility,
       };
     }
     default:

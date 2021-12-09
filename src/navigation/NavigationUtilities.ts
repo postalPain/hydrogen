@@ -9,7 +9,7 @@ import Routes from './Routes';
 
 export const isMountedRef = React.createRef<boolean>();
 
-export const navigationRef = React.createRef<NavigationContainerRef>();
+export const navigationRef = React.createRef<NavigationContainerRef<any>>();
 
 export const navigate = (name: Routes, params?: any) => {
   if (isMountedRef.current && navigationRef.current) {

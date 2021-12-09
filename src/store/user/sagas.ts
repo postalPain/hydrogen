@@ -7,7 +7,7 @@ import { requestTrackingPermission } from 'react-native-tracking-transparency';
 import { addHeader, removeHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
-import { appCompleteBoarding } from 'store/app/actions';
+import { appCompleteBoarding, setAppLoaderVisibility } from 'store/app/actions';
 import { signedAppDataWorker } from 'store/app/sagas';
 import {
   checkPromoCodeError,
@@ -189,6 +189,7 @@ function* getOrdersWorker(): SagaIterator {
 
 function* createOrderWorker(action): SagaIterator {
   try {
+    yield put(setAppLoaderVisibility(true));
     const basket = yield select(state => state.user.basket);
     const products = convertProductsForOrderSubmission(Object.values(basket));
     const deliveryAddress = yield select(deliveryAddressSelector);
@@ -217,7 +218,7 @@ function* createOrderWorker(action): SagaIterator {
         yield put(saveDefaultCard(newDefaultCard));
       }
     }
-
+    yield put(setAppLoaderVisibility(false));
     yield call(navigate, Routes.OrderConfirmation);
   } catch (error) {
     if (error.errors) {
@@ -231,6 +232,7 @@ function* createOrderWorker(action): SagaIterator {
     } else {
       yield put(createOrderError(error.message));
     }
+    yield put(setAppLoaderVisibility(false));
   }
 }
 
