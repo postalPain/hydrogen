@@ -21,6 +21,12 @@ interface IConfirmAddressProps {
   };
 }
 
+export enum AddressType {
+  Villa = 'Villa',
+  Apartment = 'Apartment',
+  Office = 'Office',
+}
+
 const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
   const {
     styles,
@@ -31,6 +37,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     addressType,
     renderVillaForm,
     renderApartmentForm,
+    renderOfficeForm,
     handleSubmit,
     goBack,
     errorMessage,
@@ -84,16 +91,18 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
                   setAddressTypeError(false);
                 }}
                 style={styles.input}
-                label="Address type"
-                placeholder="Choose type"
+                label={i18n.t('screens.confirmAddress.labels.address')}
+                placeholder={i18n.t('screens.confirmAddress.placeholders.address')}
                 data={[
-                  { value: 'Villa', label: 'Villa' },
-                  { value: 'Apartment', label: 'Apartment' },
+                  { value: AddressType.Villa, label: i18n.t('screens.confirmAddress.addressType.villa') },
+                  { value: AddressType.Apartment, label: i18n.t('screens.confirmAddress.addressType.apartment') },
+                  { value: AddressType.Office, label: i18n.t('screens.confirmAddress.addressType.office') },
                 ]}
                 error={addressTypeError && i18n.t('screens.confirmAddress.errors.addressType')}
               />
-              {addressType === 'Villa' && renderVillaForm()}
-              {addressType === 'Apartment' && renderApartmentForm()}
+              {addressType === AddressType.Villa && renderVillaForm()}
+              {addressType === AddressType.Apartment && renderApartmentForm()}
+              {addressType === AddressType.Office && renderOfficeForm()}
             </View>
             <View>
               {!!errorMessage && <Text color="red">{errorMessage}</Text>}

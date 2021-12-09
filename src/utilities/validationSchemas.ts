@@ -12,19 +12,29 @@ export const SignUpSchema = Yup.object().shape({
 export const CreatePasswordSchema = Yup.object().shape({
   password: Yup.string().matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, i18n.t('screens.signUp.errors.password2')).required(i18n.t('screens.signUp.errors.password')),
   password_confirmation: Yup.string()
+    // eslint-disable-next-line func-names
     .test('passwords-match', i18n.t('screens.signUp.errors.confirmPassword'), function (value) {
       return this.parent.password === value;
     }),
 });
 
 export const VillaSchema = Yup.object().shape({
+  building_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.buildingName')),
   house_number: Yup.string().required(i18n.t('screens.confirmAddress.errors.house')),
 });
 
 export const ApartmentSchema = Yup.object().shape({
+  building_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.buildingName')),
   floor: Yup.string().required(i18n.t('screens.confirmAddress.errors.floor')),
   apartment_number: Yup.string().required(i18n.t('screens.confirmAddress.errors.apartment')),
 });
+
+export const OfficeSchema = Yup.object().shape({
+  building_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.buildingName')),
+  floor: Yup.string().required(i18n.t('screens.confirmAddress.errors.floor')),
+  company_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.companyName')),
+});
+
 
 export const CardSchema = Yup.object().shape({
   card: Yup.string().required(i18n.t('components.paymentCardForm.errors.cardRequired')).min(19, i18n.t('components.paymentCardForm.errors.card')),
