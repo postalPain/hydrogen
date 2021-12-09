@@ -5,6 +5,7 @@ import { TProduct } from 'services/ServerAPI/types';
 import { TBasketProduct } from 'store/user/actions';
 import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
+import { userAPI } from 'services/ServerAPI/serverAPI';
 import { setupAppsFlyer } from 'services/AppsFlyer';
 import { setupSegment } from 'services/Segment';
 
@@ -109,10 +110,13 @@ export const getCleanObject = (obj) => Object.keys(obj).reduce((prevCleanObj, ke
   return cleanObj;
 }, {});
 
-export const checkWorkingHours = (start: number, end: number) => {
-  if (!start || !end) return true;
-  const currentTime = new Date().getHours();
-  return currentTime >= start && currentTime < end;
+export const checkWorkingHours = async (): Promise<boolean> => {
+  try {
+    const { data: { data } } = await userAPI.getAppOptions();
+    return data?.works_now;
+  } catch (e) {
+    return true;
+  }
 };
 
 export const checkoutErrorHandler = (error: string) => {
