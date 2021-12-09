@@ -41,22 +41,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     handleSubmit,
     goBack,
     errorMessage,
-    scrollViewHeight,
-    isKeyboardOpened,
-    setIsKeyboardOpened,
   } = useConfirmAddress(theme, route);
-
-  const onScrollViewLayout = (e) => {
-    const layoutHeight = e.nativeEvent.layout.height;
-    if (!scrollViewHeight.current) {
-      scrollViewHeight.current = e.nativeEvent.layout.height;
-      // 50 - small hack for iOS, as layout happens twice
-    } else if (scrollViewHeight.current > layoutHeight + 50) {
-      setIsKeyboardOpened(true);
-    } else {
-      setIsKeyboardOpened(false);
-    }
-  };
 
   return (
     <DismissKeyboard>
@@ -68,11 +53,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
         >
           <ScrollView
             style={styles.scrollContainer}
-            contentContainerStyle={[
-              styles.wrapper,
-              isKeyboardOpened ? styles.wrapperKeyboardOpened : {},
-            ]}
-            onLayout={onScrollViewLayout}
+            contentContainerStyle={styles.wrapper}
           >
             <View>
               <Pressable onPress={goBack}>
