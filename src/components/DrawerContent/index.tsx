@@ -14,6 +14,7 @@ import { signOut } from 'store/user/actions';
 import i18n from 'i18n';
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from 'navigation';
+import WhatsAppLink from '../WhatsAppLink';
 
 interface IDrawerContentProps extends DrawerContentComponentProps {
   theme?: ProjectThemeType;
@@ -52,64 +53,67 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
       <DrawerContentScrollView {...rest}>
         {renderHeader()}
         <View style={styles.menuContainer}>
-          <Button
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.mainLink}
-            onPress={() => navigate(Routes.OrderList)}
-          >
-            {i18n.t('components.drawerContent.orders')}
-          </Button>
-          <Button
-            onPress={() => openLink('https://www.getblitz.io/faq/')}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.faq')}
-          </Button>
-          <Button
-            onPress={() => openLink('https://www.getblitz.io/about-us/')}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.about')}
-          </Button>
-          <Button
-            onPress={() => openLink('https://www.getblitz.io/contact-us/')}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.contact')}
-          </Button>
-          <Button
-            onPress={() => openLink('https://www.getblitz.io/delivery/')}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.delivery')}
-          </Button>
-          <Button
-            onPress={() => openLink('https://www.getblitz.io/privacy-policy-app/')}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.terms')}
-          </Button>
-          {isUser && (
-          <Button
-            onPress={handleLogout}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.logout')}
-          </Button>
-          )}
+          <View>
+            <Button
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.mainLink}
+              onPress={() => navigate(Routes.OrderList)}
+            >
+              {i18n.t('components.drawerContent.orders')}
+            </Button>
+            <Button
+              onPress={() => openLink('https://www.getblitz.io/faq/')}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.faq')}
+            </Button>
+            <Button
+              onPress={() => openLink('https://www.getblitz.io/about-us/')}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.about')}
+            </Button>
+            <Button
+              onPress={() => openLink('https://www.getblitz.io/contact-us/')}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.contact')}
+            </Button>
+            <Button
+              onPress={() => openLink('https://www.getblitz.io/delivery/')}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.delivery')}
+            </Button>
+            <Button
+              onPress={() => openLink('https://www.getblitz.io/privacy-policy-app/')}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.terms')}
+            </Button>
+            {isUser && (
+            <Button
+              onPress={handleLogout}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.logout')}
+            </Button>
+            )}
+          </View>
+          <WhatsAppLink />
         </View>
       </DrawerContentScrollView>
     </View>

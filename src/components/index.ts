@@ -31,3 +31,4 @@ export { default as Loader } from './Loader';
 export { default as LocationInput } from './LocationInput';
 export { default as WorkingHoursProvider } from './WorkingHoursProvider';
 export { default as WorkingHoursHandler } from './WorkingHoursHandler';
+export { default as WhatsAppLink } from './WhatsAppLink';
