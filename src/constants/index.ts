@@ -7,3 +7,4 @@ export const storageKeys = {
   authToken: 'authToken',
   latestCancelledVersion: 'latestCancelledVersion',
 };
+export const SUPPORT_PHONE_NUMBER = '+971504078556';

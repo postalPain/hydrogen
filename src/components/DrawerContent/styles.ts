@@ -31,6 +31,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   menuContainer: {
     marginTop: 32,
     paddingHorizontal: 28,
+    height: '100%',
+    justifyContent: 'space-between',
+    marginBottom: -40,
   },
   mainLink: {
     color: theme.colors.primary,

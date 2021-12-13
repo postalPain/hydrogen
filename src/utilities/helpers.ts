@@ -155,3 +155,10 @@ export const setupTracking = async () => {
   // Enable AppsFlyer tracking
   await setupAppsFlyer();
 };
+
+export const formatPhoneNumber = (value, pattern) => {
+  let i = 0;
+  const phone = value.toString();
+  // eslint-disable-next-line no-plusplus
+  return pattern.replace(/#/g, () => phone[i++]);
+};
