@@ -14,6 +14,10 @@ const useStyles = () => StyleSheet.create({
     fontWeight: 'bold',
     textDecorationLine: 'underline',
   },
+  container: {
+    marginBottom: 40,
+    marginLeft: 15,
+  },
 });
 
 export default useStyles;
