@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 const useStyles = () => StyleSheet.create({
   container: {
     width: '33.33%',
-    paddingRight: 14,
-    marginBottom: 28,
+    paddingRight: 10,
+    marginBottom: 18,
   },
   contentBox: {
     aspectRatio: 1,
