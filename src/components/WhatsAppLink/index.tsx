@@ -16,7 +16,7 @@ const WhatsAppLink: React.FC = () => {
     .catch(openSMS);
 
   return (
-    <TouchableOpacity onPress={handleWhatsAppPress}>
+    <TouchableOpacity style={styles.container} onPress={handleWhatsAppPress}>
       <View style={styles.whatsappBlock}>
         <Image style={styles.whatsappLogo} source={require('../../../assets/images/whatsapp.png')} />
         <Text style={styles.phone}>{formatPhoneNumber(SUPPORT_PHONE_NUMBER, '#### ## ### ####')}</Text>
