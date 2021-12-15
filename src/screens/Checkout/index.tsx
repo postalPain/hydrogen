@@ -47,6 +47,7 @@ import useStyles from './styles';
 import { IDeliveryAddress } from 'store/user/reducers/types';
 import DeclinedPaymentModal from 'components/DeclinedPaymentModal';
 import { useResetUserError } from 'utilities/hooks';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 interface ICheckoutProps {
@@ -136,6 +137,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const onCouponButtonPress = () => {
     if (couponName) {
       dispatch(checkPromoCode(couponName));
+      trackEvent(TrackingEvent.PromoCode, { promo_code_name: couponName });
     }
   };
   const onCouponTextChange = (text) => {

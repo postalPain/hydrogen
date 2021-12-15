@@ -18,6 +18,7 @@ import { basketProductSelector } from 'store/user/selectors';
 import { SlideUp } from 'components';
 import { CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 interface IProductSlideUp {
   visible: boolean;
@@ -52,6 +53,7 @@ const ProductSlideUp: React.FC<IProductSlideUp> = ({ visible, onClose, data }) =
     if (increment > 0) {
       blinkAddProductPopup();
     }
+    trackEvent(TrackingEvent.ProductAdded, { productName: data.name });
   };
   const initialQuantity = basketData && basketData.basketQuantity || 0;
 

@@ -8,6 +8,7 @@ import useStyles from './styles';
 import { Routes } from 'navigation';
 import { WorkingHoursContext } from 'components/WorkingHoursProvider';
 import { checkWorkingHours } from 'utilities/helpers';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 const CategoryItem = ({ name, image_url, uuid }: TCategory) => {
@@ -28,6 +29,7 @@ const CategoryItem = ({ name, image_url, uuid }: TCategory) => {
         },
       },
     });
+    trackEvent(TrackingEvent.CategoryClicked, { category_name: name });
   };
 
   return (

@@ -24,6 +24,7 @@ import {
 import { ProjectThemeType } from 'styles/theme';
 import { PlusCircleIcon } from 'components/Icons';
 import useStyles from './styles';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 interface IProductItemProps {
@@ -49,8 +50,10 @@ const ProductItem: React.FC<IProductItemProps> = ({
       basketQuantity: 1,
     }));
     setAddButtonCounterVisible(true);
+    trackEvent(TrackingEvent.ProductAdded, { product_name: data.name });
   };
   const onCountButtonChange = (count) => {
+    if (basketQuantity < count) trackEvent(TrackingEvent.ProductAdded, { product_name: data.name });
     dispatch(setProductToBasket({
       ...data,
       basketQuantity: count,

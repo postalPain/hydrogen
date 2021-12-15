@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Button, Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
@@ -11,6 +11,7 @@ import { formatCurrency, formatAmount } from 'utilities/helpers';
 import { checkoutDataSelector } from 'store/user/selectors';
 import { CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 interface IOrderConfirmationProps {
   theme?: ProjectThemeType;
@@ -21,6 +22,12 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
   const { navigate } = useNavigation();
   const orderData = useSelector(checkoutDataSelector());
   const [createdAtDate] = orderData.created_at.split(' ');
+
+  useEffect(() => {
+    trackEvent(TrackingEvent.CheckoutCompleted);
+    trackEvent(TrackingEvent.OrderPlaced, { order_value: orderData.total });
+  }, []);
+
   const handleBrowseProducts = () => (
     navigate(Routes.HomeTabScreen, {
       screen: Routes.HomeScreen,

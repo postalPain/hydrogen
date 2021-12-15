@@ -23,7 +23,6 @@ import {
 
 import Map from 'screens/Map';
 import SignUp from 'screens/SignUp';
-import AutocompleteInput from 'screens/AtocompleteInput';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
@@ -47,6 +46,8 @@ import {
 } from './NavigationUtilities';
 import { requestPushNotificationUserPermission } from 'services/PushNotifications';
 import { setupSentry } from 'services/Sentry/sentry';
+import { setupAppsFlyer } from 'services/AppsFlyer';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 const Stack = createStackNavigator();
 
@@ -64,6 +65,8 @@ const Navigation = () => {
 
     // Enable bug tracking
     setupSentry();
+
+    setupAppsFlyer();
 
     // Request permissions for push notifications for iOS
     requestPushNotificationUserPermission();
@@ -173,13 +176,6 @@ const Navigation = () => {
                     }}
                   />
                   <Stack.Screen
-                    name={Routes.AutocompleteInput}
-                    component={AutocompleteInput}
-                    options={{
-                      gestureEnabled: false,
-                    }}
-                  />
-                  <Stack.Screen
                     name={Routes.OrderConfirmation}
                     component={OrderConfirmation}
                     options={{
@@ -196,6 +192,9 @@ const Navigation = () => {
                       gestureEnabled: false,
                       headerTitle: i18n.t('screens.basket.header'),
                     }}
+                    listeners={() => ({
+                      transitionEnd: () => { trackEvent(TrackingEvent.CartView); },
+                    })}
                   />
                   <Stack.Screen
                     name={Routes.OrderList}
