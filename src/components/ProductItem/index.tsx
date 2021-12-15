@@ -76,8 +76,8 @@ const ProductItem: React.FC<IProductItemProps> = ({
                   initialValue={basketQuantity}
                   value={basketQuantity}
                   maxValue={getMaxProductCount(data)}
-                  size="mini"
-                  color={theme.colors.yellow}
+                  size="small"
+                  color={theme.colors.primary}
                   onCountChange={onCountButtonChange}
                 />
               ) : (
@@ -101,10 +101,13 @@ const ProductItem: React.FC<IProductItemProps> = ({
                 style={styles.image}
               />
             </View>
-            <Text style={[styles.price, styles.p]}>
+            <Text style={styles.price}>
               {formatCurrency(data.price)}
             </Text>
-            <Text style={[styles.text, styles.p]}>
+            <Text
+              style={[styles.text, styles.productName]}
+              numberOfLines={2}
+            >
               {`${data.brand} ${data.name}`}
             </Text>
             {checkHasProductAmount(data) && (

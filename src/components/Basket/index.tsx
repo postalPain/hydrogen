@@ -15,7 +15,9 @@ import {
   formatAmount,
   calcProductsPrice,
   roundPrice,
-  getMaxProductCount, checkWorkingHours,
+  getMaxProductCount,
+  checkWorkingHours,
+  checkHasProductAmount,
 } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector, userSelector } from 'store/user/selectors';
@@ -97,7 +99,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
                   {`${product.name}${product.pieces ? (` (${product.pieces} ${i18n.t('components.basket.pieces')})`) : ''}`}
                 </Text>
                 <Text style={[styles.inventoryText, styles.p]}>
-                  {`${formatAmount(product)}, ${product.origin}`}
+                  {checkHasProductAmount(product) ? `${formatAmount(product)}, ${product.origin}` : product.origin}
                 </Text>
                 <View style={styles.inventoryPanel}>
                   <View style={styles.inventoryPriceCol}>
@@ -111,6 +113,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
                     maxValue={getMaxProductCount(product)}
                     size="mini"
                     color={theme.colors.yellow}
+                    secondaryColor={theme.colors.black}
                     onCountChange={(count) => onCountButtonChange(product, count)}
                   />
                 </View>
