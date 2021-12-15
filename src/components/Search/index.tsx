@@ -16,6 +16,7 @@ import {
 } from 'store/search/selectors';
 import { ProductItem, ProductSlideUp } from 'components/index';
 import { TProduct } from 'services/ServerAPI/types';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 interface ISearchProps {
   theme?: ProjectThemeType;
@@ -57,6 +58,7 @@ const Search: React.FC<ISearchProps> = ({
           onSubmitEditing={({ nativeEvent: { text } }) => {
             if (text) {
               dispatch(searchProducts(text));
+              trackEvent(TrackingEvent.SearchInput, { search_query: text });
             }
           }}
           returnKeyType="search"

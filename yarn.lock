@@ -1391,11 +1391,6 @@
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
   integrity sha512-afmTuJrylUU/0OtqzaRkbyYFFNgCF73Bvel/sw90pvGrWIZ+vyoIJqA6eMSoA6+nb443kTmulmBtC9NerXboNg==
 
-"@segment/analytics-react-native@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@segment/analytics-react-native/-/analytics-react-native-1.5.0.tgz#14538b8c018202ef62daf8c5b3898312a057fbde"
-  integrity sha512-hW93MKffFfkqNec615jQUB5wJHb5KyIcZitIVF5L7cZZxBCM7rQjVdwV9Jdk3KGFwjnWGRkAjDD2DkJZYqz7KQ==
-
 "@sentry/browser@6.12.0":
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-6.12.0.tgz#970cd68fa117a1e1336fdb373e3b1fa76cd63e2d"

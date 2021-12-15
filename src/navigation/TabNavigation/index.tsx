@@ -6,6 +6,7 @@ import SearchScreen from 'screens/Search';
 import { TabBar, TabWrapper } from 'components';
 import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
 import HomeTabNavigation from '../HomeTabNavigation';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 const Tab = createBottomTabNavigator();
 const NullComponent = () => null;
@@ -32,6 +33,11 @@ const TabNavigation = () => (
       name={Routes.Search}
       component={WrappedSearchScreen}
       options={{ tabBarIcon: ({ color }) => <Search fill={color} /> }}
+      listeners={() => ({
+        tabPress: () => {
+          trackEvent(TrackingEvent.SearchCLicked);
+        },
+      })}
     />
     <Tab.Screen
       name={BASKET_TAB_NAME}

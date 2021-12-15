@@ -24,6 +24,7 @@ import { basketSelector, basketLengthSelector, userSelector } from 'store/user/s
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
 import { WorkingHoursContext } from 'components/WorkingHoursProvider';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 interface IBasketProps {
@@ -60,6 +61,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
       navigate(Routes.SignUp);
     } else {
       navigate(Routes.Checkout);
+      trackEvent(TrackingEvent.CheckoutStarted);
     }
   };
 

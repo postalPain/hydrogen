@@ -17,6 +17,7 @@ import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
 import { appCompleteInit, saveAppOptions, setBoardingCompleted } from './actions';
 import { AppActionTypes } from './actions/types';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 export function* signedAppDataWorker(): SagaIterator {
@@ -82,6 +83,7 @@ function* initAppWorker(): SagaIterator {
 function* boardingCompletedWorker(): SagaIterator {
   try {
     yield call(setItem, storageKeys.boardingCompleted, 'true');
+    yield call(trackEvent, TrackingEvent.OnboardingCompleted);
   } catch (e) {
     console.log(e);
   }
