@@ -14,6 +14,7 @@ import { signOut } from 'store/user/actions';
 import i18n from 'i18n';
 import { useNavigation } from '@react-navigation/native';
 import { Routes } from 'navigation';
+import WhatsAppLink from '../WhatsAppLink';
 
 interface IDrawerContentProps extends DrawerContentComponentProps {
   theme?: ProjectThemeType;
@@ -101,17 +102,18 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             {i18n.t('components.drawerContent.terms')}
           </Button>
           {isUser && (
-          <Button
-            onPress={handleLogout}
-            type="link"
-            style={styles.linkContainer}
-            textStyle={styles.link}
-          >
-            {i18n.t('components.drawerContent.logout')}
-          </Button>
+            <Button
+              onPress={handleLogout}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.logout')}
+            </Button>
           )}
         </View>
       </DrawerContentScrollView>
+      <WhatsAppLink />
     </View>
   );
 };

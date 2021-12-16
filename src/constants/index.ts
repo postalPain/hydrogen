@@ -5,4 +5,6 @@ export const BASKET_TAB_NAME = 'BASKET_TAB_NAME';
 export const storageKeys = {
   boardingCompleted: 'boardingCompleted',
   authToken: 'authToken',
+  latestCancelledVersion: 'latestCancelledVersion',
 };
+export const SUPPORT_PHONE_NUMBER = '+971504078556';

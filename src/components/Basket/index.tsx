@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { View, ScrollView } from 'react-native';
 import {
   Text, CacheImage, withTheme, ButtonCounter, Button,
@@ -15,14 +15,16 @@ import {
   formatAmount,
   calcProductsPrice,
   roundPrice,
-  getMaxProductCount, checkWorkingHours,
+  getMaxProductCount,
+  checkWorkingHours,
+  checkHasProductAmount,
 } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector, userSelector } from 'store/user/selectors';
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
-import { WorkingHoursModal } from 'components';
 import useStyles from './styles';
-import { appOptionsSelector } from 'store/app/selectors';
+import { WorkingHoursContext } from 'components/WorkingHoursProvider';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 interface IBasketProps {
@@ -38,12 +40,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const user = useSelector(userSelector);
   const isRegisteredUser = user?.email;
   const dispatch = useDispatch();
-  const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
-  const appOptions = useSelector(appOptionsSelector);
-  const isWorkingHours = checkWorkingHours(
-    Number(appOptions?.working_hours_start?.slice(0, 2)),
-    Number(appOptions?.working_hours_end?.slice(0, 2)),
-  );
+  const { setShowModal } = useContext(WorkingHoursContext);
 
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
@@ -56,13 +53,15 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
       screen: Routes.HomeScreen,
     });
   };
-  const onCheckoutPress = () => {
+  const onCheckoutPress = async () => {
+    const isWorkingHours = await checkWorkingHours();
     if (!isWorkingHours) {
-      setShowWorkingHoursModal(true);
+      setShowModal(true);
     } else if (!isRegisteredUser) {
       navigate(Routes.SignUp);
     } else {
       navigate(Routes.Checkout);
+      trackEvent(TrackingEvent.CheckoutStarted);
     }
   };
 
@@ -102,7 +101,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
                   {`${product.name}${product.pieces ? (` (${product.pieces} ${i18n.t('components.basket.pieces')})`) : ''}`}
                 </Text>
                 <Text style={[styles.inventoryText, styles.p]}>
-                  {`${formatAmount(product)}, ${product.origin}`}
+                  {checkHasProductAmount(product) ? `${formatAmount(product)}, ${product.origin}` : product.origin}
                 </Text>
                 <View style={styles.inventoryPanel}>
                   <View style={styles.inventoryPriceCol}>
@@ -116,6 +115,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
                     maxValue={getMaxProductCount(product)}
                     size="mini"
                     color={theme.colors.yellow}
+                    secondaryColor={theme.colors.black}
                     onCountChange={(count) => onCountButtonChange(product, count)}
                   />
                 </View>
@@ -166,15 +166,9 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   );
 
   return (
-    <>
-      <View style={styles.container}>
-        { basketLength ? renderFullBasket() : renderEmptyBasket() }
-      </View>
-      <WorkingHoursModal
-        visible={showWorkingHoursModal}
-        onClose={() => setShowWorkingHoursModal(false)}
-      />
-    </>
+    <View style={styles.container}>
+      { basketLength ? renderFullBasket() : renderEmptyBasket() }
+    </View>
   );
 };
 

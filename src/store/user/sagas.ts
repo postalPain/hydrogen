@@ -7,7 +7,7 @@ import { requestTrackingPermission } from 'react-native-tracking-transparency';
 import { addHeader, removeHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
 import { history } from 'store';
-import { appCompleteBoarding } from 'store/app/actions';
+import { appCompleteBoarding, setAppLoaderVisibility } from 'store/app/actions';
 import { signedAppDataWorker } from 'store/app/sagas';
 import {
   checkPromoCodeError,
@@ -36,9 +36,14 @@ import { STRIPE_PUBLIC_KEY } from '@env';
 import { storageKeys } from '../../constants';
 import { getNavigationState, navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
-import { convertProductsForOrderSubmission, getCleanObject } from 'utilities/helpers';
+import {
+  convertProductsForOrderSubmission,
+  getCleanObject,
+} from 'utilities/helpers';
 import { ICard } from 'store/user/reducers/types';
 import i18n from 'i18n';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { setupAppsFlyer } from 'services/AppsFlyer';
 
 export function* getUserWorker(): SagaIterator {
   try {
@@ -73,6 +78,7 @@ function* signInWorker(action): SagaIterator {
     } else {
       yield call(navigate, Routes.DrawerNavigation);
       yield call(requestTrackingPermission);
+      yield call(setupAppsFlyer);
     }
   } catch (error) {
     yield put(setError('Wrong email or password'));
@@ -154,6 +160,7 @@ function* createTemporaryUserWorker(action): SagaIterator {
     yield put(appCompleteBoarding());
     navigate(Routes.DrawerNavigation);
     yield call(requestTrackingPermission);
+    yield call(setupAppsFlyer);
   } catch (e) {
     yield put(setError(i18n.t('errors.something_went_wrong')));
   }
@@ -166,6 +173,7 @@ function* signUpWorker(action): SagaIterator {
     setItem(storageKeys.authToken, accessToken);
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
+    yield call(trackEvent, TrackingEvent.RegistrationCompleted);
     navigate(Routes.Checkout);
   } catch (error) {
     yield put(setError(i18n.t('errors.something_went_wrong')));
@@ -183,6 +191,7 @@ function* getOrdersWorker(): SagaIterator {
 
 function* createOrderWorker(action): SagaIterator {
   try {
+    yield put(setAppLoaderVisibility(true));
     const basket = yield select(state => state.user.basket);
     const products = convertProductsForOrderSubmission(Object.values(basket));
     const deliveryAddress = yield select(deliveryAddressSelector);
@@ -211,7 +220,7 @@ function* createOrderWorker(action): SagaIterator {
         yield put(saveDefaultCard(newDefaultCard));
       }
     }
-
+    yield put(setAppLoaderVisibility(false));
     yield call(navigate, Routes.OrderConfirmation);
   } catch (error) {
     if (error.errors) {
@@ -225,6 +234,7 @@ function* createOrderWorker(action): SagaIterator {
     } else {
       yield put(createOrderError(error.message));
     }
+    yield put(setAppLoaderVisibility(false));
   }
 }
 
@@ -232,6 +242,7 @@ function* checkPromoCodeWorker(action): SagaIterator {
   try {
     const { data: { data } } = yield call(userAPI.checkPromoCode, action.payload);
     yield put(checkPromoCodeSuccess(data));
+    yield call(trackEvent, TrackingEvent.PromoApplied);
   } catch (error) {
     yield put(checkPromoCodeError(error.message));
   }

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import {
-  withTheme, TabBar, Text,
+  withTheme, Text,
 } from '@stryberventures/stryber-react-native-ui-components';
 
 import i18n from 'i18n';
 import { ICategoriesState } from 'store/categories/reducers/types';
-import { CategoryTab } from 'components';
+import { CategoryTab, TabMenu } from 'components';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
 
@@ -18,12 +18,6 @@ interface ICategoriesTabNavigationProps {
   loading?: boolean;
 }
 
-const getCategoriesRoutesFromList = (categories) => categories.map((item) => ({
-  key: item.slug,
-  title: item.name,
-  data: item,
-}));
-
 const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
   theme,
   categories,
@@ -31,28 +25,10 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
   initialCategory,
 }) => {
   const styles = useStyles(theme);
-  const [categoriesNavState, setCategoriesNavState] = useState({
-    index: 0,
-    routes: [],
-  });
-
-  useEffect(() => {
-    if (categories) {
-      setCategoriesNavState({
-        ...categoriesNavState,
-        index: categories.findIndex(category => category.uuid === initialCategory),
-        routes: getCategoriesRoutesFromList(categories),
-      });
-    }
-  }, [categories]);
-
-
-  const handleCategoriesNavIndexChange = (index) => {
-    setCategoriesNavState({
-      ...categoriesNavState,
-      index,
-    });
-  };
+  const initialCategoryIndex = categories
+    ? categories.findIndex(category => category.uuid === initialCategory)
+    : 0;
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(initialCategoryIndex);
 
   if (loading) {
     return (
@@ -70,32 +46,28 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
     );
   }
 
-  const onTabPress = (key) => {
-    const index = categoriesNavState.routes.findIndex(item => item.key === key);
-    handleCategoriesNavIndexChange(index);
+  const menuItems = categories.map((category) => ({
+    id: category.uuid,
+    title: category.name,
+  }));
+  const onTabMenuItemPress = (index) => {
+    setCurrentCategoryIndex(index);
   };
+  const currentCategoryData = categories[currentCategoryIndex];
 
   return (
     <>
-      <TabBar
-        navigationState={categoriesNavState}
-        scrollEnabled
-        style={styles.tabBar}
-        tabStyle={styles.tabBarTab}
-        labelStyle={styles.tabBarLabel}
-        activeLabelStyle={styles.tabBarLabelActive}
-        renderIndicator={() => null}
-        contentContainerOffset={13}
-        jumpTo={onTabPress}
+      <TabMenu
+        menuItems={menuItems}
+        onPress={onTabMenuItemPress}
+        rulerOffset={13}
+        activeTabIndex={currentCategoryIndex}
       />
       <View style={styles.categoriesBox}>
-        { categories.map((category, index) => (
-          <CategoryTab
-            key={category.uuid}
-            data={category}
-            isActive={categoriesNavState.index === index}
-          />
-        ))}
+        <CategoryTab
+          key={currentCategoryData.uuid}
+          data={currentCategoryData}
+        />
       </View>
     </>
   );

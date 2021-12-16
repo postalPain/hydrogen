@@ -33,14 +33,13 @@ const getStyles = (theme: any) => StyleSheet.create({
     position: 'absolute',
     width: '100%',
     alignItems: 'center',
+    paddingHorizontal: 22,
   },
   header: {
     position: 'absolute',
-    top: 10,
+    top: 40,
     width: '100%',
-  },
-  input: {
-    marginHorizontal: 27,
+    paddingHorizontal: 27,
   },
   region: {
     color: '#fff',
@@ -48,18 +47,28 @@ const getStyles = (theme: any) => StyleSheet.create({
     margin: 20,
   },
   button: {
-    width: '80%',
     borderRadius: 15,
+    width: '100%',
+  },
+  cardContainer: {
+    width: '100%',
   },
   card: {
     paddingVertical: 15,
-    paddingHorizontal: 34,
-    marginHorizontal: 33,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
   title: {
     marginBottom: 5,
+  },
+  locator: {
+    width: 60,
+    height: 60,
+  },
+  locatorContainer: {
+    alignSelf: 'flex-end',
+    marginRight: -10,
   },
 });
 export default getStyles;

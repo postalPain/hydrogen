@@ -10,7 +10,8 @@ export const setupAppsFlyer = async () => {
         devKey: 'KEdj8og5x73mzZ5XdVonbb',
         isDebug: false,
         appId: '1591454394',
-        onInstallConversionDataListener: true,
+        onInstallConversionDataListener: false,
+        timeToWaitForATTUserAuthorization: 10,
       },
     );
   }

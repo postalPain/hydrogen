@@ -9,4 +9,5 @@ export interface IAppState {
   status: TAppStatus;
   boardingCompleted: boolean;
   appOptions: TAppOptions | null;
+  loaderVisibility: boolean;
 }

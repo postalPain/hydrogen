@@ -5,6 +5,7 @@ import { TProduct } from 'services/ServerAPI/types';
 import { TBasketProduct } from 'store/user/actions';
 import { IOrderProduct } from 'store/user/reducers/types';
 import { DELIVERY_FEE } from 'constants/';
+import { userAPI } from 'services/ServerAPI/serverAPI';
 
 export const isDateValid = (expirationDate: string) => {
   if (!expirationDate) {
@@ -89,7 +90,7 @@ export const getProductsReceipt = (products, discount = 0) => {
 
 export const convertProductsForOrderSubmission = (products: TBasketProduct[]) => products.map(
   item => ({
-    uuid: item.uuid,
+    uuid: item.product_uuid,
     quantity: item.basketQuantity,
   }),
 );
@@ -107,10 +108,13 @@ export const getCleanObject = (obj) => Object.keys(obj).reduce((prevCleanObj, ke
   return cleanObj;
 }, {});
 
-export const checkWorkingHours = (start: number, end: number) => {
-  if (!start || !end) return true;
-  const currentTime = new Date().getHours();
-  return currentTime >= start && currentTime < end;
+export const checkWorkingHours = async (): Promise<boolean> => {
+  try {
+    const { data: { data } } = await userAPI.getAppOptions();
+    return data?.works_now;
+  } catch (e) {
+    return true;
+  }
 };
 
 export const checkoutErrorHandler = (error: string) => {
@@ -118,4 +122,33 @@ export const checkoutErrorHandler = (error: string) => {
   if (error.includes('Your card was declined')) return '';
   if (error.includes('delivery address field is required')) return i18n.t('errors.deliveryAddress');
   return error;
+};
+
+export const processCategoryProductsForRender = (subcategories) => subcategories.reduce(
+  (listItems, subcategory) => {
+    const { inventories, ...subcategoryProps } = subcategory;
+    const updatedListItems = [...listItems, {
+      ...subcategoryProps,
+      type: 'header',
+      key: subcategoryProps.uuid,
+    }];
+    const rowLength = 3;
+    const countRows = Math.ceil(inventories.length / rowLength);
+    for (let i = 0; i < countRows; i++) {
+      const listItemData = inventories.slice(i * rowLength, (i + 1) * rowLength);
+      updatedListItems.push({
+        type: 'row',
+        listItemData,
+        key: `${subcategoryProps.uuid}-${i}`,
+      });
+    }
+    return updatedListItems;
+  }, [],
+);
+
+export const formatPhoneNumber = (value, pattern) => {
+  let i = 0;
+  const phone = value.toString();
+  // eslint-disable-next-line no-plusplus
+  return pattern.replace(/#/g, () => phone[i++]);
 };

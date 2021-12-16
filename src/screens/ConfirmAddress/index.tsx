@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, SafeAreaView, ScrollView, Pressable,
+  View, SafeAreaView, ScrollView, Pressable, KeyboardAvoidingView, Platform,
 } from 'react-native';
 import {
   Dropdown, Input, Button, withTheme, Text,
@@ -21,6 +21,12 @@ interface IConfirmAddressProps {
   };
 }
 
+export enum AddressType {
+  Villa = 'Villa',
+  Apartment = 'Apartment',
+  Office = 'Office',
+}
+
 const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
   const {
     styles,
@@ -31,6 +37,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     addressType,
     renderVillaForm,
     renderApartmentForm,
+    renderOfficeForm,
     handleSubmit,
     goBack,
     errorMessage,
@@ -39,42 +46,53 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
   return (
     <DismissKeyboard>
       <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.wrapper}>
-          <View>
-            <Pressable onPress={goBack}>
-              <Input
-                label="Delivery address"
-                disabled
-                inputLabelStyle={styles.label}
-                value={address}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={styles.keyboardAvoidingView}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 70}
+        >
+          <ScrollView
+            style={styles.scrollContainer}
+            contentContainerStyle={styles.wrapper}
+          >
+            <View>
+              <Pressable onPress={goBack}>
+                <Input
+                  label="Delivery address"
+                  disabled
+                  inputLabelStyle={styles.label}
+                  value={address}
+                  style={styles.input}
+                  selection={{ start: 0 }}
+                />
+              </Pressable>
+              <Dropdown
+                onChange={(val) => {
+                  setAddressType(val);
+                  setAddressTypeError(false);
+                }}
                 style={styles.input}
-                selection={{ start: 0 }}
+                label={i18n.t('screens.confirmAddress.labels.address')}
+                placeholder={i18n.t('screens.confirmAddress.placeholders.address')}
+                data={[
+                  { value: AddressType.Villa, label: i18n.t('screens.confirmAddress.addressType.villa') },
+                  { value: AddressType.Apartment, label: i18n.t('screens.confirmAddress.addressType.apartment') },
+                  { value: AddressType.Office, label: i18n.t('screens.confirmAddress.addressType.office') },
+                ]}
+                error={addressTypeError && i18n.t('screens.confirmAddress.errors.addressType')}
               />
-            </Pressable>
-            <Dropdown
-              onChange={(val) => {
-                setAddressType(val);
-                setAddressTypeError(false);
-              }}
-              style={styles.input}
-              label="Address type"
-              placeholder="Choose type"
-              data={[
-                { value: 'Villa', label: 'Villa' },
-                { value: 'Apartment', label: 'Apartment' },
-              ]}
-              error={addressTypeError && i18n.t('screens.confirmAddress.errors.addressType')}
-            />
-            {addressType === 'Villa' && renderVillaForm()}
-            {addressType === 'Apartment' && renderApartmentForm()}
-          </View>
-          <View>
-            {!!errorMessage && <Text color="red">{errorMessage}</Text>}
-            <Button style={styles.button} onPress={handleSubmit}>
-              {i18n.t('screens.confirmAddress.button')}
-            </Button>
-          </View>
-        </ScrollView>
+              {addressType === AddressType.Villa && renderVillaForm()}
+              {addressType === AddressType.Apartment && renderApartmentForm()}
+              {addressType === AddressType.Office && renderOfficeForm()}
+            </View>
+            <View>
+              {!!errorMessage && <Text color="red">{errorMessage}</Text>}
+              <Button style={styles.button} onPress={handleSubmit}>
+                {i18n.t('screens.confirmAddress.button')}
+              </Button>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </DismissKeyboard>
   );

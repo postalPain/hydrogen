@@ -11,15 +11,18 @@ import { appInit } from 'store/app/actions';
 import { appStatusSelector } from 'store/app/selectors';
 import { userTokenSelector } from 'store/user/selectors';
 import { dynamicLinksHandler } from 'services/dynamicLinks';
-import { setupSentry } from 'services/Sentry/sentry';
 import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
-import { Header } from 'components';
+import {
+  AppUpdateHandler,
+  Header,
+  AppLoadingScreen,
+  WorkingHoursHandler,
+} from 'components';
 
 import Map from 'screens/Map';
 import SignUp from 'screens/SignUp';
-import AutocompleteInput from 'screens/AtocompleteInput';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import Checkout from 'screens/Checkout';
 import Onboard from 'screens/Onboard';
@@ -41,8 +44,10 @@ import {
   navigationRef,
   onStateChangeHandler,
 } from './NavigationUtilities';
-import { setupSegment } from 'services/Segment';
+import { requestPushNotificationUserPermission } from 'services/PushNotifications';
+import { setupSentry } from 'services/Sentry/sentry';
 import { setupAppsFlyer } from 'services/AppsFlyer';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 const Stack = createStackNavigator();
 
@@ -61,11 +66,10 @@ const Navigation = () => {
     // Enable bug tracking
     setupSentry();
 
-    // Enable segment tracking
-    setupSegment();
-
-    // Enable AppsFlyer tracking
     setupAppsFlyer();
+
+    // Request permissions for push notifications for iOS
+    requestPushNotificationUserPermission();
 
     // isMountedRef necessary for NavigationUtils.navigate() function
     isMountedRef.current = true;
@@ -172,13 +176,6 @@ const Navigation = () => {
                     }}
                   />
                   <Stack.Screen
-                    name={Routes.AutocompleteInput}
-                    component={AutocompleteInput}
-                    options={{
-                      gestureEnabled: false,
-                    }}
-                  />
-                  <Stack.Screen
                     name={Routes.OrderConfirmation}
                     component={OrderConfirmation}
                     options={{
@@ -195,6 +192,9 @@ const Navigation = () => {
                       gestureEnabled: false,
                       headerTitle: i18n.t('screens.basket.header'),
                     }}
+                    listeners={() => ({
+                      transitionEnd: () => { trackEvent(TrackingEvent.CartView); },
+                    })}
                   />
                   <Stack.Screen
                     name={Routes.OrderList}
@@ -318,6 +318,9 @@ const Navigation = () => {
           }
         </Stack.Navigator>
       </NavigationContainer>
+      <AppUpdateHandler />
+      <AppLoadingScreen />
+      <WorkingHoursHandler />
     </>
   );
 };

@@ -16,8 +16,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   header: {
     paddingHorizontal: theme.spaces.xl,
-    paddingTop: Platform.OS === 'ios' ? 60 : 20,
-    paddingBottom: 44,
+    paddingTop: Platform.OS === 'ios' ? 45 : 20,
+    paddingBottom: 31,
   },
   headerImage: {
 
@@ -44,7 +44,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: 5,
   },
   openHours: {
-    marginTop: 10,
+    marginTop: 8,
     marginBottom: 5,
   },
   openHoursText: {
@@ -54,7 +54,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     color: '#eee',
   },
   homeCarousel: {
-    marginTop: -27,
+    marginTop: -18,
   },
 });
 export default useStyles;

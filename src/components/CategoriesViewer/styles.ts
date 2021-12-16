@@ -5,8 +5,8 @@ const useStyles = () => StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingLeft: 24,
-    paddingRight: 10,
+    paddingLeft: 14,
+    paddingRight: 5,
   },
   emptyListBox: {
     marginVertical: 40,

@@ -22,3 +22,8 @@ export const saveAppOptions = (payload: TAppOptions) => ({
   type: AppActionTypes.SAVE_APP_OPTIONS,
   payload,
 });
+
+export const setAppLoaderVisibility = (visibility: boolean): AppActions => ({
+  type: AppActionTypes.SET_APP_LOADER_VISIBILITY,
+  visibility,
+});

@@ -12,8 +12,3 @@ export const getCategoriesSuccess = (payload): CategoriesActions => ({
 export const getCategoriesError = (): CategoriesActions => ({
   type: CategoriesActionTypes.GET_CATEGORIES_ERROR,
 });
-
-export const setCurrentSubcategory = (id): CategoriesActions => ({
-  type: CategoriesActionTypes.SET_CURRENT_SUBCATEGORY,
-  id,
-});

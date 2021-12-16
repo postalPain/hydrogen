@@ -5,7 +5,7 @@ const useStyles = () => StyleSheet.create({
     alignItems: 'center',
   },
   paginationContainer: {
-    paddingTop: 16,
+    paddingTop: 10,
   },
   carouselItem: {
     display: 'flex',
@@ -22,6 +22,7 @@ const useStyles = () => StyleSheet.create({
   imageBanner: {
     width: 260,
     height: 120,
+    resizeMode: 'contain',
   },
 });
 export default useStyles;

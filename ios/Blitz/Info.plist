@@ -32,6 +32,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.qstudio.blitz</string>
+				<string>qstudioblitz</string>
 			</array>
 		</dict>
 	</array>
@@ -72,6 +73,11 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-SemiBold.ttf</string>
 		<string>OpenSans-SemiBoldItalic.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

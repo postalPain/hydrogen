@@ -1258,6 +1258,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-12.9.2.tgz#1d837a918b49ecc40c3cedc8b0d8df48c19a7b52"
   integrity sha512-pwjSPd1l/p+HGD2XW2gaNor5wpmLOkcC3pXkgjOjGvpN5Yp8TZfs/yU6EnOqT5wV1BhwNHUhkid7tKhdWEff0A==
 
+"@react-native-firebase/messaging@^13.0.1":
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-13.0.1.tgz#cc10a99e75e155ab566d2f112dedb20d1a50f4f7"
+  integrity sha512-EYEExRXtGrDgYciWPDvCKXGVQLXEAErE1KFWglzcEBjFOyp9NGf0kj1Gd54r03g7BN1JybK8AC+pWgkTTkFf5A==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets/-/assets-1.0.0.tgz#c6f9bf63d274bafc8e970628de24986b30a55c8e"
@@ -1385,11 +1390,6 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
   integrity sha512-afmTuJrylUU/0OtqzaRkbyYFFNgCF73Bvel/sw90pvGrWIZ+vyoIJqA6eMSoA6+nb443kTmulmBtC9NerXboNg==
-
-"@segment/analytics-react-native@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@segment/analytics-react-native/-/analytics-react-native-1.5.0.tgz#14538b8c018202ef62daf8c5b3898312a057fbde"
-  integrity sha512-hW93MKffFfkqNec615jQUB5wJHb5KyIcZitIVF5L7cZZxBCM7rQjVdwV9Jdk3KGFwjnWGRkAjDD2DkJZYqz7KQ==
 
 "@sentry/browser@6.12.0":
   version "6.12.0"
@@ -1534,10 +1534,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stryberventures/stryber-react-native-ui-components@^0.0.72":
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/@stryberventures/stryber-react-native-ui-components/-/stryber-react-native-ui-components-0.0.72.tgz#2a6cd1abbd9d6ca52d74cdae44d6505c8c7d5042"
-  integrity sha512-INm8KM7HZ8DqFG/hyej+RVH1Mgp5ZH1zLvmhBBxC6TsJG9TIjuj6VbSVXBkjMSvqEy8pPCIRzmI+XNZCN0RyQg==
+"@stryberventures/stryber-react-native-ui-components@^0.0.75":
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/@stryberventures/stryber-react-native-ui-components/-/stryber-react-native-ui-components-0.0.75.tgz#cabfde27f605455722ce99ca993a6c643cb343ff"
+  integrity sha512-95fNyS1Mi26CkH/rw7PuLNXqo7gz/d4du0NfJ+By5d4aSCi1g1GtUm+LppXspP+XwfdGqlkiBPjIlSd6qOaGMQ==
   dependencies:
     jest-static-stubs "0.0.1"
     lodash-es "^4.17.15"
@@ -5704,6 +5704,21 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
+  integrity sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==
+
+lodash.isnil@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isnil/-/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
+  integrity sha1-SeKM1VkBNFjIFMVHnTxmOiG/qmw=
+
+lodash.pick@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
+  integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
+
 lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
@@ -7223,6 +7238,16 @@ react-native-tracking-transparency@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/react-native-tracking-transparency/-/react-native-tracking-transparency-0.1.1.tgz#6426d4c826d0deaed7ed32f707cb2d15b09c3c3f"
   integrity sha512-yGzpprmZ7dnlScegpoq1uQLuMLR2yDcFVHKF39FB0hxUBmck3G0bKSIbjj1ienM9IgjPvJQPgvG0dX9asyZ7NA==
+
+react-native-version-check@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.4.2.tgz#f330c3050b5e8de249eb2dd53ef55c5a17bfa0cd"
+  integrity sha512-f2eHI6p60UlBzlcxuy4pQaGqCEmR5cNvRQuyG/pFydLdutYpa05zeg4KkTfHWdVmGHhiawyaAfto9QsnBZ70Ew==
+  dependencies:
+    lodash.isfunction "^3.0.9"
+    lodash.isnil "^4.0.0"
+    lodash.pick "^4.4.0"
+    semver "^6.1.1"
 
 react-native-webview@^11.13.0:
   version "11.13.0"

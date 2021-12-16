@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Text,
-  CacheImage,
   withTheme,
   ButtonCounter,
 } from '@stryberventures/stryber-react-native-ui-components';
@@ -24,6 +24,7 @@ import {
 import { ProjectThemeType } from 'styles/theme';
 import { PlusCircleIcon } from 'components/Icons';
 import useStyles from './styles';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 interface IProductItemProps {
@@ -49,8 +50,10 @@ const ProductItem: React.FC<IProductItemProps> = ({
       basketQuantity: 1,
     }));
     setAddButtonCounterVisible(true);
+    trackEvent(TrackingEvent.ProductAdded, { product_name: data.name });
   };
   const onCountButtonChange = (count) => {
+    if (basketQuantity < count) trackEvent(TrackingEvent.ProductAdded, { product_name: data.name });
     dispatch(setProductToBasket({
       ...data,
       basketQuantity: count,
@@ -76,8 +79,8 @@ const ProductItem: React.FC<IProductItemProps> = ({
                   initialValue={basketQuantity}
                   value={basketQuantity}
                   maxValue={getMaxProductCount(data)}
-                  size="mini"
-                  color={theme.colors.yellow}
+                  size="small"
+                  color={theme.colors.primary}
                   onCountChange={onCountButtonChange}
                 />
               ) : (
@@ -96,15 +99,18 @@ const ProductItem: React.FC<IProductItemProps> = ({
             style={styles.touchableContent}
           >
             <View style={styles.imageWrapper}>
-              <CacheImage
+              <Image
                 source={{ uri: data.image_url }}
                 style={styles.image}
               />
             </View>
-            <Text style={[styles.price, styles.p]}>
+            <Text style={styles.price}>
               {formatCurrency(data.price)}
             </Text>
-            <Text style={[styles.text, styles.p]}>
+            <Text
+              style={[styles.text, styles.productName]}
+              numberOfLines={2}
+            >
               {`${data.brand} ${data.name}`}
             </Text>
             {checkHasProductAmount(data) && (

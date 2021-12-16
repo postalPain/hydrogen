@@ -56,6 +56,21 @@ export default {
       title: 'We’ll be back soon!!',
       description: 'We’re currently closed for deliveries. We’ll be open again tomorrow morning from 08:00  and will be at your service as always!! Hope to see you tomorrow.',
     },
+    locationError: {
+      title: 'Enable Geolocation',
+      description: 'Your location permissions are currently turned off. Please go to your Settings to turn them on to detect your currently location for deliveries.',
+      cancelButton: 'Not now',
+      settingsButton: 'Go to settings',
+    },
+    updateApp: {
+      title: 'The Blitz App just got\n better ⚡️',
+      description: 'We’ve been working hard to improve the Blitz app experience for you!',
+      description2: 'Please refresh the Updates page in the %{store} to see the latest Blitz version.',
+      cancelButton: 'Not now',
+      updateButton: 'Update',
+      appStore: 'App Store',
+      googlePlay: 'Google Play Store',
+    },
   },
   screens: {
     home: {
@@ -100,10 +115,30 @@ export default {
     confirmAddress: {
       header: 'Additional Details',
       errors: {
+        buildingName: 'Please specify your building name',
         addressType: 'Please choose an address type',
         floor: 'Please specify your floor',
         apartment: 'Please specify an apartment number',
         house: 'Please specify a house number',
+        companyName: 'Please specify your company name',
+      },
+      labels: {
+        address: 'Address type',
+        buildingName: 'Building name',
+        house: 'House No.',
+        floor: 'Floor',
+        apartment: 'Apartment No.',
+        company: 'Company name',
+        landmark: 'Landmark',
+      },
+      placeholders: {
+        address: 'Choose type',
+        landmark: 'Help our riders find you faster',
+      },
+      addressType: {
+        villa: 'Villa',
+        apartment: 'Apartment',
+        office: 'Office',
       },
       button: 'Save address',
     },
@@ -219,9 +254,9 @@ export default {
     categoriesViewer: {
       emptyList: 'Categories list is empty',
     },
-    subcategoryTab: {
-      emptyList: 'Subcategory does not have any product',
-      loading: 'Subcategory products are loading',
+    categoryTab: {
+      emptyList: 'Category does not have any product',
+      loading: 'Category products are loading',
     },
     productItem: {
       more: 'More info',

@@ -7,11 +7,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   wrapper: {
-    flex: 1,
+    display: 'flex',
+    justifyContent: 'space-between',
     paddingHorizontal: 37,
     paddingTop: 50,
-    justifyContent: 'space-between',
-    height: '100%',
+  },
+  wrapperKeyboardOpened: {
+    flex: 0,
   },
   input: {
     marginBottom: 23,
@@ -25,6 +27,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   label: {
     color: theme.colors.black,
+  },
+  keyboardAvoidingView: {
+    flex: 1,
   },
 });
 

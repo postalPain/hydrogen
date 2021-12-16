@@ -60,12 +60,12 @@ type TMetaList = {
 export interface ICategories {
   data: TCategory[]
 }
-
-export interface IProducts {
-  data: TProduct[];
-  meta: TMetaList;
+export interface ISubcategoryProducts {
+  uuid: string;
+  name: string;
+  slug: string;
+  inventories: TProduct[];
 }
-
 export interface IOrder {
   products: {
     uuid: string;
