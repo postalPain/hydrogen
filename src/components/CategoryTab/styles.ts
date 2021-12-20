@@ -5,7 +5,8 @@ import { ProjectThemeType } from 'theme';
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   container: {
     flex: 1,
-    borderRadius: 26,
+    borderTopLeftRadius: 27,
+    borderTopRightRadius: 27,
     overflow: 'hidden',
     backgroundColor: '#fff',
   },

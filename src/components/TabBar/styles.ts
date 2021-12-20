@@ -1,30 +1,18 @@
 import { Platform, StyleSheet } from 'react-native';
+import { ProjectThemeType } from 'theme';
+import { TAB_BAR_HEIGHT } from 'constants/';
 
-const useStyles = () => StyleSheet.create({
+const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   container: {
-    backgroundColor: 'transparent',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  tabBarLine: {
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-  },
-  tabRightSide: {
-    transform: [{ rotateY: '180deg' }],
+    height: TAB_BAR_HEIGHT,
+    paddingBottom: Platform.OS === 'ios' ? 10 : 0,
+    backgroundColor: theme.colors.primary,
   },
   iconsWrapper: {
+    flex: 1,
+    display: 'flex',
     flexDirection: 'row',
-    position: 'absolute',
-    alignItems: 'center',
-    height: '100%',
-    width: '100%',
+    alignItems: 'stretch',
     justifyContent: 'space-around',
     backgroundColor: 'transparent',
   },
@@ -32,7 +20,6 @@ const useStyles = () => StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: Platform.OS === 'android' ? 20 : 0,
   },
   iconWrapper: {
     display: 'flex',
@@ -40,6 +27,17 @@ const useStyles = () => StyleSheet.create({
     justifyContent: 'center',
     width: 30,
     height: 30,
+  },
+  leftCorner: {
+    position: 'absolute',
+    left: 0,
+    top: -22,
+  },
+  rightCorner: {
+    transform: [{ rotateY: '180deg' }],
+    position: 'absolute',
+    right: 0,
+    top: -22,
   },
 });
 

@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { HEADER_AND_TAB_BAR_HEIGHT } from '../../constants';
+import { HEADER_HEIGHT } from '../../constants';
 import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   container: {
+    minHeight: '100%',
     flex: 1,
-    marginTop: HEADER_AND_TAB_BAR_HEIGHT,
-    borderRadius: 27,
+    marginTop: HEADER_HEIGHT,
+    borderTopLeftRadius: 27,
+    borderTopRightRadius: 27,
     display: 'flex',
     backgroundColor: '#fff',
     paddingHorizontal: 10,

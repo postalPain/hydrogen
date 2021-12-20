@@ -17,7 +17,7 @@ import { ProjectThemeType } from 'theme';
 import { Routes } from 'navigation';
 import { useNavigation } from '@react-navigation/native';
 import { DismissKeyboard } from 'components';
-import { HEADER_AND_TAB_BAR_HEIGHT } from '../../constants';
+import { HEADER_HEIGHT } from 'constants/';
 
 interface ISignUpProps {
   theme: ProjectThemeType
@@ -37,11 +37,11 @@ const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
   return (
     <DismissKeyboard>
       <SafeAreaView style={styles.safeArea}>
-        <KeyboardAvoidingView keyboardVerticalOffset={HEADER_AND_TAB_BAR_HEIGHT} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.flexStyle}>
+        <KeyboardAvoidingView keyboardVerticalOffset={HEADER_HEIGHT} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.flexStyle}>
           <ScrollView
             style={styles.flexStyle}
             contentContainerStyle={{
-              minHeight: height - HEADER_AND_TAB_BAR_HEIGHT - (Platform.OS === 'ios' ? 20 : 0),
+              minHeight: height - HEADER_HEIGHT - (Platform.OS === 'ios' ? 20 : 0),
               ...styles.container,
             }}
           >

@@ -2,14 +2,24 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
+import { withTheme } from '@stryberventures/stryber-react-native-ui-components';
+import { ProjectThemeType } from 'theme';
 import { BASKET_TAB_NAME } from 'constants/';
-import { NavBackground, NavSide } from 'components/Icons';
+import { NavSide } from 'components/Icons';
 import { BasketBadge } from 'components';
 import Routes from 'navigation/Routes';
 import useStyles from './styles';
 
-const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
-  const styles = useStyles();
+interface ITabBar {
+  theme: ProjectThemeType;
+}
+const TabBar: React.FC<BottomTabBarProps & ITabBar> = ({
+  state,
+  descriptors,
+  navigation,
+  theme,
+}) => {
+  const styles = useStyles(theme);
 
   const onTabPress = (e, { route, isFocused }) => {
     if (route.name === BASKET_TAB_NAME) {
@@ -52,9 +62,8 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
 
   return (
     <View style={styles.container}>
-      <NavSide />
-      <NavBackground style={styles.tabBarLine} />
-      <NavSide style={styles.tabRightSide} />
+      <NavSide style={styles.leftCorner} />
+      <NavSide style={styles.rightCorner} />
       <View style={styles.iconsWrapper}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
@@ -88,4 +97,4 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
   );
 };
 
-export default TabBar;
+export default withTheme(TabBar);
