@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from 'styles/theme';
 
 const useStyles = () => StyleSheet.create({
   container: {
@@ -11,9 +12,10 @@ const useStyles = () => StyleSheet.create({
     backgroundColor: '#fff',
   },
   locationText: {
+    marginTop: 5,
+    ...theme.fonts.spartan500 as any,
     fontSize: 14,
-    lineHeight: 30,
-    fontWeight: '500',
+    lineHeight: 18,
     color: '#666',
     marginLeft: 13,
   },

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from 'styles/theme';
 
 const useStyles = () => StyleSheet.create({
   whatsappLogo: {
@@ -10,8 +11,9 @@ const useStyles = () => StyleSheet.create({
     alignItems: 'center',
   },
   phone: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    marginLeft: 5,
+    ...theme.fonts.spartan700 as any,
+    fontSize: 14,
     textDecorationLine: 'underline',
   },
   container: {

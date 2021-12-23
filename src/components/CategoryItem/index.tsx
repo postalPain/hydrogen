@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity, ImageBackground } from 'react-native';
-import { Text } from '@stryberventures/stryber-react-native-ui-components';
+import { Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 
 import { TCategory } from 'services/ServerAPI/types';
 import { navigate } from 'navigation/NavigationUtilities';
@@ -49,4 +49,4 @@ const CategoryItem = ({ name, image_url, uuid }: TCategory) => {
   );
 };
 
-export default CategoryItem;
+export default withTheme(CategoryItem);

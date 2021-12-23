@@ -12,13 +12,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   menuItemContainer: {},
   menuItem: {
-    paddingHorizontal: 11,
+    paddingHorizontal: 10,
     paddingVertical: 8,
   },
   menuItemText: {
     fontSize: 14,
     lineHeight: 30,
-    fontWeight: '700',
+    ...theme.fonts.spartan700 as any,
     color: '#eee',
   },
   menuItemActive: {},

@@ -34,9 +34,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   price: {
     marginTop: 3,
+    ...theme.fonts.spartan800,
     fontSize: 12,
     lineHeight: 18,
-    fontWeight: '800',
     color: '#131313',
   },
   imageWrapper: {
@@ -48,14 +48,16 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     width: '100%',
   },
   productName: {
-    marginBottom: 5,
+    marginBottom: 8,
   },
   text: {
+    ...theme.fonts.spartan400 as any,
     fontSize: 8,
-    fontWeight: '400',
+    lineHeight: 12,
     color: '#131313',
   },
   more: {
+    ...theme.fonts.spartan400 as any,
     fontSize: 6,
     color: '#131313',
     textDecorationLine: 'underline',
@@ -98,7 +100,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   badgeNotAvailableText: {
     fontSize: 6,
     lineHeight: 10,
-    fontWeight: '600',
+    ...theme.fonts.spartan600 as any,
     color: '#131313',
   },
 });

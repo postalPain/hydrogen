@@ -35,9 +35,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     flex: 1,
   },
   helloText: {
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.h2,
     lineHeight: 30,
-    fontWeight: '700',
     color: '#eee',
   },
   accountButton: {
@@ -48,9 +48,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginBottom: 5,
   },
   openHoursText: {
+    ...theme.fonts.spartan400 as any,
     fontSize: 10,
     lineHeight: 30,
-    fontWeight: '400',
     color: '#eee',
   },
   homeCarousel: {

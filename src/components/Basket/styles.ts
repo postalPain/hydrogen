@@ -11,9 +11,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: theme.spaces.xs,
     marginBottom: theme.spaces.m,
     paddingHorizontal: theme.spaces.xxl2,
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.headline,
-    lineHeight: 30,
-    fontWeight: '700',
+    lineHeight: 32,
     color: '#666',
   },
   fullBlock: {
@@ -62,37 +62,39 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   inventoryPanel: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
   },
   inventoryPriceCol: {
     flex: 1,
   },
   inventoryName: {
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.small,
     color: '#666',
-    fontWeight: '700',
   },
   inventoryText: {
+    ...theme.fonts.spartan400 as any,
+    lineHeight: 20,
     fontSize: theme.fontSizes.small,
     color: '#666',
-    fontWeight: '400',
   },
   p: {
     marginBottom: 7,
   },
   priceText: {
+    marginTop: 2,
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.body,
-    // @ts-ignore-next-line
-    fontWeight: theme.fontWeights.semibold,
     color: '#666',
   },
   addToCartButtonCounter: {
+    marginVertical: 0,
     height: 23,
     width: 70,
   },
   totalBlock: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
     paddingLeft: 25,
     paddingRight: theme.spaces.s,
     paddingTop: 20,
@@ -100,23 +102,33 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   totalBlockLeftCol: {
     flex: 1,
+
   },
   totalBlockRightCol: {
+    display: 'flex',
+    alignItems: 'flex-end',
     width: 145,
   },
   textSmall: {
+    ...theme.fonts.spartan400 as any,
     fontSize: theme.fontSizes.captionSmall,
     color: '#666',
   },
   totalPrice: {
+    marginTop: 2,
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.h3,
+    lineHeight: 30,
     color: '#666',
-    fontWeight: '700',
+  },
+  buttonCheckout: {
+    marginVertical: 0,
   },
   buttonTextCheckout: {
-    fontWeight: '600',
+    ...theme.fonts.openSans600 as any,
   },
   emptyList: {
+    ...theme.fonts.spartan500 as any,
     fontSize: theme.fontSizes.body,
     color: '#666',
     marginTop: 20,
@@ -164,14 +176,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   successUpdateHeader: {
     marginLeft: 15,
+    ...theme.fonts.spartan700,
     fontSize: theme.fontSizes.body,
     color: '#666',
-    fontWeight: '700',
   },
   successUpdateText: {
+    ...theme.fonts.spartan400 as any,
     fontSize: theme.fontSizes.small,
-    // @ts-ignore
-    fontWeight: '400',
     lineHeight: 20,
   },
 });

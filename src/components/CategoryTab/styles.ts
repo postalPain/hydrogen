@@ -13,9 +13,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   sectionTitle: {
     marginHorizontal: theme.spaces.xl,
     marginVertical: theme.spaces.m,
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.body,
     lineHeight: 30,
-    fontWeight: '700',
     color: '#666',
   },
   tabBar: {
@@ -42,11 +42,11 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     margin: 0,
     fontSize: 12,
     lineHeight: 30,
-    fontWeight: '500',
+    ...theme.fonts.spartan500,
     color: '#666',
   },
   tabBarLabelActive: {
-    fontWeight: '700',
+    ...theme.fonts.spartan700 as any,
   },
   messageBox: {
     padding: theme.spaces.xl,

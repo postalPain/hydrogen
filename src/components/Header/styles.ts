@@ -30,8 +30,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   title: {
     color: theme.colors.white,
-    fontWeight: '600',
+    ...theme.fonts.spartan600 as any,
     fontSize: 18,
+    lineHeight: 24,
     textAlign: 'center',
   },
   backButton: {

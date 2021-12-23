@@ -126,16 +126,17 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
       </View>
       <View style={styles.totalBlock}>
         <View style={styles.totalBlockLeftCol}>
-          <Text style={[styles.textSmall, styles.p]}>
+          <Text style={styles.textSmall}>
             {`${basketLength} ${i18n.t('components.basket.items')} + ${formatCurrency(DELIVERY_FEE)} ${i18n.t('components.basket.deliveryFee')}`}
           </Text>
-          <Text style={[styles.totalPrice, styles.p]}>
+          <Text style={styles.totalPrice}>
             {formatCurrency(calcProductsPrice(products) + DELIVERY_FEE)}
           </Text>
         </View>
         <View style={styles.totalBlockRightCol}>
           <Button
             size="small"
+            style={styles.buttonCheckout}
             textStyle={styles.buttonTextCheckout}
             onPress={onCheckoutPress}
           >

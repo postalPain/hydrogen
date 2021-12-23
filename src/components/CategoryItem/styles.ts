@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from 'styles/theme';
 
 const useStyles = () => StyleSheet.create({
   container: {
@@ -29,9 +30,9 @@ const useStyles = () => StyleSheet.create({
     resizeMode: 'contain',
   },
   label: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 9,
     lineHeight: 12,
-    fontWeight: '700',
     textAlign: 'center',
   },
 });

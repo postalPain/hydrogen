@@ -14,11 +14,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginBottom: 10,
   },
   description: {
-    fontSize: 13,
+    ...theme.fonts.spartan400 as any,
+    fontSize: 12,
+    lineHeight: 30,
     color: theme.colors.gray,
   },
   promoCode: {
-    fontWeight: '700',
+    ...theme.fonts.spartan700,
     color: '#FDA718',
     marginTop: 10,
   },
@@ -34,12 +36,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   mainLink: {
     color: theme.colors.primary,
-    fontWeight: 'bold',
+    ...theme.fonts.spartan700 as any,
+    fontSize: 14,
   },
   linkContainer: {
-    marginBottom: 15,
+    marginBottom: 20,
   },
   link: {
+    ...theme.fonts.spartan400 as any,
+    fontSize: 14,
     color: theme.colors.gray,
   },
   avatar: {
@@ -51,12 +56,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     justifyContent: 'center',
   },
   avatarInitials: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 24,
-    fontWeight: 'bold',
     color: theme.colors.gray,
   },
   userName: {
-    fontWeight: 'bold',
+    ...theme.fonts.spartan700,
     fontSize: 16,
     color: theme.colors.gray,
     marginTop: 20,
