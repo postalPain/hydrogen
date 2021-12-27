@@ -53,8 +53,11 @@ export default {
       button: 'Okay',
     },
     workingHoursModal: {
-      title: 'We’ll be back soon!!',
-      description: 'We’re currently closed for deliveries. We’ll be open again tomorrow morning from 08:00  and will be at your service as always!! Hope to see you tomorrow.',
+      title: 'We’ll be back soon 🛺',
+      closed: 'Closed',
+      today: 'We’re currently closed for deliveries. We’ll be open again today from %{time} and will be at your service as always! \n\n See you soon :)',
+      tomorrow: 'We’re currently closed for deliveries. We’ll be open again tomorrow morning from %{time} and will be at your service as always! \n\n Hope to see you tomorrow :)',
+      date: 'We’re currently closed for deliveries. We’ll be open again on %{date} from %{time} and will be at your service as always! \n\n Hope to see you then :)',
     },
     locationError: {
       title: 'Enable Geolocation',
@@ -64,8 +67,7 @@ export default {
     },
     updateApp: {
       title: 'The Blitz App just got\n better ⚡️',
-      description: 'We’ve been working hard to improve the Blitz app experience for you!',
-      description2: 'Please refresh the Updates page in the %{store} to see the latest Blitz version.',
+      description: 'We’ve been working hard to improve the Blitz app experience for you! \n\n Please refresh the Updates page in the %{store} to see the latest Blitz version.',
       cancelButton: 'Not now',
       updateButton: 'Update',
       appStore: 'App Store',

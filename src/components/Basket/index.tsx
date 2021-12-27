@@ -17,14 +17,15 @@ import {
   roundPrice,
   getMaxProductCount,
   checkWorkingHours,
-  checkHasProductAmount,
+  checkHasProductAmount, getWorkingHoursMessage,
 } from 'utilities/helpers';
 import { setProductToBasket } from 'store/user/actions';
 import { basketSelector, basketLengthSelector, userSelector } from 'store/user/selectors';
 import { CartIcon, CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
-import { WorkingHoursContext } from 'components/WorkingHoursProvider';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { warehouseIdSelector } from 'store/warehouse/selectors';
+import { ModalContext, ModalType } from 'components/ModalProvider';
 
 
 interface IBasketProps {
@@ -38,9 +39,10 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
   const products = Object.values(basket);
   const basketLength = useSelector(basketLengthSelector());
   const user = useSelector(userSelector);
+  const warehouseId = useSelector(warehouseIdSelector);
   const isRegisteredUser = user?.email;
   const dispatch = useDispatch();
-  const { setShowModal } = useContext(WorkingHoursContext);
+  const { setModalData } = useContext(ModalContext);
 
   const onCountButtonChange = (data, count) => {
     dispatch(setProductToBasket({
@@ -54,9 +56,13 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
     });
   };
   const onCheckoutPress = async () => {
-    const isWorkingHours = await checkWorkingHours();
-    if (!isWorkingHours) {
-      setShowModal(true);
+    const { worksNow, openAt } = await checkWorkingHours(warehouseId);
+    if (!worksNow) {
+      setModalData({
+        layout: ModalType.default,
+        title: i18n.t('modals.workingHoursModal.title'),
+        description: getWorkingHoursMessage(openAt),
+      });
     } else if (!isRegisteredUser) {
       navigate(Routes.SignUp);
     } else {

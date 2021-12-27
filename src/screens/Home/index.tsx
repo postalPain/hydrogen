@@ -24,7 +24,6 @@ import {
 import { AccountIcon } from 'components/Icons';
 import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
-import { appOptionsSelector } from 'store/app/selectors';
 
 interface IHomeProps {
   navigation: NavigationContainerRef<any>;
@@ -41,7 +40,6 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
   const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
   const handleChangeAddress = () => navigation
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
-  const appOptions = useSelector(appOptionsSelector);
 
   return (
     <View style={styles.container}>
@@ -68,14 +66,6 @@ const HomeScreen: React.FC<IHomeProps> = ({ theme }) => {
                 <AccountIcon />
               </TouchableOpacity>
             </View>
-          </View>
-          <View style={styles.openHours}>
-            <Text style={styles.openHoursText}>
-              {i18n.t('screens.home.openHours', {
-                start: appOptions?.working_hours_start?.slice(0, 5),
-                end: appOptions?.working_hours_end?.slice(0, 5),
-              })}
-            </Text>
           </View>
           <LocationButton
             location={address?.full_address}

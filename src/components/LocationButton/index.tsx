@@ -4,6 +4,7 @@ import { Text } from '@stryberventures/stryber-react-native-ui-components';
 
 import i18n from 'i18n';
 import { LocationIcon } from 'components/Icons';
+import ClosedIndicator from 'components/ClosedIndicator';
 import useStyles from './styles';
 
 interface ILocationButton {
@@ -14,6 +15,7 @@ interface ILocationButton {
 const LocationButton: React.FC<ILocationButton> = (props) => {
   const styles = useStyles();
   const location = props.location || i18n.t('components.locationButton.defaultLocation');
+
   return (
     <TouchableOpacity
       style={styles.container}
@@ -27,6 +29,7 @@ const LocationButton: React.FC<ILocationButton> = (props) => {
       >
         {location}
       </Text>
+      <ClosedIndicator />
     </TouchableOpacity>
   );
 };

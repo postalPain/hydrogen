@@ -6,16 +6,16 @@ import { ThemeContextProvider } from '@stryberventures/stryber-react-native-ui-c
 import store from 'store';
 import theme from 'styles/theme';
 import Navigation from 'navigation/Navigation';
-import { WorkingHoursProvider } from 'components';
+import { ModalProvider } from 'components';
 
 
 export const App = () => (
   <Provider store={store}>
     <ThemeContextProvider themes={[theme]}>
-      <WorkingHoursProvider>
+      <ModalProvider>
         <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
         <Navigation />
-      </WorkingHoursProvider>
+      </ModalProvider>
     </ThemeContextProvider>
   </Provider>
 );

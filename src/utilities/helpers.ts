@@ -108,12 +108,20 @@ export const getCleanObject = (obj) => Object.keys(obj).reduce((prevCleanObj, ke
   return cleanObj;
 }, {});
 
-export const checkWorkingHours = async (): Promise<boolean> => {
+export const checkWorkingHours = async (id: string): Promise<{
+  worksNow: boolean;
+  openAt: null | string;
+}> => {
   try {
-    const { data: { data } } = await userAPI.getAppOptions();
-    return data?.works_now;
+    const {
+      data: {
+        works_now: worksNow,
+        open_at: openAt,
+      },
+    } = await userAPI.getWarehouseWorkingHours(id);
+    return { worksNow, openAt };
   } catch (e) {
-    return true;
+    return { worksNow: true, openAt: null };
   }
 };
 
@@ -151,4 +159,28 @@ export const formatPhoneNumber = (value, pattern) => {
   const phone = value.toString();
   // eslint-disable-next-line no-plusplus
   return pattern.replace(/#/g, () => phone[i++]);
+};
+
+const isToday = (date: Date) => {
+  const today = new Date();
+  return date.getDate() === today.getDate()
+    && date.getMonth() === today.getMonth()
+    && date.getFullYear() === today.getFullYear();
+};
+
+const isTomorrow = (date: Date) => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return date.getDate() === tomorrow.getDate()
+    && date.getMonth() === tomorrow.getMonth()
+    && date.getFullYear() === tomorrow.getFullYear();
+};
+
+export const getWorkingHoursMessage = (dateTime: string) => {
+  const [date, time] = dateTime.split(' ');
+  const currentDate = new Date(date.split('-').reverse().join('-'));
+
+  if (isToday(currentDate)) return i18n.t('modals.workingHoursModal.today', { time });
+  if (isTomorrow(currentDate)) return i18n.t('modals.workingHoursModal.tomorrow', { time });
+  return i18n.t('modals.workingHoursModal.date', { date, time });
 };
