@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from 'styles/theme';
 
 const useStyles = () => StyleSheet.create({
   container: {
@@ -32,7 +33,7 @@ const useStyles = () => StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#666',
+    color: theme.colors.text,
     marginBottom: 30,
   },
 });

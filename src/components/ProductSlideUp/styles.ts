@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from 'styles/theme';
 
 const useStyles = () => StyleSheet.create({
   container: {
@@ -24,7 +25,7 @@ const useStyles = () => StyleSheet.create({
     fontSize: 18,
     lineHeight: 30,
     fontWeight: '700',
-    color: '#666',
+    color: theme.colors.text,
   },
   description: {
     marginBottom: 10,
@@ -38,14 +39,14 @@ const useStyles = () => StyleSheet.create({
     fontSize: 14,
     lineHeight: 30,
     fontWeight: '700',
-    color: '#666',
+    color: theme.colors.text,
   },
   amount: {
     marginBottom: 10,
     fontSize: 14,
     lineHeight: 30,
     fontWeight: '700',
-    color: '#666',
+    color: theme.colors.text,
   },
   price: {
     fontSize: 20,
@@ -81,7 +82,7 @@ const useStyles = () => StyleSheet.create({
     marginLeft: 10,
     fontSize: 10,
     fontWeight: '500',
-    color: '#666',
+    color: theme.colors.text,
   },
   countText: {
     color: '#fda717',

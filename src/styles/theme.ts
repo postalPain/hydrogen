@@ -39,6 +39,7 @@ const theme = {
     sky: '#adc5fc',
     cross: '#95acbf',
     gray: '#666',
+    text: '#131313',
     lightGray: '#eee',
     yellow: '#FDA717',
   },

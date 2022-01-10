@@ -16,7 +16,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.body,
     lineHeight: 30,
-    color: '#666',
+    fontWeight: '700',
+    color: theme.colors.text,
   },
   tabBar: {
     position: 'relative',
@@ -43,7 +44,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: 12,
     lineHeight: 30,
     ...theme.fonts.spartan500,
-    color: '#666',
+    color: theme.colors.text,
   },
   tabBarLabelActive: {
     ...theme.fonts.spartan700 as any,

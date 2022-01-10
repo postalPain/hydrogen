@@ -14,7 +14,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.headline,
     lineHeight: 32,
-    color: '#666',
+    fontWeight: '700',
+    color: theme.colors.text,
   },
   fullBlock: {
     display: 'flex',
@@ -70,13 +71,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   inventoryName: {
     ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.small,
-    color: '#666',
+    color: theme.colors.text,
   },
   inventoryText: {
     ...theme.fonts.spartan400 as any,
     lineHeight: 20,
     fontSize: theme.fontSizes.small,
-    color: '#666',
+    color: theme.colors.text,
   },
   p: {
     marginBottom: 7,
@@ -85,7 +86,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: 2,
     ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.body,
-    color: '#666',
+    color: theme.colors.text,
   },
   addToCartButtonCounter: {
     marginVertical: 0,
@@ -112,14 +113,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   textSmall: {
     ...theme.fonts.spartan400 as any,
     fontSize: theme.fontSizes.captionSmall,
-    color: '#666',
+    color: theme.colors.text,
   },
   totalPrice: {
     marginTop: 2,
     ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.h3,
+    color: theme.colors.text,
     lineHeight: 30,
-    color: '#666',
   },
   buttonCheckout: {
     marginVertical: 0,
@@ -130,7 +131,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   emptyList: {
     ...theme.fonts.spartan500 as any,
     fontSize: theme.fontSizes.body,
-    color: '#666',
+    color: theme.colors.text,
     marginTop: 20,
     marginBottom: 30,
     textAlign: 'center',
@@ -178,7 +179,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginLeft: 15,
     ...theme.fonts.spartan700,
     fontSize: theme.fontSizes.body,
-    color: '#666',
+    color: theme.colors.text,
   },
   successUpdateText: {
     ...theme.fonts.spartan400 as any,

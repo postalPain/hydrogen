@@ -37,7 +37,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     ...theme.fonts.spartan800,
     fontSize: 12,
     lineHeight: 18,
-    color: '#131313',
+    color: theme.colors.text,
   },
   imageWrapper: {
     display: 'flex',
@@ -54,12 +54,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     ...theme.fonts.spartan400 as any,
     fontSize: 8,
     lineHeight: 12,
-    color: '#131313',
+    color: theme.colors.text,
   },
   more: {
     ...theme.fonts.spartan400 as any,
     fontSize: 6,
-    color: '#131313',
+    color: theme.colors.text,
     textDecorationLine: 'underline',
   },
   addToCartButton: {
@@ -101,7 +101,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: 6,
     lineHeight: 10,
     ...theme.fonts.spartan600 as any,
-    color: '#131313',
+    color: theme.colors.text,
   },
 });
 export default useStyles;

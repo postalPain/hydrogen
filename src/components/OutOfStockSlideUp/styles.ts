@@ -10,7 +10,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: theme.fontSizes.headline,
     lineHeight: 30,
     fontWeight: '700',
-    color: '#666',
+    color: theme.colors.text,
   },
   inventoryItem: {
     marginBottom: theme.spaces.m,
@@ -55,12 +55,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   inventoryName: {
     fontSize: theme.fontSizes.small,
-    color: '#666',
+    color: theme.colors.text,
     fontWeight: '700',
   },
   inventoryText: {
     fontSize: theme.fontSizes.small,
-    color: '#666',
+    color: theme.colors.text,
     fontWeight: '400',
   },
   inventoryUnAvailable: {
@@ -85,7 +85,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: theme.fontSizes.small,
     lineHeight: 18,
     fontWeight: '500',
-    color: '#666',
+    color: theme.colors.text,
     marginBottom: theme.spaces.m,
   },
 });

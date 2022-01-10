@@ -16,7 +16,7 @@ const useStyles = () => StyleSheet.create({
     ...theme.fonts.spartan500 as any,
     fontSize: 14,
     lineHeight: 18,
-    color: '#666',
+    color: theme.colors.text,
     marginLeft: 13,
   },
 });
