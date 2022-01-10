@@ -1,7 +1,7 @@
 PODS:
-  - AppsFlyerFramework (6.4.0):
-    - AppsFlyerFramework/Main (= 6.4.0)
-  - AppsFlyerFramework/Main (6.4.0)
+  - AppsFlyerFramework (6.4.4):
+    - AppsFlyerFramework/Main (= 6.4.4)
+  - AppsFlyerFramework/Main (6.4.4)
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
     - React
@@ -385,8 +385,8 @@ PODS:
     - React-jsi (= 0.64.1)
     - React-perflogger (= 0.64.1)
   - React-jsinspector (0.64.1)
-  - react-native-appsflyer (6.4.0):
-    - AppsFlyerFramework (= 6.4.0)
+  - react-native-appsflyer (6.4.40):
+    - AppsFlyerFramework (= 6.4.4)
     - React
   - react-native-date-picker (3.3.2):
     - React-Core
@@ -784,13 +784,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppsFlyerFramework: 9c37252d3edce38257afc065ad48a48c0f004000
+  AppsFlyerFramework: 6ea252ecb04cf443550576922cddb95b35c958ed
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: 7b423f9e248eae65987838148c36eec1dbfe0b53
-  FBReactNativeSpec: 22bc66ba13eb040e4029cdf5e4786fd0177657bf
+  FBReactNativeSpec: ea52c253c3877af4c442712d3f2e48ed88fe44ca
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
@@ -827,7 +827,7 @@ SPEC CHECKSUMS:
   React-jsi: 5de8204706bd872b78ea646aee5d2561ca1214b6
   React-jsiexecutor: 124e8f99992490d0d13e0649d950d3e1aae06fe9
   React-jsinspector: 500a59626037be5b3b3d89c5151bc3baa9abf1a9
-  react-native-appsflyer: 2ee2d2afdffbaa7cb67a87a1d576e09161c90c56
+  react-native-appsflyer: 530a07183bedd33e47c76ba2f5592d7b74caff1c
   react-native-date-picker: 96a07ca27a6225da8a3935324d85046028456b0f
   react-native-flipper: 50ec3a13b31449565b70d6f7c4ad7a0c924a472a
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
