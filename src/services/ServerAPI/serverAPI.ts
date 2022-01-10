@@ -89,10 +89,13 @@ export const userAPI = {
   updatePassword(passwordData): Promise<any> {
     return xhr.post(apiUrls.updatePassword, passwordData);
   },
-  getAppOptions(): Promise<any> {
-    return xhr.get(apiUrls.appOptions);
+  getClosestWarehouse(): Promise<any> {
+    return xhr.get(apiUrls.closestWarehouse);
   },
   search(searchText: string): Promise<any> {
     return xhr.get(apiUrls.search(searchText));
+  },
+  getWarehouseWorkingHours(id: string): Promise<any> {
+    return xhr.get(apiUrls.warehouseWorkingHours(id));
   },
 };

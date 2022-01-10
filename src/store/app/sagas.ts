@@ -15,9 +15,10 @@ import { addHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { getUserWorker } from '../user/sagas';
 import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
-import { appCompleteInit, saveAppOptions, setBoardingCompleted } from './actions';
+import { appCompleteInit, setBoardingCompleted } from './actions';
 import { AppActionTypes } from './actions/types';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { getClosestWarehouse } from 'store/warehouse/actions';
 
 
 export function* signedAppDataWorker(): SagaIterator {
@@ -41,8 +42,7 @@ export function* signedAppDataWorker(): SagaIterator {
 function* initAppWorker(): SagaIterator {
   try {
     console.log('App start init...');
-    const { data: { data } } = yield call(userAPI.getAppOptions);
-    yield put(saveAppOptions(data));
+    yield put(getClosestWarehouse());
     const boardingCompletedValue = yield call(getItem, storageKeys.boardingCompleted);
     // eslint-disable-next-line no-shadow
     const boardingCompleted = boardingCompletedValue && boardingCompletedValue === 'true';

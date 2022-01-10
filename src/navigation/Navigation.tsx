@@ -15,10 +15,7 @@ import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
 import {
-  AppUpdateHandler,
-  Header,
-  AppLoadingScreen,
-  WorkingHoursHandler,
+  AppLoadingScreen, Header, ModalHandler,
 } from 'components';
 
 import Map from 'screens/Map';
@@ -48,6 +45,7 @@ import { requestPushNotificationUserPermission } from 'services/PushNotification
 import { setupSentry } from 'services/Sentry/sentry';
 import { setupAppsFlyer } from 'services/AppsFlyer';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { useAppUpdateModal } from 'utilities/hooks';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +53,8 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const appStatus = useSelector(appStatusSelector);
   const isAuthorized = !!useSelector(userTokenSelector);
+
+  useAppUpdateModal();
 
   useEffect(() => {
     // android specific functionality
@@ -318,9 +318,8 @@ const Navigation = () => {
           }
         </Stack.Navigator>
       </NavigationContainer>
-      <AppUpdateHandler />
       <AppLoadingScreen />
-      <WorkingHoursHandler />
+      <ModalHandler />
     </>
   );
 };

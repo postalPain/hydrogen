@@ -4,7 +4,6 @@ import { IAppState } from './types';
 const defaultState: IAppState = {
   status: 'start',
   boardingCompleted: false,
-  appOptions: null,
   loaderVisibility: false,
 };
 
@@ -32,12 +31,6 @@ export default function app(state: IAppState = defaultState, action: AppActions)
       return {
         ...state,
         boardingCompleted: action.status,
-      };
-    }
-    case AppActionTypes.SAVE_APP_OPTIONS: {
-      return {
-        ...state,
-        appOptions: action.payload,
       };
     }
     case AppActionTypes.SET_APP_LOADER_VISIBILITY: {

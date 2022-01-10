@@ -15,6 +15,7 @@ export default {
   createTemporaryUser: 'api/v1/user/guest',
   resetPassword: 'api/v1/mail-reset-password',
   updatePassword: 'api/v1/reset-password',
-  appOptions: 'api/v1/warehouses/closest',
+  closestWarehouse: 'api/v1/warehouses/closest',
   search: (searchText: string) => `api/v1/inventories?perPage=51&search=${searchText}`,
+  warehouseWorkingHours: (id: string) => `api/v1/warehouses/${id}/schedule`,
 };

@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  View,
-  TextInput,
-  ScrollView,
-  Pressable,
+  Pressable, ScrollView, TextInput, View,
 } from 'react-native';
 import {
-  Text, Input, Button, withTheme,
+  Button,
+  Input,
+  Text,
+  withTheme,
 } from '@stryberventures/stryber-react-native-ui-components';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { StackActions, useNavigation } from '@react-navigation/native';
@@ -18,36 +20,38 @@ import Routes from 'navigation/Routes';
 import { checkoutErrorHandler, getProductsReceipt } from 'utilities/helpers';
 import {
   checkPromoCode,
-  resetPromoCode,
   createOrder,
-  resetCreateOrderError, removeDefaultCard,
+  removeDefaultCard,
+  resetCreateOrderError,
+  resetPromoCode,
 } from 'store/user/actions';
 import {
-  promoCodeSelector,
-  promoCodeLoadingSelector,
-  promoCodeErrorSelector,
   basketSelector,
-  deliveryAddressSelector,
-  temporaryDeliveryAddressSelector,
-  defaultCardSelector,
-  checkoutLoadingSelector,
+  checkoutErrorDataSelector,
   checkoutErrorMessageSelector,
-  checkoutErrorDataSelector, userErrorSelector,
+  checkoutLoadingSelector,
+  defaultCardSelector,
+  deliveryAddressSelector,
+  promoCodeErrorSelector,
+  promoCodeLoadingSelector,
+  promoCodeSelector,
+  temporaryDeliveryAddressSelector,
+  userErrorSelector,
 } from 'store/user/selectors';
 import {
+  CardVariant,
   ChangePaymentMethod,
   ModalOverlay,
+  OutOfStockSlideUp,
   PaymentCardForm,
   PaymentMethod,
-  OutOfStockSlideUp,
-  CardVariant,
 } from 'components';
 import { GeoPoint, LeftArrow } from 'components/Icons';
 import useStyles from './styles';
 import { IDeliveryAddress } from 'store/user/reducers/types';
-import DeclinedPaymentModal from 'components/DeclinedPaymentModal';
 import { useResetUserError } from 'utilities/hooks';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { ModalContext, ModalType } from 'components/ModalProvider';
 
 
 interface ICheckoutProps {
@@ -98,8 +102,8 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const handleChangeAddress = () => navigator
     .dispatch(StackActions.push(Routes.MapScreen, { changeAddress: true }));
   const isCardDeclined = checkoutErrorMessage?.includes('Your card was declined');
-  const [showDeclinedCardModal, setShowDeclinedCardModal] = useState(isCardDeclined);
   const addingCardError = useSelector(userErrorSelector);
+  const { setModalData, closeModal } = useContext(ModalContext);
 
   // Fix issue on android, see: https://github.com/gorhom/react-native-bottom-sheet/issues/642
   useEffect(() => {
@@ -116,8 +120,16 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   }, [checkoutErrorResponseData]);
 
   useEffect(() => {
-    setShowDeclinedCardModal(isCardDeclined);
-    if (isCardDeclined) dispatch(removeDefaultCard());
+    if (isCardDeclined) {
+      setModalData({
+        layout: ModalType.default,
+        title: i18n.t('modals.declinedPaymentModal.title'),
+        description: i18n.t('modals.declinedPaymentModal.description'),
+        buttonText: i18n.t('modals.declinedPaymentModal.button'),
+        onButtonPress: closeModal,
+      });
+      dispatch(removeDefaultCard());
+    }
   }, [isCardDeclined]);
 
   useResetUserError();
@@ -267,10 +279,6 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
         visible={outOfStockSlideUpVisible}
         onCartUpdate={onCartUpdate}
         productIds={unAvailableProductIds}
-      />
-      <DeclinedPaymentModal
-        onClose={() => setShowDeclinedCardModal(false)}
-        visible={showDeclinedCardModal}
       />
       { loading && <View style={styles.loadingScreen} /> }
     </>
