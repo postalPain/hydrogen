@@ -336,6 +336,7 @@ export default {
       delivery: 'Delivery',
       terms: 'Terms & Privacy',
       logout: 'Log Out',
+      login: 'Login',
     },
     comingSoon: {
       boxText: 'Exciting\nNews',

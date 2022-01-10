@@ -28,6 +28,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
 
   const isUser = user?.email;
 
+  const handleLogin = () => navigate(Routes.Login);
   const handleLogout = () => dispatch(signOut());
 
   const renderHeader = () => (isUser ? (
@@ -101,6 +102,16 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
           >
             {i18n.t('components.drawerContent.terms')}
           </Button>
+          {!isUser && (
+            <Button
+              onPress={handleLogin}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.login')}
+            </Button>
+          )}
           {isUser && (
             <Button
               onPress={handleLogout}

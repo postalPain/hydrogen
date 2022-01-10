@@ -76,7 +76,7 @@ function* signInWorker(action): SagaIterator {
     if (previousScreen === Routes.SignUp) {
       yield call(navigate, Routes.Checkout);
     } else {
-      yield call(navigate, Routes.DrawerNavigation);
+      yield call(navigate, Routes.HomeTabScreen, { screen: Routes.HomeScreen });
       yield call(requestTrackingPermission);
       yield call(setupAppsFlyer);
     }
