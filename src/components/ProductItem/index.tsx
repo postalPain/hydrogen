@@ -111,7 +111,7 @@ const ProductItem: React.FC<IProductItemProps> = ({
               style={[styles.text, styles.productName]}
               numberOfLines={2}
             >
-              {`${data.brand} ${data.name}`}
+              {data.brand ? `${data.brand} ${data.name}` : data.name}
             </Text>
             {checkHasProductAmount(data) && (
               <Text style={[styles.text, styles.p]}>

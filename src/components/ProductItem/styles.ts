@@ -8,7 +8,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingRight: theme.spaces.m,
   },
   contentBox: {
-    maxHeight: 200,
+    maxHeight: 210,
     flex: 1,
     position: 'relative',
     display: 'flex',
@@ -23,7 +23,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     elevation: 8,
     shadowOpacity: 0.15,
     paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 12,
     backgroundColor: '#fff',
   },
   touchableContent: {
