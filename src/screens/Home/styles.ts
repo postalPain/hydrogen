@@ -25,6 +25,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   headerProfileBlock: {
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: 12,
   },
   headerProfileBlockLeftCol: {
     flex: 1,
