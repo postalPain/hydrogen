@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BackHandler, Platform } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { BackHandler, Platform, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,7 +15,7 @@ import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
 import {
-  AppLoadingScreen, Header, ModalHandler,
+  AppLoadingScreen, Header, ModalHandler, NotificationHandler,
 } from 'components';
 
 import Map from 'screens/Map';
@@ -46,6 +46,7 @@ import { setupSentry } from 'services/Sentry/sentry';
 import { setupAppsFlyer } from 'services/AppsFlyer';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 import { useAppUpdateModal } from 'utilities/hooks';
+import messaging from '@react-native-firebase/messaging';
 
 const Stack = createStackNavigator();
 
@@ -53,10 +54,12 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const appStatus = useSelector(appStatusSelector);
   const isAuthorized = !!useSelector(userTokenSelector);
+  const [token, setToken] = useState(null);
 
   useAppUpdateModal();
 
   useEffect(() => {
+    messaging().getToken().then((tokenId) => setToken(tokenId));
     // android specific functionality
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', hardwareBackPressHandler);
@@ -97,6 +100,7 @@ const Navigation = () => {
 
   return (
     <>
+      <Text style={{ marginTop: 40 }} selectable>{token}</Text>
       <NavigationContainer
         ref={navigationRef}
         onStateChange={onStateChangeHandler}
@@ -320,6 +324,7 @@ const Navigation = () => {
       </NavigationContainer>
       <AppLoadingScreen />
       <ModalHandler />
+      <NotificationHandler />
     </>
   );
 };
