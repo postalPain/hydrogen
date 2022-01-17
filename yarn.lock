@@ -749,14 +749,15 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
-"@expo/config-plugins@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.0.2.tgz#6c83ae373c12a240ccadc2322bd8267e4eb91f7b"
-  integrity sha512-j8IOVH0yL7ZDYcoozdpQb3ZuwUM/4eZ1QWy4icovjlyXGtRFyJvWZitZkA/7HK1+0mS2ZNSW28elp+LVTX3UfA==
+"@expo/config-plugins@^4.0.15":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.0.16.tgz#832fb533245180c6dfd82fd359474f68a8e857b2"
+  integrity sha512-UTyE5JTBatMSwoOZCtX0u2H3zkp/ybMftc1228ARMop35Dbq+sYO11Ym3MrY5RPh8PYPofokDSOvoUq1jjORXw==
   dependencies:
-    "@expo/config-types" "^43.0.0"
-    "@expo/json-file" "8.2.33"
-    "@expo/plist" "0.0.15"
+    "@expo/config-types" "^43.0.1"
+    "@expo/json-file" "8.2.34"
+    "@expo/plist" "0.0.17"
+    "@expo/sdk-runtime-versions" "^1.0.0"
     "@react-native/normalize-color" "^2.0.0"
     chalk "^4.1.2"
     debug "^4.3.1"
@@ -768,30 +769,35 @@
     semver "^7.3.5"
     slash "^3.0.0"
     xcode "^3.0.1"
-    xml2js "^0.4.23"
+    xml2js "0.4.23"
 
-"@expo/config-types@^43.0.0":
-  version "43.0.0"
-  resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-43.0.0.tgz#e283a4a1b72a655a6a2a745bd277caef58c8edb0"
-  integrity sha512-GBbEtLdGX40DJ1wTixWtOHseupA5xWclV57KNZ58ebauWAOyK3Fyni7GD2OCOzxTIFi1nSjqgO9JlMp3ayP4Tw==
+"@expo/config-types@^43.0.1":
+  version "43.0.1"
+  resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-43.0.1.tgz#3e047dccb371741a540980eaff26fb0c95039c30"
+  integrity sha512-EtllpCGDdB/UdwAIs5YXJwBLpbFQNdlLLrxIvoILA9cXrpQMWkeDCT9lQPJzFRMFcLUaMuGvkzX2tR4tx5EQFQ==
 
-"@expo/json-file@8.2.33":
-  version "8.2.33"
-  resolved "https://registry.yarnpkg.com/@expo/json-file/-/json-file-8.2.33.tgz#78f56f33a2cfb807b23c81e00237a33159aa1f32"
-  integrity sha512-CDnhjdirUs6OdN5hOSTJ2y3i9EiJMk7Z5iDljC5xyCHCrUex7oyI8vbRsZEojAahxZccgL/PrO+CjakiFFWurg==
+"@expo/json-file@8.2.34":
+  version "8.2.34"
+  resolved "https://registry.yarnpkg.com/@expo/json-file/-/json-file-8.2.34.tgz#2f24e90a677195f7a81e167115460eb2902c3130"
+  integrity sha512-ZxtBodAZGxdLtgKzmsC+8ViUxt1mhFW642Clu2OuG3f6PAyAFsU/SqEGag9wKFaD3x3Wt8VhL+3y5fMJmUFgPw==
   dependencies:
     "@babel/code-frame" "~7.10.4"
     json5 "^1.0.1"
     write-file-atomic "^2.3.0"
 
-"@expo/plist@0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@expo/plist/-/plist-0.0.15.tgz#41ef37b7bbe6b81c48bf4a5c359661c766bb9e90"
-  integrity sha512-LDxiS0KNZAGJu4fIJhbEKczmb+zeftl1NU0LE0tj0mozoMI5HSKdMUchgvnBm35bwBl8ekKkAfJJ0ONxljWQjQ==
+"@expo/plist@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@expo/plist/-/plist-0.0.17.tgz#0f6c594e116f45a28f5ed20998dadb5f3429f88b"
+  integrity sha512-5Ul3d/YOYE6mfum0jCE25XUnkKHZ5vGlU/X2275ZmCtGrpRn1Fl8Nq+jQKSaks3NqTfxdyXROi/TgH8Zxeg2wg==
   dependencies:
     "@xmldom/xmldom" "~0.7.0"
     base64-js "^1.2.3"
     xmlbuilder "^14.0.0"
+
+"@expo/sdk-runtime-versions@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@expo/sdk-runtime-versions/-/sdk-runtime-versions-1.0.0.tgz#d7ebd21b19f1c6b0395e50d78da4416941c57f7c"
+  integrity sha512-Doz2bfiPndXYFPMRwPyGa1k5QaKDVpY806UJj570epIiMzWaYyCtobasyfC++qfIXVb5Ocy7r3tP9d62hAQ7IQ==
 
 "@gorhom/bottom-sheet@^4.0.3":
   version "4.0.3"
@@ -1246,29 +1252,29 @@
   dependencies:
     invariant "^2.2.4"
 
-"@react-native-firebase/analytics@^13.0.1":
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-13.0.1.tgz#51c1734641bc881c68b8a7514ea8759a3b8f1b84"
-  integrity sha512-EJSfa32aSw1Duc2VE4zPnvoKApDvPoQNATQTWhEXY53b/UERaE+Y4BSKFXIUIjiS1MoaksgDKiEAYqn9fP4mTw==
+"@react-native-firebase/analytics@^14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-14.2.2.tgz#353c1fc184bd74c30fee5cf977d4cafe0a5a22be"
+  integrity sha512-5qIGO3QSNhGbQaVzlaSjfg1AoYM5Qr9GV2/Vo/asfMHAhEI4sI5vomsNeQC9nUI1yrh+Morcrp6dAzhVtOkETQ==
 
-"@react-native-firebase/app@^12.9.2":
-  version "12.9.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-12.9.2.tgz#40d2eaf7c262abce56ae639d6ce1ea6e1a0e8639"
-  integrity sha512-aZ32taypvRGini7wynqbFTDppnFrBUsZAVcqB3ePY5tYi7DTTGK62UxIUGDuQ66BsHv7AULMOTj87RT1s37EHA==
+"@react-native-firebase/app@^14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.2.2.tgz#a6bd7cf0d53cabb4d548f1d4805c4bbe5c6dc725"
+  integrity sha512-kp4diBisEJVKwhPMFCj0kLoG+1ofuj3WHH4lx8OPgnSi6hsfYiyN1BrDJLTYTyouhLkNYdyoRYl6sAxFY7K62Q==
   dependencies:
-    "@expo/config-plugins" "^4.0.2"
+    "@expo/config-plugins" "^4.0.15"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/dynamic-links@^12.9.2":
-  version "12.9.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-12.9.2.tgz#1d837a918b49ecc40c3cedc8b0d8df48c19a7b52"
-  integrity sha512-pwjSPd1l/p+HGD2XW2gaNor5wpmLOkcC3pXkgjOjGvpN5Yp8TZfs/yU6EnOqT5wV1BhwNHUhkid7tKhdWEff0A==
+"@react-native-firebase/dynamic-links@^14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-14.2.2.tgz#ec3d5f095035d6e9f4072ab04b225d42ad44b3c1"
+  integrity sha512-BHyKJn3O0nmD0wXGGwAf3czN9gxcPaCU3tlLLNnrarl6jb5eNIPgGYypAJKHCmssbw0pfeowQlLST873jYK0CQ==
 
-"@react-native-firebase/messaging@^13.0.1":
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-13.0.1.tgz#cc10a99e75e155ab566d2f112dedb20d1a50f4f7"
-  integrity sha512-EYEExRXtGrDgYciWPDvCKXGVQLXEAErE1KFWglzcEBjFOyp9NGf0kj1Gd54r03g7BN1JybK8AC+pWgkTTkFf5A==
+"@react-native-firebase/messaging@^14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-14.2.2.tgz#85167578c60ab63a022b0274a7f3215e09b25994"
+  integrity sha512-0755cINvakKZ4lnyUr7weNPbhOSS9FpvR9VD20XrgBGBCkCy84NUSq51y2+Ita5lvU+Ni2Q++Z/Y1h/2BqjLlw==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -8936,7 +8942,7 @@ xml-name-validator@^3.0.0:
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
 
-xml2js@^0.4.23:
+xml2js@0.4.23:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==
