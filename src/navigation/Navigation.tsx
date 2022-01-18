@@ -15,7 +15,7 @@ import TabNavigation from 'navigation/TabNavigation';
 import DrawerNavigation from 'navigation/DrowerNavigation';
 
 import {
-  AppLoadingScreen, Header, ModalHandler,
+  AppLoadingScreen, Header, ModalHandler, NotificationHandler,
 } from 'components';
 
 import Map from 'screens/Map';
@@ -320,6 +320,7 @@ const Navigation = () => {
       </NavigationContainer>
       <AppLoadingScreen />
       <ModalHandler />
+      <NotificationHandler />
     </>
   );
 };
