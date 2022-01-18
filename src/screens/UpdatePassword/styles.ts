@@ -13,13 +13,16 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     borderRadius: 15,
   },
   title: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 18,
-    fontWeight: 'bold',
-    color: theme.colors.gray,
+    color: theme.colors.text,
     marginBottom: 20,
   },
   description: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan500 as any,
+    fontSize: 12,
+    lineHeight: 21,
+    color: theme.colors.text,
   },
   input: {
     marginTop: 37,

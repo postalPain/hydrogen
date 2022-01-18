@@ -81,6 +81,7 @@ const PaymentCardForm: React.FC<IPaymentCardForm> = ({ total }) => {
               type="number"
               label={i18n.t('components.paymentCardForm.fields.card')}
               style={styles.input}
+              inputLabelStyle={styles.inputLabel}
               rightIcon={() => checkCard(values.card)}
               value={values.card}
               onChange={handleChange('card')}
@@ -94,6 +95,7 @@ const PaymentCardForm: React.FC<IPaymentCardForm> = ({ total }) => {
                 mask="XX/XX"
                 maxLength={5}
                 label={i18n.t('components.paymentCardForm.fields.date')}
+                inputLabelStyle={styles.inputLabel}
                 type="number"
                 placeholder={i18n.t('components.paymentCardForm.fields.datePlaceholder')}
                 value={values.expDate}
@@ -106,6 +108,7 @@ const PaymentCardForm: React.FC<IPaymentCardForm> = ({ total }) => {
                 variant="simple"
                 maxLength={3}
                 label={i18n.t('components.paymentCardForm.fields.cvc')}
+                inputLabelStyle={styles.inputLabel}
                 type="number"
                 placeholder={i18n.t('components.paymentCardForm.fields.cvcPlaceholder')}
                 rightIcon={() => <Image source={cvc} />}

@@ -4,12 +4,12 @@ import { ProjectThemeType } from 'styles/theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   header: {
+    ...theme.fonts.spartan700 as any,
     paddingHorizontal: 20,
     marginTop: -theme.spaces.xs,
     marginBottom: theme.spaces.xs,
     fontSize: theme.fontSizes.headline,
     lineHeight: 30,
-    fontWeight: '700',
     color: theme.colors.text,
   },
   inventoryItem: {
@@ -54,16 +54,17 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     flex: 1,
   },
   inventoryName: {
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.small,
     color: theme.colors.text,
-    fontWeight: '700',
   },
   inventoryText: {
+    ...theme.fonts.spartan400 as any,
     fontSize: theme.fontSizes.small,
     color: theme.colors.text,
-    fontWeight: '400',
   },
   inventoryUnAvailable: {
+    ...theme.fonts.spartan700 as any,
     fontSize: theme.fontSizes.small,
     color: theme.colors.yellow,
     fontWeight: '700',
@@ -81,10 +82,10 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingTop: 20,
   },
   description: {
+    ...theme.fonts.spartan500 as any,
     paddingHorizontal: 20,
     fontSize: theme.fontSizes.small,
     lineHeight: 18,
-    fontWeight: '500',
     color: theme.colors.text,
     marginBottom: theme.spaces.m,
   },

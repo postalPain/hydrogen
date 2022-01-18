@@ -14,10 +14,10 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     width: '100%',
   },
   link: {
+    ...theme.fonts.spartan500 as any,
     textDecorationLine: 'underline',
     color: theme.colors.white,
     fontSize: 12,
-    fontWeight: '500',
   },
   imageBackground: {
     flex: 1,
@@ -31,8 +31,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     width: '100%',
   },
   title: {
+    ...theme.fonts.spartan600 as any,
     fontSize: 24,
-    fontWeight: '600',
     color: theme.colors.white,
     marginTop: 45,
   },

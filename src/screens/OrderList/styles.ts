@@ -16,9 +16,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   title: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan800,
+    color: theme.colors.text,
     fontSize: 18,
-    fontWeight: 'bold',
     marginLeft: 20,
   },
   noOrderContainer: {
@@ -34,8 +34,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     alignItems: 'center',
   },
   message: {
+    ...theme.fonts.spartan400,
     textAlign: 'center',
-    color: theme.colors.gray,
+    color: theme.colors.text,
     fontSize: 16,
     marginTop: 30,
   },
@@ -49,14 +50,20 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: 20,
   },
   subTitle: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan700 as any,
+    fontSize: 12,
+    color: theme.colors.text,
     fontWeight: 'bold',
   },
   content: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan400 as any,
+    fontSize: 12,
+    color: theme.colors.text,
     marginTop: 7,
   },
   status: {
+    ...theme.fonts.spartan400 as any,
+    fontSize: 12,
     color: '#B4BC48',
     marginTop: 10,
   },

@@ -16,24 +16,25 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   success: {
     marginLeft: 15,
-    fontWeight: 'bold',
+    ...theme.fonts.spartan700 as any,
     fontSize: 16,
-    color: theme.colors.gray,
+    color: theme.colors.text,
   },
   paragraph: {
     marginVertical: 20,
   },
   pText: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan400 as any,
+    color: theme.colors.text,
   },
   time: {
     color: '#FDA718',
-    fontWeight: '800',
+    ...theme.fonts.spartan800 as any,
   },
   title: {
-    color: theme.colors.gray,
+    color: theme.colors.text,
     fontSize: 18,
-    fontWeight: 'bold',
+    ...theme.fonts.spartan700 as any,
   },
   summary: {
     paddingTop: 21,
@@ -45,23 +46,24 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginVertical: 15,
   },
   subTitle: {
-    color: theme.colors.gray,
-    fontWeight: '600',
+    color: theme.colors.text,
+    ...theme.fonts.spartan600 as any,
   },
   info: {
+    ...theme.fonts.spartan500 as any,
     fontSize: 13,
-    color: theme.colors.gray,
+    color: theme.colors.text,
     opacity: 0.5,
     marginTop: 5,
-    fontWeight: '500',
   },
   priceBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   price: {
+    ...theme.fonts.spartan400,
     fontSize: 12,
-    color: theme.colors.gray,
+    color: theme.colors.text,
     opacity: 0.5,
     marginTop: 5,
   },

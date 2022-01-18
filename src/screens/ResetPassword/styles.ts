@@ -9,13 +9,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     flex: 1,
   },
   title: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan700 as any,
+    color: theme.colors.text,
     fontSize: 18,
-    fontWeight: 'bold',
   },
   description: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan400 as any,
+    color: theme.colors.text,
     fontSize: 12,
+    lineHeight: 21,
     marginVertical: 30,
   },
   button: {

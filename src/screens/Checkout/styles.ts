@@ -41,9 +41,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: 30,
   },
   title: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 18,
-    color: theme.colors.gray,
-    fontWeight: 'bold',
+    color: theme.colors.text,
     marginBottom: 20,
   },
   input: {
@@ -53,16 +53,17 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   priceText: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan500 as any,
+    color: theme.colors.text,
     fontSize: 12,
   },
   priceTotal: {
+    ...theme.fonts.spartan600 as any,
     fontSize: 14,
-    fontWeight: '600',
   },
   priceSubtotal: {
+    ...theme.fonts.spartan500 as any,
     fontSize: 14,
-    fontWeight: '500',
   },
   totalContainer: {
     marginTop: 5,

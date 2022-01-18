@@ -20,7 +20,7 @@ const useStyles = () => StyleSheet.create({
     borderRadius: 15,
   },
   link: {
-    fontSize: 14,
+    fontSize: 12,
     textDecorationLine: 'underline',
   },
 });

@@ -10,15 +10,16 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 18,
-    color: theme.colors.gray,
-    fontWeight: 'bold',
+    color: theme.colors.text,
     marginBottom: 20,
   },
   description: {
-    color: theme.colors.gray,
-    fontWeight: '500',
-    fontSize: 13,
+    ...theme.fonts.spartan500 as any,
+    color: theme.colors.text,
+    fontSize: 12,
+    lineHeight: 21,
   },
   button: {
     borderRadius: 15,

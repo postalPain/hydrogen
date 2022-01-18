@@ -226,7 +226,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
             {i18n.t('screens.checkout.cartTotal')}
           </Text>
           <View style={styles.priceContainer}>
-            <Text style={styles.priceText} semibold size={14}>{i18n.t('screens.checkout.subtotal')}</Text>
+            <Text style={styles.priceSubtotal} semibold size={14}>{i18n.t('screens.checkout.subtotal')}</Text>
             <Text style={styles.priceText} bold>{receipt.subtotal}</Text>
           </View>
           {

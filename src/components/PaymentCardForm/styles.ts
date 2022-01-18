@@ -31,10 +31,16 @@ const useStyles = () => StyleSheet.create({
     marginBottom: 80,
   },
   title: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 18,
-    fontWeight: 'bold',
     color: theme.colors.text,
     marginBottom: 30,
+  },
+  inputLabel: {
+    ...theme.fonts.openSans600 as any,
+    color: theme.colors.text,
+    fontSize: 12,
+    marginBottom: 8,
   },
 });
 

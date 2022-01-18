@@ -14,9 +14,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: 12,
   },
   title: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 18,
-    color: theme.colors.gray,
-    fontWeight: 'bold',
+    color: theme.colors.text,
   },
   titleContainer: {
     flexDirection: 'row',

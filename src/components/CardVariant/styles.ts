@@ -3,9 +3,9 @@ import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   title: {
-    color: theme.colors.gray,
-    fontSize: 20,
-    fontWeight: 'bold',
+    ...theme.fonts.spartan700 as any,
+    color: theme.colors.text,
+    fontSize: 18,
   },
   cardContainer: {
     flexDirection: 'row',
@@ -23,14 +23,15 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     flexDirection: 'row',
   },
   cardTitle: {
-    color: theme.colors.gray,
-    fontSize: 14,
-    fontWeight: '600',
+    ...theme.fonts.spartan600 as any,
+    color: theme.colors.text,
+    fontSize: 12,
     marginBottom: 5,
   },
   card: {
+    ...theme.fonts.spartan600 as any,
     color: '#ccc',
-    fontSize: 14,
+    fontSize: 12,
   },
   cardWrapper: {
     marginLeft: 15,

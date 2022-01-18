@@ -27,8 +27,8 @@ const CheckEmail: React.FC<ICheckEmailProps> = ({ theme }) => {
         <Button style={styles.button} onPress={() => openInbox()}>{i18n.t('screens.checkEmail.button')}</Button>
         <Text style={styles.bottomText}>{i18n.t('screens.checkEmail.bottomText')}</Text>
         <View style={styles.linkContainer}>
-          <Text style={styles.bottomText}>{i18n.t('screens.checkEmail.bottomText2')}</Text>
-          <Button type="link" textStyle={styles.link} onPress={() => goBack()}>{i18n.t('screens.checkEmail.link')}</Button>
+          <Text style={styles.bottomText}>{`${i18n.t('screens.checkEmail.bottomText2')} `}</Text>
+          <Text style={styles.link} onPress={() => goBack()}>{i18n.t('screens.checkEmail.link')}</Text>
         </View>
       </View>
     </View>

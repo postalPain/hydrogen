@@ -20,14 +20,16 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingBottom: 38,
   },
   title: {
-    fontWeight: '600',
+    ...theme.fonts.spartan600 as any,
     fontSize: 16,
     marginBottom: 20,
     textAlign: 'center',
   },
   description: {
-    textAlign: 'center',
+    ...theme.fonts.spartan400 as any,
+    fontSize: 14,
     lineHeight: 24,
+    textAlign: 'center',
   },
   closeButton: {
     alignSelf: 'flex-end',

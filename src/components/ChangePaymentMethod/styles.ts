@@ -3,9 +3,9 @@ import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   title: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan700 as any,
+    color: theme.colors.text,
     fontSize: 18,
-    fontWeight: 'bold',
   },
   optionContainer: {
     flexDirection: 'row',
@@ -18,8 +18,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     alignItems: 'center',
   },
   optionText: {
-    fontSize: 18,
-    color: theme.colors.gray,
+    ...theme.fonts.spartan400,
+    fontSize: 16,
+    color: theme.colors.text,
     marginLeft: 20,
   },
   bottomOptionContainer: {

@@ -10,23 +10,26 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingHorizontal: 32,
   },
   title: {
+    ...theme.fonts.spartan700 as any,
     fontSize: 18,
-    color: theme.colors.gray,
-    fontWeight: 'bold',
+    color: theme.colors.text,
   },
   subTitle: {
-    color: theme.colors.gray,
-    fontWeight: '600',
+    marginBottom: 2,
+    ...theme.fonts.spartan600 as any,
+    color: theme.colors.text,
   },
   content: {
+    ...theme.fonts.spartan500 as any,
     color: theme.colors.gray,
-    fontSize: 13,
+    fontSize: 14,
+    lineHeight: 20,
   },
   contentContainer: {
     marginTop: 20,
   },
   priceContent: {
-    color: theme.colors.gray,
+    color: theme.colors.text,
     opacity: 0.5,
   },
   priceContainer: {
@@ -35,10 +38,10 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: 10,
   },
   subTotal: {
-    fontWeight: '500',
+    ...theme.fonts.spartan500 as any,
   },
   total: {
-    fontWeight: '600',
+    ...theme.fonts.spartan600 as any,
   },
   totalContainer: {
     marginTop: 20,

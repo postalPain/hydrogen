@@ -13,12 +13,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: theme.colors.gray,
+    ...theme.fonts.spartan700 as any,
+    color: theme.colors.text,
     marginVertical: 20,
   },
   description: {
-    color: theme.colors.gray,
+    ...theme.fonts.spartan500 as any,
+    lineHeight: 22,
+    color: theme.colors.text,
   },
   button: {
     borderRadius: 15,
@@ -28,11 +30,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   link: {
     color: theme.colors.primary,
     textDecorationLine: 'underline',
-    fontSize: 12,
+    ...theme.fonts.spartan500 as any,
+    fontSize: 10,
   },
   bottomText: {
-    fontSize: 12,
-    color: theme.colors.gray,
+    ...theme.fonts.spartan500 as any,
+    fontSize: 10,
+    lineHeight: 18,
+    color: theme.colors.text,
   },
   linkContainer: {
     flexDirection: 'row',
