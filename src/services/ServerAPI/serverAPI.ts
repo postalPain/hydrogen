@@ -98,4 +98,7 @@ export const userAPI = {
   getWarehouseWorkingHours(id: string): Promise<any> {
     return xhr.get(apiUrls.warehouseWorkingHours(id));
   },
+  updateFCMToken(token: { device_key: string }): Promise<any> {
+    return xhr.patch(apiUrls.updateFCMToken, token);
+  },
 };

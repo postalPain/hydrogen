@@ -12,7 +12,7 @@ import { navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
 import { setItem, getItem } from 'services/LocalStorage';
 import { addHeader, userAPI } from 'services/ServerAPI/serverAPI';
-import { getUserWorker } from '../user/sagas';
+import { getUserWorker, updateUserFCMTokenWorker } from '../user/sagas';
 import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
 import { appCompleteInit, setBoardingCompleted } from './actions';
@@ -25,6 +25,7 @@ export function* signedAppDataWorker(): SagaIterator {
   try {
     yield call(getUserWorker);
     yield call(getCategoriesWorker);
+    yield call(updateUserFCMTokenWorker);
     const user = yield select(state => state.user.user);
 
     // check is registered user
