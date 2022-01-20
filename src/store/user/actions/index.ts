@@ -49,9 +49,12 @@ interface ISignIn {
   email: string;
   password: string;
 }
-
 interface IRemoveProductsFromBasketPayload {
   uuids: string[],
+}
+interface ICheckPromoCodePayload {
+  code: string;
+  subtotal: number;
 }
 
 export const signIn = ({ email, password }) => ({
@@ -182,9 +185,9 @@ export const resetCreateOrderError = () => ({
   type: TYPES.RESET_CREATE_ORDER_ERROR,
 });
 
-export const checkPromoCode = (code: string) => ({
+export const checkPromoCode = (payload: ICheckPromoCodePayload) => ({
   type: TYPES.CHECK_PROMO_CODE,
-  payload: code,
+  payload,
 });
 
 export const checkPromoCodeSuccess = (payload: TPromoCode) => ({

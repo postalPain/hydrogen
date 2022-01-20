@@ -17,7 +17,7 @@ import { StackActions, useNavigation } from '@react-navigation/native';
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import Routes from 'navigation/Routes';
-import { checkoutErrorHandler, getProductsReceipt } from 'utilities/helpers';
+import { checkoutErrorHandler, getProductsReceipt, calcProductsPrice } from 'utilities/helpers';
 import {
   checkPromoCode,
   createOrder,
@@ -96,6 +96,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   const products = Object.values(basket);
   const discount = promoCode && promoCode.discount || 0;
   const receipt = getProductsReceipt(products, discount);
+  const subTotal = calcProductsPrice(products);
   const deliveryAddress = useSelector(deliveryAddressSelector);
   const temporaryDeliveryAddress = useSelector(temporaryDeliveryAddressSelector);
   const address: IDeliveryAddress = temporaryDeliveryAddress || deliveryAddress;
@@ -148,7 +149,10 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   };
   const onCouponButtonPress = () => {
     if (couponName) {
-      dispatch(checkPromoCode(couponName));
+      dispatch(checkPromoCode({
+        code: couponName,
+        subtotal: subTotal,
+      }));
       trackEvent(TrackingEvent.PromoCode, { promo_code_name: couponName });
     }
   };

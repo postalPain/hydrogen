@@ -11,7 +11,7 @@ export default {
   signUp: 'api/v1/sign-up',
   orders: 'api/v1/orders?perPage=100',
   createOrder: 'api/v1/orders',
-  checkPromoCode: (code) => `api/v1/promo-codes/${code}`,
+  checkPromoCode: ({ code, subtotal }) => `api/v1/promo-codes/${code}?sub_total=${subtotal}`,
   createTemporaryUser: 'api/v1/user/guest',
   resetPassword: 'api/v1/mail-reset-password',
   updatePassword: 'api/v1/reset-password',
