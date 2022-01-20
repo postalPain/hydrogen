@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { ProjectThemeType } from 'theme';
 
 const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   container: {
     flex: 1,
-    borderTopWidth: 15,
+    borderTopWidth: Platform.OS === 'android' ? 0 : 15,
     borderTopColor: theme.colors.primary,
   },
   title: {
