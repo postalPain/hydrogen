@@ -37,7 +37,7 @@ export const OfficeSchema = Yup.object().shape({
 
 
 export const CardSchema = Yup.object().shape({
-  card: Yup.string().required(i18n.t('components.paymentCardForm.errors.cardRequired')).min(19, i18n.t('components.paymentCardForm.errors.card')),
+  card: Yup.string().required(i18n.t('components.paymentCardForm.errors.cardRequired')).min(16, i18n.t('components.paymentCardForm.errors.card')),
   expDate: Yup.string()
     .required(i18n.t('components.paymentCardForm.errors.dateRequired'))
     .min(5, i18n.t('components.paymentCardForm.errors.date'))

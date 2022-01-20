@@ -35,7 +35,7 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.0.7",
     "@sentry/react-native": "^3.2.3",
-    "@stryberventures/stryber-react-native-ui-components": "^0.0.75",
+    "@stryberventures/stryber-react-native-ui-components": "^0.0.76",
     "@types/lodash": "^4.14.150",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
