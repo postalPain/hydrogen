@@ -44,6 +44,7 @@ import { ICard } from 'store/user/reducers/types';
 import i18n from 'i18n';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 import { setupAppsFlyer } from 'services/AppsFlyer';
+import messaging from '@react-native-firebase/messaging';
 
 export function* getUserWorker(): SagaIterator {
   try {
@@ -265,6 +266,15 @@ function* updatePasswordWorker(action): SagaIterator {
     navigate(Routes.ResetPasswordSuccess);
   } catch (error) {
     yield put(setError(error?.errors?.fields?.password[0] || i18n.t('errors.something_went_wrong')));
+  }
+}
+
+export function* updateUserFCMTokenWorker() {
+  try {
+    const FCMToken = yield messaging().getToken();
+    yield call(userAPI.updateFCMToken, { device_key: FCMToken });
+  } catch (e) {
+    console.log(e);
   }
 }
 

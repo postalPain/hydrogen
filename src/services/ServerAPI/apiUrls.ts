@@ -18,4 +18,5 @@ export default {
   closestWarehouse: 'api/v1/warehouses/closest',
   search: (searchText: string) => `api/v1/inventories?perPage=51&search=${searchText}`,
   warehouseWorkingHours: (id: string) => `api/v1/warehouses/${id}/schedule`,
+  updateFCMToken: 'api/v1/user/device-key',
 };
