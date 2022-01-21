@@ -1,16 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, FlatList } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
+import { FlatList, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
 import { TCategory, TProduct } from 'services/ServerAPI/types';
 import { processCategoryProductsForRender } from 'utilities/helpers';
-import { productsByCategoryIdSelector, productsLoadingSelector, productsErrorSelector } from 'store/products/selectors';
+import {
+  productsByCategoryIdSelector,
+  productsErrorSelector,
+  productsLoadingSelector,
+} from 'store/products/selectors';
 import { getProductsByCategory } from 'store/products/actions';
-import { TabMenu, ProductItem, ProductSlideUp } from 'components';
+import { ProductItem, ProductSlideUp, TabMenu } from 'components';
 import useStyles from './styles';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 
 interface ICategoryTabProps {
@@ -38,6 +43,7 @@ const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data }) => {
   }, []);
 
   useEffect(() => {
+    trackEvent(TrackingEvent.MainCategoryClicked, { main_category_viewed_name: data.name });
     sectionHeaderPositions.current = {};
     setActiveMenuItemIndex(0);
   }, [products]);
@@ -48,6 +54,7 @@ const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data }) => {
   })) : [];
 
   const onProductShow = (p: TProduct) => {
+    trackEvent(TrackingEvent.ProductClicked, { product_viewed_name: p.name });
     setCurrentProductData(p);
     setProductSlideUpVisible(true);
   };
@@ -64,6 +71,7 @@ const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data }) => {
       && sectionHeaderPositions.current
       && sectionHeaderPositions.current[menuItem.id]
     ) {
+      trackEvent(TrackingEvent.SubcategoryClicked, { subcategory_viewed_name: menuItem.title });
       productsListRef.current.scrollToIndex({
         index: sectionHeaderPositions.current[menuItem.id].index,
       });

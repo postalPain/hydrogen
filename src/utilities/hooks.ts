@@ -7,8 +7,14 @@ import { getItem, setItem } from 'services/LocalStorage';
 import { storageKeys } from '../constants';
 import { ModalContext, ModalType } from 'components/ModalProvider';
 import VersionCheck from 'react-native-version-check';
-import { Platform, Linking } from 'react-native';
+import { Platform, Linking, BackHandler } from 'react-native';
 import i18n from 'i18n';
+import { setupAppsFlyer } from 'services/AppsFlyer';
+import { hardwareBackPressHandler, isMountedRef } from 'navigation/NavigationUtilities';
+import { appInit } from 'store/app/actions';
+import { setupSentry } from 'services/Sentry/sentry';
+import { requestPushNotificationUserPermission } from 'services/PushNotifications';
+import { enableES5 } from 'immer';
 
 export const useResetUserError = () => {
   const dispatch = useDispatch();
@@ -62,5 +68,41 @@ export const useAppUpdateModal = () => {
         });
       }
     })();
+  }, []);
+};
+
+export const useAppSetup = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // Saving app initialization time for event tracking purposes
+    const initTime = new Date().getTime();
+    setItem(storageKeys.appInitTime, String(initTime));
+
+    // Android specific functionality
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener('hardwareBackPress', hardwareBackPressHandler);
+      enableES5();
+    }
+
+    // Enable bug tracking
+    setupSentry();
+
+    // Enable user tracking
+    setupAppsFlyer();
+
+    // Request permissions for push notifications for iOS
+    requestPushNotificationUserPermission();
+
+    // isMountedRef necessary for NavigationUtils.navigate() function
+    isMountedRef.current = true;
+
+    // Start application initialization
+    dispatch(appInit());
+
+    return () => {
+      isMountedRef.current = false;
+      BackHandler.removeEventListener('hardwareBackPress', hardwareBackPressHandler);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
