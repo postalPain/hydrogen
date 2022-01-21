@@ -93,7 +93,7 @@ const Basket: React.FC<IBasketProps> = ({ theme, updated }) => {
       <View style={styles.fullContent}>
         <Text style={styles.header}>{i18n.t('components.basket.header')}</Text>
         { updated && renderSuccessUpdateBlock()}
-        <ScrollView style={styles.scrollBox}>
+        <ScrollView style={styles.scrollBox} contentContainerStyle={styles.scrollBoxContent}>
           { products.map(product => (
             <View style={styles.inventoryItem} key={product.uuid}>
               <View style={styles.inventoryImageContainer}>

@@ -30,6 +30,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   scrollBox: {
     paddingHorizontal: 14,
   },
+  scrollBoxContent: {
+    paddingBottom: theme.spaces.xs,
+  },
   inventoryItem: {
     marginVertical: theme.spaces.xs,
     display: 'flex',
@@ -99,7 +102,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingLeft: 25,
     paddingRight: theme.spaces.s,
     paddingTop: 20,
-    paddingBottom: Platform.OS === 'ios' ? 0 : 20,
+    paddingBottom: Platform.OS === 'ios' ? 0 : 12,
   },
   totalBlockLeftCol: {
     flex: 1,
