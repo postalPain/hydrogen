@@ -24,6 +24,67 @@ import Onboard from 'screens/Onboard';
 import Basket from 'screens/Basket';
 
 export const useRootNavigation = () => {
+  const renderCommonScreens = () => (
+    <>
+      <Stack.Screen
+        name={Routes.Login}
+        component={Login}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.login.header'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.MapScreen}
+        component={Map}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.map.header'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.ConfirmAddress}
+        component={ConfirmAddress}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.confirmAddress.header'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.UpdatePassword}
+        component={UpdatePassword}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.updatePassword.header'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.ResetPasswordSuccess}
+        component={ResetPasswordSuccess}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.resetPasswordSuccess.header'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.ResetPassword}
+        component={ResetPassword}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.resetPassword.header'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.CheckEmail}
+        component={CheckEmail}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.resetPassword.header'),
+        }}
+      />
+    </>
+  );
+
   const renderAuthorizedRoutes = () => (
     <>
       <Stack.Screen
@@ -32,14 +93,6 @@ export const useRootNavigation = () => {
         options={{
           gestureEnabled: false,
           headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={Routes.Login}
-        component={Login}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.login.header'),
         }}
       />
       <Stack.Screen
@@ -59,14 +112,6 @@ export const useRootNavigation = () => {
         }}
       />
       <Stack.Screen
-        name={Routes.ConfirmAddress}
-        component={ConfirmAddress}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.confirmAddress.header'),
-        }}
-      />
-      <Stack.Screen
         name={Routes.SignUp}
         component={SignUp}
         options={{
@@ -80,14 +125,6 @@ export const useRootNavigation = () => {
         options={{
           gestureEnabled: false,
           headerTitle: i18n.t('screens.signUp.header2'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.MapScreen}
-        component={Map}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.map.header'),
         }}
       />
       <Stack.Screen
@@ -128,38 +165,7 @@ export const useRootNavigation = () => {
           headerTitle: route.params.orderTitle,
         })}
       />
-      <Stack.Screen
-        name={Routes.UpdatePassword}
-        component={UpdatePassword}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.updatePassword.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.ResetPasswordSuccess}
-        component={ResetPasswordSuccess}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.resetPasswordSuccess.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.ResetPassword}
-        component={ResetPassword}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.resetPassword.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.CheckEmail}
-        component={CheckEmail}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.resetPassword.header'),
-        }}
-      />
+      {renderCommonScreens()}
     </>
   );
 
@@ -173,62 +179,7 @@ export const useRootNavigation = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name={Routes.MapScreen}
-        component={Map}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.map.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.ConfirmAddress}
-        component={ConfirmAddress}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.confirmAddress.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.Login}
-        component={Login}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.login.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.UpdatePassword}
-        component={UpdatePassword}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.updatePassword.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.ResetPasswordSuccess}
-        component={ResetPasswordSuccess}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.resetPasswordSuccess.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.ResetPassword}
-        component={ResetPassword}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.resetPassword.header'),
-        }}
-      />
-      <Stack.Screen
-        name={Routes.CheckEmail}
-        component={CheckEmail}
-        options={{
-          gestureEnabled: false,
-          headerTitle: i18n.t('screens.resetPassword.header'),
-        }}
-      />
+      {renderCommonScreens()}
     </>
   );
 
