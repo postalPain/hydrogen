@@ -164,7 +164,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
   };
 
   const loading = promoCodeLoading || checkoutLoading;
-  const unAvailableProductIds = (checkoutErrorResponseData || []).map(item => item.uuid);
+  const unAvailableProducts = checkoutErrorResponseData || [];
   return (
     <>
       <ScrollView
@@ -282,7 +282,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ theme }) => {
       <OutOfStockSlideUp
         visible={outOfStockSlideUpVisible}
         onCartUpdate={onCartUpdate}
-        productIds={unAvailableProductIds}
+        products={unAvailableProducts}
       />
       { loading && <View style={styles.loadingScreen} /> }
     </>

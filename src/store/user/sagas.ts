@@ -226,7 +226,7 @@ function* createOrderWorker(action): SagaIterator {
   } catch (error) {
     if (error.errors) {
       if (error.errors.meta) {
-        const data = error.errors.meta.products;
+        const data = error.errors.meta.inventories;
         yield put(createOrderError(error.message, data));
       } else {
         const errorMessage = Object.values(error.errors.fields).join(' ');
