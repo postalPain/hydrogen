@@ -4,7 +4,13 @@ export enum WarehouseActionTypes {
   GET_CLOSEST_WAREHOUSE_ERROR = 'GET_CLOSEST_WAREHOUSE_ERROR',
 }
 
+export interface ICoordinate {
+  latitude: number;
+  longitude: number;
+}
+
 export interface IWarehouse {
+  coordinates: ICoordinate[];
   uuid: string;
   name: string;
   latitude: string;

@@ -12,10 +12,7 @@ import {
 } from '@stryberventures/stryber-react-native-ui-components';
 import { NavigationContainerRef, StackActions } from '@react-navigation/native';
 import MapView, { Polygon, PROVIDER_GOOGLE, Region } from 'react-native-maps';
-import marker from '../../../assets/images/marker.png';
-import locator from '../../../assets/images/locator.png';
-import { areaPoints } from 'screens/Map/areaPoints';
-import { isPointInPolygon } from 'geolib';
+import { isPointInPolygon, getCenter } from 'geolib';
 
 import GeolocationApi from 'services/GeolocationApi';
 import getStyles from './styles';
@@ -28,6 +25,9 @@ import {
 } from 'react-native-google-places-autocomplete';
 import { ModalContext, ModalType } from 'components/ModalProvider';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { useSelector } from 'react-redux';
+import { warehouseCoordsSelector } from 'store/warehouse/selectors';
+import { ICoordinate } from 'store/warehouse/actions/types';
 
 interface IMapProps {
   navigation: NavigationContainerRef;
@@ -39,28 +39,26 @@ interface IMapProps {
   }
 }
 
-export type LocationType = {
-  latitude: number,
-  longitude: number,
-};
-
-const defaultLocation: LocationType = {
-  latitude: 24.469675197234857,
-  longitude: 54.342443123459816,
-};
-
 const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
   const styles = getStyles(theme);
+
+  const warehouseAreaPoints = useSelector(warehouseCoordsSelector);
+  // @ts-ignore
+  const defaultLocation: ICoordinate = getCenter(warehouseAreaPoints);
+
   const [pointInArea, setPointInArea] = useState(true);
   const [deliveryPoint, setDeliveryPoint] = useState(defaultLocation);
   const [deliveryAddress, setDeliveryAddress] = useState('');
+
   const { setModalData, closeModal } = useContext(ModalContext);
+
   const mapRef = useRef<MapView>(null);
   const mapInputRef = useRef<GooglePlacesAutocompleteRef>(null);
+
   const changeAddress = route.params?.changeAddress;
   let delta: 0.015 | 0.001 = 0.015;
 
-  const setPosition = (position: LocationType) => {
+  const setPosition = (position: ICoordinate) => {
     setDeliveryPoint({
       ...position,
     });
@@ -71,7 +69,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
     });
   };
 
-  const updateAddress = async (position: LocationType) => {
+  const updateAddress = async (position: ICoordinate) => {
     const currentPositionDesc = await GeolocationApi.getAddressByPoint(position);
     if (currentPositionDesc) {
       setDeliveryAddress(currentPositionDesc.formatted_address);
@@ -94,7 +92,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
 
     if (geoPermission === 'granted') {
       const currentPosition = await GeolocationApi.getCurrentPosition();
-      const inArea = isPointInPolygon(currentPosition, areaPoints);
+      const inArea = isPointInPolygon(currentPosition, warehouseAreaPoints);
       // zoom map if user's coords inside delivery area
       if (inArea) delta = 0.001;
 
@@ -117,7 +115,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
 
   const onRegionChange = async (region: Region) => {
     setDeliveryPoint(region);
-    const inArea = isPointInPolygon(region, areaPoints);
+    const inArea = isPointInPolygon(region, warehouseAreaPoints);
     setPointInArea(inArea);
     await updateAddress(region);
   };
@@ -166,14 +164,14 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
           onPress={() => Keyboard.dismiss()}
         >
           <Polygon
-            coordinates={areaPoints}
+            coordinates={warehouseAreaPoints}
             strokeColor="#0C5268"
             fillColor="rgba(12, 82, 104, 0.15)"
             strokeWidth={2}
           />
         </MapView>
         <View style={styles.markerFixed}>
-          <Image style={styles.marker} source={marker} />
+          <Image style={styles.marker} source={require('../../../assets/images/marker.png')} />
         </View>
         <View style={styles.header}>
           <LocationInput
@@ -185,7 +183,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
         <View style={styles.footer}>
           <View style={styles.locatorContainer}>
             <TouchableOpacity activeOpacity={0.7} onPress={handleLocatorPress}>
-              <Image style={styles.locator} source={locator} />
+              <Image style={styles.locator} source={require('../../../assets/images/locator.png')} />
             </TouchableOpacity>
           </View>
           {pointInArea

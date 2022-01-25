@@ -11,11 +11,11 @@ import {
 } from 'react-native-google-places-autocomplete';
 import i18n from 'i18n';
 import { GOOGLE_PLACE_API_KEY } from '@env';
-import { LocationType } from 'screens/Map';
 import { useForwardedRef } from 'utilities/hooks';
+import { ICoordinate } from 'store/warehouse/actions/types';
 
 interface ILocationInputProps {
-  defaultLocation: LocationType;
+  defaultLocation: ICoordinate;
   onPress: (data: GooglePlaceData, detail: GooglePlaceDetail) => void;
 }
 
