@@ -7,5 +7,6 @@ export const storageKeys = {
   boardingCompleted: 'boardingCompleted',
   authToken: 'authToken',
   latestCancelledVersion: 'latestCancelledVersion',
+  appInitTime: 'appInitTime',
 };
 export const SUPPORT_PHONE_NUMBER = '+971504078556';

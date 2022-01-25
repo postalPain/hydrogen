@@ -1,9 +1,10 @@
-import { FirebaseDynamicLinksTypes } from '@react-native-firebase/dynamic-links';
+import dynamicLinks, { FirebaseDynamicLinksTypes } from '@react-native-firebase/dynamic-links';
 import { navigate } from 'navigation/NavigationUtilities';
 import { Routes } from 'navigation';
 import url from 'url';
+import { useEffect } from 'react';
 
-export const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink | null) => {
+const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink | null) => {
   if (!link || !link.url) {
     return;
   }
@@ -31,4 +32,13 @@ export const dynamicLinksHandler = (link: FirebaseDynamicLinksTypes.DynamicLink 
       email: email.replace(' ', '+'),
     });
   }
+};
+
+export const useDynamicLinks = () => {
+  useEffect(() => {
+    dynamicLinks().getInitialLink().then(dynamicLinksHandler);
+    const unsubscribeDynamicLinks = dynamicLinks().onLink(dynamicLinksHandler);
+
+    return () => unsubscribeDynamicLinks();
+  }, []);
 };

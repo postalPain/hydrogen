@@ -7,11 +7,11 @@ import { useNavigation } from '@react-navigation/native';
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import { Routes } from 'navigation';
-import { formatCurrency, formatAmount } from 'utilities/helpers';
+import { formatAmount, formatCurrency } from 'utilities/helpers';
 import { checkoutDataSelector } from 'store/user/selectors';
 import { CheckCircleIcon } from 'components/Icons';
 import useStyles from './styles';
-import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { trackEvent, TrackingEvent, trackSessionTime } from 'utilities/eventTracking';
 
 interface IOrderConfirmationProps {
   theme?: ProjectThemeType;
@@ -26,6 +26,7 @@ const OrderConfirmation: React.FC<IOrderConfirmationProps> = ({ theme }) => {
   useEffect(() => {
     trackEvent(TrackingEvent.CheckoutCompleted);
     trackEvent(TrackingEvent.OrderPlaced, { order_value: orderData.total });
+    trackSessionTime();
   }, []);
 
   const handleBrowseProducts = () => (

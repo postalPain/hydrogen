@@ -27,6 +27,7 @@ import {
   GooglePlacesAutocompleteRef,
 } from 'react-native-google-places-autocomplete';
 import { ModalContext, ModalType } from 'components/ModalProvider';
+import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 interface IMapProps {
   navigation: NavigationContainerRef;
@@ -132,6 +133,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
       .navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint }));
 
   const handleInputPress = (_, details: GooglePlaceDetail = null) => {
+    trackEvent(TrackingEvent.MapInputClicked);
     if (details) {
       delta = 0.001;
       const { geometry: { location } } = details;
@@ -140,6 +142,11 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
         longitude: location.lng,
       });
     }
+  };
+
+  const handleLocatorPress = () => {
+    trackEvent(TrackingEvent.MapLocatorClicked);
+    setUsersCurrentLocation();
   };
 
   return (
@@ -177,7 +184,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
         </View>
         <View style={styles.footer}>
           <View style={styles.locatorContainer}>
-            <TouchableOpacity activeOpacity={0.7} onPress={() => setUsersCurrentLocation()}>
+            <TouchableOpacity activeOpacity={0.7} onPress={handleLocatorPress}>
               <Image style={styles.locator} source={locator} />
             </TouchableOpacity>
           </View>
