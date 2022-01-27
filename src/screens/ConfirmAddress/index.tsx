@@ -58,7 +58,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
             <View>
               <Pressable onPress={goBack}>
                 <Input
-                  label="Delivery address"
+                  label={i18n.t('screens.confirmAddress.labels.mapInput')}
                   disabled
                   inputLabelStyle={styles.label}
                   value={address}
