@@ -1,10 +1,16 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Routes } from 'navigation';
-import TabNavigation from 'navigation/TabNavigation';
+import TabNavigation, { TabNavigationParamList } from 'navigation/TabNavigation';
 import { DrawerContent } from 'components';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
-const Drawer = createDrawerNavigator();
+
+export type DrawerNavigationParamList = {
+  [Routes.TabNavigation]: NavigatorScreenParams<TabNavigationParamList>;
+};
+
+const Drawer = createDrawerNavigator<DrawerNavigationParamList>();
 
 const DrawerNavigation = () => (
   <Drawer.Navigator

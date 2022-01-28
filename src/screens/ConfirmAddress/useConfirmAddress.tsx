@@ -5,17 +5,25 @@ import { ProjectThemeType } from 'theme';
 import { View } from 'react-native';
 import { Input } from '@stryberventures/stryber-react-native-ui-components';
 import useStyles from './styles';
-import { useNavigation } from '@react-navigation/native';
+import {
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTemporaryUser, saveTemporaryAddress } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
 import { Routes } from 'navigation';
 import i18n from 'i18n';
 import { AddressType } from 'screens/ConfirmAddress/index';
+import { RootStackParamList } from 'navigation/types';
 
-export const useConfirmAddress = (theme: ProjectThemeType, route) => {
+type ConfirmAddressRouteProp = RouteProp<RootStackParamList, Routes.ConfirmAddress>;
+
+export const useConfirmAddress = (theme: ProjectThemeType) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
+  const route = useRoute<ConfirmAddressRouteProp>();
   const [addressType, setAddressType] = useState<keyof typeof AddressType>(null);
   const [addressTypeError, setAddressTypeError] = useState(false);
   const villaFormRef = useRef(null);
@@ -41,8 +49,14 @@ export const useConfirmAddress = (theme: ProjectThemeType, route) => {
       if (beforePreviousScreen === Routes.Checkout) {
         navigate(Routes.Checkout);
       } else {
-        navigate(Routes.HomeTabScreen, {
-          screen: Routes.HomeScreen,
+        navigate(Routes.DrawerNavigation, {
+          screen: Routes.TabNavigation,
+          params: {
+            screen: Routes.HomeTabScreen,
+            params: {
+              screen: Routes.HomeScreen,
+            },
+          },
         });
       }
     } else {

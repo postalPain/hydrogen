@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import { withTheme } from '@stryberventures/stryber-react-native-ui-components';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { ProjectThemeType } from 'styles/theme';
@@ -9,6 +9,8 @@ import { categoriesSelector, categoriesLoadingSelector } from 'store/categories/
 import { CategoriesTabNavigation } from 'components';
 import useStyles from './styles';
 import { getCategories } from 'store/categories/actions';
+import { Routes } from 'navigation';
+import { HomeTabNavigationParamList } from 'navigation/HomeTabNavigation';
 
 
 interface IProductsProps {
@@ -16,9 +18,12 @@ interface IProductsProps {
   route: any;
 }
 
-const ProductsScreen: React.FC<IProductsProps> = ({ theme, route }) => {
+type ProductsScreenRoute = RouteProp<HomeTabNavigationParamList, Routes.ProductsScreen>;
+
+const ProductsScreen: React.FC<IProductsProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
+  const route = useRoute<ProductsScreenRoute>();
   const navigation = useNavigation();
   const categories = useSelector(categoriesSelector);
   const categoriesLoading = useSelector(categoriesLoadingSelector);

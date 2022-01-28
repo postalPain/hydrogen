@@ -5,10 +5,17 @@ import Routes from 'navigation/Routes';
 import SearchScreen from 'screens/Search';
 import { TabBar, TabWrapper } from 'components';
 import { Home as HomeIcon, Search, Checkout } from 'components/Icons';
-import HomeTabNavigation from '../HomeTabNavigation';
+import HomeTabNavigation, { HomeTabNavigationParamList } from '../HomeTabNavigation';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
-const Tab = createBottomTabNavigator();
+export type TabNavigationParamList = {
+  [Routes.HomeTabScreen]: NavigatorScreenParams<HomeTabNavigationParamList>;
+  [Routes.Search]: undefined;
+  BASKET_TAB_NAME: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabNavigationParamList>();
 const NullComponent = () => null;
 const WrappedSearchScreen = TabWrapper(SearchScreen);
 

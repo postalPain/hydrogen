@@ -10,7 +10,9 @@ import {
   Text,
   withTheme,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { NavigationContainerRef, StackActions } from '@react-navigation/native';
+import {
+  RouteProp, StackActions, useNavigation, useRoute,
+} from '@react-navigation/native';
 import MapView, { Polygon, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { isPointInPolygon, getCenter } from 'geolib';
 
@@ -28,19 +30,18 @@ import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 import { useSelector } from 'react-redux';
 import { warehouseCoordsSelector } from 'store/warehouse/selectors';
 import { ICoordinate } from 'store/warehouse/actions/types';
+import { RootStackParamList } from 'navigation/types';
 
 interface IMapProps {
-  navigation: NavigationContainerRef;
-  theme: any;
-  route: {
-    params: {
-      changeAddress?: boolean;
-    }
-  }
+  theme?: any;
 }
 
-const MapScreen: React.FC<IMapProps> = ({ theme, navigation, route }) => {
+type MapScreenRoute = RouteProp<RootStackParamList, Routes.MapScreen>;
+
+const MapScreen: React.FC<IMapProps> = ({ theme }) => {
   const styles = getStyles(theme);
+  const navigation = useNavigation();
+  const route = useRoute<MapScreenRoute>();
 
   const warehouseAreaPoints = useSelector(warehouseCoordsSelector);
   // @ts-ignore

@@ -16,15 +16,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updatePassword } from 'store/user/actions';
 import { userErrorSelector } from 'store/user/selectors';
 import { UpdatePasswordType } from 'store/user/actions/types';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from 'navigation/types';
+import { Routes } from 'navigation';
 
 interface IUpdatePasswordProps {
   theme?: ProjectThemeType;
-  route: { params: { token: string; email: string; } }
 }
 
-const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme, route }) => {
+type UpdatePasswordRouteProp = RouteProp<RootStackParamList, Routes.UpdatePassword>;
+
+const UpdatePassword: React.FC<IUpdatePasswordProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
+  const route = useRoute<UpdatePasswordRouteProp>();
   const { params: { token, email } } = route;
   const updatePasswordError = useSelector(userErrorSelector);
 

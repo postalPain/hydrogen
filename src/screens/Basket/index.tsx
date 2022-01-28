@@ -7,16 +7,21 @@ import { ProjectThemeType } from 'styles/theme';
 import { basketLengthSelector } from 'store/user/selectors';
 import { Basket } from 'components';
 import useStyles from './styles';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from 'navigation/types';
+import { Routes } from 'navigation';
 
 
 interface IBasketProps {
-  theme: ProjectThemeType;
-  route: any;
+  theme?: ProjectThemeType;
 }
 
-const BasketScreen: React.FC<IBasketProps> = ({ theme, route }) => {
+type BasketRouteProp = RouteProp<RootStackParamList, Routes.Basket>;
+
+const BasketScreen: React.FC<IBasketProps> = ({ theme }) => {
   const basketLength = useSelector(basketLengthSelector());
   const styles = useStyles(theme, basketLength);
+  const route = useRoute<BasketRouteProp>();
   const updated = !!route.params && route.params.updated;
 
   return (
