@@ -125,6 +125,7 @@ export default {
         companyName: 'Please specify your company name',
       },
       labels: {
+        mapInput: 'Delivery address',
         address: 'Address type',
         buildingName: 'Building name',
         house: 'House No.',

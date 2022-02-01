@@ -19,20 +19,20 @@ export const CreatePasswordSchema = Yup.object().shape({
 });
 
 export const VillaSchema = Yup.object().shape({
-  building_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.buildingName')),
-  house_number: Yup.string().required(i18n.t('screens.confirmAddress.errors.house')),
+  building_name: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.buildingName')),
+  house_number: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.house')),
 });
 
 export const ApartmentSchema = Yup.object().shape({
-  building_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.buildingName')),
-  floor: Yup.string().required(i18n.t('screens.confirmAddress.errors.floor')),
-  apartment_number: Yup.string().required(i18n.t('screens.confirmAddress.errors.apartment')),
+  building_name: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.buildingName')),
+  floor: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.floor')),
+  apartment_number: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.apartment')),
 });
 
 export const OfficeSchema = Yup.object().shape({
-  building_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.buildingName')),
-  floor: Yup.string().required(i18n.t('screens.confirmAddress.errors.floor')),
-  company_name: Yup.string().required(i18n.t('screens.confirmAddress.errors.companyName')),
+  building_name: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.buildingName')),
+  floor: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.floor')),
+  company_name: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.companyName')),
 });
 
 
