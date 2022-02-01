@@ -16,3 +16,7 @@ export const getProductsByCategoryError = (id, payload): ProductsActions => ({
   id,
   payload,
 });
+
+export const invalidateProducts = (): ProductsActions => ({
+  type: ProductsActionTypes.INVALIDATE_PRODUCTS,
+});

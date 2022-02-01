@@ -12,6 +12,7 @@ import {
   formatAmount,
 } from 'utilities/helpers';
 import { removeProductsFromBasket } from 'store/user/actions';
+import { invalidateProducts } from 'store/products/actions';
 import { SlideUp } from 'components';
 import useStyles from './styles';
 
@@ -35,6 +36,7 @@ const OutOfStockSlideUp: React.FC<IOutOfStockSlideUpProps> = ({
     dispatch(removeProductsFromBasket({
       uuids: products.map(product => product.uuid),
     }));
+    dispatch(invalidateProducts());
     onCartUpdate();
   };
 

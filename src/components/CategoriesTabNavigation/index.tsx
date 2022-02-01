@@ -16,6 +16,7 @@ interface ICategoriesTabNavigationProps {
   categories?: ICategoriesState['data'];
   initialCategory?: string;
   loading?: boolean;
+  screenFocused?: boolean;
 }
 
 const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
@@ -23,6 +24,7 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
   categories,
   loading = false,
   initialCategory,
+  screenFocused = false,
 }) => {
   const styles = useStyles(theme);
   const initialCategoryIndex = categories
@@ -67,6 +69,7 @@ const CategoriesTabNavigation: React.FC<ICategoriesTabNavigationProps> = ({
         <CategoryTab
           key={currentCategoryData.uuid}
           data={currentCategoryData}
+          screenFocused={screenFocused}
         />
       </View>
     </>

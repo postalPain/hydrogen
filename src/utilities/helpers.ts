@@ -184,3 +184,7 @@ export const getWorkingHoursMessage = (dateTime: string) => {
   if (isTomorrow(currentDate)) return i18n.t('modals.workingHoursModal.tomorrow', { time });
   return i18n.t('modals.workingHoursModal.date', { date, time });
 };
+
+export const isValidFetchedData = (time: number | null) => (
+  time ? (Date.now() - time < 1000 * 60 * 5) : false
+);

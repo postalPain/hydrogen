@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import { withTheme } from '@stryberventures/stryber-react-native-ui-components';
+import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { ProjectThemeType } from 'styles/theme';
@@ -18,14 +19,30 @@ interface IProductsProps {
 const ProductsScreen: React.FC<IProductsProps> = ({ theme, route }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const categories = useSelector(categoriesSelector);
   const categoriesLoading = useSelector(categoriesLoadingSelector);
   const initialCategoryId = route.params && route.params.categoryId || categories[0].uuid;
+  const [screenFocused, setScreenFocused] = useState(false);
 
   useEffect(() => {
     if (!categories && !categoriesLoading) {
       dispatch(getCategories());
     }
+  }, []);
+
+  useEffect(() => {
+    const removeListenerHandlers = [
+      navigation.addListener('focus', () => {
+        setScreenFocused(true);
+      }),
+      navigation.addListener('blur', () => {
+        setScreenFocused(false);
+      }),
+    ];
+    return () => {
+      removeListenerHandlers.forEach(handler => handler());
+    };
   }, []);
 
   return (
@@ -34,6 +51,7 @@ const ProductsScreen: React.FC<IProductsProps> = ({ theme, route }) => {
         loading={categoriesLoading}
         categories={categories}
         initialCategory={initialCategoryId}
+        screenFocused={screenFocused}
       />
     </SafeAreaView>
   );

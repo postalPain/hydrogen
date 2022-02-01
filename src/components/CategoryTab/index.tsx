@@ -1,32 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FlatList, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
+import { View, FlatList } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'styles/theme';
 import { TCategory, TProduct } from 'services/ServerAPI/types';
-import { processCategoryProductsForRender } from 'utilities/helpers';
+import { processCategoryProductsForRender, isValidFetchedData } from 'utilities/helpers';
 import {
   productsByCategoryIdSelector,
-  productsErrorSelector,
   productsLoadingSelector,
+  productsErrorSelector,
+  fetchingDateCategoryProductsSelector,
 } from 'store/products/selectors';
 import { getProductsByCategory } from 'store/products/actions';
-import { ProductItem, ProductSlideUp, TabMenu } from 'components';
-import useStyles from './styles';
+import { TabMenu, ProductItem, ProductSlideUp } from 'components';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
+import useStyles from './styles';
 
 
 interface ICategoryTabProps {
   theme?: ProjectThemeType;
   data: TCategory;
+  screenFocused?: boolean;
 }
 
-const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data }) => {
+const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data, screenFocused }) => {
   const styles = useStyles(theme);
   const dispatch = useDispatch();
   const products = useSelector(productsByCategoryIdSelector(data.uuid));
+  const productsFetchingDate = useSelector(fetchingDateCategoryProductsSelector(data.uuid));
   const productsLoading = useSelector(productsLoadingSelector(data.uuid));
   const productsError = useSelector(productsErrorSelector(data.uuid));
   const sectionHeaderPositions = useRef({});
@@ -37,10 +40,13 @@ const CategoryTab: React.FC<ICategoryTabProps> = ({ theme, data }) => {
   const [currentProductData, setCurrentProductData]: [TProduct, any] = useState(null);
 
   useEffect(() => {
-    if (!products && !productsLoading) {
+    if (
+      screenFocused
+      && (!products || !isValidFetchedData(productsFetchingDate))
+      && !productsLoading) {
       dispatch(getProductsByCategory(data.uuid));
     }
-  }, []);
+  }, [screenFocused]);
 
   useEffect(() => {
     trackEvent(TrackingEvent.MainCategoryClicked, { main_category_viewed_name: data.name });

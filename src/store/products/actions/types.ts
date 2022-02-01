@@ -4,6 +4,7 @@ export enum ProductsActionTypes {
   GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY',
   GET_PRODUCTS_BY_CATEGORY_SUCCESS = 'GET_PRODUCTS_BY_CATEGORY_SUCCESS',
   GET_PRODUCTS_BY_CATEGORY_ERROR = 'GET_PRODUCTS_BY_CATEGORY_ERROR',
+  INVALIDATE_PRODUCTS = 'INVALIDATE_PRODUCTS',
 }
 
 interface IGetProductsByCategoryErrorPayload {
@@ -27,5 +28,9 @@ interface IGetProductsByCategoryError {
   payload: IGetProductsByCategoryErrorPayload;
 }
 
+interface IInvalidateProducts {
+  type: ProductsActionTypes.INVALIDATE_PRODUCTS;
+}
+
 export type ProductsActions = IGetProductByCategory | IGetProductsByCategorySuccess
-| IGetProductsByCategoryError;
+| IGetProductsByCategoryError | IInvalidateProducts;
