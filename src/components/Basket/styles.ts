@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { ProjectThemeType } from 'styles/theme';
 
 
@@ -102,7 +102,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingLeft: 25,
     paddingRight: theme.spaces.s,
     paddingTop: 20,
-    paddingBottom: Platform.OS === 'ios' ? 0 : 12,
+    paddingBottom: 12,
   },
   totalBlockLeftCol: {
     flex: 1,
@@ -163,7 +163,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 20,
-    paddingBottom: Platform.OS === 'ios' ? 0 : 20,
+    paddingBottom: 20,
   },
   exploreButton: {
     width: '100%',

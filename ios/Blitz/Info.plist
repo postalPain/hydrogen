@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string></string>
+	<string/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -41,7 +41,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -73,15 +73,15 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-SemiBold.ttf</string>
 		<string>OpenSans-SemiBoldItalic.ttf</string>
-		<string>Spartan Black.ttf</string>
-		<string>Spartan Bold.ttf</string>
-		<string>Spartan ExtraBold.ttf</string>
-		<string>Spartan ExtraLight.ttf</string>
-		<string>Spartan Light.ttf</string>
-		<string>Spartan Medium.ttf</string>
-		<string>Spartan Regular.ttf</string>
-		<string>Spartan SemiBold.ttf</string>
-		<string>Spartan Thin.ttf</string>
+		<string>Spartan-Black.ttf</string>
+		<string>Spartan-Bold.ttf</string>
+		<string>Spartan-ExtraBold.ttf</string>
+		<string>Spartan-ExtraLight.ttf</string>
+		<string>Spartan-Light.ttf</string>
+		<string>Spartan-Medium.ttf</string>
+		<string>Spartan-Regular.ttf</string>
+		<string>Spartan-SemiBold.ttf</string>
+		<string>Spartan-Thin.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

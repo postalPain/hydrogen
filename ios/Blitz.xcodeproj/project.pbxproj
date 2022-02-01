@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* BlitzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BlitzTests.m */; };
 		0453B524693E4904BFD79FC7 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */; };
-		07FD75A584FB42BF9BDE2BEA /* Spartan Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64E4B9902C79420388C8B8F8 /* Spartan Light.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		18DA59689CF54DFFA2030E25 /* Spartan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D729B862804EC89D323708 /* Spartan-Regular.ttf */; };
 		1D5F4030271EFFBD0018EE3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D5F402F271EFFBD0018EE3B /* GoogleService-Info.plist */; };
+		1E0F6DC486354252894AC218 /* Spartan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9246C5F3B4647E08FD02834 /* Spartan-Thin.ttf */; };
 		1FC95282C1DBD569DA4A571F /* libPods-Blitz-BlitzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 283EF05071738B498E795543 /* libPods-Blitz-BlitzTests.a */; };
 		26E8D9A98C6346C988CB632B /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */; };
 		27AE2C7333ACFF5A48ECB59F /* libPods-Blitz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 133BD54E7333E1A1AF1A34A9 /* libPods-Blitz.a */; };
@@ -22,21 +23,20 @@
 		2EFDA3E126D3B33A004704D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDA3DF26D3B33A004704D5 /* File.swift */; };
 		2FD5FC05D8DD4D37A57797E1 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */; };
 		33F338CBA64B4ABA867DB2B2 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AAD4E1162494A72B7B64B57 /* OpenSans-Light.ttf */; };
-		369EE945CC09479BB25F97F4 /* Spartan Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E2B37CF468D4592ABCE4D0D /* Spartan Bold.ttf */; };
 		3BD9B0C08C0D412895FD722B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */; };
 		4D4DD835FB2C4BE2A447CCF1 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A97CCC90B4EFCB9D94352 /* OpenSans-Italic.ttf */; };
-		5BD6CB3D48F846F98B3466C5 /* Spartan Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F726C884A954E0EA490EDE9 /* Spartan Medium.ttf */; };
-		7811450B6FF24C74B4652200 /* Spartan ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A4085A6246F42A9A5F47107 /* Spartan ExtraBold.ttf */; };
-		7DAB2B2EE7D84CFCBF62BB4F /* Spartan SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB6A553D6685416A85E00B60 /* Spartan SemiBold.ttf */; };
+		52F7059233FB454EB1FC1AF9 /* Spartan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B090361D43C7497FB2BEB660 /* Spartan-Bold.ttf */; };
+		80EC0BF3BA7743DC87844DD6 /* Spartan-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16B3F5C2009B446190DDF16D /* Spartan-SemiBold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		982D7F0219A6475783AD95CD /* Spartan Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C63044FE57AF4F96B4EEF785 /* Spartan Black.ttf */; };
 		9CA31DA656BC475EBE2E9421 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F12845EB5EB461FA38920D8 /* OpenSans-SemiBold.ttf */; };
-		B2F9F0B9C4A048C99372BBA4 /* Spartan Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 050DF63FEC2B4653A12C6722 /* Spartan Regular.ttf */; };
+		A16F4099EC294EA48A1077C6 /* Spartan-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5CCCEDE9B634996ADF01EA6 /* Spartan-ExtraBold.ttf */; };
 		BA86200C79CD4AE9B2C77D3B /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1040586C2AAD4B24877BEAEE /* OpenSans-BoldItalic.ttf */; };
 		D8BC9177317B4669AD3DA442 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */; };
-		EF07960D8B4A4420AB84C12B /* Spartan Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 095095D0F2544EC297BCE787 /* Spartan Thin.ttf */; };
-		F02E591995714C0D9830175C /* Spartan ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0321BFE072C44DDEABD11EF6 /* Spartan ExtraLight.ttf */; };
+		DD77D891DBD94EEE968F315A /* Spartan-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A502327A5F9E4044AE7EB1AB /* Spartan-Light.ttf */; };
+		E910296290184DDC9B43EDFD /* Spartan-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBC55A4C9844EAAB127CF3C /* Spartan-Black.ttf */; };
 		F2F31934B35F48EAA96BD8A1 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */; };
+		F34228B63F014887B999D9D6 /* Spartan-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 674EF2322CAD4612AA7C4C4B /* Spartan-ExtraLight.ttf */; };
+		FDBCF5201C634653A6F27F99 /* Spartan-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF8A195330684C75BC15714C /* Spartan-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +65,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Blitz/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Blitz/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Blitz/main.m; sourceTree = "<group>"; };
+		16B3F5C2009B446190DDF16D /* Spartan-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-SemiBold.ttf"; path = "../assets/fonts/Spartan-SemiBold.ttf"; sourceTree = "<group>"; };
 		1D5F402F271EFFBD0018EE3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D5F403127200A250018EE3B /* Blitz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Blitz.entitlements; path = Blitz/Blitz.entitlements; sourceTree = "<group>"; };
 		1D63A4535E5936C7DD084235 /* Pods-Blitz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.release.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,19 +78,27 @@
 		2EFDA3DF26D3B33A004704D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		41D48A8DA7EE422CBE9BC05A /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		64E4B9902C79420388C8B8F8 /* Spartan Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan Light.ttf"; path = "../assets/fonts/Spartan Light.ttf"; sourceTree = "<group>"; };
+		674EF2322CAD4612AA7C4C4B /* Spartan-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-ExtraLight.ttf"; path = "../assets/fonts/Spartan-ExtraLight.ttf"; sourceTree = "<group>"; };
 		6A4085A6246F42A9A5F47107 /* Spartan ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan ExtraBold.ttf"; path = "../assets/fonts/Spartan ExtraBold.ttf"; sourceTree = "<group>"; };
 		7E2B37CF468D4592ABCE4D0D /* Spartan Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan Bold.ttf"; path = "../assets/fonts/Spartan Bold.ttf"; sourceTree = "<group>"; };
 		7EF948DABD879317199DC714 /* Pods-Blitz-BlitzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.debug.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Blitz/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84D729B862804EC89D323708 /* Spartan-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-Regular.ttf"; path = "../assets/fonts/Spartan-Regular.ttf"; sourceTree = "<group>"; };
 		97C2D7FC0531408F8022476D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		99DFEEC8F4724535B662291F /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		A502327A5F9E4044AE7EB1AB /* Spartan-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-Light.ttf"; path = "../assets/fonts/Spartan-Light.ttf"; sourceTree = "<group>"; };
 		AF55302066D63D0FFE32F5E8 /* Pods-Blitz-BlitzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz-BlitzTests.release.xcconfig"; path = "Target Support Files/Pods-Blitz-BlitzTests/Pods-Blitz-BlitzTests.release.xcconfig"; sourceTree = "<group>"; };
+		AF8A195330684C75BC15714C /* Spartan-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-Medium.ttf"; path = "../assets/fonts/Spartan-Medium.ttf"; sourceTree = "<group>"; };
+		B090361D43C7497FB2BEB660 /* Spartan-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-Bold.ttf"; path = "../assets/fonts/Spartan-Bold.ttf"; sourceTree = "<group>"; };
+		BBBC55A4C9844EAAB127CF3C /* Spartan-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-Black.ttf"; path = "../assets/fonts/Spartan-Black.ttf"; sourceTree = "<group>"; };
 		C63044FE57AF4F96B4EEF785 /* Spartan Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan Black.ttf"; path = "../assets/fonts/Spartan Black.ttf"; sourceTree = "<group>"; };
+		C9246C5F3B4647E08FD02834 /* Spartan-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-Thin.ttf"; path = "../assets/fonts/Spartan-Thin.ttf"; sourceTree = "<group>"; };
 		CA910A57038740C9A19B9A86 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		CB6A553D6685416A85E00B60 /* Spartan SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan SemiBold.ttf"; path = "../assets/fonts/Spartan SemiBold.ttf"; sourceTree = "<group>"; };
 		E5C966411EA729F4A2635016 /* Pods-Blitz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blitz.debug.xcconfig"; path = "Target Support Files/Pods-Blitz/Pods-Blitz.debug.xcconfig"; sourceTree = "<group>"; };
 		E76FF67EC80D4E0D8AE82E1D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F5CCCEDE9B634996ADF01EA6 /* Spartan-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Spartan-ExtraBold.ttf"; path = "../assets/fonts/Spartan-ExtraBold.ttf"; sourceTree = "<group>"; };
 		FF614DAABEF4489AA6E86CAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../node_modules/@stryberventures/stryber-react-native-ui-components/src/static/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +232,15 @@
 				050DF63FEC2B4653A12C6722 /* Spartan Regular.ttf */,
 				CB6A553D6685416A85E00B60 /* Spartan SemiBold.ttf */,
 				095095D0F2544EC297BCE787 /* Spartan Thin.ttf */,
+				BBBC55A4C9844EAAB127CF3C /* Spartan-Black.ttf */,
+				B090361D43C7497FB2BEB660 /* Spartan-Bold.ttf */,
+				F5CCCEDE9B634996ADF01EA6 /* Spartan-ExtraBold.ttf */,
+				674EF2322CAD4612AA7C4C4B /* Spartan-ExtraLight.ttf */,
+				A502327A5F9E4044AE7EB1AB /* Spartan-Light.ttf */,
+				AF8A195330684C75BC15714C /* Spartan-Medium.ttf */,
+				84D729B862804EC89D323708 /* Spartan-Regular.ttf */,
+				16B3F5C2009B446190DDF16D /* Spartan-SemiBold.ttf */,
+				C9246C5F3B4647E08FD02834 /* Spartan-Thin.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -337,15 +355,15 @@
 				2FD5FC05D8DD4D37A57797E1 /* OpenSans-Regular.ttf in Resources */,
 				9CA31DA656BC475EBE2E9421 /* OpenSans-SemiBold.ttf in Resources */,
 				0453B524693E4904BFD79FC7 /* OpenSans-SemiBoldItalic.ttf in Resources */,
-				982D7F0219A6475783AD95CD /* Spartan Black.ttf in Resources */,
-				369EE945CC09479BB25F97F4 /* Spartan Bold.ttf in Resources */,
-				7811450B6FF24C74B4652200 /* Spartan ExtraBold.ttf in Resources */,
-				F02E591995714C0D9830175C /* Spartan ExtraLight.ttf in Resources */,
-				07FD75A584FB42BF9BDE2BEA /* Spartan Light.ttf in Resources */,
-				5BD6CB3D48F846F98B3466C5 /* Spartan Medium.ttf in Resources */,
-				B2F9F0B9C4A048C99372BBA4 /* Spartan Regular.ttf in Resources */,
-				7DAB2B2EE7D84CFCBF62BB4F /* Spartan SemiBold.ttf in Resources */,
-				EF07960D8B4A4420AB84C12B /* Spartan Thin.ttf in Resources */,
+				E910296290184DDC9B43EDFD /* Spartan-Black.ttf in Resources */,
+				52F7059233FB454EB1FC1AF9 /* Spartan-Bold.ttf in Resources */,
+				A16F4099EC294EA48A1077C6 /* Spartan-ExtraBold.ttf in Resources */,
+				F34228B63F014887B999D9D6 /* Spartan-ExtraLight.ttf in Resources */,
+				DD77D891DBD94EEE968F315A /* Spartan-Light.ttf in Resources */,
+				FDBCF5201C634653A6F27F99 /* Spartan-Medium.ttf in Resources */,
+				18DA59689CF54DFFA2030E25 /* Spartan-Regular.ttf in Resources */,
+				80EC0BF3BA7743DC87844DD6 /* Spartan-SemiBold.ttf in Resources */,
+				1E0F6DC486354252894AC218 /* Spartan-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
