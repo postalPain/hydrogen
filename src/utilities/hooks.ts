@@ -106,3 +106,14 @@ export const useAppSetup = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
+
+export const useEffectUpdate = (callback: () => void) => {
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    callback();
+  }, [callback]);
+};

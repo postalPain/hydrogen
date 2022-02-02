@@ -16,7 +16,7 @@ export default {
   resetPassword: 'api/v1/mail-reset-password',
   updatePassword: 'api/v1/reset-password',
   closestWarehouse: 'api/v1/warehouses/closest',
-  search: (searchText: string) => `api/v1/inventories?perPage=51&search=${searchText}`,
+  search: (searchText: string, page: number) => `api/v1/inventories?perPage=20&search=${searchText}&page=${page}`,
   warehouseWorkingHours: (id: string) => `api/v1/warehouses/${id}/schedule`,
   updateFCMToken: 'api/v1/user/device-key',
 };
