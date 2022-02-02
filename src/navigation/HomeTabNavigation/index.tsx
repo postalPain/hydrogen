@@ -5,7 +5,12 @@ import Home from 'screens/Home';
 import Products from 'screens/Products';
 import { TabWrapper } from 'components';
 
-const Stack = createStackNavigator();
+export type HomeTabNavigationParamList = {
+  [Routes.HomeScreen]: undefined;
+  [Routes.ProductsScreen]: { categoryId: string } | undefined;
+};
+
+const Stack = createStackNavigator<HomeTabNavigationParamList>();
 const WrappedHome = TabWrapper(Home);
 const WrappedProducts = TabWrapper(Products);
 

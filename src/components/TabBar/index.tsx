@@ -11,7 +11,7 @@ import Routes from 'navigation/Routes';
 import useStyles from './styles';
 
 interface ITabBar {
-  theme: ProjectThemeType;
+  theme?: ProjectThemeType;
 }
 const TabBar: React.FC<BottomTabBarProps & ITabBar> = ({
   state,

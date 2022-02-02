@@ -11,14 +11,7 @@ import i18n from 'i18n';
 import { DismissKeyboard } from 'components';
 
 interface IConfirmAddressProps {
-  theme: ProjectThemeType;
-  route: {
-    params: {
-      address: string;
-      geoCoords: { latitude: number; longitude: number; };
-      changeAddress?: boolean;
-    }
-  };
+  theme?: ProjectThemeType;
 }
 
 export enum AddressType {
@@ -27,7 +20,7 @@ export enum AddressType {
   Office = 'Office',
 }
 
-const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
+const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme }) => {
   const {
     styles,
     address,
@@ -41,7 +34,7 @@ const ConfirmAddress: React.FC<IConfirmAddressProps> = ({ theme, route }) => {
     handleSubmit,
     goBack,
     errorMessage,
-  } = useConfirmAddress(theme, route);
+  } = useConfirmAddress(theme);
 
   return (
     <DismissKeyboard>

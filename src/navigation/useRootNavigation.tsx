@@ -7,7 +7,6 @@ import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 import DrawerNavigation from 'navigation/DrowerNavigation';
 import Login from 'screens/Login';
-import TabNavigation from 'navigation/TabNavigation';
 import Checkout from 'screens/Checkout';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import SignUp from 'screens/SignUp';
@@ -90,14 +89,6 @@ export const useRootNavigation = () => {
       <Stack.Screen
         name={Routes.DrawerNavigation}
         component={DrawerNavigation}
-        options={{
-          gestureEnabled: false,
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={Routes.TabNavigation}
-        component={TabNavigation}
         options={{
           gestureEnabled: false,
           headerShown: false,

@@ -17,8 +17,9 @@ import {
 } from './NavigationUtilities';
 import { useAppSetup, useAppUpdateModal } from 'utilities/hooks';
 import { useRootNavigation } from 'navigation/useRootNavigation';
+import { RootStackParamList } from 'navigation/types';
 
-export const Stack = createStackNavigator();
+export const Stack = createStackNavigator<RootStackParamList>();
 
 const Navigation = () => {
   const appStatus = useSelector(appStatusSelector);

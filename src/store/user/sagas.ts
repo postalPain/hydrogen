@@ -224,6 +224,10 @@ function* createOrderWorker(action): SagaIterator {
     yield put(setAppLoaderVisibility(false));
     yield call(navigate, Routes.OrderConfirmation);
   } catch (error) {
+    const defaultCard = yield select(defaultCardSelector);
+    if (defaultCard.temporary) {
+      yield put(removeDefaultCard());
+    }
     if (error.errors) {
       if (error.errors.meta) {
         const data = error.errors.meta.inventories;

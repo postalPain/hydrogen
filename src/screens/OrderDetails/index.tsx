@@ -3,17 +3,21 @@ import useStyles from './styles';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import { ProjectThemeType } from 'theme';
-import { IOrder } from 'store/user/reducers/types';
 import { formatAmount, formatCurrency } from 'utilities/helpers';
 import i18n from 'i18n';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from 'navigation/types';
+import { Routes } from 'navigation';
 
 interface IOrderDetailsProps {
   theme?: ProjectThemeType;
-  route: { params: { order: IOrder } };
 }
 
-const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme, route }) => {
+type OrderDetailsRouteProp = RouteProp<RootStackParamList, Routes.OrderDetails>;
+
+const OrderDetails: React.FC<IOrderDetailsProps> = ({ theme }) => {
   const styles = useStyles(theme);
+  const route = useRoute<OrderDetailsRouteProp>();
   const { params: { order } } = route;
   const [date] = order.created_at.split(' ');
   const [year, month, day] = date.split('-');

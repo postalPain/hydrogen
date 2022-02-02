@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { withTheme, Text } from '@stryberventures/stryber-react-native-ui-components';
-import { NavigationContainerRef, StackActions, useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { IDeliveryAddress } from 'store/user/reducers/types';
@@ -26,7 +26,6 @@ import { ProjectThemeType } from 'styles/theme';
 import useStyles from './styles';
 
 interface IHomeProps {
-  navigation: NavigationContainerRef<any>;
   theme: ProjectThemeType;
 }
 
