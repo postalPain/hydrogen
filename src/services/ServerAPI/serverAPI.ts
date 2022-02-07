@@ -89,8 +89,8 @@ export const userAPI = {
   getClosestWarehouse(): Promise<any> {
     return xhr.get(apiUrls.closestWarehouse);
   },
-  search(searchText: string): Promise<any> {
-    return xhr.get(apiUrls.search(searchText));
+  search(searchText: string, page: number): Promise<any> {
+    return xhr.get(apiUrls.search(searchText, page));
   },
   getWarehouseWorkingHours(id: string): Promise<any> {
     return xhr.get(apiUrls.warehouseWorkingHours(id));

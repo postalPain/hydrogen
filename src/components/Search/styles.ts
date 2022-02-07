@@ -38,12 +38,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingHorizontal: 20,
   },
   productWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'stretch',
     paddingTop: theme.spaces.m,
     paddingLeft: theme.spaces.m,
+    paddingBottom: 180,
   },
   resultContainer: {
     marginTop: 20,

@@ -5,6 +5,8 @@ const defaultState: ISearchState = {
   searchResult: null,
   loading: false,
   error: null,
+  lastPage: null,
+  nextPageError: null,
 };
 
 export default function search(state: ISearchState = defaultState, action) {
@@ -22,6 +24,19 @@ export default function search(state: ISearchState = defaultState, action) {
         ...state,
         searchResult: action.payload,
         loading: false,
+        lastPage: action.meta,
+      };
+    }
+    case SearchActionTypes.SEARCH_PRODUCTS_NEXT_PAGE_SUCCESS: {
+      return {
+        ...state,
+        searchResult: [...state.searchResult, ...action.payload],
+      };
+    }
+    case SearchActionTypes.SEARCH_PRODUCTS_NEXT_PAGE_ERROR: {
+      return {
+        ...state,
+        nextPageError: action.payload,
       };
     }
     default:
