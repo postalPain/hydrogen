@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import { CarouselDotElement } from 'components';
 import useStyles from './styles';
+import { openLink } from 'services/inAppBrowser';
 
 
 interface IHomeCarousel {
@@ -16,6 +17,7 @@ const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
   const carouselItems = [
     {
       img: require('../../../assets/images/slide_1.png'),
+      link: 'https://www.getblitz.io/promos/',
     },
     {
       img: require('../../../assets/images/slide_2.png'),
@@ -28,13 +30,24 @@ const HomeCarousel: React.FC<IHomeCarousel> = ({ style = {} }) => {
   const renderItem = ({ item }) => (
     <View style={styles.carouselItem}>
       <View style={styles.imageBannerWrapper}>
-        <Image
-          source={item.img}
-          style={styles.imageBanner}
-        />
+        {
+                      item.link ? (
+                        <TouchableOpacity onPress={() => openLink(item.link)} activeOpacity={0.7}>
+                          <Image
+                            source={item.img}
+                            style={styles.imageBanner}
+                          />
+                        </TouchableOpacity>
+                      )
+                        : (
+                          <Image
+                            source={item.img}
+                            style={styles.imageBanner}
+                          />
+                        )
+                  }
       </View>
     </View>
-
   );
 
   return (
