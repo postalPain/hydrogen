@@ -9,6 +9,11 @@ export const basketProductSelector = (id: string) => (state: RootState) => (
   state.user.basket[id]
 );
 
+export const basketProductsByProductIdsSelector = (ids: string[]) => (state: RootState) => {
+  const basketProducts = Object.values(state.user.basket);
+  return ids.map(productId => basketProducts.find(bProduct => bProduct.product_uuid === productId));
+};
+
 export const basketProductQuantitySelector = (id: string) => (state: RootState) => (
   state.user.basket[id] && state.user.basket[id].basketQuantity || 0
 );

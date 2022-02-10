@@ -30,6 +30,7 @@ import {
   defaultCardSelector,
   deliveryAddressSelector,
   temporaryDeliveryAddressSelector,
+  basketProductsByProductIdsSelector,
 } from 'store/user/selectors';
 import Stripe from 'react-native-stripe-api';
 import { STRIPE_PUBLIC_KEY } from '@env';
@@ -230,7 +231,14 @@ function* createOrderWorker(action): SagaIterator {
     }
     if (error.errors) {
       if (error.errors.meta) {
-        const data = error.errors.meta.inventories;
+        // error_types: 'out_of_stock', 'product_inventory_missing'
+        let data;
+        if (error.errors.meta.error_type === 'out_of_stock') {
+          data = error.errors.meta.inventories;
+        } else {
+          const productUUIDs = error.errors.meta.products.map(item => item.uuid);
+          data = yield select(basketProductsByProductIdsSelector(productUUIDs));
+        }
         yield put(createOrderError(error.message, data));
       } else {
         const errorMessage = Object.values(error.errors.fields).join(' ');
