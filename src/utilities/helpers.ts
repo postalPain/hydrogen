@@ -188,3 +188,9 @@ export const getWorkingHoursMessage = (dateTime: string) => {
 export const isValidFetchedData = (time: number | null) => (
   time ? (Date.now() - time < 1000 * 60 * 5) : false
 );
+
+export const awaitSomeTime = (time: number = 0) => (
+  new Promise((resolve) => {
+    setTimeout(resolve, time);
+  })
+);

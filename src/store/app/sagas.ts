@@ -10,16 +10,22 @@ import SplashScreen from 'react-native-splash-screen';
 import { storageKeys } from 'constants/';
 import { navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
+import { awaitSomeTime } from 'utilities/helpers';
 import { setItem, getItem } from 'services/LocalStorage';
 import { addHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { getUserWorker, updateUserFCMTokenWorker } from '../user/sagas';
+import { getClosestWarehouseWorker } from '../warehouse/sagas';
 import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
 import { appCompleteInit, setBoardingCompleted } from './actions';
 import { AppActionTypes } from './actions/types';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
-import { getClosestWarehouse } from 'store/warehouse/actions';
 
+function* appCompleteInitWorker(): SagaIterator {
+  yield put(appCompleteInit());
+  // give a time to navigator to initialize
+  yield call(awaitSomeTime);
+}
 
 export function* signedAppDataWorker(): SagaIterator {
   try {
@@ -43,14 +49,14 @@ export function* signedAppDataWorker(): SagaIterator {
 function* initAppWorker(): SagaIterator {
   try {
     console.log('App start init...');
-    yield put(getClosestWarehouse());
+    yield call(getClosestWarehouseWorker);
     const boardingCompletedValue = yield call(getItem, storageKeys.boardingCompleted);
     // eslint-disable-next-line no-shadow
     const boardingCompleted = boardingCompletedValue && boardingCompletedValue === 'true';
     yield put(setBoardingCompleted(boardingCompleted));
 
     if (!boardingCompleted) {
-      yield put(appCompleteInit());
+      yield call(appCompleteInitWorker);
       navigate(Routes.Onboard);
       // Hide native splashscreen
       SplashScreen.hide();
@@ -59,7 +65,7 @@ function* initAppWorker(): SagaIterator {
     //
     const token = yield call(getItem, storageKeys.authToken);
     if (!token) {
-      yield put(appCompleteInit());
+      yield call(appCompleteInitWorker);
       navigate(Routes.Login);
       // Hide native splashscreen
       SplashScreen.hide();
@@ -70,7 +76,7 @@ function* initAppWorker(): SagaIterator {
     yield call(addHeader, 'Authorization', `Bearer ${token}`);
     yield call(signedAppDataWorker);
 
-    yield put(appCompleteInit());
+    yield call(appCompleteInitWorker);
     navigate(Routes.HomeTabScreen, {
       screen: Routes.HomeScreen,
     });
