@@ -46,22 +46,6 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   formWrapper: {
     flex: 1,
   },
-  phoneContainer: {
-    marginTop: 5,
-    marginBottom: 0,
-    borderWidth: 1,
-    borderRadius: 5,
-    width: '100%',
-  },
-  phoneInput: {
-    backgroundColor: '#fff',
-    borderRadius: 5,
-  },
-  phoneError: {
-    color: '#EA3546',
-    fontSize: 12,
-    marginTop: 15,
-  },
 });
 
 export default useStyles;

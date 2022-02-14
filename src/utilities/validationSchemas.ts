@@ -5,8 +5,11 @@ import { isDateValid, isMonthValid } from 'utilities/helpers';
 export const SignUpSchema = Yup.object().shape({
   first_name: Yup.string().required(i18n.t('screens.signUp.errors.name')),
   last_name: Yup.string().required(i18n.t('screens.signUp.errors.lastName')),
-  phone: Yup.string().required(i18n.t('screens.signUp.errors.phone')),
   email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
+});
+
+export const SignUpOTPSchema = Yup.object().shape({
+  phone: Yup.string().required(i18n.t('screens.signUp.errors.phone')),
 });
 
 export const CreatePasswordSchema = Yup.object().shape({

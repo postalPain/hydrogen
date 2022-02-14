@@ -3,6 +3,7 @@ enum Routes {
   HomeTabScreen = 'HomeTabScreen',
   MapScreen = 'MapScreen',
   SignUp = 'SignUp',
+  SignUpOTP = 'SignUpOTP',
   CreatePassword = 'CreatePassword',
   TabNavigation = 'TabNavigation',
   ConfirmAddress = 'ConfirmAddress',

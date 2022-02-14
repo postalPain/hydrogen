@@ -10,6 +10,7 @@ import Login from 'screens/Login';
 import Checkout from 'screens/Checkout';
 import ConfirmAddress from 'screens/ConfirmAddress';
 import SignUp from 'screens/SignUp';
+import SignUpOTP from 'screens/SignUpOTP';
 import CreatePassword from 'screens/CreatePassword';
 import Map from 'screens/Map';
 import OrderConfirmation from 'screens/OrderConfirmation';
@@ -100,6 +101,14 @@ export const useRootNavigation = () => {
         options={{
           gestureEnabled: false,
           headerTitle: 'Checkout',
+        }}
+      />
+      <Stack.Screen
+        name={Routes.SignUpOTP}
+        component={SignUpOTP}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.signUp.header'),
         }}
       />
       <Stack.Screen

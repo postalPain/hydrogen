@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useStyles from './styles';
 import {
   View, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform, Dimensions,
 } from 'react-native';
-import PhoneInput from 'react-native-phone-number-input';
 import {
   Input,
   Button,
   withTheme,
-  Text,
 } from '@stryberventures/stryber-react-native-ui-components';
 import { Formik } from 'formik';
 import i18n from 'i18n';
@@ -28,10 +26,9 @@ const { height } = Dimensions.get('window');
 const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
   const styles = useStyles(theme);
   const { navigate } = useNavigation();
-  const [phoneNum, setPhoneNum] = useState('');
 
   const handleSignUp = (userInfo) => {
-    navigate(Routes.CreatePassword, { signupData: { ...userInfo, phone: phoneNum } });
+    navigate(Routes.SignUpOTP, { signupData: { ...userInfo } });
   };
 
   return (
@@ -59,79 +56,53 @@ const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
                   values,
                   errors,
                   submitCount,
-                }) => {
-                  const isPhoneError = submitCount > 0 && errors.phone;
-
-                  return (
-                    <View style={styles.formContainer}>
-                      <View>
-                        <View style={styles.nameContainer}>
-                          <Input
-                            variant="simple"
-                            label={i18n.t('screens.signUp.fields.name')}
-                            value={values.first_name}
-                            onChange={handleChange('first_name')}
-                            error={submitCount > 0 ? errors.first_name : undefined}
-                            style={[styles.nameInput, styles.firstName]}
-                          />
-                          <Input
-                            variant="simple"
-                            label={i18n.t('screens.signUp.fields.lastName')}
-                            value={values.last_name}
-                            onChange={handleChange('last_name')}
-                            error={submitCount > 0 ? errors.last_name : undefined}
-                            style={[styles.nameInput, styles.lastName]}
-                          />
-                        </View>
-                        <View style={styles.input}>
-                          <Text
-                            size={16}
-                            color={isPhoneError ? '#EA3546' : '#4C4C4C'}
-                          >
-                            {i18n.t('screens.signUp.fields.phone')}
-                          </Text>
-                          <PhoneInput
-                            defaultCode="AE"
-                            layout="first"
-                            placeholder="55 205 2776"
-                            onChangeText={handleChange('phone')}
-                            onChangeFormattedText={(val) => setPhoneNum(val)}
-                            containerStyle={[styles.phoneContainer, {
-                              borderColor: isPhoneError ? '#EA3546' : '#ccc',
-                            }]}
-                            textContainerStyle={styles.phoneInput}
-                          />
-                          {submitCount > 0 && (
-                            <Text style={styles.phoneError}>{errors.phone}</Text>
-                          )}
-                        </View>
+                }) => (
+                  <View style={styles.formContainer}>
+                    <View>
+                      <View style={styles.nameContainer}>
                         <Input
                           variant="simple"
-                          label={i18n.t('screens.signUp.fields.email')}
-                          value={values.email}
-                          onChange={handleChange('email')}
-                          error={submitCount > 0 ? errors.email : undefined}
-                          type="email"
-                          style={styles.input}
+                          label={i18n.t('screens.signUp.fields.name')}
+                          value={values.first_name}
+                          onChange={handleChange('first_name')}
+                          error={submitCount > 0 ? errors.first_name : undefined}
+                          style={[styles.nameInput, styles.firstName]}
                         />
-                        <Button
-                          type="link"
-                          style={styles.input}
-                          textStyle={styles.link}
-                          onPress={() => navigate(Routes.Login)}
-                        >
-                          {i18n.t('screens.signUp.loginButton')}
-                        </Button>
+                        <Input
+                          variant="simple"
+                          label={i18n.t('screens.signUp.fields.lastName')}
+                          value={values.last_name}
+                          onChange={handleChange('last_name')}
+                          error={submitCount > 0 ? errors.last_name : undefined}
+                          style={[styles.nameInput, styles.lastName]}
+                        />
                       </View>
+                      <Input
+                        variant="simple"
+                        label={i18n.t('screens.signUp.fields.email')}
+                        value={values.email}
+                        onChange={handleChange('email')}
+                        error={submitCount > 0 ? errors.email : undefined}
+                        type="email"
+                        style={styles.input}
+                      />
                       <Button
-                        style={styles.button}
-                        onPress={handleSubmit}
+                        type="link"
+                        style={styles.input}
+                        textStyle={styles.link}
+                        onPress={() => navigate(Routes.Login)}
                       >
-                        {i18n.t('screens.signUp.button')}
+                        {i18n.t('screens.signUp.loginButton')}
                       </Button>
                     </View>
-                  );
-                }}
+                    <Button
+                      style={styles.button}
+                      onPress={handleSubmit}
+                    >
+                      {i18n.t('screens.signUp.button')}
+                    </Button>
+                  </View>
+                )}
               </Formik>
             </View>
           </ScrollView>

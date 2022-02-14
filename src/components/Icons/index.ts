@@ -19,3 +19,4 @@ export { default as BigLocationCircle } from './BigLocationCircle';
 export { default as CartIcon } from './Cart';
 export { default as ArrowCircle } from './ArrowCircle';
 export { default as LoaderIcon } from './Loader';
+export { default as CommentCheckIcon } from './CommentCheck';
