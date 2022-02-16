@@ -11,7 +11,7 @@ import {
 } from '@stryberventures/stryber-react-native-ui-components';
 import { Formik } from 'formik';
 import i18n from 'i18n';
-import { SignUpSchema } from 'utilities/validationSchemas';
+import { SignUpOTPSchema } from 'utilities/validationSchemas';
 import { ProjectThemeType } from 'theme';
 import { Routes } from 'navigation';
 import { useNavigation } from '@react-navigation/native';
@@ -19,20 +19,23 @@ import { DismissKeyboard } from 'components';
 import { CommentCheckIcon } from 'components/Icons';
 import { HEADER_HEIGHT } from 'constants/';
 
-interface ISignUpProps {
+interface SignUpOTPProps {
   theme: ProjectThemeType;
   route: any;
 }
 
 const { height } = Dimensions.get('window');
 
-const SignUp: React.FC<ISignUpProps> = ({ theme, route }) => {
+const SignUpOTP: React.FC<SignUpOTPProps> = ({ theme, route }) => {
   const styles = useStyles(theme);
   const { navigate } = useNavigation();
   const [phoneNum, setPhoneNum] = useState('');
 
   const handleOTPSubmit = () => {
-    navigate(Routes.CreatePassword, { signupData: { ...route.params, phone: phoneNum } });
+    // @ts-ignore
+    navigate(Routes.SignUpOTPVerification, {
+      signupData: { ...route.params.signupData, phone: phoneNum },
+    });
   };
 
   return (
@@ -60,7 +63,7 @@ const SignUp: React.FC<ISignUpProps> = ({ theme, route }) => {
                   phone: '',
                 }}
                 onSubmit={handleOTPSubmit}
-                validationSchema={SignUpSchema}
+                validationSchema={SignUpOTPSchema}
               >
                 {({
                   handleChange,
@@ -114,4 +117,4 @@ const SignUp: React.FC<ISignUpProps> = ({ theme, route }) => {
   );
 };
 
-export default withTheme(SignUp);
+export default withTheme(SignUpOTP);

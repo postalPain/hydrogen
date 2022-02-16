@@ -117,6 +117,12 @@ export default {
       },
       button: 'Request code',
     },
+    signUpOTPVerification: {
+      header: 'Sign up',
+      pageHeader: 'OTP Verification',
+      pageSubHeader: 'We have sent the code verification to your mobile number',
+      button: 'Submit',
+    },
     map: {
       header: 'Pin your location',
       search: 'Search',

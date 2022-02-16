@@ -4,6 +4,7 @@ enum Routes {
   MapScreen = 'MapScreen',
   SignUp = 'SignUp',
   SignUpOTP = 'SignUpOTP',
+  SignUpOTPVerification = 'SignUpOTPVerification',
   CreatePassword = 'CreatePassword',
   TabNavigation = 'TabNavigation',
   ConfirmAddress = 'ConfirmAddress',

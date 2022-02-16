@@ -45,7 +45,7 @@ const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
             <View onStartShouldSetResponder={() => true} style={styles.formWrapper}>
               <Formik
                 initialValues={{
-                  first_name: '', last_name: '', phone: '', email: '',
+                  first_name: '', last_name: '', email: '',
                 }}
                 onSubmit={handleSignUp}
                 validationSchema={SignUpSchema}
