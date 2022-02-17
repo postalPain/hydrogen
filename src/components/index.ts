@@ -30,3 +30,4 @@ export { default as WhatsAppLink } from './WhatsAppLink';
 export { default as ModalHandler } from './ModalHandler';
 // @ts-ignore
 export { default as NotificationHandler } from './NotificationHandler';
+export { default as OTPInput } from './OTPInput';
