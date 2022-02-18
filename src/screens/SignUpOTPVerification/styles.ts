@@ -20,8 +20,9 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginBottom: 20,
   },
   formContainer: {
-    justifyContent: 'space-between',
     flex: 1,
+    display: 'flex',
+    alignItems: 'center',
   },
   link: {
     color: theme.colors.primary,
@@ -29,24 +30,8 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: 14,
     textDecorationLine: 'underline',
   },
-  formWrapper: {
+  content: {
     flex: 1,
-  },
-  phoneContainer: {
-    marginTop: 5,
-    marginBottom: 0,
-    borderWidth: 1,
-    borderRadius: 5,
-    width: '100%',
-  },
-  phoneInput: {
-    backgroundColor: '#fff',
-    borderRadius: 5,
-  },
-  phoneError: {
-    color: '#EA3546',
-    fontSize: 12,
-    marginTop: 15,
   },
   pageIconContainer: {
     marginTop: 70,
@@ -79,6 +64,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     color: theme.colors.text,
     fontSize: 12,
     lineHeight: 21,
+  },
+  otpInput: {
+    marginTop: 30,
+  },
+  resendButton: {
+    marginTop: 27,
   },
 });
 

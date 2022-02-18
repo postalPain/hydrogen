@@ -120,7 +120,7 @@ export default {
     signUpOTPVerification: {
       header: 'Sign up',
       pageHeader: 'OTP Verification',
-      pageSubHeader: 'We have sent the code verification to your mobile number',
+      pageSubHeader: 'We have sent the code verification \nto your mobile number',
       button: 'Submit',
     },
     map: {
@@ -359,6 +359,10 @@ export default {
       boxText: 'Exciting\nNews',
       header: 'Coming soon',
       description: 'We havent’t developed this feature yet. But it’s on the top of our list!',
+    },
+    resendButton: {
+      countDownText: 'Resend code %{time}',
+      buttonText: 'Resend code',
     },
   },
 };
