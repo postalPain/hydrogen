@@ -122,6 +122,13 @@ export default {
       pageHeader: 'OTP Verification',
       pageSubHeader: 'We have sent the code verification \nto your mobile number',
       button: 'Submit',
+      successMessage: 'Code accepted!',
+    },
+    signUpSuccess: {
+      header: 'Sign up',
+      button: 'Continue',
+      pageHeader: 'Hey %{name}',
+      pageSubHeader: 'Your Blitz account has been \ncreated successfully!',
     },
     map: {
       header: 'Pin your location',

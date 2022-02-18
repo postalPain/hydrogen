@@ -12,6 +12,7 @@ import ConfirmAddress from 'screens/ConfirmAddress';
 import SignUp from 'screens/SignUp';
 import SignUpOTP from 'screens/SignUpOTP';
 import SignUpOTPVerification from 'screens/SignUpOTPVerification';
+import SignUpSuccess from 'screens/SignUpSuccess';
 import CreatePassword from 'screens/CreatePassword';
 import Map from 'screens/Map';
 import OrderConfirmation from 'screens/OrderConfirmation';
@@ -134,6 +135,14 @@ export const useRootNavigation = () => {
         options={{
           gestureEnabled: false,
           headerTitle: i18n.t('screens.signUp.header2'),
+        }}
+      />
+      <Stack.Screen
+        name={Routes.SignUpSuccess}
+        component={SignUpSuccess}
+        options={{
+          gestureEnabled: false,
+          headerTitle: i18n.t('screens.signUpSuccess.header'),
         }}
       />
       <Stack.Screen

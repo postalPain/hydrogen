@@ -9,29 +9,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     ...theme.components.safeArea,
     backgroundColor: theme.colors.white,
   },
-  container: {
-    paddingHorizontal: 27,
-  },
-  input: {
-    marginTop: 54,
-  },
   button: {
     borderRadius: 15,
     marginBottom: 20,
   },
-  formContainer: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-  },
-  link: {
-    color: theme.colors.primary,
-    fontWeight: '600',
-    fontSize: 14,
-    textDecorationLine: 'underline',
-  },
   content: {
+    justifyContent: 'space-between',
     flex: 1,
+    paddingHorizontal: 27,
   },
   pageIconContainer: {
     marginTop: 70,
@@ -39,11 +24,6 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginRight: 'auto',
     width: 71,
     height: 71,
-    borderRadius: 35.5,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#0C5268',
   },
   textContainer: {
     display: 'flex',
@@ -64,26 +44,6 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     color: theme.colors.text,
     fontSize: 12,
     lineHeight: 21,
-  },
-  otpInput: {
-    marginTop: 30,
-  },
-  resendButton: {
-    marginTop: 27,
-  },
-  messageBox: {},
-  successMessage: {
-    textAlign: 'center',
-    ...theme.fonts.openSans600 as any,
-    fontSize: 14,
-    lineHeight: 19,
-    color: '#b4bc48',
-  },
-  errorMessage: {
-    textAlign: 'center',
-    fontSize: 14,
-    lineHeight: 19,
-    color: theme.colors.red,
   },
 });
 
