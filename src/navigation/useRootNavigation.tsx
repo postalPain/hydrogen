@@ -143,6 +143,8 @@ export const useRootNavigation = () => {
         options={{
           gestureEnabled: false,
           headerTitle: i18n.t('screens.signUpSuccess.header'),
+          // @ts-ignore
+          hideBackButton: true,
         }}
       />
       <Stack.Screen
