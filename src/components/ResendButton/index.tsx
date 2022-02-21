@@ -22,7 +22,7 @@ interface IResendButtonProps {
 const ResendButton: React.FC<IResendButtonProps> = ({
   theme,
   style,
-  time = 10000,
+  time = 30000,
   activeInitially = false,
   onPress,
 }) => {

@@ -304,7 +304,7 @@ function* requestPhoneVerificationWorker(action): SagaIterator {
     if (error.errors?.fields?.phone) {
       errorMessage = Object.values(error.errors.fields.phone).join(' ');
     }
-    yield put(requestPhoneVerificationError(errorMessage));
+    yield put(requestPhoneVerificationError(errorMessage || i18n.t('errors.something_went_wrong')));
   }
 }
 
@@ -313,7 +313,7 @@ function* verifyPhoneWorker(action): SagaIterator {
     yield call(userAPI.verifyPhone, action.payload);
     yield put(verifyPhoneSuccess());
   } catch (error) {
-    yield put(verifyPhoneError(error.message));
+    yield put(verifyPhoneError(error.message || i18n.t('errors.something_went_wrong')));
   }
 }
 
