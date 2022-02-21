@@ -28,10 +28,12 @@ interface IUserState {
   }
   requestPhoneVerification: {
     loading: boolean;
+    data: string | null;
     errorMessage: string | null;
   },
   phoneVerification: {
     loading: boolean;
+    data: string | null;
     errorMessage: string | null;
   }
 }
@@ -60,10 +62,12 @@ const defaultState: IUserState = {
   },
   requestPhoneVerification: {
     loading: false,
+    data: null,
     errorMessage: null,
   },
   phoneVerification: {
     loading: false,
+    data: null,
     errorMessage: null,
   },
 };
@@ -295,6 +299,7 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         ...state,
         requestPhoneVerification: {
           loading: true,
+          data: null,
           errorMessage: '',
         },
       };
@@ -304,6 +309,7 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         ...state,
         requestPhoneVerification: {
           loading: false,
+          data: 'ok',
           errorMessage: '',
         },
       };
@@ -312,8 +318,19 @@ export default function user(state: IUserState = defaultState, action): IUserSta
       return {
         ...state,
         requestPhoneVerification: {
+          data: null,
           loading: false,
           errorMessage: action.payload,
+        },
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION_CLEAR: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          data: null,
+          loading: false,
+          errorMessage: '',
         },
       };
     }
@@ -321,6 +338,7 @@ export default function user(state: IUserState = defaultState, action): IUserSta
       return {
         ...state,
         phoneVerification: {
+          data: null,
           loading: true,
           errorMessage: '',
         },
@@ -330,6 +348,7 @@ export default function user(state: IUserState = defaultState, action): IUserSta
       return {
         ...state,
         phoneVerification: {
+          data: 'ok',
           loading: false,
           errorMessage: '',
         },
@@ -339,8 +358,19 @@ export default function user(state: IUserState = defaultState, action): IUserSta
       return {
         ...state,
         phoneVerification: {
+          data: null,
           loading: false,
           errorMessage: action.payload,
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE_CLEAR: {
+      return {
+        ...state,
+        phoneVerification: {
+          data: null,
+          loading: false,
+          errorMessage: '',
         },
       };
     }

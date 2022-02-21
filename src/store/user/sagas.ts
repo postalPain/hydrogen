@@ -299,9 +299,12 @@ function* requestPhoneVerificationWorker(action): SagaIterator {
   try {
     yield call(userAPI.requestPhoneVerification, action.payload);
     yield put(requestPhoneVerificationSuccess());
-    // TODO switch to forward screen
   } catch (error) {
-    yield put(requestPhoneVerificationError(error.message));
+    let errorMessage = error.message;
+    if (error.errors?.fields?.phone) {
+      errorMessage = Object.values(error.errors.fields.phone).join(' ');
+    }
+    yield put(requestPhoneVerificationError(errorMessage));
   }
 }
 
@@ -309,7 +312,6 @@ function* verifyPhoneWorker(action): SagaIterator {
   try {
     yield call(userAPI.verifyPhone, action.payload);
     yield put(verifyPhoneSuccess());
-    // TODO switch to forward screen
   } catch (error) {
     yield put(verifyPhoneError(error.message));
   }

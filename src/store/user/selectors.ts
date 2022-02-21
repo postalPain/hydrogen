@@ -47,6 +47,18 @@ export const userLoadingSelector = (state: RootState) => state.user.loading;
 export const requestPhoneVerificationLoadingSelector = () => (state: RootState) => (
   state.user.requestPhoneVerification.loading
 );
+export const requestPhoneVerificationErrorSelector = () => (state: RootState) => (
+  state.user.requestPhoneVerification.errorMessage
+);
+export const requestPhoneVerificationDataSelector = () => (state: RootState) => (
+  state.user.requestPhoneVerification.data
+);
 export const phoneVerificationLoadingSelector = () => (state: RootState) => (
   state.user.phoneVerification.loading
+);
+export const phoneVerificationErrorSelector = () => (state: RootState) => (
+  state.user.phoneVerification.errorMessage
+);
+export const phoneVerificationDataSelector = () => (state: RootState) => (
+  state.user.phoneVerification.data
 );

@@ -23,6 +23,7 @@ export { default as CardVariant } from './CardVariant';
 export { default as Search } from './Search';
 export { default as TabMenu } from './TabMenu';
 export { default as AppLoadingScreen } from './AppLoadingScreen';
+export { default as LoadingScreen } from './LoadingScreen';
 export { default as Loader } from './Loader';
 export { default as LocationInput } from './LocationInput';
 export { default as ModalProvider } from './ModalProvider';
