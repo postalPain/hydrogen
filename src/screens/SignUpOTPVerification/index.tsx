@@ -71,6 +71,7 @@ const SignUpOTPVerification: React.FC<ISignUpOTPVerificationProps> = ({ theme, r
       phone: route.params.signupData.phone,
       code: otpCode,
     }));
+    // @ts-ignore
     otpInputRef.current.clear();
   };
   const onOTPFilled = (otp) => {

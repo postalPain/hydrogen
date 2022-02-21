@@ -181,7 +181,7 @@ function* signUpWorker(action): SagaIterator {
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
     yield call(trackEvent, TrackingEvent.RegistrationCompleted);
-    navigate(Routes.Checkout);
+    navigate(Routes.SignUpSuccess);
   } catch (error) {
     yield put(setError(i18n.t('errors.something_went_wrong')));
   }
