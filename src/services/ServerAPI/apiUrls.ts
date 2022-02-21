@@ -18,4 +18,6 @@ export default {
   search: (searchText: string, page: number) => `api/v1/inventories?perPage=20&search=${searchText}&page=${page}`,
   warehouseWorkingHours: (id: string) => `api/v1/warehouses/${id}/schedule`,
   updateFCMToken: 'api/v1/user/device-key',
+  requestPhoneVerification: 'api/v1/init-verification',
+  verifyPhone: 'api/v1/verify',
 };

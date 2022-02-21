@@ -26,6 +26,14 @@ interface IUserState {
     data: TPromoCode | null;
     errorMessage: string | null;
   }
+  requestPhoneVerification: {
+    loading: boolean;
+    errorMessage: string | null;
+  },
+  phoneVerification: {
+    loading: boolean;
+    errorMessage: string | null;
+  }
 }
 
 const defaultState: IUserState = {
@@ -48,6 +56,14 @@ const defaultState: IUserState = {
   promoCode: {
     loading: false,
     data: null,
+    errorMessage: null,
+  },
+  requestPhoneVerification: {
+    loading: false,
+    errorMessage: null,
+  },
+  phoneVerification: {
+    loading: false,
     errorMessage: null,
   },
 };
@@ -272,6 +288,60 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         ...state,
         loading: true,
         errorMessage: '',
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          loading: true,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION_SUCCESS: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          loading: false,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION_ERROR: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          loading: false,
+          errorMessage: action.payload,
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE: {
+      return {
+        ...state,
+        phoneVerification: {
+          loading: true,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE_SUCCESS: {
+      return {
+        ...state,
+        phoneVerification: {
+          loading: false,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE_ERROR: {
+      return {
+        ...state,
+        phoneVerification: {
+          loading: false,
+          errorMessage: action.payload,
+        },
       };
     }
     default:
