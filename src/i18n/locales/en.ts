@@ -94,7 +94,9 @@ export default {
       },
       errors: {
         name: 'Please enter your first name',
+        smallName: 'Name must be at least 3 characters',
         lastName: 'Please enter your last name',
+        smallLastName: 'Last name must be at least 3 characters',
         email: 'Please enter an email',
         email2: 'Please check your email address and try again',
         password: 'Please enter a password',
