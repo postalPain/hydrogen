@@ -111,9 +111,6 @@ export default {
       header: 'Sign up',
       pageHeader: 'OTP Verification',
       pageSubHeader: 'We will send you a One Time \nPassword on this mobile number',
-      fields: {
-        phone: 'Mobile number',
-      },
       errors: {
         phone: 'Please enter a mobile number',
       },

@@ -102,12 +102,6 @@ const SignUpOTP: React.FC<SignUpOTPProps> = ({ theme, route }) => {
                       <View style={styles.formContainer}>
                         <View>
                           <View style={styles.input}>
-                            <Text
-                              size={16}
-                              color={isPhoneError ? '#EA3546' : '#4C4C4C'}
-                            >
-                              {i18n.t('screens.signUpOTP.fields.phone')}
-                            </Text>
                             <PhoneInput
                               defaultCode="AE"
                               layout="first"
