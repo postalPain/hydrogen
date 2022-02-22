@@ -189,6 +189,12 @@ export const isValidFetchedData = (time: number | null) => (
   time ? (Date.now() - time < 1000 * 60 * 5) : false
 );
 
+export const awaitSomeTime = (time: number = 0) => (
+  new Promise((resolve) => {
+    setTimeout(resolve, time);
+  })
+);
+
 export const formatAwaitTime = (t: number) => {
   const time = t / 1000;
   const minutes = Math.floor(time / 60);

@@ -8,7 +8,7 @@ import { userAPI } from 'services/ServerAPI/serverAPI';
 import { WarehouseActionTypes } from 'store/warehouse/actions/types';
 import { getClosestWarehouseError, getClosestWarehouseSuccess } from 'store/warehouse/actions';
 
-function* getClosestWarehouseWorker(): SagaIterator {
+export function* getClosestWarehouseWorker(): SagaIterator {
   try {
     const { data: { data } } = yield call(userAPI.getClosestWarehouse);
     yield put(getClosestWarehouseSuccess(data));
