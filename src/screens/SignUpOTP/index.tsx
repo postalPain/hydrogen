@@ -9,13 +9,14 @@ import {
   withTheme,
   Text,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 
 import i18n from 'i18n';
 import { HEADER_HEIGHT } from 'constants/';
 import { SignUpOTPSchema } from 'utilities/validationSchemas';
 import { ProjectThemeType } from 'theme';
+import { RootStackParamList } from 'navigation/types';
 import { Routes } from 'navigation';
 import {
   requestPhoneVerificationClear,
@@ -32,7 +33,7 @@ import useStyles from './styles';
 
 interface SignUpOTPProps {
   theme: ProjectThemeType;
-  route: any;
+  route: RouteProp<RootStackParamList, Routes.SignUpOTP>;
 }
 
 const { height } = Dimensions.get('window');
@@ -48,7 +49,6 @@ const SignUpOTP: React.FC<SignUpOTPProps> = ({ theme, route }) => {
 
   useEffect(() => {
     if (data) {
-      // @ts-ignore
       navigate(Routes.SignUpOTPVerification, {
         signupData: { ...route.params.signupData, phone: phoneNum },
       });

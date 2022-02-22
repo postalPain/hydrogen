@@ -8,10 +8,11 @@ import {
   withTheme,
   Text,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
+import { RootStackParamList } from 'navigation/types';
 import { Routes } from 'navigation';
 import {
   verifyPhone,
@@ -38,7 +39,7 @@ import useStyles from './styles';
 
 interface ISignUpOTPVerificationProps {
   theme: ProjectThemeType;
-  route: any;
+  route: RouteProp<RootStackParamList, Routes.SignUpOTPVerification>;
 }
 
 const { height } = Dimensions.get('window');
@@ -61,7 +62,6 @@ const SignUpOTPVerification: React.FC<ISignUpOTPVerificationProps> = ({ theme, r
     if (data) {
       dispatch(verifyPhoneClear());
       dispatch(requestPhoneVerificationClear());
-      // @ts-ignore
       navigate(Routes.CreatePassword, { signupData: { ...route.params.signupData } });
     }
   }, [data]);

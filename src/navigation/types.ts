@@ -3,10 +3,28 @@ import { IOrder } from 'store/user/reducers/types';
 import Routes from 'navigation/Routes';
 import { NavigatorScreenParams } from '@react-navigation/native';
 
+type TSignUpData = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  password: string;
+  password_confirmation: string;
+};
+
 export type RootStackParamList = {
   [Routes.MapScreen]: { changeAddress: boolean } | undefined;
   [Routes.SignUp]: undefined;
-  [Routes.CreatePassword]: undefined;
+  [Routes.SignUpOTP]: {
+    signupData: TSignUpData;
+  };
+  [Routes.SignUpOTPVerification]: {
+    signupData: TSignUpData;
+  };
+  [Routes.SignUpSuccess]: undefined;
+  [Routes.CreatePassword]: {
+    signupData: TSignUpData;
+  };
   [Routes.ConfirmAddress]: {
     address: string;
     geoCoords: { latitude: number; longitude: number; };
