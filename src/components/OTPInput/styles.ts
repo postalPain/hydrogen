@@ -15,7 +15,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: theme.sizes.radius,
     textAlign: 'center',
-    ...theme.fonts.spartan500 as any,
+    ...theme.fonts.spartan500,
     fontSize: 19,
   },
 });

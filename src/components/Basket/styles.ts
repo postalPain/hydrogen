@@ -11,7 +11,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginTop: theme.spaces.xs,
     marginBottom: theme.spaces.m,
     paddingHorizontal: theme.spaces.xxl2,
-    ...theme.fonts.spartan700 as any,
+    ...theme.fonts.spartan700,
     fontSize: theme.fontSizes.headline,
     lineHeight: 32,
     fontWeight: '700',
@@ -72,12 +72,12 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     flex: 1,
   },
   inventoryName: {
-    ...theme.fonts.spartan700 as any,
+    ...theme.fonts.spartan700,
     fontSize: theme.fontSizes.small,
     color: theme.colors.text,
   },
   inventoryText: {
-    ...theme.fonts.spartan400 as any,
+    ...theme.fonts.spartan400,
     lineHeight: 20,
     fontSize: theme.fontSizes.small,
     color: theme.colors.text,
@@ -87,7 +87,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   priceText: {
     marginTop: 2,
-    ...theme.fonts.spartan700 as any,
+    ...theme.fonts.spartan700,
     fontSize: theme.fontSizes.body,
     color: theme.colors.text,
   },
@@ -114,13 +114,13 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     width: 145,
   },
   textSmall: {
-    ...theme.fonts.spartan400 as any,
+    ...theme.fonts.spartan400,
     fontSize: theme.fontSizes.captionSmall,
     color: theme.colors.text,
   },
   totalPrice: {
     marginTop: 2,
-    ...theme.fonts.spartan700 as any,
+    ...theme.fonts.spartan700,
     fontSize: theme.fontSizes.h3,
     color: theme.colors.text,
     lineHeight: 30,
@@ -129,10 +129,10 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     marginVertical: 0,
   },
   buttonTextCheckout: {
-    ...theme.fonts.openSans600 as any,
+    ...theme.fonts.openSans600,
   },
   emptyList: {
-    ...theme.fonts.spartan500 as any,
+    ...theme.fonts.spartan500,
     fontSize: theme.fontSizes.body,
     color: theme.colors.text,
     marginTop: 20,
@@ -185,7 +185,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     color: theme.colors.text,
   },
   successUpdateText: {
-    ...theme.fonts.spartan400 as any,
+    ...theme.fonts.spartan400,
     fontSize: theme.fontSizes.small,
     lineHeight: 20,
   },
