@@ -39,6 +39,14 @@ export const TYPES = {
   RESET_PASSWORD: 'RESET_PASSWORD',
   UPDATE_PASSWORD: 'UPDATE_PASSWORD',
   REMOVE_DEFAULT_CARD: 'REMOVE_DEFAULT_CARD',
+  REQUEST_PHONE_VERIFICATION: 'REQUEST_PHONE_VERIFICATION',
+  REQUEST_PHONE_VERIFICATION_SUCCESS: 'REQUEST_PHONE_VERIFICATION_SUCCESS',
+  REQUEST_PHONE_VERIFICATION_ERROR: 'REQUEST_PHONE_VERIFICATION_ERROR',
+  REQUEST_PHONE_VERIFICATION_CLEAR: 'REQUEST_PHONE_VERIFICATION_CLEAR',
+  VERIFY_PHONE: 'VERIFY_PHONE',
+  VERIFY_PHONE_SUCCESS: 'VERIFY_PHONE_SUCCESS',
+  VERIFY_PHONE_ERROR: 'VERIFY_PHONE_ERROR',
+  VERIFY_PHONE_CLEAR: 'VERIFY_PHONE_CLEAR',
 };
 
 export type TBasketProduct = TProduct & {
@@ -56,7 +64,13 @@ interface ICheckPromoCodePayload {
   code: string;
   subtotal: number;
 }
-
+interface IRequestPhoneVerificationPayload {
+  phone: string;
+}
+interface IVerifyPhonePayload {
+  phone: string;
+  code: string;
+}
 export const signIn = ({ email, password }) => ({
   type: TYPES.SIGN_IN,
   payload: { email, password },
@@ -216,4 +230,33 @@ export const updatePassword = (payload: UpdatePasswordType) => ({
 
 export const removeDefaultCard = () => ({
   type: TYPES.REMOVE_DEFAULT_CARD,
+});
+
+export const requestPhoneVerification = (payload: IRequestPhoneVerificationPayload) => ({
+  type: TYPES.REQUEST_PHONE_VERIFICATION,
+  payload,
+});
+export const requestPhoneVerificationSuccess = () => ({
+  type: TYPES.REQUEST_PHONE_VERIFICATION_SUCCESS,
+});
+export const requestPhoneVerificationError = (errorMessage: string) => ({
+  type: TYPES.REQUEST_PHONE_VERIFICATION_ERROR,
+  payload: errorMessage,
+});
+export const requestPhoneVerificationClear = () => ({
+  type: TYPES.REQUEST_PHONE_VERIFICATION_CLEAR,
+});
+export const verifyPhone = (payload: IVerifyPhonePayload) => ({
+  type: TYPES.VERIFY_PHONE,
+  payload,
+});
+export const verifyPhoneSuccess = () => ({
+  type: TYPES.VERIFY_PHONE_SUCCESS,
+});
+export const verifyPhoneError = (errorMessage: string) => ({
+  type: TYPES.VERIFY_PHONE_ERROR,
+  payload: errorMessage,
+});
+export const verifyPhoneClear = () => ({
+  type: TYPES.VERIFY_PHONE_CLEAR,
 });

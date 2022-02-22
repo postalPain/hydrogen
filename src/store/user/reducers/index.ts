@@ -26,6 +26,16 @@ interface IUserState {
     data: TPromoCode | null;
     errorMessage: string | null;
   }
+  requestPhoneVerification: {
+    loading: boolean;
+    data: string | null;
+    errorMessage: string | null;
+  },
+  phoneVerification: {
+    loading: boolean;
+    data: string | null;
+    errorMessage: string | null;
+  }
 }
 
 const defaultState: IUserState = {
@@ -46,6 +56,16 @@ const defaultState: IUserState = {
     errorMessage: null,
   },
   promoCode: {
+    loading: false,
+    data: null,
+    errorMessage: null,
+  },
+  requestPhoneVerification: {
+    loading: false,
+    data: null,
+    errorMessage: null,
+  },
+  phoneVerification: {
     loading: false,
     data: null,
     errorMessage: null,
@@ -272,6 +292,86 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         ...state,
         loading: true,
         errorMessage: '',
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          loading: true,
+          data: null,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION_SUCCESS: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          loading: false,
+          data: 'ok',
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION_ERROR: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          data: null,
+          loading: false,
+          errorMessage: action.payload,
+        },
+      };
+    }
+    case TYPES.REQUEST_PHONE_VERIFICATION_CLEAR: {
+      return {
+        ...state,
+        requestPhoneVerification: {
+          data: null,
+          loading: false,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE: {
+      return {
+        ...state,
+        phoneVerification: {
+          data: null,
+          loading: true,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE_SUCCESS: {
+      return {
+        ...state,
+        phoneVerification: {
+          data: 'ok',
+          loading: false,
+          errorMessage: '',
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE_ERROR: {
+      return {
+        ...state,
+        phoneVerification: {
+          data: null,
+          loading: false,
+          errorMessage: action.payload,
+        },
+      };
+    }
+    case TYPES.VERIFY_PHONE_CLEAR: {
+      return {
+        ...state,
+        phoneVerification: {
+          data: null,
+          loading: false,
+          errorMessage: '',
+        },
       };
     }
     default:

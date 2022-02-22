@@ -98,4 +98,10 @@ export const userAPI = {
   updateFCMToken(token: { device_key: string }): Promise<any> {
     return xhr.patch(apiUrls.updateFCMToken, token);
   },
+  requestPhoneVerification(data): Promise<any> {
+    return xhr.post(apiUrls.requestPhoneVerification, data);
+  },
+  verifyPhone(data): Promise<any> {
+    return xhr.post(apiUrls.verifyPhone, data);
+  },
 };

@@ -86,7 +86,6 @@ export default {
       fields: {
         name: 'First Name',
         lastName: 'Last Name',
-        phone: 'Mobile',
         email: 'Email',
         password: 'Password',
         passwordPlaceholder: '8 letters, 1 capital, 1 number',
@@ -95,8 +94,9 @@ export default {
       },
       errors: {
         name: 'Please enter your first name',
+        smallName: 'Name must be at least 3 characters',
         lastName: 'Please enter your last name',
-        phone: 'Please enter a mobile number',
+        smallLastName: 'Last name must be at least 3 characters',
         email: 'Please enter an email',
         email2: 'Please check your email address and try again',
         password: 'Please enter a password',
@@ -106,6 +106,31 @@ export default {
       loginButton: 'Already have an account ? Login now',
       button: 'Next',
       button2: 'Confirm',
+    },
+    signUpOTP: {
+      header: 'Sign up',
+      pageHeader: 'OTP Verification',
+      pageSubHeader: 'We will send you a One Time \nPassword on this mobile number',
+      fields: {
+        phone: 'Mobile number',
+      },
+      errors: {
+        phone: 'Please enter a mobile number',
+      },
+      button: 'Request code',
+    },
+    signUpOTPVerification: {
+      header: 'Sign up',
+      pageHeader: 'OTP Verification',
+      pageSubHeader: 'We have sent the code verification \nto your mobile number',
+      button: 'Submit',
+      successMessage: 'Code accepted!',
+    },
+    signUpSuccess: {
+      header: 'Sign up',
+      button: 'Continue',
+      pageHeader: 'Hey %{name}',
+      pageSubHeader: 'Your Blitz account has been \ncreated successfully!',
     },
     map: {
       header: 'Pin your location',
@@ -343,6 +368,10 @@ export default {
       boxText: 'Exciting\nNews',
       header: 'Coming soon',
       description: 'We havent’t developed this feature yet. But it’s on the top of our list!',
+    },
+    resendButton: {
+      countDownText: 'Resend code %{time}',
+      buttonText: 'Resend code',
     },
   },
 };

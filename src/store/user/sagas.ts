@@ -14,7 +14,8 @@ import {
   checkPromoCodeSuccess,
   createOrderError,
   createOrderSuccess,
-  getUserSuccess, removeDefaultCard,
+  getUserSuccess,
+  removeDefaultCard,
   saveAddress,
   saveCard,
   saveCardList,
@@ -23,6 +24,10 @@ import {
   saveUser,
   setError,
   signedIn,
+  requestPhoneVerificationSuccess,
+  requestPhoneVerificationError,
+  verifyPhoneSuccess,
+  verifyPhoneError,
   TYPES,
 } from './actions';
 import {
@@ -176,7 +181,7 @@ function* signUpWorker(action): SagaIterator {
     yield put(signedIn(accessToken));
     yield put(saveUser(user));
     yield call(trackEvent, TrackingEvent.RegistrationCompleted);
-    navigate(Routes.Checkout);
+    navigate(Routes.SignUpSuccess);
   } catch (error) {
     yield put(setError(i18n.t('errors.something_went_wrong')));
   }
@@ -290,6 +295,28 @@ export function* updateUserFCMTokenWorker() {
   }
 }
 
+function* requestPhoneVerificationWorker(action): SagaIterator {
+  try {
+    yield call(userAPI.requestPhoneVerification, action.payload);
+    yield put(requestPhoneVerificationSuccess());
+  } catch (error) {
+    let errorMessage = error.message;
+    if (error.errors?.fields?.phone) {
+      errorMessage = Object.values(error.errors.fields.phone).join(' ');
+    }
+    yield put(requestPhoneVerificationError(errorMessage || i18n.t('errors.something_went_wrong')));
+  }
+}
+
+function* verifyPhoneWorker(action): SagaIterator {
+  try {
+    yield call(userAPI.verifyPhone, action.payload);
+    yield put(verifyPhoneSuccess());
+  } catch (error) {
+    yield put(verifyPhoneError(error.message || i18n.t('errors.something_went_wrong')));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
@@ -304,4 +331,6 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.CHECK_PROMO_CODE, checkPromoCodeWorker);
   yield takeEvery(TYPES.RESET_PASSWORD, resetPasswordWorker);
   yield takeEvery(TYPES.UPDATE_PASSWORD, updatePasswordWorker);
+  yield takeEvery(TYPES.REQUEST_PHONE_VERIFICATION, requestPhoneVerificationWorker);
+  yield takeEvery(TYPES.VERIFY_PHONE, verifyPhoneWorker);
 }

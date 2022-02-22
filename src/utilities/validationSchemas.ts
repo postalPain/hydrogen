@@ -3,10 +3,17 @@ import i18n from 'i18n';
 import { isDateValid, isMonthValid } from 'utilities/helpers';
 
 export const SignUpSchema = Yup.object().shape({
-  first_name: Yup.string().required(i18n.t('screens.signUp.errors.name')),
-  last_name: Yup.string().required(i18n.t('screens.signUp.errors.lastName')),
-  phone: Yup.string().required(i18n.t('screens.signUp.errors.phone')),
+  first_name: Yup.string()
+    .required(i18n.t('screens.signUp.errors.name'))
+    .min(3, i18n.t('screens.signUp.errors.smallName')),
+  last_name: Yup.string()
+    .required(i18n.t('screens.signUp.errors.lastName'))
+    .min(3, i18n.t('screens.signUp.errors.smallLastName')),
   email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
+});
+
+export const SignUpOTPSchema = Yup.object().shape({
+  phone: Yup.string().required(i18n.t('screens.signUp.errors.phone')),
 });
 
 export const CreatePasswordSchema = Yup.object().shape({

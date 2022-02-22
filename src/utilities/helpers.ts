@@ -194,3 +194,39 @@ export const awaitSomeTime = (time: number = 0) => (
     setTimeout(resolve, time);
   })
 );
+
+export const formatAwaitTime = (t: number) => {
+  const time = t / 1000;
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+
+  const formattedMinutes = minutes > 9 ? minutes : `0${minutes}`;
+  const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
+  return `${formattedMinutes}:${formattedSeconds}`;
+};
+
+export const getValueByInterval = (
+  callback,
+  {
+    startValue,
+    endValue,
+    stepValue,
+    stepDuration,
+  },
+) => {
+  const direction = endValue - startValue > 0 ? 1 : -1;
+  const deltaValue = Math.abs(endValue - startValue);
+  const countSteps = Math.ceil(deltaValue / stepValue);
+
+  const runLooper = (currentStep = 0) => {
+    if (currentStep === countSteps) {
+      callback(endValue, true);
+    } else {
+      callback(Math.round(startValue + stepValue * currentStep * direction));
+      setTimeout(() => {
+        runLooper(currentStep + 1);
+      }, stepDuration);
+    }
+  };
+  runLooper();
+};
