@@ -53,8 +53,12 @@ export const trackEvent = async <
   const trackingStatus = await getTrackingStatus();
 
   if (!__DEV__ && (trackingStatus === 'authorized' || trackingStatus === 'unavailable')) {
-    await appsFlyer.logEvent(eventName, eventProps);
-    await analytics().logEvent(eventName, eventProps);
+    try {
+      await analytics().logEvent(eventName, eventProps);
+      await appsFlyer.logEvent(eventName, eventProps);
+    } catch (e) {
+      console.log(e);
+    }
   }
 };
 
