@@ -21,8 +21,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   promoCode: {
     ...theme.fonts.spartan700,
-    color: '#FDA718',
-    marginTop: 10,
+    color: theme.colors.black,
   },
   headerContainer: {
     paddingBottom: 35,
@@ -65,6 +64,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: 16,
     color: theme.colors.gray,
     marginTop: 20,
+  },
+  promoCodeButton: {
+    backgroundColor: '#FDA717',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginTop: 10,
+    borderRadius: 4,
+    alignSelf: 'flex-start',
   },
 });
 

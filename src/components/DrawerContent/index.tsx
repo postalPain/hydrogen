@@ -1,6 +1,6 @@
 import React from 'react';
 import useStyles from './styles';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Button, Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import {
   DrawerContentComponentProps,
@@ -28,6 +28,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
 
   const isUser = user?.email;
 
+  const handleSignUp = () => navigate(Routes.SignUp);
   const handleLogin = () => navigate(Routes.Login);
   const handleLogout = () => dispatch(signOut());
 
@@ -45,7 +46,9 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
       <Text style={styles.description}>
         {i18n.t('components.drawerContent.description')}
       </Text>
-      <Text selectable style={styles.promoCode}>BLITZYFIFTY</Text>
+      <TouchableOpacity style={styles.promoCodeButton} onPress={() => openLink('https://www.getblitz.io/promos/')}>
+        <Text style={styles.promoCode}>{i18n.t('components.drawerContent.promoCode')}</Text>
+      </TouchableOpacity>
     </View>
   ));
 
@@ -62,6 +65,16 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
           >
             {i18n.t('components.drawerContent.orders')}
           </Button>
+          {isUser && (
+            <Button
+              onPress={() => openLink('https://www.getblitz.io/promos/')}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.promoCode')}
+            </Button>
+          )}
           <Button
             onPress={() => openLink('https://www.getblitz.io/faq/')}
             type="link"
@@ -103,6 +116,15 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             {i18n.t('components.drawerContent.terms')}
           </Button>
           {!isUser && (
+          <>
+            <Button
+              onPress={handleSignUp}
+              type="link"
+              style={styles.linkContainer}
+              textStyle={styles.link}
+            >
+              {i18n.t('components.drawerContent.signUp')}
+            </Button>
             <Button
               onPress={handleLogin}
               type="link"
@@ -111,6 +133,7 @@ const DrawerContent: React.FC<IDrawerContentProps> = ({ theme, ...rest }) => {
             >
               {i18n.t('components.drawerContent.login')}
             </Button>
+          </>
           )}
           {isUser && (
             <Button

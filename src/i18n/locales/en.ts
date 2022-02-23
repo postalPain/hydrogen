@@ -350,8 +350,8 @@ export default {
       description: 'We’re sorry. The following items are no longer available and have been removed from your cart.',
     },
     drawerContent: {
-      title: 'Don’t have an account yet?',
-      description: 'Sign up now and get AED 50 off your first order with code',
+      title: 'First time shopping with Blitz?',
+      description: 'Add your favourite items and save big on your first orders',
       orders: 'My orders',
       faq: 'FAQ',
       about: 'Get to know us',
@@ -360,6 +360,8 @@ export default {
       terms: 'Terms & Privacy',
       logout: 'Log Out',
       login: 'Login',
+      signUp: 'Sign Up',
+      promoCode: 'Promo codes',
     },
     comingSoon: {
       boxText: 'Exciting\nNews',

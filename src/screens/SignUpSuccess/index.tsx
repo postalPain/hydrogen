@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  View, SafeAreaView,
-} from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import {
-  Button, Text,
-  withTheme,
-} from '@stryberventures/stryber-react-native-ui-components';
+import { Button, Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
 import { useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
@@ -21,12 +16,20 @@ interface ISignUpProps {
   theme: ProjectThemeType
 }
 
+const SIGNUP_PAGES_COUNT = 6;
+
 const SignUpSuccess: React.FC<ISignUpProps> = ({ theme }) => {
   const styles = useStyles(theme);
-  const { navigate } = useNavigation();
+  const { navigate, getState } = useNavigation();
   const user = useSelector(userSelector);
+  const navStateRoutes = getState().routes;
+  const routeBeforeSignUp = navStateRoutes[navStateRoutes.length - SIGNUP_PAGES_COUNT];
+
   const onPressContinue = () => {
-    navigate(Routes.Checkout);
+    if (routeBeforeSignUp.name === Routes.DrawerNavigation) {
+      return navigate(Routes.DrawerNavigation, { screen: Routes.TabNavigation });
+    }
+    return navigate(Routes.Checkout);
   };
 
   return (
