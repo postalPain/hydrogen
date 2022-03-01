@@ -30,9 +30,9 @@ jobs:
         run: |
           gem update cocoapods xcodeproj
           cd ios && pod install && cd ..
-      - run: yarn run lint
+      # - run: yarn run lint
       - run: yarn global add detox-cli
       - run: yarn global add react-native-cli
       - run: brew tap wix/brew
-      - run: brew install applesimutils
+      - run: brew install wix/brew/applesimutils
       - run: yarn run e2e:ios
