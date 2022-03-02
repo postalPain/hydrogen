@@ -78,7 +78,7 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
     }
   };
 
-  const setUsersCurrentLocation = async (params?: { inAreaChecking: boolean }) => {
+  const setUsersCurrentLocation = async () => {
     const geoPermission = await GeolocationApi.requestPermissions(() => {
       setModalData({
         layout: ModalType.settings,
@@ -96,21 +96,13 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
       const inArea = isPointInPolygon(currentPosition, warehouseAreaPoints);
       // zoom map if user's coords inside delivery area
       if (inArea) delta = 0.001;
-
-      if (params?.inAreaChecking) {
-        if (inArea) {
-          setPosition(currentPosition);
-          await updateAddress(currentPosition);
-        }
-      } else {
-        setPosition(currentPosition);
-        await updateAddress(currentPosition);
-      }
+      setPosition(currentPosition);
+      await updateAddress(currentPosition);
     }
   };
 
   useEffect(() => {
-    setUsersCurrentLocation({ inAreaChecking: true });
+    setUsersCurrentLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
