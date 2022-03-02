@@ -4,7 +4,10 @@ import {
 } from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
 import { getTrackingStatus } from 'react-native-tracking-transparency';
+import InAppReview from 'react-native-in-app-review';
 
+import { getState as getStoreState, dispatch } from 'store/index';
+import { setAppLastRatePopupStatus } from 'store/app/actions';
 import Routes from './Routes';
 
 enum FirebaseRouteName {
@@ -50,6 +53,17 @@ const getFirebaseScreenName = (routeName: string) => {
   }
 };
 
+const getDeepRoute = (topRoute) => {
+  if (!topRoute.state) {
+    return topRoute;
+  }
+  let actualRoute = topRoute.state.routes[topRoute.state.index];
+  while (actualRoute.state) {
+    actualRoute = actualRoute.state.routes[actualRoute.state.index];
+  }
+  return actualRoute;
+};
+
 export const onStateChangeHandler = async (state: NavigationState | undefined) => {
   if (!state) {
     return;
@@ -63,6 +77,28 @@ export const onStateChangeHandler = async (state: NavigationState | undefined) =
       .logScreenView({
         screen_name: routeName,
         screen_class: routeName,
+      });
+  }
+
+  const storeState = getStoreState();
+  const deepRoute = getDeepRoute(route);
+  const showRatePopupFirstTime = storeState.app.launchCount === 1
+    && !storeState.app.lastRatePopupStatus
+    && deepRoute.name === Routes.OrderConfirmation;
+  const showRatePopupSecondTime = storeState.app.launchCount > 1
+    && (
+      !storeState.app.lastRatePopupStatus || storeState.app.lastRatePopupStatus !== 'completed'
+    )
+    && (
+      deepRoute.name === Routes.ProductsScreen || deepRoute.name === Routes.Search
+    );
+  if (showRatePopupFirstTime || showRatePopupSecondTime) {
+    InAppReview.RequestInAppReview()
+      .then((isReviewedSuccessfully) => {
+        dispatch(setAppLastRatePopupStatus(isReviewedSuccessfully ? 'completed' : 'rejected'));
+      })
+      .catch(() => {
+        dispatch(setAppLastRatePopupStatus('rejected'));
       });
   }
   console.log(`Navigate to: ${route.name}`, route.params);

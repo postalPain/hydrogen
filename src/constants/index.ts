@@ -8,5 +8,7 @@ export const storageKeys = {
   authToken: 'authToken',
   latestCancelledVersion: 'latestCancelledVersion',
   appInitTime: 'appInitTime',
+  appLaunchCount: 'appLaunchCount',
+  lastRatePopupStatus: 'lastRatePopupStatus',
 };
 export const SUPPORT_PHONE_NUMBER = '+971504078556';

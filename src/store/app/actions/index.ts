@@ -1,3 +1,4 @@
+import { TRatePopupStatus } from '../reducers/types';
 import { AppActions, AppActionTypes } from './types';
 
 export const appInit = (): AppActions => ({
@@ -20,4 +21,14 @@ export const setBoardingCompleted = (status: boolean): AppActions => ({
 export const setAppLoaderVisibility = (visibility: boolean): AppActions => ({
   type: AppActionTypes.SET_APP_LOADER_VISIBILITY,
   visibility,
+});
+
+export const setAppLaunchCount = (count: number): AppActions => ({
+  type: AppActionTypes.SET_APP_LAUNCH_COUNT,
+  count,
+});
+
+export const setAppLastRatePopupStatus = (status: TRatePopupStatus): AppActions => ({
+  type: AppActionTypes.SET_APP_LAST_RATE_POPUP_STATUS,
+  status,
 });

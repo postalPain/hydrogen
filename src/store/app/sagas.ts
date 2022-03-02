@@ -11,14 +11,19 @@ import { storageKeys } from 'constants/';
 import { navigate } from 'navigation/NavigationUtilities';
 import Routes from 'navigation/Routes';
 import { awaitSomeTime } from 'utilities/helpers';
-import { setItem, getItem } from 'services/LocalStorage';
+import { setItem, getItem, removeItem } from 'services/LocalStorage';
 import { addHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { getUserWorker, updateUserFCMTokenWorker } from '../user/sagas';
 import { getClosestWarehouseWorker } from '../warehouse/sagas';
 import { saveCardList, saveDefaultCard, signedIn } from 'store/user/actions';
 import { getCategoriesWorker } from '../categories/sagas';
-import { appCompleteInit, setBoardingCompleted } from './actions';
-import { AppActionTypes } from './actions/types';
+import {
+  appCompleteInit,
+  setBoardingCompleted,
+  setAppLaunchCount,
+  setAppLastRatePopupStatus,
+} from './actions';
+import { AppActionTypes, SetAppLastRatePopupStatusType } from './actions/types';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
 
 function* appCompleteInitWorker(): SagaIterator {
@@ -49,6 +54,15 @@ export function* signedAppDataWorker(): SagaIterator {
 function* initAppWorker(): SagaIterator {
   try {
     console.log('App start init...');
+    const launchCountValue = yield call(getItem, storageKeys.appLaunchCount);
+    const launchCount = launchCountValue || '0';
+    const updatedLaunchCount = parseInt(launchCount, 10) + 1;
+    yield call(setItem, storageKeys.appLaunchCount, updatedLaunchCount.toString());
+    yield put(setAppLaunchCount(updatedLaunchCount));
+
+    const lastRatePopupStatus = yield call(getItem, storageKeys.lastRatePopupStatus);
+    yield put(setAppLastRatePopupStatus(lastRatePopupStatus));
+
     yield call(getClosestWarehouseWorker);
     const boardingCompletedValue = yield call(getItem, storageKeys.boardingCompleted);
     // eslint-disable-next-line no-shadow
@@ -96,7 +110,20 @@ function* boardingCompletedWorker(): SagaIterator {
   }
 }
 
+function* setAppLastRatePopupStatusWorker(action: SetAppLastRatePopupStatusType): SagaIterator {
+  try {
+    if (!action.status) {
+      yield call(removeItem, storageKeys.lastRatePopupStatus);
+    } else {
+      yield call(setItem, storageKeys.lastRatePopupStatus, action.status);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export default function* categoriesWatcher(): SagaIterator {
   yield takeEvery(AppActionTypes.APP_INIT, initAppWorker);
   yield takeEvery(AppActionTypes.APP_BOARDING_COMPLETED, boardingCompletedWorker);
+  yield takeEvery(AppActionTypes.SET_APP_LAST_RATE_POPUP_STATUS, setAppLastRatePopupStatusWorker);
 }

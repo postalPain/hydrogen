@@ -7147,6 +7147,11 @@ react-native-google-places-autocomplete@^2.4.1:
     prop-types "^15.7.2"
     qs "~6.9.1"
 
+react-native-in-app-review@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-in-app-review/-/react-native-in-app-review-3.3.2.tgz#a26bb8af46d63f7659c43333075c8f4d5bd13f3c"
+  integrity sha512-P1v8i479aevGu0bcVqVV7FMWXY6jBb1EAVp2RV7bWYIEDsxc+5rTq1Zg74OGMaT2nVXM62ehx8I0xrkuQJBVyA==
+
 react-native-inappbrowser-reborn@^3.6.3:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/react-native-inappbrowser-reborn/-/react-native-inappbrowser-reborn-3.6.3.tgz#12938733e5337a9f328973557da0cfd13085bfbd"

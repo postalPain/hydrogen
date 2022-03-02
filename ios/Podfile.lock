@@ -413,6 +413,8 @@ PODS:
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 3.5.0)
     - React-Core
+  - react-native-in-app-review (3.3.2):
+    - React
   - react-native-maps (0.28.0):
     - React-Core
   - react-native-netinfo (5.9.10):
@@ -615,6 +617,7 @@ DEPENDENCIES:
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
+  - react-native-in-app-review (from `../node_modules/react-native-in-app-review`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -732,6 +735,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-in-app-review:
+    :path: "../node_modules/react-native-in-app-review"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
   react-native-netinfo:
@@ -858,6 +863,7 @@ SPEC CHECKSUMS:
   react-native-flipper: 50ec3a13b31449565b70d6f7c4ad7a0c924a472a
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-google-maps: 46dea4aa4acb7300beff508f64d9f8c84e9fb106
+  react-native-in-app-review: 19f501795e776269dd216916e19e1ac4008b33d5
   react-native-maps: 2d405b4e8cee0282e4c02bac434d81450dfea877
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a

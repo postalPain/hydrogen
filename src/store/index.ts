@@ -31,5 +31,6 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 export const getState = () => store.getState();
+export const { dispatch } = store;
 
 export default store;
