@@ -15,7 +15,6 @@ import { HomeTabNavigationParamList } from 'navigation/HomeTabNavigation';
 
 interface IProductsProps {
   theme: ProjectThemeType;
-  route: any;
 }
 
 type ProductsScreenRoute = RouteProp<HomeTabNavigationParamList, Routes.ProductsScreen>;

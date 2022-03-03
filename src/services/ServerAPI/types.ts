@@ -47,7 +47,7 @@ export type TProduct = {
   pieces: number | null;
   brand: string;
 };
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type TMetaList = {
   current_page: number;
   from: number;

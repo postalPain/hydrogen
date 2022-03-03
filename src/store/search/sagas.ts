@@ -14,6 +14,7 @@ import {
 
 function* searchProductsWorker(action): SagaIterator {
   try {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     const { data: { data, meta: { last_page } } } = yield call(userAPI.search, action.payload, 1);
     yield put(searchProductsSuccess(data, last_page));
   } catch (e) {

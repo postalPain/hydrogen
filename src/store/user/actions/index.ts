@@ -53,10 +53,6 @@ export type TBasketProduct = TProduct & {
   basketQuantity: number;
 };
 
-interface ISignIn {
-  email: string;
-  password: string;
-}
 interface IRemoveProductsFromBasketPayload {
   uuids: string[],
 }

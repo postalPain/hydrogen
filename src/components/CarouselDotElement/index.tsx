@@ -5,7 +5,6 @@ import useStyles from './styles';
 
 interface ICarouselDotElement {
   active?: boolean;
-  index?: number;
 }
 
 const CarouselDotElement: React.FC<ICarouselDotElement> = ({ active }) => {

@@ -48,7 +48,7 @@ interface ITrackingParameter {
 
 export const trackEvent = async <
   E extends TrackingEvent,
-  P extends ITrackingParameter[E]
+  P extends ITrackingParameter[E],
   >(eventName: E, eventProps?: P) => {
   const trackingStatus = await getTrackingStatus();
 

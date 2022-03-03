@@ -35,9 +35,9 @@ export const getNavigationState = () => {
 
 export const hardwareBackPressHandler = () => {
   const isAbleGoBack = navigationRef.current?.canGoBack();
-    navigationRef.current?.goBack();
+  navigationRef.current?.goBack();
 
-    return isAbleGoBack;
+  return isAbleGoBack;
 };
 
 const getFirebaseScreenName = (routeName: string) => {

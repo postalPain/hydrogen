@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export enum ModalType {
   default = 'default',
-  settings = 'settings'
+  settings = 'settings',
 }
 
 export interface IDefaultModalData {
