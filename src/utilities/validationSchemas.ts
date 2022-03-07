@@ -26,7 +26,6 @@ export const CreatePasswordSchema = Yup.object().shape({
 });
 
 export const VillaSchema = Yup.object().shape({
-  building_name: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.buildingName')),
   house_number: Yup.string().trim().required(i18n.t('screens.confirmAddress.errors.house')),
 });
 
