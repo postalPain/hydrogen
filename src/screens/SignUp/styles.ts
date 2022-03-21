@@ -13,7 +13,7 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     paddingHorizontal: 27,
   },
   input: {
-    marginTop: 54,
+    marginTop: 30,
   },
   nameContainer: {
     flexDirection: 'row',
@@ -45,6 +45,14 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
   },
   formWrapper: {
     flex: 1,
+  },
+  progressBar: {
+    marginBottom: 10,
+    marginTop: 20,
+  },
+  loginLink: {
+    marginTop: 13,
+    marginBottom: 10,
   },
 });
 

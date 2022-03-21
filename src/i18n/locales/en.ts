@@ -372,5 +372,8 @@ export default {
       countDownText: 'Resend code %{time}',
       buttonText: 'Resend code',
     },
+    progressBar: {
+      step: 'Step',
+    },
   },
 };

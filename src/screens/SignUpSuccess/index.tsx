@@ -2,11 +2,11 @@ import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Button, Text, withTheme } from '@stryberventures/stryber-react-native-ui-components';
-import { useNavigation } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import { Routes } from 'navigation';
+import { useNavigation } from 'navigation/NavigationUtilities';
 import { userSelector } from 'store/user/selectors';
 import { CheckCircleIcon } from 'components/Icons';
 import { DismissKeyboard } from 'components';
@@ -16,7 +16,7 @@ interface ISignUpProps {
   theme: ProjectThemeType
 }
 
-const SIGNUP_PAGES_COUNT = 6;
+const SIGNUP_PAGES_COUNT = 5;
 
 const SignUpSuccess: React.FC<ISignUpProps> = ({ theme }) => {
   const styles = useStyles(theme);

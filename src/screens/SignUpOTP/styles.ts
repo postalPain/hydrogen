@@ -80,6 +80,10 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     fontSize: 12,
     lineHeight: 21,
   },
+  progressBar: {
+    marginBottom: 10,
+    marginTop: 20,
+  },
 });
 
 export default useStyles;

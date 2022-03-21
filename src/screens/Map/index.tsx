@@ -1,6 +1,7 @@
 import React, {
   useContext, useEffect, useRef, useState,
 } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Image, Keyboard, Linking, TouchableOpacity, View,
 } from 'react-native';
@@ -15,22 +16,22 @@ import {
 } from '@react-navigation/native';
 import MapView, { Polygon, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { isPointInPolygon, getCenter } from 'geolib';
-
-import GeolocationApi from 'services/GeolocationApi';
-import getStyles from './styles';
-import i18n from 'i18n';
-import { Routes } from 'navigation';
-import { LocationInput } from 'components';
 import {
   GooglePlaceDetail,
   GooglePlacesAutocompleteRef,
 } from 'react-native-google-places-autocomplete';
-import { ModalContext, ModalType } from 'components/ModalProvider';
+
+import i18n from 'i18n';
+import { Routes } from 'navigation';
+import { RootStackParamList } from 'navigation/types';
 import { trackEvent, TrackingEvent } from 'utilities/eventTracking';
-import { useSelector } from 'react-redux';
+import GeolocationApi from 'services/GeolocationApi';
 import { warehouseCoordsSelector } from 'store/warehouse/selectors';
 import { ICoordinate } from 'store/warehouse/actions/types';
-import { RootStackParamList } from 'navigation/types';
+import { createTemporaryUser } from 'store/user/actions';
+import { LocationInput } from 'components';
+import { ModalContext, ModalType } from 'components/ModalProvider';
+import getStyles from './styles';
 
 interface IMapProps {
   theme?: any;
@@ -40,6 +41,7 @@ type MapScreenRoute = RouteProp<RootStackParamList, Routes.MapScreen>;
 
 const MapScreen: React.FC<IMapProps> = ({ theme }) => {
   const styles = getStyles(theme);
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const route = useRoute<MapScreenRoute>();
 
@@ -107,21 +109,28 @@ const MapScreen: React.FC<IMapProps> = ({ theme }) => {
   }, []);
 
   const onRegionChange = async (region: Region) => {
-    setDeliveryPoint(region);
+    setDeliveryPoint({
+      longitude: region.longitude,
+      latitude: region.latitude,
+    });
     const inArea = isPointInPolygon(region, warehouseAreaPoints);
     setPointInArea(inArea);
     await updateAddress(region);
   };
 
-  const handleLocationConfirm = () => (changeAddress
-    ? navigation.dispatch(StackActions.push(Routes.ConfirmAddress,
-      {
-        address: deliveryAddress,
-        geoCoords: deliveryPoint,
-        changeAddress,
+  const handleLocationConfirm = () => (
+    changeAddress
+      ? navigation.dispatch(StackActions.push(Routes.ConfirmAddress,
+        {
+          address: deliveryAddress,
+          geoCoords: deliveryPoint,
+          changeAddress,
+        }))
+      : dispatch(createTemporaryUser({
+        ...deliveryPoint,
+        full_address: deliveryAddress,
       }))
-    : navigation
-      .navigate(Routes.ConfirmAddress, { address: deliveryAddress, geoCoords: deliveryPoint }));
+  );
 
   const handleInputPress = (_, details: GooglePlaceDetail = null) => {
     trackEvent(TrackingEvent.MapInputClicked);

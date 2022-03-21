@@ -6,7 +6,6 @@ enum Routes {
   SignUpOTP = 'SignUpOTP',
   SignUpOTPVerification = 'SignUpOTPVerification',
   SignUpSuccess = 'SignUpSuccess',
-  CreatePassword = 'CreatePassword',
   TabNavigation = 'TabNavigation',
   ConfirmAddress = 'ConfirmAddress',
   Checkout = 'Checkout',

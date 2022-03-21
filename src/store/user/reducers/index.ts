@@ -8,7 +8,10 @@ interface IUserState {
   errorMessage: string;
   loading: boolean;
   defaultCard: ICard | {};
-  deliveryAddress: IDeliveryAddress | null;
+  addressDeliverySaveRequest: {
+    loading: boolean;
+    errorMessage: string | null;
+  }
   temporaryDeliveryAddress: IDeliveryAddress | null;
   cardList: ICard[],
   basket: {
@@ -44,7 +47,10 @@ const defaultState: IUserState = {
   errorMessage: '',
   loading: false,
   defaultCard: {},
-  deliveryAddress: null,
+  addressDeliverySaveRequest: {
+    loading: false,
+    errorMessage: null,
+  },
   temporaryDeliveryAddress: null,
   cardList: [],
   basket: {},
@@ -92,8 +98,6 @@ export default function user(state: IUserState = defaultState, action): IUserSta
       return {
         ...state,
         user: action.payload,
-        // TODO refactor handling delivery address to user section
-        deliveryAddress: action.payload.delivery_address || state.deliveryAddress,
       };
     }
     case TYPES.AUTH_ERROR: {
@@ -115,8 +119,6 @@ export default function user(state: IUserState = defaultState, action): IUserSta
       return {
         ...state,
         user: action.payload.data,
-        // TODO refactor handling delivery address to user section
-        deliveryAddress: action.payload.data.delivery_address,
       };
     }
     case TYPES.SAVE_DEFAULT_CARD: {
@@ -140,13 +142,57 @@ export default function user(state: IUserState = defaultState, action): IUserSta
         cardList: action.payload,
       };
     }
-    case TYPES.SAVE_ADDRESS: {
+    case TYPES.SAVE_ADDRESS:
+    case TYPES.SAVE_ADDRESS_LOADING: {
       return {
         ...state,
-        deliveryAddress: action.payload,
+        addressDeliverySaveRequest: {
+          loading: true,
+          errorMessage: null,
+        },
       };
     }
-    case TYPES.SAVE_TEMPORARY_ADDRESS: {
+    case TYPES.SAVE_ADDRESS_SUCCESS: {
+      return {
+        ...state,
+        addressDeliverySaveRequest: {
+          loading: false,
+          errorMessage: null,
+        },
+        user: {
+          ...state.user,
+          delivery_address: action.payload,
+        },
+      };
+    }
+    case TYPES.SAVE_ADDRESS_ERROR: {
+      return {
+        ...state,
+        addressDeliverySaveRequest: {
+          loading: false,
+          errorMessage: action.payload,
+        },
+      };
+    }
+    case TYPES.SAVE_ADDRESS_CLEAR_ERROR: {
+      return {
+        ...state,
+        addressDeliverySaveRequest: {
+          ...state.addressDeliverySaveRequest,
+          errorMessage: null,
+        },
+      };
+    }
+    case TYPES.SET_ADDRESS: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          delivery_address: action.payload,
+        },
+      };
+    }
+    case TYPES.SET_TEMPORARY_ADDRESS: {
       return {
         ...state,
         temporaryDeliveryAddress: action.payload,

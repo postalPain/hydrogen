@@ -6,7 +6,6 @@ import { requestTrackingPermission } from 'react-native-tracking-transparency';
 
 import { addHeader, removeHeader, userAPI } from 'services/ServerAPI/serverAPI';
 import { removeItem, setItem } from 'services/LocalStorage';
-import { history } from 'store';
 import { appCompleteBoarding, setAppLoaderVisibility } from 'store/app/actions';
 import { signedAppDataWorker } from 'store/app/sagas';
 import {
@@ -16,7 +15,7 @@ import {
   createOrderSuccess,
   getUserSuccess,
   removeDefaultCard,
-  saveAddress,
+  setAddress,
   saveCard,
   saveCardList,
   saveDefaultCard,
@@ -26,8 +25,13 @@ import {
   signedIn,
   requestPhoneVerificationSuccess,
   requestPhoneVerificationError,
+  requestPhoneVerificationClear,
   verifyPhoneSuccess,
   verifyPhoneError,
+  setTemporaryAddress,
+  saveAddressError,
+  saveAddressLoading,
+  saveAddressSuccess,
   TYPES,
 } from './actions';
 import {
@@ -57,7 +61,7 @@ export function* getUserWorker(): SagaIterator {
     const response = yield call(userAPI.getCurrentUser);
     yield put(getUserSuccess(response.data));
   } catch (error) {
-    history.push('/signin');
+    yield call(navigate, Routes.Login);
   }
 }
 
@@ -160,7 +164,7 @@ function* createTemporaryUserWorker(action): SagaIterator {
     yield put(signedIn(accessToken));
     yield call(addHeader, 'Authorization', `Bearer ${accessToken}`);
 
-    yield put(saveAddress(deliveryAddress));
+    yield put(setAddress(deliveryAddress));
     yield call(signedAppDataWorker);
 
     // finish onboarding
@@ -175,7 +179,16 @@ function* createTemporaryUserWorker(action): SagaIterator {
 
 function* signUpWorker(action): SagaIterator {
   try {
-    const { data: { data } } = yield call(userAPI.signUp, action.payload);
+    const { code, ...signUpPayload } = action.payload;
+    yield call(
+      userAPI.verifyPhone,
+      {
+        phone: signUpPayload.phone,
+        code,
+      },
+    );
+    yield put(requestPhoneVerificationClear());
+    const { data: { data } } = yield call(userAPI.signUp, signUpPayload);
     const { access_token: accessToken, user } = data;
     setItem(storageKeys.authToken, accessToken);
     yield put(signedIn(accessToken));
@@ -183,7 +196,8 @@ function* signUpWorker(action): SagaIterator {
     yield call(trackEvent, TrackingEvent.RegistrationCompleted);
     navigate(Routes.SignUpSuccess);
   } catch (error) {
-    yield put(setError(i18n.t('errors.something_went_wrong')));
+    const errorMessage = error.message ? error.message : Object.values(error.errors.fields).join(' ');
+    yield put(setError(errorMessage || i18n.t('errors.something_went_wrong')));
   }
 }
 
@@ -317,6 +331,36 @@ function* verifyPhoneWorker(action): SagaIterator {
   }
 }
 
+function* updateAddressDeliveryWorker(action): SagaIterator {
+  try {
+    const { address, nextScreen } = action.payload;
+    const currentDeliveryAddress = yield select(deliveryAddressSelector);
+    yield put(setTemporaryAddress(address));
+
+    if (!currentDeliveryAddress.type) {
+      yield put(saveAddressLoading());
+      yield call(userAPI.deliveryAddress, getCleanObject(address));
+      yield put(saveAddressSuccess(address));
+    }
+
+    if (nextScreen) {
+      navigate(nextScreen);
+    } else {
+      navigate(Routes.DrawerNavigation, {
+        screen: Routes.TabNavigation,
+        params: {
+          screen: Routes.HomeTabScreen,
+          params: {
+            screen: Routes.HomeScreen,
+          },
+        },
+      });
+    }
+  } catch (error) {
+    yield put(saveAddressError(error.message || i18n.t('errors.something_went_wrong')));
+  }
+}
+
 export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.SIGN_IN, signInWorker);
   yield takeEvery(TYPES.GET_USER, getUserWorker);
@@ -333,4 +377,5 @@ export default function* userWatcher(): SagaIterator {
   yield takeEvery(TYPES.UPDATE_PASSWORD, updatePasswordWorker);
   yield takeEvery(TYPES.REQUEST_PHONE_VERIFICATION, requestPhoneVerificationWorker);
   yield takeEvery(TYPES.VERIFY_PHONE, verifyPhoneWorker);
+  yield takeEvery(TYPES.UPDATE_ADDRESS, updateAddressDeliveryWorker);
 }

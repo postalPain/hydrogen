@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform, Dimensions,
 } from 'react-native';
@@ -8,25 +8,23 @@ import {
   withTheme,
   Text,
 } from '@stryberventures/stryber-react-native-ui-components';
-import { RouteProp, useNavigation } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 
 import i18n from 'i18n';
 import { ProjectThemeType } from 'theme';
 import { RootStackParamList } from 'navigation/types';
 import { Routes } from 'navigation';
 import {
-  verifyPhone,
-  verifyPhoneClear,
   requestPhoneVerification,
-  requestPhoneVerificationClear,
+  signUp,
 } from 'store/user/actions';
 import {
-  phoneVerificationDataSelector,
-  phoneVerificationLoadingSelector,
-  phoneVerificationErrorSelector,
+  userErrorSelector,
+  userLoadingSelector,
   requestPhoneVerificationLoadingSelector,
   requestPhoneVerificationErrorSelector,
 } from 'store/user/selectors';
+import { useResetUserError } from 'utilities/hooks';
 import { HEADER_HEIGHT } from 'constants/';
 import { CommentCheckIcon } from 'components/Icons';
 import {
@@ -34,6 +32,7 @@ import {
   OTPInput,
   ResendButton,
   LoadingScreen,
+  ProgressBar,
 } from 'components';
 import useStyles from './styles';
 
@@ -46,29 +45,19 @@ const { height } = Dimensions.get('window');
 
 const SignUpOTPVerification: React.FC<ISignUpOTPVerificationProps> = ({ theme, route }) => {
   const styles = useStyles(theme);
-  const { navigate } = useNavigation();
   const dispatch = useDispatch();
-  const data = useSelector(phoneVerificationDataSelector());
-  const isLoading = useSelector(phoneVerificationLoadingSelector());
-  const errorMessage = useSelector(phoneVerificationErrorSelector());
 
+  const errorMessage = useSelector(userErrorSelector);
+  const isLoading = useSelector(userLoadingSelector);
   const isLoadingRequestVerification = useSelector(requestPhoneVerificationLoadingSelector());
   const errorMessageRequestVerification = useSelector(requestPhoneVerificationErrorSelector());
 
   const otpInputRef = useRef();
   const [otpCode, setOtpCode] = useState(null);
 
-  useEffect(() => {
-    if (data) {
-      dispatch(verifyPhoneClear());
-      dispatch(requestPhoneVerificationClear());
-      navigate(Routes.CreatePassword, { signupData: { ...route.params.signupData } });
-    }
-  }, [data]);
-
   const handleSubmit = () => {
-    dispatch(verifyPhone({
-      phone: route.params.signupData.phone,
+    dispatch(signUp({
+      ...route.params.signupData,
       code: otpCode,
     }));
     // @ts-ignore
@@ -82,6 +71,8 @@ const SignUpOTPVerification: React.FC<ISignUpOTPVerificationProps> = ({ theme, r
       phone: route.params.signupData.phone,
     }));
   };
+
+  useResetUserError();
 
   return (
     <>
@@ -117,11 +108,6 @@ const SignUpOTPVerification: React.FC<ISignUpOTPVerificationProps> = ({ theme, r
                     style={styles.resendButton}
                   />
                   <View style={styles.messageBox}>
-                    { !!data && (
-                      <Text style={styles.successMessage}>
-                        {i18n.t('screens.signUpOTPVerification.successMessage')}
-                      </Text>
-                    )}
                     { (!!errorMessage) && (
                       <Text style={styles.errorMessage}>
                         {errorMessage}
@@ -134,12 +120,18 @@ const SignUpOTPVerification: React.FC<ISignUpOTPVerificationProps> = ({ theme, r
                     )}
                   </View>
                 </View>
-                <Button
-                  style={styles.button}
-                  onPress={handleSubmit}
-                >
-                  {i18n.t('screens.signUpOTPVerification.button')}
-                </Button>
+                <View>
+                  <ProgressBar
+                    currentStep={2}
+                    style={styles.progressBar}
+                  />
+                  <Button
+                    style={styles.button}
+                    onPress={handleSubmit}
+                  >
+                    {i18n.t('screens.signUpOTPVerification.button')}
+                  </Button>
+                </View>
               </View>
             </ScrollView>
           </KeyboardAvoidingView>

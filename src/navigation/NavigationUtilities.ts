@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  NavigationContainerRef, NavigationState,
+  NavigationContainerRef, NavigationState, useNavigation as useNavigationNative,
 } from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
 import { getTrackingStatus } from 'react-native-tracking-transparency';
@@ -8,6 +8,7 @@ import InAppReview from 'react-native-in-app-review';
 
 import { getState as getStoreState, dispatch } from 'store/index';
 import { setAppLastRatePopupStatus } from 'store/app/actions';
+import navigateMiddleware from './navigateMiddleware';
 import Routes from './Routes';
 
 enum FirebaseRouteName {
@@ -22,8 +23,16 @@ export const navigationRef = React.createRef<NavigationContainerRef<any>>();
 
 export const navigate = (name: Routes, params?: any) => {
   if (isMountedRef.current && navigationRef.current) {
-    navigationRef.current?.navigate(name, params);
+    navigationRef.current?.navigate(...navigateMiddleware(name, params));
   }
+};
+
+export const useNavigation = () => {
+  const { navigate: nativeNavigate, ...etc } = useNavigationNative();
+  return {
+    navigate,
+    ...etc,
+  };
 };
 
 export const getNavigationState = () => {

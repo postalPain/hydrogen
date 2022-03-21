@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import { ApartmentSchema, OfficeSchema, VillaSchema } from 'utilities/validationSchemas';
 import { ProjectThemeType } from 'theme';
@@ -11,8 +11,11 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTemporaryUser, saveTemporaryAddress } from 'store/user/actions';
-import { userErrorSelector } from 'store/user/selectors';
+import { updateAddress, saveAddressClearError } from 'store/user/actions';
+import {
+  deliveryAddressLoadingSelector,
+  deliveryAddressErrorSelector,
+} from 'store/user/selectors';
 import { Routes } from 'navigation';
 import i18n from 'i18n';
 import { AddressType } from 'screens/ConfirmAddress/index';
@@ -29,10 +32,10 @@ export const useConfirmAddress = (theme: ProjectThemeType) => {
   const villaFormRef = useRef(null);
   const apartmentFormRef = useRef(null);
   const officeFormRef = useRef(null);
-  const { goBack, navigate, getState } = useNavigation();
-  const errorMessage = useSelector(userErrorSelector);
-  const { params: { address, geoCoords: { latitude, longitude } } } = route;
-  const changeAddress = route.params?.changeAddress;
+  const { goBack } = useNavigation();
+  const errorMessage = useSelector(deliveryAddressErrorSelector);
+  const loading = useSelector(deliveryAddressLoadingSelector);
+  const { params: { address, geoCoords: { latitude, longitude }, nextScreen } } = route;
 
   const handleFormSubmit = (values) => {
     const addressDetails = {
@@ -42,26 +45,11 @@ export const useConfirmAddress = (theme: ProjectThemeType) => {
       latitude,
       longitude,
     };
-    if (changeAddress) {
-      const navState = getState()?.routes;
-      const beforePreviousScreen = navState && navState[navState.length - 3]?.name;
-      dispatch(saveTemporaryAddress(addressDetails));
-      if (beforePreviousScreen === Routes.Checkout) {
-        navigate(Routes.Checkout);
-      } else {
-        navigate(Routes.DrawerNavigation, {
-          screen: Routes.TabNavigation,
-          params: {
-            screen: Routes.HomeTabScreen,
-            params: {
-              screen: Routes.HomeScreen,
-            },
-          },
-        });
-      }
-    } else {
-      dispatch(createTemporaryUser(addressDetails));
-    }
+
+    dispatch(updateAddress({
+      address: addressDetails,
+      nextScreen,
+    }));
   };
 
   const renderVillaForm = () => (
@@ -238,6 +226,10 @@ export const useConfirmAddress = (theme: ProjectThemeType) => {
     }
   };
 
+  useEffect(() => () => {
+    dispatch(saveAddressClearError());
+  }, []);
+
   return {
     styles,
     address,
@@ -251,5 +243,6 @@ export const useConfirmAddress = (theme: ProjectThemeType) => {
     handleSubmit,
     goBack,
     errorMessage,
+    loading,
   };
 };

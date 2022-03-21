@@ -14,7 +14,7 @@ import { SignUpSchema } from 'utilities/validationSchemas';
 import { ProjectThemeType } from 'theme';
 import { Routes } from 'navigation';
 import { useNavigation } from '@react-navigation/native';
-import { DismissKeyboard } from 'components';
+import { DismissKeyboard, ProgressBar } from 'components';
 import { HEADER_HEIGHT } from 'constants/';
 
 interface ISignUpProps {
@@ -45,7 +45,11 @@ const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
             <View onStartShouldSetResponder={() => true} style={styles.formWrapper}>
               <Formik
                 initialValues={{
-                  first_name: '', last_name: '', email: '',
+                  first_name: '',
+                  last_name: '',
+                  email: '',
+                  password: '',
+                  password_confirmation: '',
                 }}
                 onSubmit={handleSignUp}
                 validationSchema={SignUpSchema}
@@ -88,19 +92,45 @@ const SignUp: React.FC<ISignUpProps> = ({ theme }) => {
                       />
                       <Button
                         type="link"
-                        style={styles.input}
+                        style={styles.loginLink}
                         textStyle={styles.link}
                         onPress={() => navigate(Routes.Login)}
                       >
                         {i18n.t('screens.signUp.loginButton')}
                       </Button>
+                      <Input
+                        variant="simple"
+                        label={i18n.t('screens.signUp.fields.password')}
+                        placeholder={i18n.t('screens.signUp.fields.passwordPlaceholder')}
+                        value={values.password}
+                        secure
+                        onChange={handleChange('password')}
+                        error={submitCount > 0 ? errors.password : undefined}
+                        style={styles.input}
+                      />
+                      <Input
+                        variant="simple"
+                        label={i18n.t('screens.signUp.fields.confirmPassword')}
+                        placeholder={i18n.t('screens.signUp.fields.confirmPasswordPlaceholder')}
+                        value={values.password_confirmation}
+                        secure
+                        onChange={handleChange('password_confirmation')}
+                        error={submitCount > 0 ? errors.password_confirmation : undefined}
+                        style={styles.input}
+                      />
                     </View>
-                    <Button
-                      style={styles.button}
-                      onPress={handleSubmit}
-                    >
-                      {i18n.t('screens.signUp.button')}
-                    </Button>
+                    <View>
+                      <ProgressBar
+                        currentStep={0}
+                        style={styles.progressBar}
+                      />
+                      <Button
+                        style={styles.button}
+                        onPress={handleSubmit}
+                      >
+                        {i18n.t('screens.signUp.button')}
+                      </Button>
+                    </View>
                   </View>
                 )}
               </Formik>

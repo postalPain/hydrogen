@@ -85,6 +85,10 @@ const useStyles = (theme: ProjectThemeType) => StyleSheet.create({
     lineHeight: 19,
     color: theme.colors.red,
   },
+  progressBar: {
+    marginBottom: 10,
+    marginTop: 20,
+  },
 });
 
 export default useStyles;

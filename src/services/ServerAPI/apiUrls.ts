@@ -6,7 +6,7 @@ export default {
   getProductsByCategory: id => `api/v1/categories/${id}/inventory`,
   cards: 'api/v1/cards',
   setDefaultCard: (id) => `api/v1/cards/${id}/default`,
-  deliveryAddress: 'api/v1/user/delivery-address',
+  deliveryAddress: 'api/v1/user/user-delivery-address',
   signUp: 'api/v1/sign-up',
   orders: 'api/v1/orders?perPage=100',
   createOrder: 'api/v1/orders',

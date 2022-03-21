@@ -10,6 +10,12 @@ export const SignUpSchema = Yup.object().shape({
     .required(i18n.t('screens.signUp.errors.lastName'))
     .min(3, i18n.t('screens.signUp.errors.smallLastName')),
   email: Yup.string().email(i18n.t('screens.signUp.errors.email2')).required(i18n.t('screens.signUp.errors.email')),
+  password: Yup.string().matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, i18n.t('screens.signUp.errors.password2')).required(i18n.t('screens.signUp.errors.password')),
+  password_confirmation: Yup.string()
+    // eslint-disable-next-line func-names
+    .test('passwords-match', i18n.t('screens.signUp.errors.confirmPassword'), function (value) {
+      return this.parent.password === value;
+    }),
 });
 
 export const SignUpOTPSchema = Yup.object().shape({

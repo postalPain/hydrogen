@@ -28,7 +28,7 @@ import {
   requestPhoneVerificationErrorSelector,
 } from 'store/user/selectors';
 import { CommentCheckIcon } from 'components/Icons';
-import { DismissKeyboard, LoadingScreen } from 'components';
+import { DismissKeyboard, LoadingScreen, ProgressBar } from 'components';
 import useStyles from './styles';
 
 interface SignUpOTPProps {
@@ -123,12 +123,18 @@ const SignUpOTP: React.FC<SignUpOTPProps> = ({ theme, route }) => {
                             }
                           </View>
                         </View>
-                        <Button
-                          style={styles.button}
-                          onPress={handleSubmit}
-                        >
-                          {i18n.t('screens.signUpOTP.button')}
-                        </Button>
+                        <View>
+                          <ProgressBar
+                            currentStep={1}
+                            style={styles.progressBar}
+                          />
+                          <Button
+                            style={styles.button}
+                            onPress={handleSubmit}
+                          >
+                            {i18n.t('screens.signUpOTP.button')}
+                          </Button>
+                        </View>
                       </View>
                     );
                   }}

@@ -1,6 +1,7 @@
 import { TProduct, TPromoCode, IOrderCreated } from 'services/ServerAPI/types';
 import { ICard, IOrder, IDeliveryAddress } from 'store/user/reducers/types';
 import { UpdatePasswordType } from 'store/user/actions/types';
+import { Routes } from 'navigation';
 
 export const TYPES = {
   SIGN_IN: 'SIGN_IN',
@@ -19,9 +20,14 @@ export const TYPES = {
   SAVE_DEFAULT_CARD: 'SAVE_DEFAULT_CARD',
   GET_CARD_LIST: 'GET_CARD_LIST',
   SAVE_CARD_LIST: 'SAVE_CARD_LIST',
-  ADD_ADDRESS: 'ADD_ADDRESS',
+  SET_ADDRESS: 'SET_ADDRESS',
+  UPDATE_ADDRESS: 'UPDATE_ADDRESS',
   SAVE_ADDRESS: 'SAVE_ADDRESS',
-  SAVE_TEMPORARY_ADDRESS: 'SAVE_TEMPORARY_ADDRESS',
+  SAVE_ADDRESS_LOADING: 'SAVE_ADDRESS_LOADING',
+  SAVE_ADDRESS_SUCCESS: 'SAVE_ADDRESS_SUCCESS',
+  SAVE_ADDRESS_ERROR: 'SAVE_ADDRESS_ERROR',
+  SAVE_ADDRESS_CLEAR_ERROR: 'SAVE_ADDRESS_CLEAR_ERROR',
+  SET_TEMPORARY_ADDRESS: 'SET_TEMPORARY_ADDRESS',
   SET_PRODUCT_TO_BASKET: 'SET_PRODUCT_TO_BASKET',
   SIGN_UP: 'SIGN_UP',
   REMOVE_PRODUCTS_FROM_BASKET: 'REMOVE_PRODUCTS_FROM_BASKET',
@@ -67,6 +73,25 @@ interface IVerifyPhonePayload {
   phone: string;
   code: string;
 }
+interface ITemporaryUserCreationPayload {
+  latitude: number;
+  longitude: number;
+  full_address: string;
+}
+interface ISignUpDataPayload {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+  phone: string;
+  code: string;
+}
+interface IUpdateDeliveryAddress {
+  address: IDeliveryAddress,
+  nextScreen?: Routes,
+}
+
 export const signIn = ({ email, password }) => ({
   type: TYPES.SIGN_IN,
   payload: { email, password },
@@ -134,9 +159,19 @@ export const saveUser = (user) => ({
   payload: user,
 });
 
-export const createTemporaryUser = (address) => ({
+export const createTemporaryUser = (payload: ITemporaryUserCreationPayload) => ({
   type: TYPES.CREATE_TEMPORARY_USER,
+  payload,
+});
+
+export const setAddress = (address: IDeliveryAddress) => ({
+  type: TYPES.SET_ADDRESS,
   payload: address,
+});
+
+export const updateAddress = (payload: IUpdateDeliveryAddress) => ({
+  type: TYPES.UPDATE_ADDRESS,
+  payload,
 });
 
 export const saveAddress = (address: IDeliveryAddress) => ({
@@ -144,8 +179,26 @@ export const saveAddress = (address: IDeliveryAddress) => ({
   payload: address,
 });
 
-export const saveTemporaryAddress = (payload: IDeliveryAddress) => ({
-  type: TYPES.SAVE_TEMPORARY_ADDRESS,
+export const saveAddressLoading = () => ({
+  type: TYPES.SAVE_ADDRESS_LOADING,
+});
+
+export const saveAddressSuccess = (address: IDeliveryAddress) => ({
+  type: TYPES.SAVE_ADDRESS_SUCCESS,
+  payload: address,
+});
+
+export const saveAddressError = (errorMessage: string) => ({
+  type: TYPES.SAVE_ADDRESS_ERROR,
+  payload: errorMessage,
+});
+
+export const saveAddressClearError = () => ({
+  type: TYPES.SAVE_ADDRESS_CLEAR_ERROR,
+});
+
+export const setTemporaryAddress = (payload: IDeliveryAddress) => ({
+  type: TYPES.SET_TEMPORARY_ADDRESS,
   payload,
 });
 
@@ -154,7 +207,7 @@ export const setProductToBasket = (payload: TBasketProduct) => ({
   payload,
 });
 
-export const signUp = (signUpData) => ({
+export const signUp = (signUpData: ISignUpDataPayload) => ({
   type: TYPES.SIGN_UP,
   payload: signUpData,
 });

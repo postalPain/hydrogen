@@ -22,13 +22,11 @@ export type RootStackParamList = {
     signupData: TSignUpData;
   };
   [Routes.SignUpSuccess]: undefined;
-  [Routes.CreatePassword]: {
-    signupData: TSignUpData;
-  };
   [Routes.ConfirmAddress]: {
     address: string;
     geoCoords: { latitude: number; longitude: number; };
     changeAddress?: boolean;
+    nextScreen?: keyof RootStackParamList;
   };
   [Routes.Checkout]: undefined;
   [Routes.Onboard]: undefined;

@@ -33,3 +33,4 @@ export { default as ModalHandler } from './ModalHandler';
 export { default as NotificationHandler } from './NotificationHandler';
 export { default as OTPInput } from './OTPInput';
 export { default as ResendButton } from './ResendButton';
+export { default as ProgressBar } from './ProgressBar';

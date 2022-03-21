@@ -104,4 +104,7 @@ export const userAPI = {
   verifyPhone(data): Promise<any> {
     return xhr.post(apiUrls.verifyPhone, data);
   },
+  deliveryAddress(data): Promise<any> {
+    return xhr.put(apiUrls.deliveryAddress, data);
+  },
 };
